@@ -141,7 +141,7 @@ export default function PdfMerger({ onCopy, onShare }: PdfMergerProps) {
                 : 'border-zinc-300 dark:border-zinc-700 hover:border-blue-400 dark:hover:border-blue-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
             }`}
           >
-            <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-blue-600 dark:text-blue-400 mb-4">
+            <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-blue-600 dark:text-blue-600 dark:text-blue-400 mb-4">
               <UploadCloud className="w-8 h-8" />
             </div>
             <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Click to upload or drag and drop</p>

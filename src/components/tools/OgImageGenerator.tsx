@@ -13,7 +13,7 @@ const GRADIENTS = [
   'bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500',
   'bg-gradient-to-r from-emerald-400 to-cyan-400',
   'bg-gradient-to-bl from-orange-400 to-rose-400',
-  'bg-slate-900'
+  'bg-white dark:bg-zinc-900'
 ];
 
 export default function OgImageGenerator({ onCopy, onShare }: OgImageGeneratorProps) {

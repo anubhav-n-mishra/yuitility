@@ -65,13 +65,13 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Inputs */}
-        <div className="lg:col-span-1 bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div className="lg:col-span-1 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-white">Smoking Habits</h3>
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Smoking Habits</h3>
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="bg-slate-950 border border-slate-800 rounded-lg px-2 py-1 text-xs text-white"
+              className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-1 text-xs text-white"
             >
               <option value="$">$ (USD)</option>
               <option value="₹">₹ (INR)</option>
@@ -81,45 +81,45 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Cigarettes per Day</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cigarettes per Day</label>
             <input
               type="number"
               value={cigsPerDay}
               onChange={(e) => setCigsPerDay(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Cost per Pack ({currency})</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cost per Pack ({currency})</label>
             <input
               type="number"
               step="0.5"
               value={packPrice}
               onChange={(e) => setPackPrice(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Cigs per Pack</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cigs per Pack</label>
               <input
                 type="number"
                 value={cigsPerPack}
                 onChange={(e) => setCigsPerPack(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Timeline (Years)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Timeline (Years)</label>
               <input
                 type="number"
                 min="1"
                 max="60"
                 value={years}
                 onChange={(e) => setYears(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -127,41 +127,41 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
 
         {/* Results */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-            <span className="text-xs font-semibold text-rose-400 uppercase tracking-wider block mb-1">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <span className="text-xs font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider block mb-1">
               Total Direct Cost Spent ({years} Years)
             </span>
             <div className="text-4xl sm:text-5xl font-black font-mono text-white my-2">
               {results ? `${currency}${results.totalSpent}` : '—'}
             </div>
-            <div className="flex flex-wrap gap-4 text-xs font-mono text-slate-400 pt-1">
-              <span>Monthly: <strong className="text-slate-200">{currency}{results ? results.monthlyCost : 0}</strong></span>
-              <span>Yearly: <strong className="text-slate-200">{currency}{results ? results.yearlyCost : 0}</strong></span>
+            <div className="flex flex-wrap gap-4 text-xs font-mono text-zinc-500 dark:text-zinc-400 pt-1">
+              <span>Monthly: <strong className="text-zinc-800 dark:text-zinc-200">{currency}{results ? results.monthlyCost : 0}</strong></span>
+              <span>Yearly: <strong className="text-zinc-800 dark:text-zinc-200">{currency}{results ? results.yearlyCost : 0}</strong></span>
             </div>
           </div>
 
           {results && (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-              <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                <span className="text-slate-500 block mb-1 flex items-center gap-1">
-                  <TrendingUp className="w-3.5 h-3.5 text-emerald-400" /> S&P 500 If Invested
+              <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                <span className="text-zinc-500 dark:text-zinc-500 block mb-1 flex items-center gap-1">
+                  <TrendingUp className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> S&P 500 If Invested
                 </span>
-                <span className="text-xl font-bold text-emerald-400">{currency}{results.investedVal}</span>
-                <span className="text-[10px] text-slate-500 block mt-0.5">8% compound growth</span>
+                <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{currency}{results.investedVal}</span>
+                <span className="text-[10px] text-zinc-500 dark:text-zinc-500 block mt-0.5">8% compound growth</span>
               </div>
 
-              <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                <span className="text-slate-500 block mb-1">Cigarettes Inhaled</span>
+              <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Cigarettes Inhaled</span>
                 <span className="text-xl font-bold text-white">{results.totalCigs}</span>
-                <span className="text-[10px] text-slate-500 block mt-0.5">Total sticks smoked</span>
+                <span className="text-[10px] text-zinc-500 dark:text-zinc-500 block mt-0.5">Total sticks smoked</span>
               </div>
 
-              <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                <span className="text-slate-500 block mb-1 flex items-center gap-1">
-                  <HeartCrack className="w-3.5 h-3.5 text-rose-400" /> Life Expectancy Lost
+              <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                <span className="text-zinc-500 dark:text-zinc-500 block mb-1 flex items-center gap-1">
+                  <HeartCrack className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" /> Life Expectancy Lost
                 </span>
-                <span className="text-xl font-bold text-rose-400">~{results.daysLost} days</span>
-                <span className="text-[10px] text-slate-500 block mt-0.5">~11 mins per cig (CDC)</span>
+                <span className="text-xl font-bold text-rose-600 dark:text-rose-400">~{results.daysLost} days</span>
+                <span className="text-[10px] text-zinc-500 dark:text-zinc-500 block mt-0.5">~11 mins per cig (CDC)</span>
               </div>
             </div>
           )}

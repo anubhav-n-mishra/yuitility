@@ -1,9 +1,10 @@
 import { Tool } from "@/src/types";
+import { LIVE_TOOLS } from "./toolRegistry";
 
 export const SITE_NAME = "Yuitility";
 export const SITE_URL = "https://www.yuitility.app";
 export const SITE_DESCRIPTION =
-  "Use 132+ free browser tools for PDFs, images, calculators & code. 100% private - everything runs locally in your tab with zero file uploads. Try it free!";
+  `Use ${LIVE_TOOLS.length}+ free browser tools for PDFs, images, calculators & code. 100% private - everything runs locally in your tab with zero file uploads. Try it free!`;
 
 export const toolPath = (toolId: string) => `/tools/${toolId}`;
 
@@ -559,6 +560,43 @@ const TOOL_SEO_TITLES: Record<string, string> = {
 
   // --- Conversion additions --------------------------------------------
   "time-zone-converter": "World Time Zone Converter & Meeting Planner",
+
+  // --- Newly Added Tools (35) ------------------------------------------
+  "case-converter": "Text Case Converter: Uppercase, Lowercase, Title Case",
+  "character-counter": "Character Counter & Sentence Density Calculator",
+  "duplicate-line-remover": "Duplicate Line Remover: Remove Duplicate Lines Online",
+  "text-reverser": "Text Reverser: Reverse Characters, Words & Lines",
+  "text-repeater": "Text Repeater: Repeat Text & Words Thousands of Times",
+  "slug-generator": "URL Slug Generator: Clean SEO-Friendly URL Slugs",
+  "text-to-ascii-art": "ASCII Art Generator: Text to Banner ASCII Art",
+  "text-cleaner": "Text Cleaner: Fix Whitespace, Smart Quotes & HTML",
+  "css-minifier-beautifier": "CSS Minifier & Beautifier: Compress or Format CSS",
+  "js-minifier-beautifier": "JavaScript Minifier & Beautifier: Format or Compress JS",
+  "html-formatter": "HTML Formatter & Minifier: Beautify HTML Code",
+  "json-to-csv-converter": "JSON to CSV Converter: Convert JSON Array to CSV",
+  "color-format-converter": "Color Format Converter: HEX, RGB, HSL, CMYK & CSS",
+  "pomodoro-timer": "Pomodoro Timer: 25-Min Focus & Break Interval Timer",
+  "countdown-timer": "Online Countdown Timer: Set Target Time & Alarm",
+  "world-clock": "World Clock: Current Local Time Across Time Zones",
+  "number-base-converter": "Number Base Converter: Binary, Octal, Decimal & Hex",
+  "jwt-decoder": "JWT Decoder: Decode JSON Web Tokens Privately",
+  "meeting-cost-calculator": "Meeting Cost Calculator: Measure Meeting Expense",
+  "age-in-seconds-calculator": "Age in Seconds Calculator: Exact Age in Total Seconds",
+  "read-time-estimator": "Read Time Estimator: Calculate Reading & Speaking Time",
+  "sip-step-up-calculator": "SIP Step-Up Calculator: Annual Mutual Fund Step-Up",
+  "ssy-calculator": "Sukanya Samriddhi Yojana (SSY) Calculator",
+  "crypto-profit-calculator": "Crypto Profit & Loss Calculator: ROI & Net Return",
+  "calorie-deficit-calculator": "Calorie Deficit Calculator: Weight Loss & Fat Burn",
+  "ohms-law-calculator": "Ohm's Law Calculator: Voltage, Current & Power",
+  "power-consumption-calculator": "Electricity Power Consumption & Energy Cost Calculator",
+  "speed-distance-time-calculator": "Speed Distance Time Calculator: Solve Speed & Time",
+  "image-color-picker": "Image Color Picker: Eyedropper & Palette Extractor",
+  "image-flipper": "Image Flipper: Flip Image Horizontally or Vertically",
+  "svg-to-png-converter": "SVG to PNG Converter: Convert Vector SVG to High-Res PNG",
+  "password-strength-checker": "Password Strength Checker & Entropy Calculator",
+  "text-encryptor": "Text Encryptor & Decryptor: AES-GCM Browser Encryption",
+  "file-hash-verifier": "File Hash Verifier: Calculate MD5, SHA-256 & SHA-512",
+  "exif-data-viewer": "EXIF Data Viewer: View & Strip Photo Metadata",
 };
 
 const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
@@ -846,6 +884,78 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
   // --- Conversion additions --------------------------------------------
   "time-zone-converter":
     "Compare current local times across major global cities, view color-coded business hour overlaps, and schedule cross-timezone meetings seamlessly.",
+
+  // --- Newly Added Tools (35) ------------------------------------------
+  "case-converter":
+    "Convert text case instantly to UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, and kebab-case 100% privately in browser.",
+  "character-counter":
+    "Count characters, words, sentences, paragraphs, and spaces in real-time with reading time and character limits checker for social media.",
+  "duplicate-line-remover":
+    "Deduplicate list text online. Remove duplicate lines, trim whitespace, sort alphabetically, and filter empty lines 100% privately.",
+  "text-reverser":
+    "Reverse text online by character, word, or sentence line order. Ideal for string manipulation, coding tests, and puzzle solving.",
+  "text-repeater":
+    "Repeat any string or text block up to 10,000 times with optional custom separators, new lines, and instant one-click copy.",
+  "slug-generator":
+    "Convert article titles and headings into clean, SEO-friendly URL slugs. Removes special characters, accents, and stop words locally.",
+  "text-to-ascii-art":
+    "Transform text into retro ASCII banner art using classic block fonts. Copy ASCII font headers for code comments, READMEs, and terminals.",
+  "text-cleaner":
+    "Clean messy text online: remove double spaces, fix line breaks, convert smart quotes, strip HTML tags, and clean unformatted text.",
+  "css-minifier-beautifier":
+    "Format or compress CSS stylesheet code online. Minify CSS to reduce file size or beautify formatted CSS with clean indentation.",
+  "js-minifier-beautifier":
+    "Minify JavaScript code to reduce bundle size or format messy JS with proper indentation and syntax highlighting. 100% private.",
+  "html-formatter":
+    "Format messy HTML code with proper tag nesting and indenting or minify HTML to optimize web page delivery. 100% browser-based.",
+  "json-to-csv-converter":
+    "Convert JSON arrays or objects into clean CSV spreadsheets or CSV back to JSON. Supports custom delimiters and instant file export.",
+  "color-format-converter":
+    "Convert colors across HEX, RGB, HSL, HSV, and CMYK color spaces with live preview, WCAG contrast ratios, and instant copy.",
+  "pomodoro-timer":
+    "Boost productivity with a clean 25-minute Pomodoro timer. Customizable work/break intervals, audio chimes, and cycle tracking in your browser.",
+  "countdown-timer":
+    "Free online countdown timer with audio alarm. Set hours, minutes, and seconds for events, tasks, cooking, or workout timers.",
+  "world-clock":
+    "Check current time across world cities and time zones (UTC, EST, PST, GMT, IST, CET). Compare business hours and plan international calls.",
+  "number-base-converter":
+    "Convert numbers between Binary (Base 2), Octal (Base 8), Decimal (Base 10), and Hexadecimal (Base 16) with step-by-step bit breakdowns.",
+  "jwt-decoder":
+    "Decode JWT headers, payload claims, and signature algorithm details. 100% private in-browser decoding — zero token transmission.",
+  "meeting-cost-calculator":
+    "Calculate real-time financial cost of team meetings based on attendee count, average hourly rate, and meeting duration.",
+  "age-in-seconds-calculator":
+    "Calculate your exact age in seconds, minutes, hours, days, weeks, and total heartbeats since birth with live counting.",
+  "read-time-estimator":
+    "Estimate reading and speaking duration for articles, speeches, and video scripts based on average words-per-minute (WPM) speeds.",
+  "sip-step-up-calculator":
+    "Calculate SIP growth with annual contribution step-ups (top-ups). See how increasing monthly investments exponentially boosts retirement corpus.",
+  "ssy-calculator":
+    "Calculate Sukanya Samriddhi Yojana (SSY) interest, total deposit, and maturity amount for girl child financial planning.",
+  "crypto-profit-calculator":
+    "Calculate cryptocurrency investment profit, loss, ROI percentage, and exit price targets including exchange trading fees.",
+  "calorie-deficit-calculator":
+    "Calculate daily calorie deficit required for sustainable weight loss. Estimates target daily calories and projected weekly fat loss rate.",
+  "ohms-law-calculator":
+    "Calculate Voltage (V), Current (I), Resistance (R), and Power (P) using Ohm's Law formulas with circuit calculation steps.",
+  "power-consumption-calculator":
+    "Calculate appliance electricity usage in kWh and estimate monthly electric bill cost based on wattage and daily usage hours.",
+  "speed-distance-time-calculator":
+    "Calculate Speed, Distance, or Time using the physics formula s = d / t. Supports km/h, mph, m/s, and pace conversions.",
+  "image-color-picker":
+    "Extract HEX, RGB, and HSL color codes from any uploaded image using an interactive canvas eyedropper. 100% private in-browser.",
+  "image-flipper":
+    "Flip images horizontally (mirror effect) or vertically online without quality loss. Supports PNG, JPG, and WebP exports. 100% private.",
+  "svg-to-png-converter":
+    "Convert SVG vector files to raster PNG or JPEG images. Customize output width, height, scale multiplier, and transparent backgrounds.",
+  "password-strength-checker":
+    "Check password strength and calculate crack time entropy in bits. Test passwords against breach heuristics 100% offline.",
+  "text-encryptor":
+    "Encrypt and decrypt sensitive text messages using military-grade AES-256-GCM encryption with secret passphrases locally.",
+  "file-hash-verifier":
+    "Compute and verify file integrity hashes (MD5, SHA-1, SHA-256, SHA-512) locally. Compare checksums against official software releases.",
+  "exif-data-viewer":
+    "View hidden image EXIF metadata (camera model, GPS coordinates, shutter speed, ISO, date). Strip EXIF data before sharing photos.",
 };
 
 export function getToolSeoTitle(tool: Tool): string {

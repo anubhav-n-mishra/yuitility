@@ -71,15 +71,15 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
   return (
     <div className="space-y-6">
       {/* Input */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-semibold text-slate-200">
+          <label className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
             Enter Numbers (comma, space, or line separated)
           </label>
           <button
             type="button"
             onClick={() => setInputData(SAMPLE_VALUES)}
-            className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300"
+            className="flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-300"
           >
             <Sparkles className="w-3.5 h-3.5" /> Sample Set
           </button>
@@ -90,7 +90,7 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
           value={inputData}
           onChange={(e) => setInputData(e.target.value)}
           placeholder="e.g. 10, 12, 23, 23, 16, 23, 21, 16"
-          className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
         />
       </div>
 
@@ -98,31 +98,31 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Sample Standard Deviation Card (Most commonly needed) */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                   Sample Standard Deviation (s)
                 </span>
-                <span className="text-xs font-mono text-slate-500">n - 1 divisor</span>
+                <span className="text-xs font-mono text-zinc-500 dark:text-zinc-500">n - 1 divisor</span>
               </div>
 
               <div className="text-4xl font-extrabold font-mono text-white my-2">
                 {stats.sampleStdDev.toFixed(4)}
               </div>
 
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                 Used when your data represents a <em>sample</em> taken from a broader population.
               </p>
 
-              <div className="mt-4 pt-4 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 font-mono">
+              <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 space-y-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
                 <div className="flex justify-between">
                   <span>Sample Variance (s²):</span>
-                  <span className="text-slate-200">{stats.sampleVariance.toFixed(4)}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{stats.sampleVariance.toFixed(4)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Std Error of Mean (SE):</span>
-                  <span className="text-slate-200">{stats.standardError.toFixed(4)}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{stats.standardError.toFixed(4)}</span>
                 </div>
               </div>
             </div>
@@ -138,35 +138,35 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
           </div>
 
           {/* Population Standard Deviation Card */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider">
                   Population Standard Deviation (σ)
                 </span>
-                <span className="text-xs font-mono text-slate-500">N divisor</span>
+                <span className="text-xs font-mono text-zinc-500 dark:text-zinc-500">N divisor</span>
               </div>
 
               <div className="text-4xl font-extrabold font-mono text-white my-2">
                 {stats.popStdDev.toFixed(4)}
               </div>
 
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                 Used when your dataset represents the <em>entire complete population</em>.
               </p>
 
-              <div className="mt-4 pt-4 border-t border-slate-800/80 space-y-1.5 text-xs text-slate-400 font-mono">
+              <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 space-y-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
                 <div className="flex justify-between">
                   <span>Population Variance (σ²):</span>
-                  <span className="text-slate-200">{stats.popVariance.toFixed(4)}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{stats.popVariance.toFixed(4)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Mean (μ):</span>
-                  <span className="text-slate-200">{stats.mean.toFixed(4)}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{stats.mean.toFixed(4)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Count (N):</span>
-                  <span className="text-slate-200">{n}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{n}</span>
                 </div>
               </div>
             </div>
@@ -176,17 +176,17 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
 
       {/* Step-by-Step Deviations Breakdown */}
       {stats && (
-        <div className="bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-          <div className="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-              <Sigma className="w-4 h-4 text-indigo-400" /> Calculation Steps & Deviations
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+              <Sigma className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Calculation Steps & Deviations
             </h3>
-            <span className="text-xs font-mono text-slate-400">Sum of (x - μ)² = {stats.sumDevSq.toFixed(4)}</span>
+            <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">Sum of (x - μ)² = {stats.sumDevSq.toFixed(4)}</span>
           </div>
 
           <div className="overflow-x-auto max-h-72">
             <table className="w-full text-xs text-left font-mono">
-              <thead className="bg-slate-950/60 text-slate-400 uppercase border-b border-slate-800">
+              <thead className="bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 uppercase border-b border-zinc-200 dark:border-zinc-800">
                 <tr>
                   <th className="px-6 py-2.5">i</th>
                   <th className="px-6 py-2.5">xᵢ</th>
@@ -196,10 +196,10 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {stats.deviations.map((row, i) => (
-                  <tr key={i} className="hover:bg-slate-900/40">
-                    <td className="px-6 py-2 text-slate-500">{i + 1}</td>
+                  <tr key={i} className="hover:bg-zinc-50 dark:bg-zinc-900/40">
+                    <td className="px-6 py-2 text-zinc-500 dark:text-zinc-500">{i + 1}</td>
                     <td className="px-6 py-2 text-white font-semibold">{row.x}</td>
-                    <td className="px-6 py-2 text-slate-300">
+                    <td className="px-6 py-2 text-zinc-700 dark:text-zinc-300">
                       {row.dev >= 0 ? `+${row.dev.toFixed(4)}` : row.dev.toFixed(4)}
                     </td>
                     <td className="px-6 py-2 text-indigo-300">{row.devSq.toFixed(4)}</td>

@@ -154,7 +154,7 @@ export default function PdfMetadata({ onCopy, onShare }: PdfMetadataProps) {
                   : 'border-zinc-300 dark:border-zinc-700 hover:border-purple-400 dark:hover:border-purple-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
               }`}
             >
-              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-purple-600 dark:text-purple-400 mb-4">
+              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-purple-600 dark:text-purple-600 dark:text-purple-400 mb-4">
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Inspect</p>
@@ -171,7 +171,7 @@ export default function PdfMetadata({ onCopy, onShare }: PdfMetadataProps) {
             <div className="space-y-6">
               <div className="flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
                 <div className="flex items-center gap-4 overflow-hidden">
-                  <div className="p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-400">
+                  <div className="p-2.5 bg-purple-100 dark:bg-purple-900/30 rounded-lg text-purple-600 dark:text-purple-600 dark:text-purple-400">
                     <File className="w-6 h-6" />
                   </div>
                   <div className="truncate">

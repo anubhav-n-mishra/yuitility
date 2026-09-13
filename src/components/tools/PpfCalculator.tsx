@@ -99,7 +99,7 @@ export default function PpfCalculator({ onCopy }: PpfCalculatorProps) {
 
           <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-3 text-xs text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/30 dark:text-emerald-300">
             <div className="flex items-center gap-1.5 font-bold">
-              <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" />
               EEE Tax Exemption Status
             </div>
             <p className="mt-1 leading-relaxed">
@@ -122,7 +122,7 @@ export default function PpfCalculator({ onCopy }: PpfCalculatorProps) {
 
               <div className="rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80">
                 <div className="text-xs text-zinc-500">Tax-Free Interest Earned</div>
-                <div className="font-bold text-emerald-600 dark:text-emerald-400">{calc.totalInterestFormatted}</div>
+                <div className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{calc.totalInterestFormatted}</div>
               </div>
 
               <button

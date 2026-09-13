@@ -26,7 +26,16 @@ const SettingsDrawer = dynamic(() => import('./SettingsDrawer'), { ssr: false })
 
 export default function Header() {
   const pathname = usePathname() || '';
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
+  const [mounted, setMounted] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [accentColor, setAccentColor] = useState<'blue' | 'emerald' | 'indigo' | 'rose' | 'amber'>('blue');
   const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
@@ -38,14 +47,14 @@ export default function Header() {
   const [contactType, setContactType] = useState<'request' | 'feedback' | 'bug'>('request');
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     setIsMobileNavOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-    }
     const savedAccent = localStorage.getItem('accent_color') as any;
     if (savedAccent) {
       setAccentColor(savedAccent);
@@ -60,22 +69,24 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
+  const toggleDarkMode = () => {
+    const nextDark = !darkMode;
+    setDarkMode(nextDark);
     const root = document.documentElement;
-    if (darkMode) {
+    if (nextDark) {
       root.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     } else {
       root.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-    window.dispatchEvent(new CustomEvent('theme-change', { detail: darkMode }));
-  }, [darkMode]);
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: nextDark }));
+  };
 
   useEffect(() => {
     const handleThemeChange = (e: Event) => {
       const customEvent = e as CustomEvent<boolean>;
-      if (customEvent.detail !== darkMode) {
+      if (typeof customEvent.detail === 'boolean' && customEvent.detail !== darkMode) {
         setDarkMode(customEvent.detail);
       }
     };
@@ -109,7 +120,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`fixed left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out ${scrolled
+      <header className={`fixed left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-out ${scrolled
         ? 'top-4 w-[90%] md:w-[70%] max-w-4xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-2xl border border-zinc-200/80 dark:border-zinc-800/80 rounded-3xl md:rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.06)]'
         : 'top-6 w-[94%] max-w-6xl bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-zinc-200/40 dark:border-zinc-800/40 rounded-3xl md:rounded-full shadow-sm'
         }`}>
@@ -193,19 +204,25 @@ export default function Header() {
             </button>
 
             <button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDarkMode}
               className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-zinc-700" />}
+              {!mounted ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : darkMode ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-zinc-700" />
+              )}
             </button>
 
             <button
               onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
-              className="md:hidden p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors ml-1"
-              aria-label="Toggle navigation menu"
+              className="md:hidden p-1.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              aria-label="Toggle Navigation Menu"
             >
-              {isMobileNavOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {isMobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>

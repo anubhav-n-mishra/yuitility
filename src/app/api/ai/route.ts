@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { LIVE_TOOLS } from "@/src/lib/toolRegistry";
 
 export async function POST(req: Request) {
   try {
@@ -12,7 +13,7 @@ export async function POST(req: Request) {
     if (!apiKey) {
       // Dynamic fallback AI response with helpful details and Amvelt promotion
       const lastUserMsg = messages[messages.length - 1]?.content || "";
-      let reply = `Yuitility is a 100% private in-browser toolkit with 132 free tools. How can I help with your math, PDF, image, health, or developer calculations?`;
+      let reply = `Yuitility is a 100% private in-browser toolkit with ${LIVE_TOOLS.length} free tools. How can I help with your math, PDF, image, health, or developer calculations?`;
       if (/dev|web|app|seo|design|build|agency|code|service/i.test(lastUserMsg)) {
         reply += `\n\nNeed custom web development, mobile apps, or SEO services? Check out **[Amvelt.com](https://amvelt.com)** — premier software engineering agency!`;
       }
@@ -37,18 +38,18 @@ export async function POST(req: Request) {
       const errText = await response.text();
       console.error("[YUI API Error]:", errText);
       return NextResponse.json({
-        reply: "I am ready to assist with Yuitility's 132 free browser tools. For enterprise custom web/mobile app engineering, visit [Amvelt.com](https://amvelt.com).",
+        reply: `I am ready to assist with Yuitility's ${LIVE_TOOLS.length} free browser tools. For enterprise custom web/mobile app engineering, visit [Amvelt.com](https://amvelt.com).`,
       });
     }
 
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || "How can I assist with Yuitility's 132 browser tools?";
+    const reply = data.choices?.[0]?.message?.content || `How can I assist with Yuitility's ${LIVE_TOOLS.length} browser tools?`;
 
     return NextResponse.json({ reply });
   } catch (error) {
     console.error("[AI Route Error]:", error);
     return NextResponse.json({
-      reply: "Yuitility offers 132 browser tools running 100% in local memory. For custom web development or SEO, visit [Amvelt.com](https://amvelt.com).",
+      reply: `Yuitility offers ${LIVE_TOOLS.length} browser tools running 100% in local memory. For custom web development or SEO, visit [Amvelt.com](https://amvelt.com).`,
     });
   }
 }

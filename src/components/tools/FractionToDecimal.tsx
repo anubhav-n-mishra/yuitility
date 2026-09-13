@@ -97,12 +97,12 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
   return (
     <div className="space-y-6">
       {/* Mode Switcher */}
-      <div className="flex items-center gap-2 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800 w-fit">
+      <div className="flex items-center gap-2 bg-white dark:bg-zinc-900/60 shadow-sm p-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 w-fit">
         <button
           type="button"
           onClick={() => setMode('fracToDec')}
           className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
-            mode === 'fracToDec' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
+            mode === 'fracToDec' ? 'bg-indigo-600 text-white shadow' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
           }`}
         >
           Fraction to Decimal
@@ -111,7 +111,7 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
           type="button"
           onClick={() => setMode('decToFrac')}
           className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
-            mode === 'decToFrac' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
+            mode === 'decToFrac' ? 'bg-indigo-600 text-white shadow' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
           }`}
         >
           Decimal to Fraction
@@ -121,39 +121,39 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
       {mode === 'fracToDec' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Fraction Input */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-            <h3 className="text-sm font-semibold text-white">Enter Fraction</h3>
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Enter Fraction</h3>
 
             <div className="flex items-center gap-3">
               <div className="w-24">
-                <label className="text-xs text-slate-400 block mb-1">Whole (optional)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Whole (optional)</label>
                 <input
                   type="number"
                   placeholder="e.g. 1"
                   value={whole}
                   onChange={(e) => setWhole(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-center font-mono text-white text-base"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-center font-mono text-white text-base"
                 />
               </div>
 
               <div className="flex-1 space-y-2">
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Numerator</label>
+                  <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Numerator</label>
                   <input
                     type="number"
                     value={numerator}
                     onChange={(e) => setNumerator(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center font-mono text-white text-base"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center font-mono text-white text-base"
                   />
                 </div>
-                <div className="h-0.5 bg-slate-700 rounded-full" />
+                <div className="h-0.5 bg-zinc-200 dark:bg-zinc-700 rounded-full" />
                 <div>
-                  <label className="text-xs text-slate-400 block mb-1">Denominator</label>
+                  <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Denominator</label>
                   <input
                     type="number"
                     value={denominator}
                     onChange={(e) => setDenominator(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center font-mono text-white text-base"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center font-mono text-white text-base"
                   />
                 </div>
               </div>
@@ -161,9 +161,9 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
           </div>
 
           {/* Decimal Output */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
-              <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
                 Decimal Equivalent
               </span>
               <div className="text-4xl font-extrabold font-mono text-white my-3">
@@ -171,14 +171,14 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
               </div>
 
               {fracResult && (
-                <div className="space-y-1.5 text-xs text-slate-400 font-mono mt-4 pt-4 border-t border-slate-800">
+                <div className="space-y-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                   <div className="flex justify-between">
                     <span>Percentage:</span>
-                    <span className="text-emerald-400 font-bold">{fracResult.percentage}</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">{fracResult.percentage}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Simplified Fraction:</span>
-                    <span className="text-slate-200">{fracResult.simplified}</span>
+                    <span className="text-zinc-800 dark:text-zinc-200">{fracResult.simplified}</span>
                   </div>
                 </div>
               )}
@@ -199,18 +199,18 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
       ) : (
         /* Decimal to Fraction */
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-            <h3 className="text-sm font-semibold text-white">Enter Decimal Number</h3>
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Enter Decimal Number</h3>
             <input
               type="number"
               step="any"
               value={decimalInput}
               onChange={(e) => setDecimalInput(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
 
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
                 Fraction Equivalent
@@ -220,16 +220,16 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
               </div>
 
               {decResult && (
-                <div className="space-y-1.5 text-xs text-slate-400 font-mono mt-4 pt-4 border-t border-slate-800">
+                <div className="space-y-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                   {decResult.mixedFrac && (
                     <div className="flex justify-between">
                       <span>Mixed Number:</span>
-                      <span className="text-slate-200">{decResult.mixedFrac}</span>
+                      <span className="text-zinc-800 dark:text-zinc-200">{decResult.mixedFrac}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
                     <span>Percentage:</span>
-                    <span className="text-emerald-400 font-bold">{decResult.percentage}</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">{decResult.percentage}</span>
                   </div>
                 </div>
               )}

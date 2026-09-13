@@ -109,7 +109,7 @@
   }
 
   body {
-    @apply transition-colors duration-300 bg-white dark:bg-zinc-950;
+    @apply bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100;
   }
 
   /* Hide global scrollbar for Chrome, Safari and Opera */

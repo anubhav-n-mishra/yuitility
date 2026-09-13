@@ -271,7 +271,7 @@ export default function SocialMediaResizer({ onCopy, onShare }: SocialMediaResiz
                         : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-indigo-300 dark:hover:border-zinc-700'
                     }`}
                   >
-                    <span className={`font-semibold ${activeFormat.name === format.name ? 'text-indigo-700 dark:text-indigo-400' : 'text-zinc-900 dark:text-zinc-100'}`}>
+                    <span className={`font-semibold ${activeFormat.name === format.name ? 'text-indigo-700 dark:text-indigo-600 dark:text-indigo-400' : 'text-zinc-900 dark:text-zinc-100'}`}>
                       {format.name}
                     </span>
                     <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-1">

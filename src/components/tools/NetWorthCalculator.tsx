@@ -60,7 +60,7 @@ export default function NetWorthCalculator() {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-6">
           <div className="rounded-2xl border border-emerald-200 bg-emerald-50/30 p-5 dark:border-emerald-950/60 dark:bg-emerald-950/20 space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Assets (What You Own)</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-600 dark:text-emerald-400">Assets (What You Own)</h3>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Cash & Savings</label>
@@ -102,7 +102,7 @@ export default function NetWorthCalculator() {
           </div>
 
           <div className="rounded-2xl border border-rose-200 bg-rose-50/30 p-5 dark:border-rose-950/60 dark:bg-rose-950/20 space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-rose-700 dark:text-rose-400">Liabilities (What You Owe)</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-rose-700 dark:text-rose-600 dark:text-rose-400">Liabilities (What You Owe)</h3>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Mortgages / Housing</label>
@@ -155,7 +155,7 @@ export default function NetWorthCalculator() {
           <div className="mt-6 space-y-4 border-t border-blue-200/60 dark:border-zinc-800 pt-6">
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Total Assets</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.totalAssets, currency)}</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.totalAssets, currency)}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Total Liabilities</span>

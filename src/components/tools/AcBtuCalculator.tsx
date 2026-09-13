@@ -89,32 +89,32 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Room Specifications</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Room Specifications</h3>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Room Area (sq ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Area (sq ft)</label>
               <input
                 type="number"
                 value={areaSqFt}
                 onChange={(e) => setAreaSqFt(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Ceiling Height (ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Ceiling Height (ft)</label>
               <input
                 type="number"
                 value={ceilingHeight}
                 onChange={(e) => setCeilingHeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Sunlight Exposure</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Sunlight Exposure</label>
             <div className="grid grid-cols-3 gap-2">
               <button
                 type="button"
@@ -122,7 +122,7 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
                 className={`p-2 rounded-xl text-xs font-semibold border transition ${
                   sunlight === 'shaded'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400'
                 }`}
               >
                 Heavily Shaded (-10%)
@@ -133,7 +133,7 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
                 className={`p-2 rounded-xl text-xs font-semibold border transition ${
                   sunlight === 'average'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400'
                 }`}
               >
                 Average Sun
@@ -144,7 +144,7 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
                 className={`p-2 rounded-xl text-xs font-semibold border transition ${
                   sunlight === 'sunny'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400'
                 }`}
               >
                 Very Sunny (+10%)
@@ -154,22 +154,22 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
 
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Room Occupants</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Occupants</label>
               <input
                 type="number"
                 min="1"
                 value={occupants}
                 onChange={(e) => setOccupants(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div className="flex items-center pt-5">
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+              <label className="flex items-center gap-2 text-xs text-zinc-700 dark:text-zinc-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={isKitchen}
                   onChange={(e) => setIsKitchen(e.target.checked)}
-                  className="rounded border-slate-700 text-indigo-500 bg-slate-950"
+                  className="rounded border-zinc-200 dark:border-zinc-700 text-indigo-500 bg-zinc-50 dark:bg-zinc-950"
                 />
                 Kitchen Location (+4,000 BTU)
               </label>
@@ -178,25 +178,25 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
               Recommended Cooling Capacity
             </span>
             <div className="text-4xl sm:text-5xl font-black font-mono text-white my-2">
               {results ? results.finalBtu : '—'}
-              <span className="text-lg font-normal text-slate-400"> BTU/hr</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> BTU/hr</span>
             </div>
 
             {results && (
-              <div className="space-y-3 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Tonnage Equivalent:</span>
                   <span className="font-bold text-white">~{results.tons} Tons</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-slate-200">
-                  <span className="text-slate-500 block text-[10px] mb-0.5">Recommended AC Class:</span>
-                  <span className="font-bold text-emerald-400 text-sm">{results.recommendedAc}</span>
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200">
+                  <span className="text-zinc-500 dark:text-zinc-500 block text-[10px] mb-0.5">Recommended AC Class:</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400 text-sm">{results.recommendedAc}</span>
                 </div>
               </div>
             )}

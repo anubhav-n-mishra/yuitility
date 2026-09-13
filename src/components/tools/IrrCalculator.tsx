@@ -107,7 +107,7 @@ export default function IrrCalculator() {
         <div className="flex flex-col justify-between rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-300">Internal Rate of Return (IRR)</p>
-            <p className="mt-2 text-4xl font-extrabold text-emerald-600 dark:text-emerald-400">
+            <p className="mt-2 text-4xl font-extrabold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
               {irr.toFixed(2)}%
             </p>
           </div>
@@ -119,7 +119,7 @@ export default function IrrCalculator() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Net Cash Profit</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(netCashflow, currency)}</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(netCashflow, currency)}</span>
             </div>
           </div>
         </div>

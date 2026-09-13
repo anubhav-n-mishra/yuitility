@@ -157,7 +157,15 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const ITEMS_PER_PAGE = 24;
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isMac, setIsMac] = useState<boolean>(false);
   const [starredTools, setStarredTools] = useState<string[]>([]);
@@ -176,10 +184,6 @@ export default function Home() {
 
   useEffect(() => {
     setIsMac(typeof window !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0);
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-    }
     const recent = JSON.parse(localStorage.getItem('recently_used_tools') || '[]');
     setRecentlyUsedToolIds(recent);
 
@@ -318,7 +322,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`theme-${accentColor} ${darkMode ? 'dark text-zinc-100 bg-zinc-950 min-h-screen font-sans antialiased relative overflow-hidden' : 'text-zinc-800 bg-white min-h-screen font-sans antialiased relative overflow-hidden'}`}>
+    <div className={`theme-${accentColor} bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 min-h-screen font-sans antialiased relative overflow-hidden`}>
       <DottedSurfaceHero isDark={darkMode} />
 
       {/* Header section */}
@@ -328,7 +332,7 @@ export default function Home() {
       <main className="pt-28 pb-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-12">
 
         {/* PREMIUM HUMAN-MADE HERO SECTION */}
-        <section className="text-center max-w-3xl mx-auto space-y-5 pt-8 pb-4 animate-fade-in">
+        <section className="text-center max-w-3xl mx-auto space-y-6 pt-6 pb-2 animate-fade-in">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-zinc-900 dark:text-zinc-50 tracking-tight leading-[1.1]">
             Free Online Browser Tools &amp; Calculators<br />
             <span className="bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-hover)] bg-clip-text text-transparent">
@@ -340,19 +344,6 @@ export default function Home() {
             Zero signups. Zero server uploads. Every single calculation, image transformation, and PDF operation executes entirely inside your browser memory for uncompromising privacy and speed.
           </p>
 
-          {/* Trust badges pill row */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs font-semibold text-zinc-600 dark:text-zinc-300">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/40">
-              <ShieldCheck className="w-3.5 h-3.5" /> 100% Client-Side Privacy
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/40">
-              <Zap className="w-3.5 h-3.5" /> Zero File Uploads
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 border border-purple-200/60 dark:border-purple-800/40">
-              <Sparkles className="w-3.5 h-3.5" /> 132 Free Fast Tools
-            </span>
-          </div>
-
           {/* Hero CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <a
@@ -360,7 +351,7 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
             >
               <LayoutGrid className="w-4 h-4" />
-              Explore All 132 Tools
+              Explore All {TOOLS.length} Tools
             </a>
             <button
               type="button"
@@ -375,13 +366,31 @@ export default function Home() {
               Try Popular Calculators
             </button>
           </div>
+
+          {/* Unique Human-Designed Metrics Bar with Original Trust Messaging */}
+          <div className="pt-4 max-w-2xl mx-auto">
+            <div className="py-3.5 px-6 rounded-2xl bg-zinc-50/80 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 backdrop-blur-sm grid grid-cols-3 divide-x divide-zinc-200 dark:divide-zinc-800 text-center shadow-sm">
+              <div className="px-2 space-y-0.5">
+                <div className="text-sm sm:text-base font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">100% Local Privacy</div>
+                <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">Executes inside browser</div>
+              </div>
+              <div className="px-2 space-y-0.5">
+                <div className="text-sm sm:text-base font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight">Zero File Uploads</div>
+                <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">Your files stay on device</div>
+              </div>
+              <div className="px-2 space-y-0.5">
+                <div className="text-sm sm:text-base font-extrabold text-blue-600 dark:text-blue-400 tracking-tight">{TOOLS.length} Free Fast Tools</div>
+                <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">No signups or limits</div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Toolbar Header with Search, Filter & Sort */}
-        <ScrollReveal delay={100} className="w-full">
+        <ScrollReveal delay={100} className="w-full relative z-10">
           <div id="tools-directory" className="max-w-7xl mx-auto space-y-6 scroll-mt-24">
             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
-              <div className="relative flex-1 group" role="search">
+              <div className="relative flex-1 group z-20" role="search">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-hover)] rounded-2xl blur opacity-15 group-hover:opacity-25 transition duration-300"></div>
                 <div className="relative flex items-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm hover:shadow-md transition-all focus-within:ring-2 focus-within:ring-[var(--accent-primary)]">
                   <Search className="absolute left-4 w-5 h-5 text-zinc-400 group-focus-within:text-[var(--accent-primary)] transition-colors" aria-hidden="true" />
@@ -404,7 +413,7 @@ export default function Home() {
 
                 {/* Command-Palette Style Dropdown */}
                 {searchQuery.trim().length > 0 && (
-                  <div className="absolute left-0 right-0 top-full mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden z-50 text-left">
+                  <div className="absolute left-0 right-0 top-full mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden z-[100] text-left">
                     <div className="max-h-[380px] overflow-y-auto p-2 space-y-1 custom-scrollbar">
                       {searchResults.length === 0 ? (
                         <div className="p-4 space-y-4 text-center">
@@ -511,15 +520,36 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Categories filters */}
-            <div className="flex justify-center">
-              <div className="w-full max-w-full inline-flex items-center gap-1.5 p-1.5 bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/60 dark:border-zinc-800/60 rounded-2xl overflow-x-auto no-scrollbar shadow-sm backdrop-blur-sm" role="tablist" aria-label="Tool categories">
+            {/* Apple/Airbnb-Style Fade Mask & Floating Scroll Controls */}
+            <div className="relative max-w-full group">
+              {/* Left Gradient Fade Mask + Button */}
+              <div className="absolute left-0 top-0 bottom-0 z-20 flex items-center pl-1 pr-6 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-zinc-950 dark:via-zinc-950/80 dark:to-transparent pointer-events-none rounded-l-2xl">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('category-scroll-container');
+                    if (el) el.scrollBy({ left: -240, behavior: 'smooth' });
+                  }}
+                  className="pointer-events-auto p-1.5 rounded-full bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 border border-zinc-200/80 dark:border-zinc-700 shadow-md hover:scale-110 active:scale-95 transition-all cursor-pointer flex items-center justify-center opacity-80 hover:opacity-100"
+                  aria-label="Scroll left"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Scrollable Container */}
+              <div
+                id="category-scroll-container"
+                className="w-full inline-flex items-center gap-2 p-2 px-10 bg-zinc-100/70 dark:bg-zinc-900/70 border border-zinc-200/70 dark:border-zinc-800/70 rounded-2xl overflow-x-auto no-scrollbar scroll-smooth backdrop-blur-md"
+                role="tablist"
+                aria-label="Tool categories"
+              >
                 {/* Starred filter button */}
                 <button
                   onClick={() => setActiveCategory('starred')}
                   role="tab"
                   aria-selected={activeCategory === 'starred'}
-                  className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-xl whitespace-nowrap transition-all duration-200 ease-out flex items-center gap-1.5 ${activeCategory === 'starred'
+                  className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-xl whitespace-nowrap transition-all duration-200 ease-out flex items-center gap-1.5 shrink-0 cursor-pointer ${activeCategory === 'starred'
                     ? 'bg-amber-500 text-white shadow-sm'
                     : 'text-zinc-600 dark:text-zinc-400 hover:text-amber-500 hover:bg-black/5 dark:hover:bg-white/5'
                     }`}
@@ -534,7 +564,7 @@ export default function Home() {
                     onClick={() => setActiveCategory(cat.id)}
                     role="tab"
                     aria-selected={activeCategory === cat.id}
-                    className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-xl whitespace-nowrap transition-all duration-200 ease-out ${activeCategory === cat.id
+                    className={`px-4 py-2 text-xs md:text-sm font-semibold rounded-xl whitespace-nowrap transition-all duration-200 ease-out shrink-0 cursor-pointer ${activeCategory === cat.id
                       ? 'bg-white dark:bg-zinc-800 text-zinc-950 dark:text-zinc-100 shadow-sm'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-black/5 dark:hover:bg-white/5'
                       }`}
@@ -542,6 +572,21 @@ export default function Home() {
                     {cat.label}
                   </button>
                 ))}
+              </div>
+
+              {/* Right Gradient Fade Mask + Button */}
+              <div className="absolute right-0 top-0 bottom-0 z-20 flex items-center pr-1 pl-6 bg-gradient-to-l from-white via-white/80 to-transparent dark:from-zinc-950 dark:via-zinc-950/80 dark:to-transparent pointer-events-none rounded-r-2xl">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('category-scroll-container');
+                    if (el) el.scrollBy({ left: 240, behavior: 'smooth' });
+                  }}
+                  className="pointer-events-auto p-1.5 rounded-full bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 border border-zinc-200/80 dark:border-zinc-700 shadow-md hover:scale-110 active:scale-95 transition-all cursor-pointer flex items-center justify-center opacity-80 hover:opacity-100"
+                  aria-label="Scroll right"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               </div>
             </div>
           </div>
@@ -772,7 +817,7 @@ export default function Home() {
               </button>
             </div>
           )}
-        
+
           {/* Crawlable entry points.
               The grid above is paginated client-side, so pages 2+ produce no
               URLs a crawler can follow. These links (and /tools) are how the
@@ -798,7 +843,7 @@ export default function Home() {
             </div>
           </nav>
 
-</section>
+        </section>
       </main>
 
       {/* Interactive Hover Footer */}

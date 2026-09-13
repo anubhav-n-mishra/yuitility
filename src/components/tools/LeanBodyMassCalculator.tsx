@@ -77,13 +77,13 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
   return (
     <div className="space-y-6">
       {/* Unit & Gender Switchers */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => setGender('male')}
             className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition ${
-              gender === 'male' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              gender === 'male' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Male
@@ -92,7 +92,7 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
             type="button"
             onClick={() => setGender('female')}
             className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition ${
-              gender === 'female' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              gender === 'female' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Female
@@ -104,7 +104,7 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
             type="button"
             onClick={() => setUnit('metric')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'metric' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'metric' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Metric (kg, cm)
@@ -113,7 +113,7 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
             type="button"
             onClick={() => setUnit('imperial')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'imperial' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'imperial' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Imperial (lbs, in)
@@ -123,40 +123,40 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Body Measurements</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Body Measurements</h3>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Body Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
               <input
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
 
             <div>
-              <label className="text-xs text-slate-300 block mb-1">
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'inches'})
               </label>
               <input
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
           </div>
         </div>
 
         {/* Results */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">
               Estimated Lean Body Mass (LBM)
             </span>
             <div className="text-4xl font-extrabold font-mono text-white my-2">
@@ -164,13 +164,13 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
             </div>
 
             {results && (
-              <div className="space-y-3 mt-4 pt-4 border-t border-slate-800">
+              <div className="space-y-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                 <div>
-                  <div className="flex justify-between text-xs font-mono text-slate-400 mb-1">
+                  <div className="flex justify-between text-xs font-mono text-zinc-500 dark:text-zinc-400 mb-1">
                     <span>Lean Mass vs Fat Mass</span>
                     <span>{100 - parseFloat(results.fatPercentage)}% / {results.fatPercentage}%</span>
                   </div>
-                  <div className="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex">
+                  <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-2.5 rounded-full overflow-hidden flex">
                     <div
                       className="bg-emerald-500 h-full"
                       style={{ width: `${100 - parseFloat(results.fatPercentage)}%` }}
@@ -183,16 +183,16 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 font-mono text-xs pt-1">
-                  <div className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-center">
-                    <span className="text-slate-500 text-[10px] block">Boer</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 text-center">
+                    <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Boer</span>
                     <span className="text-white font-bold">{results.boer}</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-center">
-                    <span className="text-slate-500 text-[10px] block">James</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 text-center">
+                    <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">James</span>
                     <span className="text-white font-bold">{results.james}</span>
                   </div>
-                  <div className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-center">
-                    <span className="text-slate-500 text-[10px] block">Hume</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 text-center">
+                    <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Hume</span>
                     <span className="text-white font-bold">{results.hume}</span>
                   </div>
                 </div>

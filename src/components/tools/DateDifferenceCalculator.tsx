@@ -162,12 +162,12 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
   return (
     <div className="space-y-6">
       {/* Tab Switcher */}
-      <div className="flex items-center gap-2 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800 w-fit">
+      <div className="flex items-center gap-2 bg-white dark:bg-zinc-900/60 shadow-sm p-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 w-fit">
         <button
           type="button"
           onClick={() => setActiveTab('diff')}
           className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
-            activeTab === 'diff' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
+            activeTab === 'diff' ? 'bg-indigo-600 text-white shadow' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
           }`}
         >
           Date Difference
@@ -176,7 +176,7 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
           type="button"
           onClick={() => setActiveTab('add')}
           className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
-            activeTab === 'add' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
+            activeTab === 'add' ? 'bg-indigo-600 text-white shadow' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
           }`}
         >
           Add / Subtract Days
@@ -186,41 +186,41 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
       {activeTab === 'diff' ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Inputs */}
-          <div className="lg:col-span-1 bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+          <div className="lg:col-span-1 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">Start Date</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Start Date</label>
               <input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">End Date</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">End Date</label>
               <input
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
 
             <div className="pt-2">
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+              <label className="flex items-center gap-2 text-xs text-zinc-700 dark:text-zinc-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={includeEndDay}
                   onChange={(e) => setIncludeEndDay(e.target.checked)}
-                  className="rounded border-slate-700 text-indigo-500 bg-slate-950"
+                  className="rounded border-zinc-200 dark:border-zinc-700 text-indigo-500 bg-zinc-50 dark:bg-zinc-950"
                 />
                 Include end day (+1 day)
               </label>
             </div>
 
-            <div className="pt-3 border-t border-slate-800">
-              <span className="text-[11px] text-slate-500 block mb-2">Quick Presets</span>
+            <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800">
+              <span className="text-[11px] text-zinc-500 dark:text-zinc-500 block mb-2">Quick Presets</span>
               <div className="flex flex-wrap gap-2">
                 <button
                   type="button"
@@ -230,7 +230,7 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
                     d.setDate(d.getDate() + 30);
                     setEndDate(d.toISOString().split('T')[0]);
                   }}
-                  className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                  className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
                 >
                   +30 Days
                 </button>
@@ -242,7 +242,7 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
                     d.setDate(d.getDate() + 90);
                     setEndDate(d.toISOString().split('T')[0]);
                   }}
-                  className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                  className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
                 >
                   +90 Days
                 </button>
@@ -253,7 +253,7 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
                     const y = new Date().getFullYear();
                     setEndDate(`${y}-12-31`);
                   }}
-                  className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                  className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
                 >
                   End of Year
                 </button>
@@ -264,16 +264,16 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
           {/* Results Display */}
           <div className="lg:col-span-2 space-y-4">
             {/* Primary Banner */}
-            <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Exact Calendar Duration</span>
+                <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Exact Calendar Duration</span>
                 {diffResult && (
                   <button
                     type="button"
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 rounded-lg transition"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-xs text-zinc-800 dark:text-zinc-200 rounded-lg transition"
                   >
-                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                     {copied ? 'Copied' : 'Copy'}
                   </button>
                 )}
@@ -284,7 +284,7 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
                   <div className="text-2xl sm:text-3xl font-extrabold text-white flex flex-wrap items-baseline gap-2">
                     {diffResult.years > 0 && (
                       <span>
-                        <strong className="text-indigo-400 font-mono">{diffResult.years}</strong> year{diffResult.years > 1 ? 's' : ''},
+                        <strong className="text-indigo-600 dark:text-indigo-400 font-mono">{diffResult.years}</strong> year{diffResult.years > 1 ? 's' : ''},
                       </span>
                     )}
                     {diffResult.months > 0 && (
@@ -293,7 +293,7 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
                       </span>
                     )}
                     <span>
-                      <strong className="text-emerald-400 font-mono">{diffResult.days}</strong> day{diffResult.days > 1 ? 's' : ''}
+                      <strong className="text-emerald-600 dark:text-emerald-400 font-mono">{diffResult.days}</strong> day{diffResult.days > 1 ? 's' : ''}
                     </span>
                   </div>
 
@@ -304,38 +304,38 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
                   )}
                 </div>
               ) : (
-                <div className="text-slate-500 text-sm">Select two valid dates above.</div>
+                <div className="text-zinc-500 dark:text-zinc-500 text-sm">Select two valid dates above.</div>
               )}
             </div>
 
             {/* Equivalent Units Grid */}
             {diffResult && (
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono text-xs">
-                <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                  <span className="text-slate-500 block mb-1">Total Days</span>
+                <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Total Days</span>
                   <span className="text-lg font-bold text-white">{diffResult.totalDays.toLocaleString()}</span>
                 </div>
-                <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                  <span className="text-slate-500 block mb-1">Weeks & Days</span>
+                <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Weeks & Days</span>
                   <span className="text-lg font-bold text-white">{diffResult.weeks}w {diffResult.remDays}d</span>
                 </div>
-                <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                  <span className="text-slate-500 block mb-1 flex items-center gap-1">
-                    <Briefcase className="w-3 h-3 text-emerald-400" /> Work Days
+                <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-1 flex items-center gap-1">
+                    <Briefcase className="w-3 h-3 text-emerald-600 dark:text-emerald-400" /> Work Days
                   </span>
-                  <span className="text-lg font-bold text-emerald-400">{diffResult.workingDays.toLocaleString()}</span>
+                  <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{diffResult.workingDays.toLocaleString()}</span>
                 </div>
-                <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                  <span className="text-slate-500 block mb-1">Weekend Days</span>
+                <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Weekend Days</span>
                   <span className="text-lg font-bold text-amber-400">{diffResult.weekendDays.toLocaleString()}</span>
                 </div>
-                <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800 col-span-2">
-                  <span className="text-slate-500 block mb-1">Total Hours</span>
-                  <span className="text-base font-bold text-slate-200">{diffResult.hours.toLocaleString()} hrs</span>
+                <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 col-span-2">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Total Hours</span>
+                  <span className="text-base font-bold text-zinc-800 dark:text-zinc-200">{diffResult.hours.toLocaleString()} hrs</span>
                 </div>
-                <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800 col-span-2">
-                  <span className="text-slate-500 block mb-1">Total Minutes</span>
-                  <span className="text-base font-bold text-slate-200">{diffResult.minutes.toLocaleString()} mins</span>
+                <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 col-span-2">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Total Minutes</span>
+                  <span className="text-base font-bold text-zinc-800 dark:text-zinc-200">{diffResult.minutes.toLocaleString()} mins</span>
                 </div>
               </div>
             )}
@@ -343,24 +343,24 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
         </div>
       ) : (
         /* Tab 2: Add or Subtract Days */
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 max-w-xl space-y-4">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 max-w-xl space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">Starting Date</label>
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Starting Date</label>
             <input
               type="date"
               value={baseDate}
               onChange={(e) => setBaseDate(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
             />
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">Action</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Action</label>
               <select
                 value={addOp}
                 onChange={(e) => setAddOp(e.target.value as 'add' | 'subtract')}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm"
               >
                 <option value="add">+ Add</option>
                 <option value="subtract">- Subtract</option>
@@ -368,22 +368,22 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">Quantity</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Quantity</label>
               <input
                 type="number"
                 min="1"
                 value={addAmount}
                 onChange={(e) => setAddAmount(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1.5">Unit</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Unit</label>
               <select
                 value={addUnit}
                 onChange={(e) => setAddUnit(e.target.value as any)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm"
               >
                 <option value="days">Days</option>
                 <option value="weeks">Weeks</option>
@@ -394,10 +394,10 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
           </div>
 
           {addedDateResult && (
-            <div className="bg-slate-950 p-5 rounded-xl border border-slate-800/80 mt-4">
-              <span className="text-xs text-slate-500 block">Calculated Result Date</span>
-              <div className="text-xl font-bold text-emerald-400 mt-1">{addedDateResult.formatted}</div>
-              <div className="text-xs font-mono text-slate-400 mt-0.5">{addedDateResult.iso}</div>
+            <div className="bg-zinc-50 dark:bg-zinc-950 p-5 rounded-xl border border-zinc-200 dark:border-zinc-800/80 mt-4">
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Calculated Result Date</span>
+              <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">{addedDateResult.formatted}</div>
+              <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">{addedDateResult.iso}</div>
             </div>
           )}
         </div>

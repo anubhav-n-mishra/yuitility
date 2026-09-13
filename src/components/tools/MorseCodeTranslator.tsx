@@ -162,7 +162,7 @@ export default function MorseCodeTranslator({ onCopy, onShare }: MorseProps) {
             onClick={() => setMode('text-to-morse')}
             className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               mode === 'text-to-morse'
-                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-400 shadow-sm'
+                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-600 dark:text-rose-400 shadow-sm'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900'
             }`}
           >
@@ -172,7 +172,7 @@ export default function MorseCodeTranslator({ onCopy, onShare }: MorseProps) {
             onClick={() => setMode('morse-to-text')}
             className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               mode === 'morse-to-text'
-                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-400 shadow-sm'
+                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-600 dark:text-rose-400 shadow-sm'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900'
             }`}
           >

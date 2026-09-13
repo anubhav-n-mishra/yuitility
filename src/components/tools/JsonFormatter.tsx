@@ -26,10 +26,10 @@ function JsonTreeNode({ name, val, isLast }: TreeNodeProps) {
 
     if (typeof val === 'string') {
       renderedVal = `"${val}"`;
-      valClass = 'text-emerald-600 dark:text-emerald-400 font-medium';
+      valClass = 'text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-medium';
     } else if (typeof val === 'number') {
       renderedVal = String(val);
-      valClass = 'text-blue-600 dark:text-blue-400 font-semibold';
+      valClass = 'text-blue-600 dark:text-blue-600 dark:text-blue-400 font-semibold';
     } else if (typeof val === 'boolean') {
       renderedVal = String(val);
       valClass = 'text-amber-600 dark:text-amber-500 font-bold';
@@ -40,7 +40,7 @@ function JsonTreeNode({ name, val, isLast }: TreeNodeProps) {
 
     return (
       <div className="pl-4 font-mono text-xs py-0.5">
-        <span className="text-purple-600 dark:text-purple-400">"{name}"</span>
+        <span className="text-purple-600 dark:text-purple-600 dark:text-purple-400">"{name}"</span>
         <span className="text-zinc-400 dark:text-zinc-600 mx-1">:</span>
         <span className={valClass}>{renderedVal}</span>
         {!isLast && <span className="text-zinc-400 dark:text-zinc-600">,</span>}
@@ -55,7 +55,7 @@ function JsonTreeNode({ name, val, isLast }: TreeNodeProps) {
     <div className="pl-4 font-mono text-xs py-0.5">
       <div className="flex items-center cursor-pointer select-none" onClick={() => setExpanded(!expanded)}>
         {expanded ? <ChevronDown className="w-3.5 h-3.5 text-zinc-400 mr-1" /> : <ChevronRight className="w-3.5 h-3.5 text-zinc-400 mr-1" />}
-        <span className="text-purple-600 dark:text-purple-400">"{name}"</span>
+        <span className="text-purple-600 dark:text-purple-600 dark:text-purple-400">"{name}"</span>
         <span className="text-zinc-400 dark:text-zinc-600 mx-1">:</span>
         <span className="text-zinc-400 dark:text-zinc-500 font-semibold">{brackets[0]}</span>
         {!expanded && (
@@ -268,7 +268,7 @@ export default function JsonFormatter({ onCopy, onShare }: JsonFormatterProps) {
               )}
 
               {successMsg && (
-                <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs rounded-xl flex items-start gap-2">
+                <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 text-xs rounded-xl flex items-start gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold">JSON OK</p>

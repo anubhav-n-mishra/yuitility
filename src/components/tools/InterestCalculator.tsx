@@ -124,7 +124,7 @@ export default function InterestCalculator({ onCopy }: InterestCalculatorProps) 
                 </div>
                 <div className="rounded-xl border border-zinc-200/80 bg-white p-3 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80">
                   <div className="text-zinc-500">Compound Gain Advantage</div>
-                  <div className="font-bold text-emerald-600 dark:text-emerald-400">+{calc.diffFormatted}</div>
+                  <div className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">+{calc.diffFormatted}</div>
                   <div className="mt-0.5 text-[10px] text-zinc-400">Vs Simple Interest</div>
                 </div>
               </div>

@@ -145,7 +145,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
             <div className="rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-zinc-500">Sec 80E Tax Savings (Est. 30% Slab)</span>
-                <span className="font-bold text-emerald-600 dark:text-emerald-400">~{calc.estimatedTaxSavedAnnualFormatted} / year</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">~{calc.estimatedTaxSavedAnnualFormatted} / year</span>
               </div>
             </div>
 

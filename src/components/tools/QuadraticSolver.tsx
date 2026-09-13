@@ -70,41 +70,41 @@ export default function QuadraticSolver({ onCopy }: QuadraticSolverProps) {
   return (
     <div className="space-y-6">
       {/* Coefficients Input */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-        <h3 className="text-sm font-semibold text-white">Enter Coefficients for ax² + bx + c = 0</h3>
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Enter Coefficients for ax² + bx + c = 0</h3>
 
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Coefficient a</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coefficient a</label>
             <input
               type="number"
               value={aStr}
               onChange={(e) => setAStr(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Coefficient b</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coefficient b</label>
             <input
               type="number"
               value={bStr}
               onChange={(e) => setBStr(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Constant c</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Constant c</label>
             <input
               type="number"
               value={cStr}
               onChange={(e) => setCStr(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>
 
         {a === 0 && (
-          <p className="text-xs text-rose-400">Coefficient &apos;a&apos; cannot be 0 for a quadratic equation.</p>
+          <p className="text-xs text-rose-600 dark:text-rose-400">Coefficient &apos;a&apos; cannot be 0 for a quadratic equation.</p>
         )}
       </div>
 
@@ -112,16 +112,16 @@ export default function QuadraticSolver({ onCopy }: QuadraticSolverProps) {
         <div className="space-y-6">
           {/* Roots Result Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+                <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
                   Root 1 (x₁)
                 </span>
                 <div className="text-3xl font-extrabold font-mono text-white my-2">{result.root1}</div>
               </div>
             </div>
 
-            <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
               <div>
                 <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
                   Root 2 (x₂)
@@ -133,29 +133,29 @@ export default function QuadraticSolver({ onCopy }: QuadraticSolverProps) {
 
           {/* Properties Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs">
-            <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-              <span className="text-slate-500 block mb-1">Discriminant (Δ)</span>
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+              <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Discriminant (Δ)</span>
               <span className="text-lg font-bold text-white">{result.disc.toFixed(2)}</span>
               <span className="text-[11px] text-indigo-300 block mt-0.5">
                 {result.disc > 0 ? '2 Real Roots' : result.disc === 0 ? '1 Real Root' : '2 Complex Roots'}
               </span>
             </div>
 
-            <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-              <span className="text-slate-500 block mb-1">Parabola Vertex (h, k)</span>
-              <span className="text-base font-bold text-emerald-400">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+              <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Parabola Vertex (h, k)</span>
+              <span className="text-base font-bold text-emerald-600 dark:text-emerald-400">
                 ({result.vertexX}, {result.vertexY})
               </span>
             </div>
 
-            <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-              <span className="text-slate-500 block mb-1">Axis of Symmetry</span>
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+              <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Axis of Symmetry</span>
               <span className="text-base font-bold text-white">x = {result.vertexX}</span>
             </div>
 
-            <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-              <span className="text-slate-500 block mb-1">Orientation</span>
-              <span className="text-xs font-bold text-slate-300">{result.opens}</span>
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+              <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Orientation</span>
+              <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">{result.opens}</span>
             </div>
           </div>
 
