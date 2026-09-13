@@ -12,8 +12,14 @@ export default function HtmlFormatter({ onCopy }: HtmlFormatterProps) {
   const [copied, setCopied] = useState(false);
 
   const minifyHtml = (code: string) => {
-    return code
-      .replace(/<!--[\s\S]*?-->/g, '')
+    let sanitized = code;
+    let previous: string;
+    do {
+      previous = sanitized;
+      sanitized = sanitized.replace(/<!--[\s\S]*?-->/g, '');
+    } while (sanitized !== previous);
+
+    return sanitized
       .replace(/>\s+</g, '><')
       .replace(/\s+/g, ' ')
       .trim();

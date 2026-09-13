@@ -17,7 +17,11 @@ export default function TextCleaner({ onCopy }: TextCleanerProps) {
   let cleaned = text;
 
   if (removeHtmlTags) {
-    cleaned = cleaned.replace(/<[^>]*>/g, '');
+    let previous: string;
+    do {
+      previous = cleaned;
+      cleaned = cleaned.replace(/<[^>]*>/g, '');
+    } while (cleaned !== previous);
   }
 
   if (removeSpecialChars) {
