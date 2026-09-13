@@ -92,7 +92,7 @@ export default function DividendCalculator() {
         <div className="flex flex-col justify-between rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-300">Annual Dividend Income</p>
-            <p className="mt-2 text-4xl font-extrabold text-emerald-600 dark:text-emerald-400">
+            <p className="mt-2 text-4xl font-extrabold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
               {formatCurrency(stats.annualDividendPayout, currency)}
               <span className="text-sm font-medium text-zinc-500"> / yr</span>
             </p>

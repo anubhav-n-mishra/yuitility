@@ -167,7 +167,7 @@ export default function LoremIpsumGenerator({ onCopy, onShare }: LoremProps) {
                     }}
                     className={`py-1.5 text-xs font-medium rounded-md transition-all ${
                       type === item.val
-                        ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-400 font-semibold shadow-sm'
+                        ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-600 dark:text-rose-400 font-semibold shadow-sm'
                         : 'text-zinc-600 dark:text-zinc-400'
                     }`}
                   >
@@ -221,7 +221,7 @@ export default function LoremIpsumGenerator({ onCopy, onShare }: LoremProps) {
                 onClick={handleCopy}
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 dark:bg-rose-600 dark:hover:bg-rose-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
               >
-                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copied ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 {copied ? 'Copied to Clipboard!' : 'Copy Text'}
               </button>
 

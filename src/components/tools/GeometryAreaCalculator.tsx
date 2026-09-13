@@ -161,7 +161,7 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
   return (
     <div className="space-y-6">
       {/* Shape Selector Buttons */}
-      <div className="flex flex-wrap items-center gap-2 bg-slate-900/60 p-2 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center gap-2 bg-white dark:bg-zinc-900/60 shadow-sm p-2 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         {[
           { id: 'circle', label: 'Circle' },
           { id: 'rectangle', label: 'Rectangle' },
@@ -177,7 +177,7 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
               shape === s.id
                 ? 'bg-indigo-600 text-white shadow'
-                : 'bg-slate-950/60 text-slate-400 hover:text-white border border-slate-800/80'
+                : 'bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 hover:text-white border border-zinc-200 dark:border-zinc-800/80'
             }`}
           >
             {s.label}
@@ -187,17 +187,17 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Dynamic Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white capitalize">{shape} Dimensions</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white capitalize">{shape} Dimensions</h3>
 
           {shape === 'circle' && (
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Radius (r)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Radius (r)</label>
               <input
                 type="number"
                 value={radius}
                 onChange={(e) => setRadius(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
           )}
@@ -205,21 +205,21 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
           {shape === 'rectangle' && (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Length (l)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Length (l)</label>
                 <input
                   type="number"
                   value={rectL}
                   onChange={(e) => setRectL(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Width (w)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Width (w)</label>
                 <input
                   type="number"
                   value={rectW}
                   onChange={(e) => setRectW(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
                 />
               </div>
             </div>
@@ -232,7 +232,7 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
                   type="button"
                   onClick={() => setTriMode('baseHeight')}
                   className={`px-3 py-1 text-xs rounded-lg ${
-                    triMode === 'baseHeight' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                    triMode === 'baseHeight' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400'
                   }`}
                 >
                   Base & Height
@@ -241,7 +241,7 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
                   type="button"
                   onClick={() => setTriMode('threeSides')}
                   className={`px-3 py-1 text-xs rounded-lg ${
-                    triMode === 'threeSides' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                    triMode === 'threeSides' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400'
                   }`}
                 >
                   3 Sides (Heron&apos;s)
@@ -251,51 +251,51 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
               {triMode === 'baseHeight' ? (
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs text-slate-300 block mb-1">Base (b)</label>
+                    <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Base (b)</label>
                     <input
                       type="number"
                       value={triBase}
                       onChange={(e) => setTriBase(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-slate-300 block mb-1">Height (h)</label>
+                    <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Height (h)</label>
                     <input
                       type="number"
                       value={triHeight}
                       onChange={(e) => setTriHeight(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
                     />
                   </div>
                 </div>
               ) : (
                 <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <label className="text-xs text-slate-300 block mb-1">Side a</label>
+                    <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side a</label>
                     <input
                       type="number"
                       value={triA}
                       onChange={(e) => setTriA(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-slate-300 block mb-1">Side b</label>
+                    <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side b</label>
                     <input
                       type="number"
                       value={triB}
                       onChange={(e) => setTriB(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-slate-300 block mb-1">Side c</label>
+                    <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side c</label>
                     <input
                       type="number"
                       value={triC}
                       onChange={(e) => setTriC(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
                     />
                   </div>
                 </div>
@@ -306,30 +306,30 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
           {shape === 'trapezoid' && (
             <div className="grid grid-cols-3 gap-2">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Base a</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Base a</label>
                 <input
                   type="number"
                   value={trapA}
                   onChange={(e) => setTrapA(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Base b</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Base b</label>
                 <input
                   type="number"
                   value={trapB}
                   onChange={(e) => setTrapB(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Height h</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Height h</label>
                 <input
                   type="number"
                   value={trapH}
                   onChange={(e) => setTrapH(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
                 />
               </div>
             </div>
@@ -338,21 +338,21 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
           {shape === 'ellipse' && (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Semi-Major Axis (a)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Semi-Major Axis (a)</label>
                 <input
                   type="number"
                   value={ellipseA}
                   onChange={(e) => setEllipseA(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Semi-Minor Axis (b)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Semi-Minor Axis (b)</label>
                 <input
                   type="number"
                   value={ellipseB}
                   onChange={(e) => setEllipseB(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
                 />
               </div>
             </div>
@@ -361,22 +361,22 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
           {shape === 'polygon' && (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Number of Sides (n ≥ 3)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Number of Sides (n ≥ 3)</label>
                 <input
                   type="number"
                   min="3"
                   value={polySides}
                   onChange={(e) => setPolySides(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Side Length (s)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side Length (s)</label>
                 <input
                   type="number"
                   value={polyLength}
                   onChange={(e) => setPolyLength(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
                 />
               </div>
             </div>
@@ -384,9 +384,9 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
               Calculated Area
             </span>
             <div className="text-4xl font-extrabold font-mono text-white my-3">
@@ -394,14 +394,14 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
             </div>
 
             {results && (
-              <div className="space-y-2 text-xs font-mono text-slate-400 mt-4 pt-4 border-t border-slate-800">
+              <div className="space-y-2 text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                 <div className="flex justify-between">
                   <span>Perimeter / Boundary:</span>
-                  <span className="text-emerald-400 font-bold">{results.perimeter}</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">{results.perimeter}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Details:</span>
-                  <span className="text-slate-200">{results.extra}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{results.extra}</span>
                 </div>
               </div>
             )}

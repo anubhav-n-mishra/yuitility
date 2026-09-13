@@ -180,19 +180,19 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
   return (
     <div className="space-y-6">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800 pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-3">
         <div>
-          <h2 className="text-2xl font-display font-semibold text-zinc-900 dark:text-zinc-50 tracking-tight">
+          <h2 className="text-lg font-display font-semibold text-zinc-900 dark:text-zinc-50 tracking-tight">
             Standard Calculator
           </h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
             Fast, clean, high-precision basic calculator with memory and history.
           </p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowHistory(!showHistory)}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${
               showHistory
                 ? "bg-blue-600 text-white"
                 : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
@@ -203,7 +203,7 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
           </button>
           <button
             onClick={handleClearAll}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             Clear
@@ -211,77 +211,77 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Main Calculator */}
-        <div className="lg:col-span-8 space-y-4 max-w-md mx-auto w-full">
+        <div className="lg:col-span-8 space-y-3 max-w-md mx-auto w-full">
           {/* Display screen */}
-          <div className="bg-zinc-900 text-white rounded-2xl p-5 shadow-xl border border-zinc-800 flex flex-col justify-between min-h-[120px] font-mono">
-            <div className="text-right text-xs text-zinc-400 min-h-[20px] overflow-x-auto custom-scrollbar">
+          <div className="bg-zinc-900 text-white rounded-xl p-3.5 shadow-lg border border-zinc-800 flex flex-col justify-between min-h-[90px] font-mono">
+            <div className="text-right text-xs text-zinc-400 min-h-[16px] overflow-x-auto custom-scrollbar">
               {expression}
             </div>
-            <div className="text-right text-3xl sm:text-4xl font-bold tracking-tight text-white overflow-x-auto custom-scrollbar">
+            <div className="text-right text-2xl sm:text-3xl font-bold tracking-tight text-white overflow-x-auto custom-scrollbar">
               {display}
             </div>
           </div>
 
           {/* Memory Row */}
-          <div className="grid grid-cols-5 gap-1.5">
+          <div className="grid grid-cols-5 gap-1">
             <button
               onClick={handleMemoryClear}
-              className="py-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+              className="py-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
             >
               MC
             </button>
             <button
               onClick={handleMemoryRecall}
-              className="py-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+              className="py-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
             >
               MR
             </button>
             <button
               onClick={handleMemoryAdd}
-              className="py-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+              className="py-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
             >
               M+
             </button>
             <button
               onClick={handleMemorySubtract}
-              className="py-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+              className="py-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
             >
               M-
             </button>
             <button
               onClick={handleMemoryStore}
-              className="py-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+              className="py-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
             >
               MS
             </button>
           </div>
 
           {/* Keypad Grid */}
-          <div className="grid grid-cols-4 gap-2 text-base font-semibold">
+          <div className="grid grid-cols-4 gap-1.5 text-sm font-semibold">
             {/* Row 1 */}
             <button
               onClick={handlePercent}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               %
             </button>
             <button
               onClick={handleClearEntry}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               CE
             </button>
             <button
               onClick={handleClearAll}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               C
             </button>
             <button
               onClick={handleBackspace}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               ⌫
             </button>
@@ -289,25 +289,25 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
             {/* Row 2 */}
             <button
               onClick={handleReciprocal}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               1/x
             </button>
             <button
               onClick={handleSquare}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               x²
             </button>
             <button
               onClick={handleSquareRoot}
-              className="p-3.5 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl transition-colors"
+              className="p-2.5 sm:p-3 bg-zinc-100 dark:bg-zinc-800/70 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition-colors"
             >
               √x
             </button>
             <button
               onClick={() => handleOperator("÷")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-xl"
+              className="p-2.5 sm:p-3 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-lg transition-colors text-lg font-bold"
             >
               ÷
             </button>
@@ -315,25 +315,25 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
             {/* Row 3 */}
             <button
               onClick={() => handleDigit("7")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               7
             </button>
             <button
               onClick={() => handleDigit("8")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               8
             </button>
             <button
               onClick={() => handleDigit("9")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
             >
               9
             </button>
             <button
               onClick={() => handleOperator("×")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-xl"
+              className="p-2.5 sm:p-3 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-lg transition-colors text-lg font-bold"
             >
               ×
             </button>
@@ -341,25 +341,25 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
             {/* Row 4 */}
             <button
               onClick={() => handleDigit("4")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               4
             </button>
             <button
               onClick={() => handleDigit("5")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               5
             </button>
             <button
               onClick={() => handleDigit("6")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               6
             </button>
             <button
               onClick={() => handleOperator("-")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-xl"
+              className="p-2.5 sm:p-3 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-lg transition-colors text-lg font-bold"
             >
               -
             </button>
@@ -367,25 +367,25 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
             {/* Row 5 */}
             <button
               onClick={() => handleDigit("1")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               1
             </button>
             <button
               onClick={() => handleDigit("2")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               2
             </button>
             <button
               onClick={() => handleDigit("3")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               3
             </button>
             <button
               onClick={() => handleOperator("+")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-xl"
+              className="p-2.5 sm:p-3 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-lg transition-colors text-lg font-bold"
             >
               +
             </button>
@@ -393,37 +393,37 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
             {/* Row 6 */}
             <button
               onClick={handleNegate}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               ±
             </button>
             <button
               onClick={() => handleDigit("0")}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               0
             </button>
             <button
               onClick={handleDecimal}
-              className="p-3.5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-xl transition-colors shadow-sm"
+              className="p-2.5 sm:p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-lg transition-colors shadow-sm"
             >
               .
             </button>
             <button
               onClick={handleEquals}
-              className="p-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-colors text-xl shadow-lg shadow-blue-500/20"
+              className="p-2.5 sm:p-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-lg font-bold shadow-md shadow-blue-500/20"
             >
               =
             </button>
           </div>
 
           {/* Bottom Share Link Button */}
-          <div className="pt-4 flex justify-center">
+          <div className="pt-2 flex justify-center">
             <button
               onClick={() => onShare("Standard Calculator", "standard-calculator")}
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-300 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-lg transition-colors"
             >
-              <Share2 className="w-4 h-4" />
+              <Share2 className="w-3.5 h-3.5" />
               Copy Share Link
             </button>
           </div>

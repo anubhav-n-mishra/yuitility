@@ -312,7 +312,7 @@ export default function HashGenerator({ onCopy, onShare }: HashProps) {
                 {copiedKey === algo ? (
                   <>
                     <Check className="w-3.5 h-3.5 text-emerald-500" />
-                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied</span>
+                    <span className="text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-semibold">Copied</span>
                   </>
                 ) : (
                   <>

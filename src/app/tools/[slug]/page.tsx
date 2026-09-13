@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ToolPageClient from "@/src/components/ToolPageClient";
@@ -46,8 +48,8 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
 
   if (!tool) notFound();
 
-  const path = toolPath(tool.id);
-  const canonicalUrl = absoluteUrl(path);
+  const toolUrlPath = toolPath(tool.id);
+  const canonicalUrl = absoluteUrl(toolUrlPath);
   const title = getToolSeoTitle(tool);
   const description = getToolSeoDescription(tool);
   const live = isToolLive(tool.id);
@@ -69,13 +71,14 @@ export async function generateMetadata({ params }: ToolPageProps): Promise<Metad
       }
     : { index: false, follow: true };
 
-  const ogImage = `/brand/og-${tool.id}.png`;
+  const staticOgPath = path.join(process.cwd(), "public", "brand", `og-${tool.id}.png`);
+  const ogImage = fs.existsSync(staticOgPath) ? `/brand/og-${tool.id}.png` : `/og/${tool.id}`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: path,
+      canonical: canonicalUrl,
     },
     openGraph: {
       type: "website",

@@ -94,47 +94,47 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
   return (
     <div className="space-y-6">
       {/* Top Controller */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-            <Globe className="w-4 h-4 text-indigo-400" /> World Time Zone & Meeting Planner
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+            <Globe className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> World Time Zone & Meeting Planner
           </h3>
           <button
             type="button"
             onClick={setNow}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 text-xs font-semibold rounded-lg transition"
           >
-            <Clock className="w-3.5 h-3.5 text-indigo-400" /> Set to Current Time
+            <Clock className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" /> Set to Current Time
           </button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Date</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Date</label>
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Time</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Time</label>
             <input
               type="time"
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Origin Reference Time Zone</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Origin Reference Time Zone</label>
             <select
               value={baseTz}
               onChange={(e) => setBaseTz(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
             >
               {DEFAULT_CITIES.map((c) => (
                 <option key={c.tz} value={c.tz}>
@@ -147,13 +147,13 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
       </div>
 
       {/* Multi-City Comparison Grid */}
-      <div className="bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-        <div className="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+        <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
           <div className="flex items-center gap-4 text-xs font-mono">
-            <span className="flex items-center gap-1.5 text-emerald-400">
+            <span className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" /> Business Hours (9am–6pm)
             </span>
-            <span className="flex items-center gap-1.5 text-rose-400">
+            <span className="flex items-center gap-1.5 text-rose-600 dark:text-rose-400">
               <span className="w-2 h-2 rounded-full bg-rose-500 inline-block" /> Night / Sleeping
             </span>
           </div>
@@ -171,7 +171,7 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
         <div className="divide-y divide-slate-800/60 font-mono text-xs">
           {DEFAULT_CITIES.map((c) => {
             const info = getCityTime(c.tz);
-            let badgeBg = 'bg-slate-950/80 border-slate-800 text-slate-300';
+            let badgeBg = 'bg-zinc-50 dark:bg-zinc-950/80 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300';
             if (info.isBusiness) {
               badgeBg = 'bg-emerald-950/40 border-emerald-500/40 text-emerald-300';
             } else if (info.isNight) {
@@ -181,21 +181,21 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
             return (
               <div
                 key={c.tz}
-                className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-slate-900/40 transition"
+                className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-zinc-50 dark:bg-zinc-900/40 transition"
               >
                 <div className="flex items-center gap-3">
                   <span className="font-bold text-sm text-white font-sans">{c.city}</span>
-                  <span className="text-slate-500 text-xs">{c.country}</span>
-                  <span className="text-[10px] text-slate-600 px-1.5 py-0.5 rounded bg-slate-950">
+                  <span className="text-zinc-500 dark:text-zinc-500 text-xs">{c.country}</span>
+                  <span className="text-[10px] text-slate-600 px-1.5 py-0.5 rounded bg-zinc-50 dark:bg-zinc-950">
                     {c.tz}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <span className="text-slate-400 text-xs">{info.dateStr}</span>
+                  <span className="text-zinc-500 dark:text-zinc-400 text-xs">{info.dateStr}</span>
                   <div className={`px-3 py-1.5 rounded-xl border text-sm font-bold flex items-center gap-2 ${badgeBg}`}>
                     {info.isNight ? (
-                      <Moon className="w-3.5 h-3.5 text-rose-400" />
+                      <Moon className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
                     ) : (
                       <Sun className="w-3.5 h-3.5 text-amber-400" />
                     )}

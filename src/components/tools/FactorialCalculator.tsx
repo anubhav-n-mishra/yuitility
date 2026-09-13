@@ -66,9 +66,9 @@ export default function FactorialCalculator({ onCopy }: FactorialCalculatorProps
   return (
     <div className="space-y-6">
       {/* Input */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-semibold text-slate-200">
+          <label className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
             Enter Non-Negative Integer (n!)
           </label>
           <div className="flex gap-2 text-xs">
@@ -77,7 +77,7 @@ export default function FactorialCalculator({ onCopy }: FactorialCalculatorProps
                 key={preset}
                 type="button"
                 onClick={() => setNVal(preset.toString())}
-                className="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded transition font-mono"
+                className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded transition font-mono"
               >
                 {preset}!
               </button>
@@ -91,20 +91,20 @@ export default function FactorialCalculator({ onCopy }: FactorialCalculatorProps
           max="1000"
           value={nVal}
           onChange={(e) => setNVal(e.target.value)}
-          className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
         />
 
         {!isValid && (
-          <p className="text-xs text-rose-400">Please enter an integer between 0 and 1,000.</p>
+          <p className="text-xs text-rose-600 dark:text-rose-400">Please enter an integer between 0 and 1,000.</p>
         )}
       </div>
 
       {result && (
         <div className="space-y-4">
           {/* Main Card */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                 Factorial Result: {n}!
               </span>
               <button
@@ -117,22 +117,22 @@ export default function FactorialCalculator({ onCopy }: FactorialCalculatorProps
               </button>
             </div>
 
-            <div className="font-mono text-xl sm:text-2xl font-bold text-white break-all my-3 max-h-48 overflow-y-auto p-3 bg-slate-950 rounded-xl border border-slate-800">
+            <div className="font-mono text-xl sm:text-2xl font-bold text-white break-all my-3 max-h-48 overflow-y-auto p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800">
               {result.exact}
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400 pt-2">
-              <span>Scientific: <strong className="text-slate-200">{result.scientific}</strong></span>
-              <span>Total Digits: <strong className="text-emerald-400">{result.digits}</strong></span>
+            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-500 dark:text-zinc-400 pt-2">
+              <span>Scientific: <strong className="text-zinc-800 dark:text-zinc-200">{result.scientific}</strong></span>
+              <span>Total Digits: <strong className="text-emerald-600 dark:text-emerald-400">{result.digits}</strong></span>
               <span>Trailing Zeros: <strong className="text-cyan-400">{result.trailingZeros}</strong></span>
             </div>
           </div>
 
           {/* Double Factorial Card */}
-          <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 flex items-center justify-between font-mono text-xs">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-between font-mono text-xs">
             <div>
-              <span className="text-slate-500 block">Double Factorial: {n}!!</span>
-              <span className="text-base font-bold text-slate-200 break-all">{result.doubleFact}</span>
+              <span className="text-zinc-500 dark:text-zinc-500 block">Double Factorial: {n}!!</span>
+              <span className="text-base font-bold text-zinc-800 dark:text-zinc-200 break-all">{result.doubleFact}</span>
             </div>
           </div>
         </div>

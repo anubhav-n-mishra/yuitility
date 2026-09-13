@@ -96,7 +96,7 @@ export default function IncomeTaxCalculator() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Net Take-Home Salary</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.netTakeHome, currency)}</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.netTakeHome, currency)}</span>
             </div>
           </div>
         </div>

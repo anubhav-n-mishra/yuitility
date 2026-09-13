@@ -202,7 +202,7 @@ export default function SipCalculator({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800 pb-5">
         <div>
           <h2 className="text-2xl font-display font-semibold text-zinc-900 dark:text-zinc-50 tracking-tight flex items-center gap-2">
-            <TrendingUp className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+            <TrendingUp className="w-6 h-6 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" />
             SIP Investment Calculator
           </h2>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
@@ -347,7 +347,7 @@ export default function SipCalculator({
           <div className="rounded-xl border border-emerald-100 bg-emerald-50/30 p-4 dark:border-emerald-900/40 dark:bg-emerald-950/20">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" />
                   Step-Up SIP (Annual Increment)
                 </span>
@@ -372,7 +372,7 @@ export default function SipCalculator({
                   <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">
                     Annual Increment Rate (% each year)
                   </label>
-                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 font-mono">{stepUpPercent}%</span>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-mono">{stepUpPercent}%</span>
                 </div>
                 <input
                   type="range"
@@ -551,13 +551,16 @@ export default function SipCalculator({
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <button
+            <span
+              role="button"
+              tabIndex={0}
               onClick={(e) => { e.stopPropagation(); handleExportCSV(); }}
-              className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors font-medium mr-2"
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); handleExportCSV(); } }}
+              className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors font-medium mr-2 cursor-pointer"
             >
               <Download className="w-3 h-3" />
               CSV
-            </button>
+            </span>
             {showBreakdown ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
           </div>
         </div>
@@ -581,7 +584,7 @@ export default function SipCalculator({
                     <td className="p-3 pl-4 font-sans font-medium text-zinc-900 dark:text-zinc-200">Year {d.year}</td>
                     {enableStepUp && <td className="p-3 text-right">{formatCurrency(d.monthlyDeposit)}</td>}
                     <td className="p-3 text-right">{formatCurrency(d.invested)}</td>
-                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-400">{formatCurrency(d.returns)}</td>
+                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(d.returns)}</td>
                     <td className="p-3 text-right font-semibold text-zinc-900 dark:text-zinc-50">{formatCurrency(d.total)}</td>
                     {enableInflation && <td className="p-3 text-right text-amber-600 dark:text-amber-400 pr-4">{formatCurrency(d.realValue)}</td>}
                   </tr>

@@ -181,14 +181,19 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const theme = localStorage.getItem('theme') || 'dark';
+                  var theme = localStorage.getItem('theme');
+                  var accent = localStorage.getItem('accent_color') || 'blue';
+                  var el = document.documentElement;
                   if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
+                    el.classList.add('dark');
+                    el.style.backgroundColor = '#09090b';
+                    if (document.body) document.body.style.backgroundColor = '#09090b';
                   } else {
-                    document.documentElement.classList.remove('dark');
+                    el.classList.remove('dark');
+                    el.style.backgroundColor = '#ffffff';
+                    if (document.body) document.body.style.backgroundColor = '#ffffff';
                   }
-                  const accent = localStorage.getItem('accent_color') || 'blue';
-                  document.documentElement.classList.add('theme-' + accent);
+                  el.classList.add('theme-' + accent);
                 } catch (e) {}
               })();
             `,

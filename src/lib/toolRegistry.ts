@@ -159,6 +159,43 @@ export const IMPLEMENTED_TOOL_IDS: ReadonlySet<string> = new Set([
 
   // Conversion additions (1)
   "time-zone-converter",
+
+  // New Phase 1 & 2 Tools Additions (24)
+  "case-converter",
+  "character-counter",
+  "duplicate-line-remover",
+  "text-reverser",
+  "text-repeater",
+  "slug-generator",
+  "text-to-ascii-art",
+  "text-cleaner",
+  "css-minifier-beautifier",
+  "js-minifier-beautifier",
+  "html-formatter",
+  "json-to-csv-converter",
+  "color-format-converter",
+  "pomodoro-timer",
+  "countdown-timer",
+  "world-clock",
+  "number-base-converter",
+  "jwt-decoder",
+  "meeting-cost-calculator",
+  "age-in-seconds-calculator",
+  "read-time-estimator",
+  "sip-step-up-calculator",
+  "ssy-calculator",
+  "crypto-profit-calculator",
+  "calorie-deficit-calculator",
+  "ohms-law-calculator",
+  "power-consumption-calculator",
+  "speed-distance-time-calculator",
+  "image-color-picker",
+  "image-flipper",
+  "svg-to-png-converter",
+  "password-strength-checker",
+  "text-encryptor",
+  "file-hash-verifier",
+  "exif-data-viewer",
 ]);
 
 export const isToolLive = (id: string): boolean =>

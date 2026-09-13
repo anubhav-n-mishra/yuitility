@@ -170,7 +170,7 @@ export default function UuidV4Generator({ onCopy, onShare }: UuidV4GeneratorProp
                 onClick={handleCopyAll}
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-zinc-900 hover:bg-zinc-800 dark:bg-rose-600 dark:hover:bg-rose-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
               >
-                {copiedAll ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedAll ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 {copiedAll ? 'Copied All to Clipboard!' : 'Copy All UUIDs'}
               </button>
 
@@ -205,7 +205,7 @@ export default function UuidV4Generator({ onCopy, onShare }: UuidV4GeneratorProp
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 shrink-0">
                   {copiedIndex === index ? (
-                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                    <span className="text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
                       <Check className="w-3.5 h-3.5" /> Copied
                     </span>
                   ) : (

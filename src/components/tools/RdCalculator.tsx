@@ -102,7 +102,7 @@ export default function RdCalculator({ onCopy }: RdCalculatorProps) {
 
               <div className="rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80">
                 <div className="text-xs text-zinc-500">Interest Returns Earned</div>
-                <div className="font-bold text-emerald-600 dark:text-emerald-400">{calc.interestEarnedFormatted}</div>
+                <div className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{calc.interestEarnedFormatted}</div>
               </div>
 
               <button

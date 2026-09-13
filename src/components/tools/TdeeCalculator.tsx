@@ -80,13 +80,13 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
   return (
     <div className="space-y-6">
       {/* Unit & Gender Switchers */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => setGender('male')}
             className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition ${
-              gender === 'male' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              gender === 'male' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Male
@@ -95,7 +95,7 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
             type="button"
             onClick={() => setGender('female')}
             className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition ${
-              gender === 'female' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              gender === 'female' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Female
@@ -107,7 +107,7 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
             type="button"
             onClick={() => setUnit('metric')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'metric' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'metric' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Metric (kg, cm)
@@ -116,7 +116,7 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
             type="button"
             onClick={() => setUnit('imperial')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'imperial' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'imperial' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Imperial (lbs, in)
@@ -126,61 +126,61 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Inputs */}
-        <div className="lg:col-span-1 bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Body Parameters</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Body Parameters</h3>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Age</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Age</label>
               <input
                 type="number"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Body Fat % (opt)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Body Fat % (opt)</label>
               <input
                 type="number"
                 value={bodyFat}
                 onChange={(e) => setBodyFat(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
               <input
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'in'})
               </label>
               <input
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Activity Multiplier</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Activity Multiplier</label>
             <select
               value={activity}
               onChange={(e) => setActivity(parseFloat(e.target.value))}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
             >
               <option value="1.2">Sedentary: Desk job, little exercise</option>
               <option value="1.375">Light: 1-2 workouts / week</option>
@@ -193,28 +193,28 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
 
         {/* Results */}
         <div className="lg:col-span-2 space-y-4">
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
-              <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
                 Total Daily Energy Expenditure (TDEE)
               </span>
               <div className="text-5xl font-black font-mono text-white my-2">
                 {results ? `${results.tdee.toLocaleString()} kcal` : '—'}
-                <span className="text-sm font-normal text-slate-400"> / day</span>
+                <span className="text-sm font-normal text-zinc-500 dark:text-zinc-400"> / day</span>
               </div>
 
               {results && (
-                <div className="grid grid-cols-3 gap-3 font-mono text-xs mt-4 pt-4 border-t border-slate-800">
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-center">
-                    <span className="text-slate-500 block text-[10px]">Basal Metabolic Rate</span>
-                    <span className="text-base font-bold text-slate-200">{results.bmr} kcal</span>
+                <div className="grid grid-cols-3 gap-3 font-mono text-xs mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                  <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-center">
+                    <span className="text-zinc-500 dark:text-zinc-500 block text-[10px]">Basal Metabolic Rate</span>
+                    <span className="text-base font-bold text-zinc-800 dark:text-zinc-200">{results.bmr} kcal</span>
                   </div>
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-center">
-                    <span className="text-slate-500 block text-[10px]">Fat Loss Target (-500)</span>
-                    <span className="text-base font-bold text-emerald-400">{results.cut} kcal</span>
+                  <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-center">
+                    <span className="text-zinc-500 dark:text-zinc-500 block text-[10px]">Fat Loss Target (-500)</span>
+                    <span className="text-base font-bold text-emerald-600 dark:text-emerald-400">{results.cut} kcal</span>
                   </div>
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-center">
-                    <span className="text-slate-500 block text-[10px]">Muscle Gain Target (+500)</span>
+                  <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-center">
+                    <span className="text-zinc-500 dark:text-zinc-500 block text-[10px]">Muscle Gain Target (+500)</span>
                     <span className="text-base font-bold text-amber-400">{results.bulk} kcal</span>
                   </div>
                 </div>

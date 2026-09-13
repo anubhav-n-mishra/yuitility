@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Download, CheckCircle2, Sparkles, X } from "lucide-react";
+import { Download, CheckCircle2, ExternalLink, Sparkles, X } from "lucide-react";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -12,20 +12,27 @@ interface BeforeInstallPromptEvent extends Event {
 export default function PwaInstallButton() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isInstalled, setIsInstalled] = useState<boolean>(false);
+  const [justInstalled, setJustInstalled] = useState<boolean>(false);
   const [showInstructions, setShowInstructions] = useState<boolean>(false);
   const [deviceType, setDeviceType] = useState<"ios" | "android" | "desktop">("desktop");
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setMounted(true);
     // Detect standalone PWA mode
     const isStandalone =
       window.matchMedia("(display-mode: standalone)").matches ||
       (navigator as unknown as { standalone?: boolean }).standalone === true;
 
-    if (isStandalone) {
+    const hasInstalledRecord = localStorage.getItem("pwa_installed") === "true";
+
+    if (isStandalone || hasInstalledRecord) {
       setIsInstalled(true);
+      if (isStandalone) {
+        localStorage.setItem("pwa_installed", "true");
+      }
     }
+
+    setMounted(true);
 
     // Detect OS for fallback instructions
     const ua = navigator.userAgent.toLowerCase();
@@ -44,8 +51,13 @@ export default function PwaInstallButton() {
 
     const handleAppInstalled = () => {
       setIsInstalled(true);
+      setJustInstalled(true);
+      localStorage.setItem("pwa_installed", "true");
       setDeferredPrompt(null);
       setShowInstructions(false);
+      setTimeout(() => {
+        setJustInstalled(false);
+      }, 1000);
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
@@ -74,23 +86,57 @@ export default function PwaInstallButton() {
       const choiceResult = await deferredPrompt.userChoice;
       if (choiceResult.outcome === "accepted") {
         setIsInstalled(true);
+        setJustInstalled(true);
+        localStorage.setItem("pwa_installed", "true");
+        setTimeout(() => {
+          setJustInstalled(false);
+        }, 1000);
       }
       setDeferredPrompt(null);
     } else {
-      // Show device-specific install instructions if beforeinstallprompt hasn't fired
       setShowInstructions(true);
     }
   };
 
-  if (isInstalled) {
+  const handleOpenApp = () => {
+    window.open(window.location.href, '_blank', 'noopener,noreferrer');
+  };
+
+  // Prevent SSR Hydration mismatch
+  if (!mounted) {
+    return null;
+  }
+
+  if (justInstalled) {
     return (
       <span 
-        className="inline-flex items-center justify-center gap-1.5 px-2 py-2 sm:px-2.5 sm:py-1 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20"
-        title="App Installed"
+        className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold border border-emerald-500/20 animate-in fade-in zoom-in duration-200"
+        title="App Installed Successfully"
       >
-        <CheckCircle2 className="w-4 h-4 sm:w-3.5 sm:h-3.5 shrink-0" />
-        <span className="hidden sm:inline">Installed</span>
+        <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+        <span className="hidden sm:inline">Installed!</span>
       </span>
+    );
+  }
+
+  // If running inside standalone app mode, hide button completely
+  if (typeof window !== "undefined" && window.matchMedia("(display-mode: standalone)").matches) {
+    return null;
+  }
+
+  // If user has installed the app and viewing in normal browser tab, show "Open App"
+  if (isInstalled) {
+    return (
+      <button
+        onClick={handleOpenApp}
+        type="button"
+        className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-xs hover:shadow-md transition-all transform active:scale-95 shrink-0 cursor-pointer"
+        aria-label="Open Yuitility App"
+        title="Open App"
+      >
+        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+        <span className="hidden sm:inline">Open App</span>
+      </button>
     );
   }
 
@@ -99,7 +145,7 @@ export default function PwaInstallButton() {
       <button
         onClick={handleInstallClick}
         type="button"
-        className="inline-flex items-center justify-center gap-1.5 px-2 py-2 sm:px-3 sm:py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-sm hover:shadow-md transition-all transform active:scale-95 shrink-0"
+        className="inline-flex items-center justify-center gap-1.5 px-2 py-2 sm:px-3 sm:py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-sm hover:shadow-md transition-all transform active:scale-95 shrink-0 cursor-pointer"
         aria-label="Install Yuitility PWA"
         title="Install App"
       >

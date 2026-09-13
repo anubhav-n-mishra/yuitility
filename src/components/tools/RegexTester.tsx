@@ -129,7 +129,7 @@ export default function RegexTester({ onCopy, onShare }: RegexProps) {
                 onClick={() => setFlags((prev) => ({ ...prev, [f.id]: !prev[f.id as keyof typeof flags] }))}
                 className={`px-2.5 py-1.5 rounded-lg font-mono text-xs font-semibold border transition-all ${
                   flags[f.id as keyof typeof flags]
-                    ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-400'
+                    ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-600 dark:text-rose-400'
                     : 'bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 text-zinc-500'
                 }`}
               >

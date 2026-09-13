@@ -169,7 +169,7 @@ export default function PdfSplitter({ onCopy, onShare }: PdfSplitterProps) {
                   : 'border-zinc-300 dark:border-zinc-700 hover:border-emerald-400 dark:hover:border-emerald-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
               }`}
             >
-              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-emerald-600 dark:text-emerald-400 mb-4">
+              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 mb-4">
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Split</p>
@@ -186,7 +186,7 @@ export default function PdfSplitter({ onCopy, onShare }: PdfSplitterProps) {
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
                 <div className="flex items-center gap-4 overflow-hidden">
-                  <div className="p-2.5 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg text-emerald-600 dark:text-emerald-400">
+                  <div className="p-2.5 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
                     <File className="w-6 h-6" />
                   </div>
                   <div className="truncate">

@@ -67,65 +67,65 @@ export default function PaintVolumeCalculator({ onCopy }: PaintVolumeCalculatorP
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Room Measurements (Feet)</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Room Measurements (Feet)</h3>
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Length</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Length</label>
               <input
                 type="number"
                 value={length}
                 onChange={(e) => setLength(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Width</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Width</label>
               <input
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Ceiling Height</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Ceiling Height</label>
               <input
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Doors (Deduct 21 sq ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Doors (Deduct 21 sq ft)</label>
               <input
                 type="number"
                 min="0"
                 value={doors}
                 onChange={(e) => setDoors(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Windows (Deduct 15 sq ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Windows (Deduct 15 sq ft)</label>
               <input
                 type="number"
                 min="0"
                 value={windows}
                 onChange={(e) => setWindows(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Coats of Paint</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coats of Paint</label>
               <div className="flex gap-2">
                 {[1, 2, 3].map((c) => (
                   <button
@@ -133,7 +133,7 @@ export default function PaintVolumeCalculator({ onCopy }: PaintVolumeCalculatorP
                     type="button"
                     onClick={() => setCoats(c)}
                     className={`flex-1 py-1.5 rounded-lg text-xs font-semibold ${
-                      coats === c ? 'bg-indigo-600 text-white' : 'bg-slate-950 text-slate-400 border border-slate-800'
+                      coats === c ? 'bg-indigo-600 text-white' : 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800'
                     }`}
                   >
                     {c} {c === 1 ? 'Coat' : 'Coats'}
@@ -143,12 +143,12 @@ export default function PaintVolumeCalculator({ onCopy }: PaintVolumeCalculatorP
             </div>
 
             <div className="flex items-center pt-5">
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer">
+              <label className="flex items-center gap-2 text-xs text-zinc-700 dark:text-zinc-300 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={includeCeiling}
                   onChange={(e) => setIncludeCeiling(e.target.checked)}
-                  className="rounded border-slate-700 text-indigo-500 bg-slate-950"
+                  className="rounded border-zinc-200 dark:border-zinc-700 text-indigo-500 bg-zinc-50 dark:bg-zinc-950"
                 />
                 Include Ceiling (+{l * w || 0} sq ft)
               </label>
@@ -157,34 +157,34 @@ export default function PaintVolumeCalculator({ onCopy }: PaintVolumeCalculatorP
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
               Estimated Paint Required
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? results.gallonsToBuy : '—'}
-              <span className="text-lg font-normal text-slate-400"> Gallons</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> Gallons</span>
             </div>
-            <span className="text-xs text-slate-500 font-mono block">
+            <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono block">
               Exact: ~{results ? results.gallonsExact : 0} Gallons (~{results ? results.liters : 0} Liters)
             </span>
 
             {results && (
-              <div className="space-y-2 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Net Wall Surface:</span>
                   <span className="font-bold text-white">{results.netWallArea} sq ft</span>
                 </div>
                 {includeCeiling && (
-                  <div className="flex justify-between text-slate-300">
+                  <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                     <span>Ceiling Surface:</span>
                     <span className="font-bold text-white">{results.ceilingArea} sq ft</span>
                   </div>
                 )}
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Total Coverage Area ({coats} coats):</span>
-                  <span className="font-bold text-emerald-400">{results.totalPaintArea} sq ft</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400">{results.totalPaintArea} sq ft</span>
                 </div>
               </div>
             )}

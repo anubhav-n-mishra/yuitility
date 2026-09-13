@@ -220,7 +220,7 @@ export default function CompoundInterestCalculator({
               <div className="rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80 space-y-2">
                 <div className="flex justify-between text-xs text-zinc-700 dark:text-zinc-300">
                   <span>Compound Interest Accrued</span>
-                  <span className="font-bold text-emerald-600 dark:text-emerald-400">{calc.totalInterestFormatted}</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{calc.totalInterestFormatted}</span>
                 </div>
                 <div className="w-full bg-zinc-100 dark:bg-zinc-700 h-2.5 rounded-full overflow-hidden flex">
                   <div
@@ -316,7 +316,7 @@ export default function CompoundInterestCalculator({
                     <tr key={row.year} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
                       <td className="py-2 px-3 font-sans font-bold text-zinc-900 dark:text-zinc-100">Year {row.year}</td>
                       <td className="py-2 px-3 text-zinc-700 dark:text-zinc-300">{fmt(row.invested)}</td>
-                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-400">+{fmt(row.interest)}</td>
+                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">+{fmt(row.interest)}</td>
                       <td className="py-2 px-3 font-bold text-blue-600 dark:text-cyan-400">{fmt(row.balance)}</td>
                     </tr>
                   ))}
