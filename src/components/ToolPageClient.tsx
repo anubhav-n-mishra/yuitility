@@ -643,10 +643,10 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
         <section className="mb-8 rounded-2xl border border-zinc-200/80 bg-white dark:bg-zinc-900/60 dark:border-zinc-800 p-5 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
           <div>
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-              Was the {tool.title} accurate and helpful?
+              Was this {tool.title.toLowerCase().includes("calculator") ? "calculator" : "tool"} helpful and accurate?
             </h3>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              Leave a quick 1-click rating to help us continuously refine our local calculation engines.
+              Leave a quick 1-click rating to help us continuously refine and improve our client-side utilities.
             </p>
           </div>
           <div className="mt-3 sm:mt-0 flex items-center justify-center sm:justify-end gap-1.5">
