@@ -188,7 +188,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
                   : 'border-zinc-300 dark:border-zinc-700 hover:border-rose-400 dark:hover:border-rose-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
               }`}
             >
-              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-rose-600 dark:text-rose-400 mb-4">
+              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-rose-600 dark:text-rose-600 dark:text-rose-400 mb-4">
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Rotate</p>
@@ -208,7 +208,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
               {/* File Info Bar */}
               <div className="flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
                 <div className="flex items-center gap-4 overflow-hidden">
-                  <div className="p-2.5 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-400">
+                  <div className="p-2.5 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-600 dark:text-rose-400">
                     <File className="w-6 h-6" />
                   </div>
                   <div className="truncate">
@@ -248,7 +248,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
                           onClick={() => setRotationAngle(item.angle)}
                           className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl border text-xs font-semibold transition-all ${
                             isSelected
-                              ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-400 shadow-sm'
+                              ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-600 dark:text-rose-400 shadow-sm'
                               : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
                           }`}
                         >
@@ -276,7 +276,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
                         onClick={() => setPageScope(item.scope as any)}
                         className={`py-2 px-3 rounded-lg border text-xs font-medium transition-all ${
                           pageScope === item.scope
-                            ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-400 font-semibold'
+                            ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-600 dark:text-rose-400 font-semibold'
                             : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
                         }`}
                       >
@@ -307,7 +307,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
         <div className="lg:col-span-5 flex flex-col justify-between bg-zinc-50/70 dark:bg-zinc-900/30 border border-zinc-200/70 dark:border-zinc-800/80 rounded-xl p-6">
           <div className="space-y-6">
             <div className="text-center py-6 space-y-3">
-              <div className="inline-flex p-4 bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 rounded-2xl mb-2">
+              <div className="inline-flex p-4 bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-600 dark:text-rose-400 rounded-2xl mb-2">
                 <RotateCw
                   className="w-10 h-10 transition-transform duration-300"
                   style={{ transform: `rotate(${rotationAngle}deg)` }}

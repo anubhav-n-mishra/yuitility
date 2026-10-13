@@ -77,26 +77,26 @@ export default function OvulationCalculator({ onCopy }: OvulationCalculatorProps
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <div className="flex items-center gap-2 text-rose-400">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400">
             <Heart className="w-5 h-5" />
-            <h3 className="text-sm font-semibold text-white">Menstrual Cycle Details</h3>
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Menstrual Cycle Details</h3>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               First Day of Last Menstrual Period (LMP)
             </label>
             <input
               type="date"
               value={lmpDate}
               onChange={(e) => setLmpDate(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-rose-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-rose-500"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Average Cycle Length ({cycleDays} days)
             </label>
             <div className="flex items-center gap-3">
@@ -108,20 +108,20 @@ export default function OvulationCalculator({ onCopy }: OvulationCalculatorProps
                 onChange={(e) => setCycleDays(e.target.value)}
                 className="w-full accent-rose-500"
               />
-              <span className="w-12 text-center text-sm font-mono font-bold text-white bg-slate-950 border border-slate-800 py-1 rounded-lg">
+              <span className="w-12 text-center text-sm font-mono font-bold text-white bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 py-1 rounded-lg">
                 {cycleDays}d
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 mt-1">
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-500 mt-1">
               Standard cycle is typically between 28 and 30 days.
             </p>
           </div>
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-rose-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider block mb-1">
               Estimated Ovulation Day
             </span>
             <div className="text-3xl sm:text-4xl font-extrabold font-mono text-white my-2">
@@ -129,21 +129,21 @@ export default function OvulationCalculator({ onCopy }: OvulationCalculatorProps
             </div>
 
             {results && (
-              <div className="space-y-2 mt-4 pt-4 border-t border-slate-800 text-xs font-mono">
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between">
-                  <span className="text-slate-400">Fertile Window:</span>
-                  <span className="text-emerald-400 font-bold">{results.fertileWindow}</span>
+              <div className="space-y-2 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs font-mono">
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between">
+                  <span className="text-zinc-500 dark:text-zinc-400">Fertile Window:</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">{results.fertileWindow}</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between">
-                  <span className="text-slate-400">Peak Conception:</span>
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between">
+                  <span className="text-zinc-500 dark:text-zinc-400">Peak Conception:</span>
                   <span className="text-rose-300 font-bold">{results.peakWindow}</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between">
-                  <span className="text-slate-400">Next Expected Period:</span>
-                  <span className="text-slate-200">{results.nextPeriod}</span>
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between">
+                  <span className="text-zinc-500 dark:text-zinc-400">Next Expected Period:</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{results.nextPeriod}</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between">
-                  <span className="text-slate-400">Earliest Pregnancy Test:</span>
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between">
+                  <span className="text-zinc-500 dark:text-zinc-400">Earliest Pregnancy Test:</span>
                   <span className="text-indigo-300">{results.testDate}</span>
                 </div>
               </div>

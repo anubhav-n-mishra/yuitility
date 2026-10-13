@@ -144,14 +144,14 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
   return (
     <div className="space-y-6">
       {/* Top Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1 bg-zinc-50 dark:bg-zinc-950 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
             <button
               type="button"
               onClick={() => setViewMode('split')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                viewMode === 'split' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
+                viewMode === 'split' ? 'bg-indigo-600 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
               }`}
             >
               <Columns2 className="w-3.5 h-3.5" /> Side-by-Side
@@ -160,29 +160,29 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
               type="button"
               onClick={() => setViewMode('unified')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                viewMode === 'unified' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
+                viewMode === 'unified' ? 'bg-indigo-600 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
               }`}
             >
               <AlignJustify className="w-3.5 h-3.5" /> Unified
             </button>
           </div>
 
-          <label className="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer">
+          <label className="flex items-center gap-1.5 text-xs text-zinc-700 dark:text-zinc-300 cursor-pointer">
             <input
               type="checkbox"
               checked={ignoreWhitespace}
               onChange={(e) => setIgnoreWhitespace(e.target.checked)}
-              className="rounded border-slate-700 text-indigo-500 bg-slate-950"
+              className="rounded border-zinc-200 dark:border-zinc-700 text-indigo-500 bg-zinc-50 dark:bg-zinc-950"
             />
             Trim Whitespace
           </label>
 
-          <label className="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer">
+          <label className="flex items-center gap-1.5 text-xs text-zinc-700 dark:text-zinc-300 cursor-pointer">
             <input
               type="checkbox"
               checked={ignoreCase}
               onChange={(e) => setIgnoreCase(e.target.checked)}
-              className="rounded border-slate-700 text-indigo-500 bg-slate-950"
+              className="rounded border-zinc-200 dark:border-zinc-700 text-indigo-500 bg-zinc-50 dark:bg-zinc-950"
             />
             Ignore Case
           </label>
@@ -192,7 +192,7 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
           <button
             type="button"
             onClick={handleSwap}
-            className="flex items-center gap-1 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="flex items-center gap-1 px-3 py-1.5 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
             title="Swap Inputs"
           >
             <ArrowLeftRight className="w-3.5 h-3.5" /> Swap
@@ -222,10 +222,10 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
 
       {/* Input Textareas */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-          <div className="px-4 py-2.5 bg-slate-950 border-b border-slate-800">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <div className="px-4 py-2.5 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
             <label htmlFor={origId} className="text-xs font-semibold text-rose-300 flex items-center gap-2">
-              <FileDiff className="w-4 h-4 text-rose-400" /> Original Text (Before)
+              <FileDiff className="w-4 h-4 text-rose-600 dark:text-rose-400" /> Original Text (Before)
             </label>
           </div>
           <textarea
@@ -234,14 +234,14 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
             onChange={(e) => setOriginal(e.target.value)}
             placeholder="Paste original text here..."
             rows={8}
-            className="w-full p-3 bg-transparent text-slate-100 placeholder-slate-500 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-rose-500"
+            className="w-full p-3 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-slate-500 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-rose-500"
           />
         </div>
 
-        <div className="bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-          <div className="px-4 py-2.5 bg-slate-950 border-b border-slate-800">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <div className="px-4 py-2.5 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
             <label htmlFor={modId} className="text-xs font-semibold text-emerald-300 flex items-center gap-2">
-              <FileDiff className="w-4 h-4 text-emerald-400" /> Modified Text (After)
+              <FileDiff className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> Modified Text (After)
             </label>
           </div>
           <textarea
@@ -250,46 +250,46 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
             onChange={(e) => setModified(e.target.value)}
             placeholder="Paste modified text here..."
             rows={8}
-            className="w-full p-3 bg-transparent text-slate-100 placeholder-slate-500 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="w-full p-3 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-slate-500 font-mono text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
           />
         </div>
       </div>
 
       {/* Diff Stats Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/40 px-4 py-3 rounded-xl border border-slate-800/80">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-zinc-50 dark:bg-zinc-900/40 px-4 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
         <div className="flex items-center gap-4 text-xs">
-          <span className="text-emerald-400 font-medium">+{additions} additions</span>
-          <span className="text-rose-400 font-medium">-{deletions} deletions</span>
-          <span className="text-slate-400">{unchanged} matching lines</span>
+          <span className="text-emerald-600 dark:text-emerald-400 font-medium">+{additions} additions</span>
+          <span className="text-rose-600 dark:text-rose-400 font-medium">-{deletions} deletions</span>
+          <span className="text-zinc-500 dark:text-zinc-400">{unchanged} matching lines</span>
         </div>
 
         <button
           type="button"
           onClick={handleCopyDiffSummary}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 transition"
         >
-          {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+          {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
           {copied ? 'Copied Summary' : 'Copy Summary'}
         </button>
       </div>
 
       {/* Diff Result View */}
-      <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden">
-        <div className="px-4 py-3 bg-slate-900/80 border-b border-slate-800 flex items-center justify-between">
-          <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Comparison Output</h3>
-          <span className="text-xs text-slate-500 font-mono">{diff.length} total elements</span>
+      <div className="bg-zinc-50 dark:bg-zinc-950 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+        <div className="px-4 py-3 bg-white dark:bg-zinc-900/80 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+          <h3 className="text-xs font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Comparison Output</h3>
+          <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono">{diff.length} total elements</span>
         </div>
 
         <div className="overflow-x-auto max-h-[500px]">
           {diff.length === 0 ? (
-            <div className="p-8 text-center text-slate-500 text-sm">Enter text in both boxes above to see the difference.</div>
+            <div className="p-8 text-center text-zinc-500 dark:text-zinc-500 text-sm">Enter text in both boxes above to see the difference.</div>
           ) : viewMode === 'unified' ? (
             <table className="w-full font-mono text-xs text-left border-collapse">
               <tbody>
                 {diff.map((line, idx) => {
-                  let bg = 'hover:bg-slate-900/40';
+                  let bg = 'hover:bg-zinc-50 dark:bg-zinc-900/40';
                   let symbol = ' ';
-                  let textCol = 'text-slate-300';
+                  let textCol = 'text-zinc-700 dark:text-zinc-300';
                   if (line.type === 'added') {
                     bg = 'bg-emerald-950/30 text-emerald-300 hover:bg-emerald-950/50';
                     symbol = '+';
@@ -324,8 +324,8 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
                           line.type === 'removed'
                             ? 'bg-rose-950/30 text-rose-300'
                             : line.type === 'added'
-                            ? 'bg-slate-950/30 text-slate-700'
-                            : 'text-slate-300'
+                            ? 'bg-zinc-50 dark:bg-zinc-950/30 text-slate-700'
+                            : 'text-zinc-700 dark:text-zinc-300'
                         }`}
                       >
                         <div className="flex items-start gap-2">
@@ -340,12 +340,12 @@ export default function DiffChecker({ onCopy }: DiffCheckerProps) {
 
                       {/* Right side (Modified) */}
                       <td
-                        className={`w-1/2 p-2 align-top border-l border-slate-800 ${
+                        className={`w-1/2 p-2 align-top border-l border-zinc-200 dark:border-zinc-800 ${
                           line.type === 'added'
                             ? 'bg-emerald-950/30 text-emerald-300'
                             : line.type === 'removed'
-                            ? 'bg-slate-950/30 text-slate-700'
-                            : 'text-slate-300'
+                            ? 'bg-zinc-50 dark:bg-zinc-950/30 text-slate-700'
+                            : 'text-zinc-700 dark:text-zinc-300'
                         }`}
                       >
                         <div className="flex items-start gap-2">

@@ -61,7 +61,15 @@ function ScrollReveal({ children, delay = 0 }: { children: React.ReactNode; dela
 }
 
 export default function AboutPageClient() {
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [accentColor, setAccentColor] = useState<'blue' | 'emerald' | 'indigo' | 'rose' | 'amber'>('blue');
 
@@ -81,10 +89,6 @@ export default function AboutPageClient() {
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setDarkMode(savedTheme === 'dark');
-    }
     const savedAccent = localStorage.getItem('accent_color') as any;
     if (savedAccent) setAccentColor(savedAccent);
 
@@ -94,17 +98,6 @@ export default function AboutPageClient() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-    window.dispatchEvent(new CustomEvent('theme-change', { detail: darkMode }));
-  }, [darkMode]);
 
   useEffect(() => {
     const handleThemeChange = (e: Event) => {
@@ -123,7 +116,7 @@ export default function AboutPageClient() {
   };
 
   return (
-    <div className={`theme-${accentColor} ${darkMode ? 'dark text-zinc-150 bg-zinc-950 min-h-screen font-sans antialiased relative overflow-hidden flex flex-col justify-between' : 'text-zinc-800 bg-white min-h-screen font-sans antialiased relative overflow-hidden flex flex-col justify-between'}`}>
+    <div className={`theme-${accentColor} bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 min-h-screen font-sans antialiased relative overflow-hidden flex flex-col justify-between`}>
       
       {/* Editorial Decorative Backgrounds */}
       <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-[var(--accent-glow)] via-transparent to-transparent pointer-events-none -z-10" />

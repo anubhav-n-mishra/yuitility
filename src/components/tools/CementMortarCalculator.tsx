@@ -67,33 +67,33 @@ export default function CementMortarCalculator({ onCopy }: CementMortarCalculato
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Plaster / Mortar Specifications</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Plaster / Mortar Specifications</h3>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Surface Area (sq ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Surface Area (sq ft)</label>
               <input
                 type="number"
                 value={areaSqFt}
                 onChange={(e) => setAreaSqFt(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Thickness (Inches)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Thickness (Inches)</label>
               <input
                 type="number"
                 step="0.125"
                 value={thicknessIn}
                 onChange={(e) => setThicknessIn(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Mortar Mix Proportion (Cement : Sand)</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Mortar Mix Proportion (Cement : Sand)</label>
             <div className="grid grid-cols-2 gap-2">
               {[
                 { r: '1:3', label: '1 : 3 (Rich Waterproof)' },
@@ -108,7 +108,7 @@ export default function CementMortarCalculator({ onCopy }: CementMortarCalculato
                   className={`p-2.5 rounded-xl border text-xs font-semibold transition ${
                     ratio === item.r
                       ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                      : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white'
+                      : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -118,7 +118,7 @@ export default function CementMortarCalculator({ onCopy }: CementMortarCalculato
           </div>
 
           <div className="pt-2">
-            <label className="text-xs text-slate-300 block mb-1">Cement Bag Size</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cement Bag Size</label>
             <div className="flex gap-2">
               {[
                 { kg: 50, label: '50 kg (Standard International)' },
@@ -129,7 +129,7 @@ export default function CementMortarCalculator({ onCopy }: CementMortarCalculato
                   type="button"
                   onClick={() => setBagSizeKg(b.kg)}
                   className={`flex-1 py-1.5 rounded-lg text-xs font-semibold ${
-                    bagSizeKg === b.kg ? 'bg-slate-700 text-white' : 'bg-slate-950 text-slate-400 border border-slate-800'
+                    bagSizeKg === b.kg ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800'
                   }`}
                 >
                   {b.label}
@@ -140,31 +140,31 @@ export default function CementMortarCalculator({ onCopy }: CementMortarCalculato
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
               Cement Bags Required
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? results.cementBags : '—'}
-              <span className="text-lg font-normal text-slate-400"> Bags ({bagSizeKg} kg)</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> Bags ({bagSizeKg} kg)</span>
             </div>
 
             {results && (
-              <div className="space-y-2 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Sand Required:</span>
                   <span className="font-bold text-white">
                     {results.sandCuFt} cu ft (~{results.sandTonnes} tonnes)
                   </span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Mixing Water (est.):</span>
                   <span className="font-bold text-cyan-400">~{results.waterLiters} Liters</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Dry Mortar Volume:</span>
-                  <span className="font-bold text-slate-400">{results.dryCuFt} cu ft (+33% void factor)</span>
+                  <span className="font-bold text-zinc-500 dark:text-zinc-400">{results.dryCuFt} cu ft (+33% void factor)</span>
                 </div>
               </div>
             )}

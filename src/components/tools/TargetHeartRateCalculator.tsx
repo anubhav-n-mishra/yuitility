@@ -46,7 +46,7 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
         intensity: '50% – 60%',
         bpm: calcZone(0.5, 0.6),
         benefit: 'Warm-up, active recovery, improved base circulation.',
-        color: 'text-slate-300 border-slate-700',
+        color: 'text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700',
       },
       {
         zone: 'Zone 2: Light / Aerobic Base',
@@ -60,7 +60,7 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
         intensity: '70% – 80%',
         bpm: calcZone(0.7, 0.8),
         benefit: 'Aerobic fitness, increased lung capacity, marathon pace.',
-        color: 'text-emerald-400 border-emerald-800/60',
+        color: 'text-emerald-600 dark:text-emerald-400 border-emerald-800/60',
       },
       {
         zone: 'Zone 4: Hard / Lactate Threshold',
@@ -74,7 +74,7 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
         intensity: '90% – 100%',
         bpm: calcZone(0.9, 1.0),
         benefit: 'Peak athletic capacity, sprint intervals, neuromuscular power.',
-        color: 'text-rose-400 border-rose-800/60',
+        color: 'text-rose-600 dark:text-rose-400 border-rose-800/60',
       },
     ];
 
@@ -98,11 +98,11 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
   return (
     <div className="space-y-6">
       {/* Top Input */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-rose-400">
+          <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400">
             <HeartPulse className="w-5 h-5" />
-            <h3 className="text-sm font-semibold text-white">Heart Rate Parameters</h3>
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Heart Rate Parameters</h3>
           </div>
 
           <div className="flex items-center gap-2">
@@ -110,7 +110,7 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
               type="button"
               onClick={() => setMethod('karvonen')}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-                method === 'karvonen' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                method === 'karvonen' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400'
               }`}
             >
               Karvonen (with Resting HR)
@@ -119,7 +119,7 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
               type="button"
               onClick={() => setMethod('standard')}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-                method === 'standard' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'
+                method === 'standard' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400'
               }`}
             >
               % of Max HR
@@ -129,19 +129,19 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Age (Years)</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Age (Years)</label>
             <input
               type="number"
               min="10"
               max="100"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Resting Heart Rate (BPM upon waking)
             </label>
             <input
@@ -150,18 +150,18 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
               max="120"
               value={restingHr}
               onChange={(e) => setRestingHr(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base"
             />
           </div>
         </div>
 
         {results && (
-          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-800 text-xs font-mono">
-            <span className="text-slate-400">
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-zinc-200 dark:border-zinc-800 text-xs font-mono">
+            <span className="text-zinc-500 dark:text-zinc-400">
               Estimated Max HR (Tanaka): <strong className="text-white">{results.mhr} bpm</strong>
             </span>
-            <span className="text-slate-400">
-              Heart Rate Reserve (HRR): <strong className="text-indigo-400">{results.hrr} bpm</strong>
+            <span className="text-zinc-500 dark:text-zinc-400">
+              Heart Rate Reserve (HRR): <strong className="text-indigo-600 dark:text-indigo-400">{results.hrr} bpm</strong>
             </span>
           </div>
         )}
@@ -171,7 +171,7 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
       {results && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="text-sm font-semibold text-white">Target Heart Rate Training Zones</h4>
+            <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">Target Heart Rate Training Zones</h4>
             <button
               type="button"
               onClick={handleCopy}
@@ -186,14 +186,14 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
             {results.zones.map((z, idx) => (
               <div
                 key={idx}
-                className={`p-4 bg-slate-900/60 rounded-xl border ${z.color} flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
+                className={`p-4 bg-white dark:bg-zinc-900/60 shadow-sm rounded-xl border ${z.color} flex flex-col sm:flex-row sm:items-center justify-between gap-3`}
               >
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-sm text-white">{z.zone}</span>
-                    <span className="text-xs font-mono text-slate-400">({z.intensity})</span>
+                    <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">({z.intensity})</span>
                   </div>
-                  <p className="text-xs text-slate-400 mt-0.5">{z.benefit}</p>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{z.benefit}</p>
                 </div>
                 <div className="text-xl font-mono font-black text-white shrink-0 sm:text-right">
                   {z.bpm}

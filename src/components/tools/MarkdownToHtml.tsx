@@ -60,7 +60,7 @@ function parseMarkdownToHtml(md: string): string {
     // Images: ![alt](url)
     s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="max-w-full h-auto rounded my-2" />');
     // Links: [text](url)
-    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:underline">$1</a>');
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-indigo-600 dark:text-indigo-400 hover:underline">$1</a>');
     // Bold & italic
     s = s.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
     s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -69,7 +69,7 @@ function parseMarkdownToHtml(md: string): string {
     s = s.replace(/__([^_]+)__/g, '<strong>$1</strong>');
     s = s.replace(/_([^_]+)_/g, '<em>$1</em>');
     // Inline code
-    s = s.replace(/`([^`]+)`/g, '<code class="bg-slate-800 text-indigo-300 px-1.5 py-0.5 rounded text-sm font-mono">$1</code>');
+    s = s.replace(/`([^`]+)`/g, '<code class="bg-zinc-100 dark:bg-zinc-800 text-indigo-300 px-1.5 py-0.5 rounded text-sm font-mono">$1</code>');
     // Strikethrough
     s = s.replace(/~~([^~]+)~~/g, '<del>$1</del>');
     return s;
@@ -99,7 +99,7 @@ function parseMarkdownToHtml(md: string): string {
     // Code blocks
     if (line.trim().startsWith('```')) {
       if (inCodeBlock) {
-        out.push(`<pre class="bg-slate-950 p-4 rounded-xl text-slate-200 overflow-x-auto my-3 font-mono text-sm border border-slate-800"><code${codeBlockLang ? ` class="language-${codeBlockLang}"` : ''}>${escapeHtml(codeBlockContent.join('\n'))}</code></pre>`);
+        out.push(`<pre class="bg-zinc-50 dark:bg-zinc-950 p-4 rounded-xl text-zinc-800 dark:text-zinc-200 overflow-x-auto my-3 font-mono text-sm border border-zinc-200 dark:border-zinc-800"><code${codeBlockLang ? ` class="language-${codeBlockLang}"` : ''}>${escapeHtml(codeBlockContent.join('\n'))}</code></pre>`);
         inCodeBlock = false;
         codeBlockLang = '';
         codeBlockContent = [];
@@ -128,7 +128,7 @@ function parseMarkdownToHtml(md: string): string {
     if (line.trim().startsWith('>')) {
       closeLists();
       if (!inBlockquote) {
-        out.push('<blockquote class="border-l-4 border-indigo-500 pl-4 py-1 italic text-slate-400 my-3">');
+        out.push('<blockquote class="border-l-4 border-indigo-500 pl-4 py-1 italic text-zinc-500 dark:text-zinc-400 my-3">');
         inBlockquote = true;
       }
       out.push(`<p class="my-1">${formatInline(line.trim().replace(/^>\s*/, ''))}</p>`);
@@ -146,10 +146,10 @@ function parseMarkdownToHtml(md: string): string {
       const classes: Record<number, string> = {
         1: 'text-2xl sm:text-3xl font-bold text-white mt-6 mb-3',
         2: 'text-xl sm:text-2xl font-semibold text-white mt-5 mb-2.5',
-        3: 'text-lg sm:text-xl font-medium text-slate-100 mt-4 mb-2',
-        4: 'text-base sm:text-lg font-medium text-slate-200 mt-3 mb-1.5',
-        5: 'text-sm sm:text-base font-medium text-slate-300 mt-2 mb-1',
-        6: 'text-xs sm:text-sm font-medium text-slate-400 mt-2 mb-1',
+        3: 'text-lg sm:text-xl font-medium text-zinc-900 dark:text-zinc-100 mt-4 mb-2',
+        4: 'text-base sm:text-lg font-medium text-zinc-800 dark:text-zinc-200 mt-3 mb-1.5',
+        5: 'text-sm sm:text-base font-medium text-zinc-700 dark:text-zinc-300 mt-2 mb-1',
+        6: 'text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 mt-2 mb-1',
       };
       if (level === 1) {
         out.push(`<div role="heading" aria-level="1" class="${classes[1]}">${text}</div>`);
@@ -162,7 +162,7 @@ function parseMarkdownToHtml(md: string): string {
     // Horizontal Rule
     if (/^(\*{3,}|-{3,}|_{3,})$/.test(line.trim())) {
       closeLists();
-      out.push('<hr class="my-6 border-slate-800" />');
+      out.push('<hr class="my-6 border-zinc-200 dark:border-zinc-800" />');
       continue;
     }
 
@@ -175,7 +175,7 @@ function parseMarkdownToHtml(md: string): string {
         inUl = true;
       }
       const isChecked = checkMatch[1].toLowerCase() === 'x';
-      out.push(`<li class="flex items-center gap-2 text-slate-300"><input type="checkbox" disabled ${isChecked ? 'checked' : ''} class="rounded border-slate-700 text-indigo-500" /> <span>${formatInline(checkMatch[2])}</span></li>`);
+      out.push(`<li class="flex items-center gap-2 text-zinc-700 dark:text-zinc-300"><input type="checkbox" disabled ${isChecked ? 'checked' : ''} class="rounded border-zinc-200 dark:border-zinc-700 text-indigo-500" /> <span>${formatInline(checkMatch[2])}</span></li>`);
       continue;
     }
 
@@ -184,7 +184,7 @@ function parseMarkdownToHtml(md: string): string {
     if (ulMatch) {
       if (!inUl) {
         closeLists();
-        out.push('<ul class="list-disc list-inside my-3 space-y-1 text-slate-300">');
+        out.push('<ul class="list-disc list-inside my-3 space-y-1 text-zinc-700 dark:text-zinc-300">');
         inUl = true;
       }
       out.push(`<li>${formatInline(ulMatch[1])}</li>`);
@@ -196,7 +196,7 @@ function parseMarkdownToHtml(md: string): string {
     if (olMatch) {
       if (!inOl) {
         closeLists();
-        out.push('<ol class="list-decimal list-inside my-3 space-y-1 text-slate-300">');
+        out.push('<ol class="list-decimal list-inside my-3 space-y-1 text-zinc-700 dark:text-zinc-300">');
         inOl = true;
       }
       out.push(`<li>${formatInline(olMatch[1])}</li>`);
@@ -205,7 +205,7 @@ function parseMarkdownToHtml(md: string): string {
 
     // Standard Paragraph
     closeLists();
-    out.push(`<p class="my-2 leading-relaxed text-slate-300">${formatInline(line)}</p>`);
+    out.push(`<p class="my-2 leading-relaxed text-zinc-700 dark:text-zinc-300">${formatInline(line)}</p>`);
   }
 
   closeLists();
@@ -255,54 +255,54 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
   return (
     <div className="space-y-6">
       {/* Top Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => insertSnippet('### Heading 3')}
-            className="px-2.5 py-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
           >
             H3
           </button>
           <button
             type="button"
             onClick={() => insertSnippet('**Bold Text**')}
-            className="px-2.5 py-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
           >
             B
           </button>
           <button
             type="button"
             onClick={() => insertSnippet('*Italic Text*')}
-            className="px-2.5 py-1.5 text-xs font-semibold italic bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs font-semibold italic bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
           >
             I
           </button>
           <button
             type="button"
             onClick={() => insertSnippet('`code snippet`')}
-            className="px-2.5 py-1.5 text-xs font-mono bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs font-mono bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-indigo-300 rounded-lg transition"
           >
             &lt;/&gt;
           </button>
           <button
             type="button"
             onClick={() => insertSnippet('> Quote statement')}
-            className="px-2.5 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
           >
             Quote
           </button>
           <button
             type="button"
             onClick={() => insertSnippet('- List item')}
-            className="px-2.5 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
           >
             List
           </button>
           <button
             type="button"
             onClick={() => insertSnippet('[Link text](https://example.com)')}
-            className="px-2.5 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition"
+            className="px-2.5 py-1.5 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-lg transition"
           >
             Link
           </button>
@@ -329,15 +329,15 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
       {/* Main Split Screen */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Editor Side */}
-        <div className="flex flex-col bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-800">
-            <label htmlFor={inputId} className="flex items-center gap-2 text-sm font-semibold text-slate-300">
-              <FileCode className="w-4 h-4 text-indigo-400" /> Markdown Input
+        <div className="flex flex-col bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-3 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+            <label htmlFor={inputId} className="flex items-center gap-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+              <FileCode className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Markdown Input
             </label>
             <button
               type="button"
               onClick={() => handleDownload('md')}
-              className="text-xs text-slate-400 hover:text-white transition flex items-center gap-1"
+              className="text-xs text-zinc-500 dark:text-zinc-400 hover:text-white transition flex items-center gap-1"
             >
               <Download className="w-3.5 h-3.5" /> .md
             </button>
@@ -348,13 +348,13 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
             onChange={(e) => setMarkdown(e.target.value)}
             placeholder="Type or paste Markdown here..."
             rows={18}
-            className="w-full h-full min-h-[420px] p-4 bg-transparent text-slate-100 placeholder-slate-500 font-mono text-sm resize-none focus:outline-none focus:ring-1 focus:ring-indigo-500"
+            className="w-full h-full min-h-[420px] p-4 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-slate-500 font-mono text-sm resize-none focus:outline-none focus:ring-1 focus:ring-indigo-500"
           />
         </div>
 
         {/* Preview / HTML Output Side */}
-        <div className="flex flex-col bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-2.5 bg-slate-950 border-b border-slate-800">
+        <div className="flex flex-col bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
             <div className="flex items-center gap-2">
               <button
                 type="button"
@@ -362,7 +362,7 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   tab === 'preview'
                     ? 'bg-indigo-600 text-white shadow'
-                    : 'text-slate-400 hover:text-white bg-slate-900'
+                    : 'text-zinc-500 dark:text-zinc-400 hover:text-white bg-white dark:bg-zinc-900'
                 }`}
               >
                 <Eye className="w-3.5 h-3.5" /> Live Preview
@@ -373,7 +373,7 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
                   tab === 'html'
                     ? 'bg-indigo-600 text-white shadow'
-                    : 'text-slate-400 hover:text-white bg-slate-900'
+                    : 'text-zinc-500 dark:text-zinc-400 hover:text-white bg-white dark:bg-zinc-900'
                 }`}
               >
                 <Code className="w-3.5 h-3.5" /> Raw HTML
@@ -384,15 +384,15 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
               <button
                 type="button"
                 onClick={handleCopyHtml}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-100 transition"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 transition"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                 {copied ? 'Copied' : 'Copy HTML'}
               </button>
               <button
                 type="button"
                 onClick={() => handleDownload('html')}
-                className="p-1.5 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition"
+                className="p-1.5 text-zinc-500 dark:text-zinc-400 hover:text-white bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg transition"
                 title="Download HTML"
               >
                 <Download className="w-3.5 h-3.5" />
@@ -403,11 +403,11 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
           <div className="p-4 flex-1 min-h-[420px] overflow-y-auto">
             {tab === 'preview' ? (
               <div
-                className="prose prose-invert max-w-none text-slate-200"
+                className="prose prose-invert max-w-none text-zinc-800 dark:text-zinc-200"
                 dangerouslySetInnerHTML={{ __html: htmlOutput }}
               />
             ) : (
-              <pre className="font-mono text-xs text-slate-300 bg-slate-950 p-4 rounded-xl overflow-x-auto border border-slate-800 h-full">
+              <pre className="font-mono text-xs text-zinc-700 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-950 p-4 rounded-xl overflow-x-auto border border-zinc-200 dark:border-zinc-800 h-full">
                 <code>{rawHtmlForExport}</code>
               </pre>
             )}
@@ -416,8 +416,8 @@ export default function MarkdownToHtml({ onCopy }: MarkdownToHtmlProps) {
       </div>
 
       {/* Info Section */}
-      <div className="p-4 bg-slate-950/40 rounded-xl border border-slate-800/60 text-xs text-slate-400 flex items-start gap-2.5">
-        <BookOpen className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+      <div className="p-4 bg-zinc-50 dark:bg-zinc-950/40 rounded-xl border border-zinc-200 dark:border-zinc-800/60 text-xs text-zinc-500 dark:text-zinc-400 flex items-start gap-2.5">
+        <BookOpen className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
         <p>
           Supports common markdown conventions including GitHub-style task checkboxes, code blocks with syntax tags, blockquotes, tables, and inline styles. All HTML processing executes entirely in your browser.
         </p>

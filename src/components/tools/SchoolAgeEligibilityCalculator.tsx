@@ -122,7 +122,7 @@ export default function SchoolAgeEligibilityCalculator({ onCopy }: SchoolAgeElig
               </div>
 
               <div className="rounded-xl border border-zinc-200/80 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80">
-                <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
                   <CheckCircle2 className="h-4 w-4" />
                   {eligibility.status}
                 </div>

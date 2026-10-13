@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Copy, Moon, ShieldCheck, Sun, ArrowRight, BookOpen, Award, Code2, X } from "lucide-react";
 import { Tool } from "@/src/types";
 import { getCategoryName, getToolFaqs, getToolHowItWorks, getToolSteps, toolPath } from "@/src/lib/site";
 import { getRelatedTools } from "@/src/lib/toolRegistry";
+import { getPresetsForTool } from "@/src/lib/toolPresets";
 import type { DeepContent } from "@/src/lib/toolDeepContent";
 import ToolDeepDive from "./ToolDeepDive";
 import { BLOG_POSTS } from "@/src/lib/blogs";
 import PwaInstallButton from "./PwaInstallButton";
+import Header from "@/src/components/Header";
 import HoverFooter from "@/src/components/ui/hover-footer";
 import EmiCalculator from "@/src/components/tools/EmiCalculator";
 import SipCalculator from "@/src/components/tools/SipCalculator";
@@ -149,6 +151,43 @@ import CementMortarCalculator from "@/src/components/tools/CementMortarCalculato
 import AcBtuCalculator from "@/src/components/tools/AcBtuCalculator";
 
 import TimeZoneConverter from "@/src/components/tools/TimeZoneConverter";
+
+import CaseConverter from "@/src/components/tools/CaseConverter";
+import CharacterCounter from "@/src/components/tools/CharacterCounter";
+import DuplicateLineRemover from "@/src/components/tools/DuplicateLineRemover";
+import TextReverser from "@/src/components/tools/TextReverser";
+import TextRepeater from "@/src/components/tools/TextRepeater";
+import SlugGenerator from "@/src/components/tools/SlugGenerator";
+import TextToAsciiArt from "@/src/components/tools/TextToAsciiArt";
+import TextCleaner from "@/src/components/tools/TextCleaner";
+import CssMinifierBeautifier from "@/src/components/tools/CssMinifierBeautifier";
+import JsMinifierBeautifier from "@/src/components/tools/JsMinifierBeautifier";
+import HtmlFormatter from "@/src/components/tools/HtmlFormatter";
+import JsonToCsvConverter from "@/src/components/tools/JsonToCsvConverter";
+import ColorFormatConverter from "@/src/components/tools/ColorFormatConverter";
+import PomodoroTimer from "@/src/components/tools/PomodoroTimer";
+import CountdownTimer from "@/src/components/tools/CountdownTimer";
+import WorldClock from "@/src/components/tools/WorldClock";
+import NumberBaseConverter from "@/src/components/tools/NumberBaseConverter";
+import JwtDecoder from "@/src/components/tools/JwtDecoder";
+import MeetingCostCalculator from "@/src/components/tools/MeetingCostCalculator";
+import AgeInSecondsCalculator from "@/src/components/tools/AgeInSecondsCalculator";
+import ReadTimeEstimator from "@/src/components/tools/ReadTimeEstimator";
+import SipStepUpCalculator from "@/src/components/tools/SipStepUpCalculator";
+import SsyCalculator from "@/src/components/tools/SsyCalculator";
+import CryptoProfitCalculator from "@/src/components/tools/CryptoProfitCalculator";
+import CalorieDeficitCalculator from "@/src/components/tools/CalorieDeficitCalculator";
+import OhmsLawCalculator from "@/src/components/tools/OhmsLawCalculator";
+import PowerConsumptionCalculator from "@/src/components/tools/PowerConsumptionCalculator";
+import SpeedDistanceTimeCalculator from "@/src/components/tools/SpeedDistanceTimeCalculator";
+import ImageColorPicker from "@/src/components/tools/ImageColorPicker";
+import ImageFlipper from "@/src/components/tools/ImageFlipper";
+import SvgToPngConverter from "@/src/components/tools/SvgToPngConverter";
+import PasswordStrengthChecker from "@/src/components/tools/PasswordStrengthChecker";
+import TextEncryptor from "@/src/components/tools/TextEncryptor";
+import FileHashVerifier from "@/src/components/tools/FileHashVerifier";
+import ExifDataViewer from "@/src/components/tools/ExifDataViewer";
+
 import ShareToast from "./ShareToast";
 
 type ToolPageClientProps = {
@@ -428,12 +467,57 @@ export function ToolRenderer({ tool, onCopy, onShare, onTriggerShareToast }: { t
     case "ac-btu-calculator": return <AcBtuCalculator {...props} />;
 
     case "time-zone-converter": return <TimeZoneConverter {...props} />;
+
+    case "case-converter": return <CaseConverter {...props} />;
+    case "character-counter": return <CharacterCounter {...props} />;
+    case "duplicate-line-remover": return <DuplicateLineRemover {...props} />;
+    case "text-reverser": return <TextReverser {...props} />;
+    case "text-repeater": return <TextRepeater {...props} />;
+    case "slug-generator": return <SlugGenerator {...props} />;
+    case "text-to-ascii-art": return <TextToAsciiArt {...props} />;
+    case "text-cleaner": return <TextCleaner {...props} />;
+    case "css-minifier-beautifier": return <CssMinifierBeautifier {...props} />;
+    case "js-minifier-beautifier": return <JsMinifierBeautifier {...props} />;
+    case "html-formatter": return <HtmlFormatter {...props} />;
+    case "json-to-csv-converter": return <JsonToCsvConverter {...props} />;
+    case "color-format-converter": return <ColorFormatConverter {...props} />;
+    case "pomodoro-timer": return <PomodoroTimer {...props} />;
+    case "countdown-timer": return <CountdownTimer {...props} />;
+    case "world-clock": return <WorldClock {...props} />;
+    case "number-base-converter": return <NumberBaseConverter {...props} />;
+    case "jwt-decoder": return <JwtDecoder {...props} />;
+    case "meeting-cost-calculator": return <MeetingCostCalculator {...props} />;
+    case "age-in-seconds-calculator": return <AgeInSecondsCalculator {...props} />;
+    case "read-time-estimator": return <ReadTimeEstimator {...props} />;
+    case "sip-step-up-calculator": return <SipStepUpCalculator {...props} />;
+    case "ssy-calculator": return <SsyCalculator {...props} />;
+    case "crypto-profit-calculator": return <CryptoProfitCalculator {...props} />;
+    case "calorie-deficit-calculator": return <CalorieDeficitCalculator {...props} />;
+    case "ohms-law-calculator": return <OhmsLawCalculator {...props} />;
+    case "power-consumption-calculator": return <PowerConsumptionCalculator {...props} />;
+    case "speed-distance-time-calculator": return <SpeedDistanceTimeCalculator {...props} />;
+    case "image-color-picker": return <ImageColorPicker {...props} />;
+    case "image-flipper": return <ImageFlipper {...props} />;
+    case "svg-to-png-converter": return <SvgToPngConverter {...props} />;
+    case "password-strength-checker": return <PasswordStrengthChecker {...props} />;
+    case "text-encryptor": return <TextEncryptor {...props} />;
+    case "file-hash-verifier": return <FileHashVerifier {...props} />;
+    case "exif-data-viewer": return <ExifDataViewer {...props} />;
+
     default: return <GenericInteractiveTool tool={tool} onCopy={onCopy} onShare={onShare} />;
   }
 }
 
 export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
   const [message, setMessage] = useState("");
   const [showShareToast, setShowShareToast] = useState(false);
   const [showEmbedModal, setShowEmbedModal] = useState(false);
@@ -444,10 +528,8 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
   const faqs = useMemo(() => getToolFaqs(tool), [tool]);
   const steps = useMemo(() => getToolSteps(tool), [tool]);
   const howItWorks = useMemo(() => getToolHowItWorks(tool), [tool]);
-  // Contextual, curated relations (see src/lib/toolRegistry.ts) rather than
-  // "first three siblings in the same category" — the anchor text and the
-  // destination both need to make sense to a reader mid-task.
   const relatedTools = useMemo(() => getRelatedTools(tool, 4), [tool]);
+  const presets = useMemo(() => getPresetsForTool(tool.id), [tool.id]);
 
   const linkedGuide = useMemo(
     () => BLOG_POSTS.find((p) => p.toolId === tool.id),
@@ -455,29 +537,11 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
   );
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
-    } else {
-      setDarkMode(true);
-    }
     const savedRating = localStorage.getItem(`rating_${tool.id}`);
     if (savedRating) {
       setUserRating(parseInt(savedRating, 10));
     }
   }, [tool.id]);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-    window.dispatchEvent(new CustomEvent("theme-change", { detail: darkMode }));
-  }, [darkMode]);
 
   useEffect(() => {
     const handleThemeChange = (e: Event) => {
@@ -513,32 +577,11 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
   };
 
   return (
-    <div className={`${darkMode ? "dark" : ""} min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100`}>
-      <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/90 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/90">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Yuitility home">
-            <img src="/brand/yuitility-logo.png" alt="Yuitility logo" width={36} height={36} className="h-9 w-9 object-contain" />
-            <span className="font-display text-lg font-bold tracking-tight text-zinc-950 dark:text-white">Yuitility</span>
-          </Link>
-          <div className="flex items-center gap-2">
-            <PwaInstallButton />
-            <Link href="/" className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 hover:text-blue-600 dark:text-zinc-300 dark:hover:bg-zinc-900 dark:hover:text-cyan-300 sm:inline-flex">
-              All tools
-            </Link>
-            <button
-              type="button"
-              onClick={() => setDarkMode((current) => !current)}
-              className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
-              aria-label="Toggle color theme"
-            >
-              {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
+      <Header />
 
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
-        <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+      <main className="mx-auto max-w-7xl px-4 pt-28 pb-12 sm:px-6 sm:pt-36">
+        <nav aria-label="Breadcrumb" className="mb-3 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
           <Link href="/" className="hover:text-blue-600 dark:hover:text-cyan-300">Home</Link>
           <span aria-hidden="true">/</span>
           <Link href="/tools" className="inline-flex items-center gap-1 hover:text-blue-600 dark:hover:text-cyan-300"><ArrowLeft className="h-3.5 w-3.5" /> All tools</Link>
@@ -549,23 +592,12 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
         </nav>
 
         {/* Primary Semantic H1 and Social Sharing */}
-        <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-1.5">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                <CheckCircle2 className="w-3 h-3" /> Formula Verified (Sep 2026)
-              </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-                <Award className="w-3 h-3" /> Reviewed by Quantitative Architecture Panel
-              </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                <ShieldCheck className="w-3 h-3" /> 100% In-Browser Privacy
-              </span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-zinc-950 dark:text-white">
+            <h1 className="text-xl sm:text-2xl font-display font-extrabold tracking-tight text-zinc-950 dark:text-white">
               {tool.title}
             </h1>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 max-w-3xl">
+            <p className="mt-0.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 max-w-3xl">
               {tool.longDescription}
             </p>
           </div>
@@ -646,6 +678,56 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
             )}
           </div>
         </section>
+
+        {/* 1.5. Interactive Preset Internal Link Hub (if presets exist for this tool) */}
+        {presets.length > 0 && (
+          <section aria-label={`${tool.title} presets and institutional formulas`} className="mb-8 rounded-3xl border border-zinc-200/80 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80 sm:p-7">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Award className="w-5 h-5 text-blue-600 dark:text-cyan-400" />
+                  <h2 className="text-lg font-display font-bold text-zinc-950 dark:text-white">
+                    Popular Presets &amp; Verified Formulas
+                  </h2>
+                </div>
+                <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 max-w-2xl">
+                  Pre-configured parameters, institutional benchmarks, and official regulations for {tool.title.toLowerCase()}.
+                </p>
+              </div>
+              <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 dark:bg-zinc-800 dark:text-cyan-300">
+                {presets.length} Verified Presets
+              </span>
+            </div>
+
+            <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
+              {presets.map((preset) => (
+                <Link
+                  key={preset.presetSlug}
+                  href={`/tools/${tool.id}/${preset.presetSlug}`}
+                  className="group flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-4 transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:bg-white hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950/60 dark:hover:border-cyan-500/60 dark:hover:bg-zinc-900"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100/80 text-blue-800 dark:bg-zinc-800 dark:text-cyan-300">
+                        {preset.badge || "Verified Preset"}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-bold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-100 dark:group-hover:text-cyan-300 transition-colors">
+                      {preset.h1}
+                    </h3>
+                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+                      {preset.seoDescription}
+                    </p>
+                  </div>
+                  <div className="mt-3.5 pt-2.5 border-t border-zinc-200/50 dark:border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-blue-600 dark:text-cyan-300">
+                    <span>Open preset calculator</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* 2. Embed Calculator Section for Bloggers & Webmasters */}
         <section aria-label="Embed calculator widget" className="mb-8 rounded-3xl border border-blue-200/80 bg-gradient-to-br from-blue-50/70 via-white to-cyan-50/50 p-6 shadow-sm dark:border-blue-900/40 dark:from-zinc-900/90 dark:via-zinc-900/50 dark:to-cyan-950/20 sm:p-7">
@@ -735,9 +817,28 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
           </article>
           <aside className="space-y-6">
             <div className="rounded-3xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
-              <ShieldCheck className="h-8 w-8 text-blue-600 dark:text-cyan-300" />
+              <ShieldCheck className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
               <h2 className="mt-4 font-display text-xl font-bold text-zinc-950 dark:text-white">{tool.title} Privacy &amp; Security</h2>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">Use this tool directly in your browser. Yuitility processes all inputs entirely inside your local device memory with zero server uploads.</p>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                All calculation subroutines and file manipulation algorithms for this tool execute locally within your web browser&apos;s memory.
+              </p>
+              <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">How to Verify in Browser DevTools</h3>
+                <ol className="space-y-2 text-xs text-zinc-600 dark:text-zinc-400">
+                  <li className="flex gap-2">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">1.</span>
+                    <span>Open Developer Tools by pressing <kbd className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 font-mono text-[10px]">F12</kbd> (or <kbd className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 font-mono text-[10px]">Cmd+Option+I</kbd>).</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">2.</span>
+                    <span>Switch to the <strong>Network</strong> tab.</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">3.</span>
+                    <span>Run the tool &mdash; verify that 0 payload data or files are transmitted to external servers.</span>
+                  </li>
+                </ol>
+              </div>
             </div>
 
             {/* DevTools Verification Guide */}

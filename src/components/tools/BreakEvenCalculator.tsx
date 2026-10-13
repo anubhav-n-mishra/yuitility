@@ -101,7 +101,7 @@ export default function BreakEvenCalculator() {
           <div className="mt-6 space-y-4 border-t border-blue-200/60 dark:border-zinc-800 pt-6">
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Break-Even Revenue Required</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.breakEvenRevenue, currency)}</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.breakEvenRevenue, currency)}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Contribution Margin / Unit</span>

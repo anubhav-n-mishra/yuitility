@@ -75,8 +75,8 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
   return (
     <div className="space-y-6">
       {/* Unit Switcher */}
-      <div className="flex items-center justify-between bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-        <div className="flex items-center gap-2 text-indigo-400">
+      <div className="flex items-center justify-between bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <Dumbbell className="w-5 h-5" />
           <span className="text-sm font-semibold text-white">One Rep Max (1RM) Estimator</span>
         </div>
@@ -86,7 +86,7 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
             type="button"
             onClick={() => setUnit('kg')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'kg' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'kg' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             kg
@@ -95,7 +95,7 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
             type="button"
             onClick={() => setUnit('lbs')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'lbs' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'lbs' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             lbs
@@ -105,45 +105,45 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Enter Working Set</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Enter Working Set</h3>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Weight Lifted ({unit})</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Weight Lifted ({unit})</label>
               <input
                 type="number"
                 value={liftWeight}
                 onChange={(e) => setLiftWeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
 
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Reps Performed (1-30)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Reps Performed (1-30)</label>
               <input
                 type="number"
                 min="1"
                 max="30"
                 value={reps}
                 onChange={(e) => setReps(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
           </div>
 
           {results && (
-            <div className="grid grid-cols-3 gap-2 font-mono text-xs pt-4 border-t border-slate-800">
-              <div className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-center">
-                <span className="text-slate-500 text-[10px] block">Epley</span>
+            <div className="grid grid-cols-3 gap-2 font-mono text-xs pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 text-center">
+                <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Epley</span>
                 <span className="text-white font-bold">{results.epley} {unit}</span>
               </div>
-              <div className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-center">
-                <span className="text-slate-500 text-[10px] block">Brzycki</span>
+              <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 text-center">
+                <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Brzycki</span>
                 <span className="text-white font-bold">{results.brzycki} {unit}</span>
               </div>
-              <div className="p-2 bg-slate-950 rounded-lg border border-slate-800 text-center">
-                <span className="text-slate-500 text-[10px] block">Lombardi</span>
+              <div className="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 text-center">
+                <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Lombardi</span>
                 <span className="text-white font-bold">{results.lombardi} {unit}</span>
               </div>
             </div>
@@ -151,15 +151,15 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
         </div>
 
         {/* Results */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">
               Estimated Consensus 1RM
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? `${results.average} ${unit}` : '—'}
             </div>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
               Based on performing {liftWeight} {unit} for {reps} repetition{parseInt(reps, 10) > 1 ? 's' : ''}.
             </p>
           </div>
@@ -179,15 +179,15 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
 
       {/* Percentage Reps Table */}
       {results && (
-        <div className="bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-          <div className="px-6 py-4 bg-slate-950 border-b border-slate-800">
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-              <Table className="w-4 h-4 text-indigo-400" /> Training Percentages & Rep Ranges
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+          <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+              <Table className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Training Percentages & Rep Ranges
             </h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left font-mono">
-              <thead className="bg-slate-950/60 text-slate-400 uppercase border-b border-slate-800">
+              <thead className="bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 uppercase border-b border-zinc-200 dark:border-zinc-800">
                 <tr>
                   <th className="px-6 py-2.5">% 1RM</th>
                   <th className="px-6 py-2.5">Weight ({unit})</th>
@@ -196,10 +196,10 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
               </thead>
               <tbody className="divide-y divide-slate-800/60">
                 {percentages.map((row) => (
-                  <tr key={row.pct} className="hover:bg-slate-900/40">
-                    <td className="px-6 py-2.5 text-indigo-400 font-bold">{row.pct}%</td>
+                  <tr key={row.pct} className="hover:bg-zinc-50 dark:bg-zinc-900/40">
+                    <td className="px-6 py-2.5 text-indigo-600 dark:text-indigo-400 font-bold">{row.pct}%</td>
                     <td className="px-6 py-2.5 text-white font-bold">{row.weight} {unit}</td>
-                    <td className="px-6 py-2.5 text-slate-400">{row.repsRange}</td>
+                    <td className="px-6 py-2.5 text-zinc-500 dark:text-zinc-400">{row.repsRange}</td>
                   </tr>
                 ))}
               </tbody>

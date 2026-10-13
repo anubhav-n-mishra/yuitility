@@ -128,7 +128,7 @@ export default function SwpCalculator() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Remaining Balance at End</span>
-              <span className={`font-bold ${stats.depleted ? "text-rose-600" : "text-emerald-600 dark:text-emerald-400"}`}>
+              <span className={`font-bold ${stats.depleted ? "text-rose-600" : "text-emerald-600 dark:text-emerald-600 dark:text-emerald-400"}`}>
                 {stats.depleted ? "Corpus Depleted" : formatCurrency(stats.finalBalance, currency)}
               </span>
             </div>

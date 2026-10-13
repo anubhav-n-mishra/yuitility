@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -48,7 +48,15 @@ export default function PresetToolClient({
   deep,
   siblingPresets,
 }: PresetToolClientProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') return true;
+      if (savedTheme === 'light') return false;
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
   const [message, setMessage] = useState<string>("");
   const [showEmbedModal, setShowEmbedModal] = useState<boolean>(false);
   const [userRating, setUserRating] = useState<number | null>(null);
@@ -56,29 +64,11 @@ export default function PresetToolClient({
   const embedSnippet = `<iframe src="https://www.yuitility.app/embed/${tool.id}" width="100%" height="700" frameborder="0" style="border:1px solid #e4e4e7; border-radius:16px; overflow:hidden;" title="${preset.h1}"></iframe>\n<p style="font-size:12px;text-align:right;margin-top:4px;font-family:sans-serif;"><a href="https://www.yuitility.app/tools/${tool.id}/${preset.presetSlug}" target="_blank" rel="noopener" style="color:#2563eb;text-decoration:none;">⚡ Free ${preset.h1} by Yuitility</a></p>`;
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
-    } else {
-      setDarkMode(true);
-    }
     const savedRating = localStorage.getItem(`rating_${tool.id}_${preset.presetSlug}`);
     if (savedRating) {
       setUserRating(parseInt(savedRating, 10));
     }
   }, [tool.id, preset.presetSlug]);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-    window.dispatchEvent(new CustomEvent("theme-change", { detail: darkMode }));
-  }, [darkMode]);
 
   useEffect(() => {
     const handleThemeChange = (e: Event) => {
@@ -114,11 +104,7 @@ export default function PresetToolClient({
   const currentPath = `/tools/${tool.id}/${preset.presetSlug}`;
 
   return (
-    <div
-      className={`${
-        darkMode ? "dark" : ""
-      } min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100`}
-    >
+    <div className="min-h-screen bg-zinc-50 text-zinc-800 dark:bg-zinc-950 dark:text-zinc-100">
       <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/90 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/90">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2.5" aria-label="Yuitility home">
@@ -192,17 +178,6 @@ export default function PresetToolClient({
         {/* Header with Badges, H1, Subtitle, and Share Actions */}
         <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                <CheckCircle2 className="w-3 h-3" /> {preset.badge}
-              </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-                <Award className="w-3 h-3" /> Formula Verified
-              </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-                <ShieldCheck className="w-3 h-3" /> 100% In-Browser Privacy
-              </span>
-            </div>
             <h1 className="text-2xl sm:text-3xl font-display font-extrabold tracking-tight text-zinc-950 dark:text-white">
               {preset.h1}
             </h1>

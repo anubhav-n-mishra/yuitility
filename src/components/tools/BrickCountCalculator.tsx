@@ -58,32 +58,32 @@ export default function BrickCountCalculator({ onCopy }: BrickCountCalculatorPro
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Wall Specifications (Feet)</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Wall Specifications (Feet)</h3>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Wall Length (ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Wall Length (ft)</label>
               <input
                 type="number"
                 value={wallLength}
                 onChange={(e) => setWallLength(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Wall Height (ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Wall Height (ft)</label>
               <input
                 type="number"
                 value={wallHeight}
                 onChange={(e) => setWallHeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Wall Thickness</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Wall Thickness</label>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
@@ -91,11 +91,11 @@ export default function BrickCountCalculator({ onCopy }: BrickCountCalculatorPro
                 className={`p-2.5 rounded-xl border text-xs font-semibold transition ${
                   wallType === 'single'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 hover:text-white'
                 }`}
               >
                 <div>Single Wythe (4.5&quot; / Half)</div>
-                <div className="text-[10px] text-slate-500 mt-0.5">~7 bricks / sq ft</div>
+                <div className="text-[10px] text-zinc-500 dark:text-zinc-500 mt-0.5">~7 bricks / sq ft</div>
               </button>
               <button
                 type="button"
@@ -103,32 +103,32 @@ export default function BrickCountCalculator({ onCopy }: BrickCountCalculatorPro
                 className={`p-2.5 rounded-xl border text-xs font-semibold transition ${
                   wallType === 'double'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400 hover:text-white'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 hover:text-white'
                 }`}
               >
                 <div>Double Wythe (9&quot; / Full)</div>
-                <div className="text-[10px] text-slate-500 mt-0.5">~14 bricks / sq ft</div>
+                <div className="text-[10px] text-zinc-500 dark:text-zinc-500 mt-0.5">~14 bricks / sq ft</div>
               </button>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Openings (Doors/Windows sq ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Openings (Doors/Windows sq ft)</label>
               <input
                 type="number"
                 min="0"
                 value={openingsArea}
                 onChange={(e) => setOpeningsArea(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Waste Factor (%)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Waste Factor (%)</label>
               <select
                 value={wastePct}
                 onChange={(e) => setWastePct(parseInt(e.target.value, 10))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
               >
                 <option value="5">5% (Normal)</option>
                 <option value="10">10% (Cuts & breakage)</option>
@@ -138,29 +138,29 @@ export default function BrickCountCalculator({ onCopy }: BrickCountCalculatorPro
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-1">
               Total Bricks Required
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? results.totalBricks.toLocaleString() : '—'}
-              <span className="text-lg font-normal text-slate-400"> bricks</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> bricks</span>
             </div>
 
             {results && (
-              <div className="space-y-2.5 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2.5 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Net Wall Area:</span>
                   <span className="font-bold text-white">{results.netArea} sq ft</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Base Bricks Count:</span>
-                  <span className="font-bold text-slate-400">{results.rawBricks.toLocaleString()}</span>
+                  <span className="font-bold text-zinc-500 dark:text-zinc-400">{results.rawBricks.toLocaleString()}</span>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-sm mt-3">
-                  <span className="text-slate-400">Est. Mortar Cement:</span>
-                  <span className="font-bold text-indigo-400 font-mono">~{results.mortarBags} Bags (80 lb)</span>
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between items-center text-sm mt-3">
+                  <span className="text-zinc-500 dark:text-zinc-400">Est. Mortar Cement:</span>
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400 font-mono">~{results.mortarBags} Bags (80 lb)</span>
                 </div>
               </div>
             )}

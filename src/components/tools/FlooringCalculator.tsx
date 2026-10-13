@@ -59,32 +59,32 @@ export default function FlooringCalculator({ onCopy }: FlooringCalculatorProps) 
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Room & Material Specifications</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Room & Material Specifications</h3>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Room Length (Feet)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Length (Feet)</label>
               <input
                 type="number"
                 value={length}
                 onChange={(e) => setLength(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Room Width (Feet)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Width (Feet)</label>
               <input
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Cutting Waste Factor ({wastePct}%)
             </label>
             <div className="flex gap-2">
@@ -100,7 +100,7 @@ export default function FlooringCalculator({ onCopy }: FlooringCalculatorProps) 
                   className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition ${
                     wastePct === wItem.pct
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-slate-950 text-slate-400 hover:text-white border border-slate-800'
+                      : 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-white border border-zinc-200 dark:border-zinc-800'
                   }`}
                 >
                   {wItem.label}
@@ -111,57 +111,57 @@ export default function FlooringCalculator({ onCopy }: FlooringCalculatorProps) 
 
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Coverage per Box (sq ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coverage per Box (sq ft)</label>
               <input
                 type="number"
                 step="0.1"
                 value={boxCoverage}
                 onChange={(e) => setBoxCoverage(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Price per sq ft ($)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Price per sq ft ($)</label>
               <input
                 type="number"
                 step="0.1"
                 value={pricePerSqFt}
                 onChange={(e) => setPricePerSqFt(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">
               Total Boxes to Purchase
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? results.boxesNeeded : '—'}
-              <span className="text-lg font-normal text-slate-400"> boxes</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> boxes</span>
             </div>
 
             {results && (
-              <div className="space-y-2.5 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2.5 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Net Floor Area:</span>
                   <span className="font-bold text-white">{results.baseArea} sq ft</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Total Area (+{wastePct}% waste):</span>
-                  <span className="font-bold text-indigo-400">{results.totalAreaWithWaste} sq ft</span>
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400">{results.totalAreaWithWaste} sq ft</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Actual Purchased Coverage:</span>
                   <span className="font-bold text-white">{results.actualCoverage} sq ft</span>
                 </div>
                 {results.totalCost !== '0.00' && (
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-sm mt-3">
-                    <span className="text-slate-400">Total Material Cost:</span>
-                    <span className="font-bold text-emerald-400">${results.totalCost}</span>
+                  <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between items-center text-sm mt-3">
+                    <span className="text-zinc-500 dark:text-zinc-400">Total Material Cost:</span>
+                    <span className="font-bold text-emerald-600 dark:text-emerald-400">${results.totalCost}</span>
                   </div>
                 )}
               </div>

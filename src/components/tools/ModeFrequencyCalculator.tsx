@@ -102,15 +102,15 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
   return (
     <div className="space-y-6">
       {/* Top Input */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-semibold text-slate-200">
+          <label className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
             Enter Data Set (Numbers or Words, comma or space separated)
           </label>
           <button
             type="button"
             onClick={() => setInputData(SAMPLE_DATA)}
-            className="flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300"
+            className="flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-300"
           >
             <Sparkles className="w-3.5 h-3.5" /> Load Sample
           </button>
@@ -121,35 +121,35 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
           value={inputData}
           onChange={(e) => setInputData(e.target.value)}
           placeholder="e.g. 10, 15, 20, 15, 30, 15, 25"
-          className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
         />
       </div>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs">
-        <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-          <span className="text-slate-500 block mb-1">Mode(s)</span>
-          <span className="text-lg font-bold text-indigo-400">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Mode(s)</span>
+          <span className="text-lg font-bold text-indigo-600 dark:text-indigo-400">
             {hasMode ? modes.join(', ') : 'No Mode'}
           </span>
-          {hasMode && <span className="text-[11px] text-slate-400 block mt-0.5">Freq: {maxFreq} times</span>}
+          {hasMode && <span className="text-[11px] text-zinc-500 dark:text-zinc-400 block mt-0.5">Freq: {maxFreq} times</span>}
         </div>
 
-        <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-          <span className="text-slate-500 block mb-1">Total Items (n)</span>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Total Items (n)</span>
           <span className="text-lg font-bold text-white">{tokens.length}</span>
-          <span className="text-[11px] text-slate-400 block mt-0.5">{freqMap.size} unique values</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400 block mt-0.5">{freqMap.size} unique values</span>
         </div>
 
-        <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-          <span className="text-slate-500 block mb-1">Mean (Average)</span>
-          <span className="text-lg font-bold text-emerald-400">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Mean (Average)</span>
+          <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
             {mean !== null ? mean.toFixed(2) : '—'}
           </span>
         </div>
 
-        <div className="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-          <span className="text-slate-500 block mb-1">Median</span>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <span className="text-zinc-500 dark:text-zinc-500 block mb-1">Median</span>
           <span className="text-lg font-bold text-cyan-400">
             {median !== null ? median.toString() : '—'}
           </span>
@@ -157,17 +157,17 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
       </div>
 
       {/* Frequency Table */}
-      <div className="bg-slate-900/60 rounded-2xl border border-slate-800 overflow-hidden">
-        <div className="px-6 py-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-            <BarChart3 className="w-4 h-4 text-indigo-400" /> Frequency Distribution Table
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
+        <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+            <BarChart3 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> Frequency Distribution Table
           </h3>
 
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={() => setSortBy(sortBy === 'frequency' ? 'value' : 'frequency')}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg transition"
             >
               <ArrowUpDown className="w-3 h-3" /> Sort: {sortBy === 'frequency' ? 'Count' : 'Value'}
             </button>
@@ -185,7 +185,7 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
 
         <div className="overflow-x-auto max-h-96">
           <table className="w-full text-xs text-left">
-            <thead className="bg-slate-950/60 text-slate-400 uppercase font-mono border-b border-slate-800">
+            <thead className="bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 uppercase font-mono border-b border-zinc-200 dark:border-zinc-800">
               <tr>
                 <th className="px-6 py-3">Value</th>
                 <th className="px-6 py-3">Frequency</th>
@@ -206,10 +206,10 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
                         </span>
                       )}
                     </td>
-                    <td className="px-6 py-3 text-slate-300 font-bold">{item.count}</td>
-                    <td className="px-6 py-3 text-slate-400">{item.pct.toFixed(1)}%</td>
+                    <td className="px-6 py-3 text-zinc-700 dark:text-zinc-300 font-bold">{item.count}</td>
+                    <td className="px-6 py-3 text-zinc-500 dark:text-zinc-400">{item.pct.toFixed(1)}%</td>
                     <td className="px-6 py-3 w-1/3">
-                      <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                      <div className="w-full bg-zinc-100 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
                         <div
                           className={`h-full rounded-full ${isItemMode ? 'bg-indigo-500' : 'bg-slate-600'}`}
                           style={{ width: `${item.pct}%` }}

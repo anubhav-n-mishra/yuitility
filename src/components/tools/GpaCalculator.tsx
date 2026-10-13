@@ -92,10 +92,10 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Course List Input */}
-        <div className="lg:col-span-2 bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div className="lg:col-span-2 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-semibold text-white flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 text-indigo-400" /> College Courses (4.0 Scale)
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white flex items-center gap-2">
+              <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> College Courses (4.0 Scale)
             </h3>
             <button
               type="button"
@@ -110,7 +110,7 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
             {courses.map((course) => (
               <div
                 key={course.id}
-                className="flex items-center gap-2.5 p-3 bg-slate-950/80 rounded-xl border border-slate-800/80"
+                className="flex items-center gap-2.5 p-3 bg-zinc-50 dark:bg-zinc-950/80 rounded-xl border border-zinc-200 dark:border-zinc-800/80"
               >
                 <div className="flex-1">
                   <input
@@ -118,7 +118,7 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
                     placeholder="Course name"
                     value={course.name}
                     onChange={(e) => updateCourse(course.id, 'name', e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 
@@ -126,7 +126,7 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
                   <select
                     value={course.grade}
                     onChange={(e) => updateCourse(course.id, 'grade', e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-2 py-2 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-2 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
                   >
                     {Object.keys(GRADE_POINTS).map((g) => (
                       <option key={g} value={g}>
@@ -144,7 +144,7 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
                     placeholder="Credits"
                     value={course.credits}
                     onChange={(e) => updateCourse(course.id, 'credits', e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 
@@ -152,7 +152,7 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
                   type="button"
                   onClick={() => removeCourse(course.id)}
                   disabled={courses.length <= 1}
-                  className="p-2 text-slate-500 hover:text-rose-400 disabled:opacity-30 transition"
+                  className="p-2 text-zinc-500 dark:text-zinc-500 hover:text-rose-600 dark:text-rose-400 disabled:opacity-30 transition"
                   title="Remove course"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -163,30 +163,30 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
         </div>
 
         {/* GPA Result Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Overall GPA</span>
-              <Award className="w-5 h-5 text-indigo-400" />
+              <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Overall GPA</span>
+              <Award className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />
             </div>
 
-            <div className="text-5xl font-black font-mono text-indigo-400 tracking-tight my-2">
+            <div className="text-5xl font-black font-mono text-indigo-600 dark:text-indigo-400 tracking-tight my-2">
               {gpa !== null ? gpa.toFixed(2) : '—'}
-              <span className="text-lg text-slate-500 font-normal"> / 4.0</span>
+              <span className="text-lg text-zinc-500 dark:text-zinc-500 font-normal"> / 4.0</span>
             </div>
 
             <div className="mt-3 px-3 py-2 bg-indigo-950/40 border border-indigo-500/30 rounded-xl text-xs font-semibold text-indigo-300">
               {honors}
             </div>
 
-            <div className="text-xs text-slate-400 space-y-1.5 mt-5">
+            <div className="text-xs text-zinc-500 dark:text-zinc-400 space-y-1.5 mt-5">
               <div className="flex justify-between">
                 <span>Total Credit Hours:</span>
-                <span className="font-mono text-slate-200">{totalCredits}</span>
+                <span className="font-mono text-zinc-800 dark:text-zinc-200">{totalCredits}</span>
               </div>
               <div className="flex justify-between">
                 <span>Quality Points Earned:</span>
-                <span className="font-mono text-slate-200">{totalPoints.toFixed(1)}</span>
+                <span className="font-mono text-zinc-800 dark:text-zinc-200">{totalPoints.toFixed(1)}</span>
               </div>
             </div>
           </div>

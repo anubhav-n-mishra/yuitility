@@ -280,11 +280,11 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
                   <div className="flex items-center gap-2">
                     <Percent className="w-5 h-5 text-emerald-500" />
                     <div>
-                      <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold">Space Savings</p>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-bold">Space Savings</p>
                       <p className="text-sm text-zinc-500">Reduction in bytes</p>
                     </div>
                   </div>
-                  <p className="text-3xl font-display font-black text-emerald-600 dark:text-emerald-400">-{savingsPercentage}%</p>
+                  <p className="text-3xl font-display font-black text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">-{savingsPercentage}%</p>
                 </div>
 
                 <div className="h-[1px] bg-zinc-200/50 dark:bg-zinc-800" />
@@ -296,7 +296,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
                   </div>
                   <div className="p-3 bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-900 rounded-lg">
                     <p className="text-[10px] text-zinc-400">Optimized Size</p>
-                    <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-1 font-mono">{formatSize(metadata.compressedSize)}</p>
+                    <p className="text-sm font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 mt-1 font-mono">{formatSize(metadata.compressedSize)}</p>
                   </div>
                 </div>
 

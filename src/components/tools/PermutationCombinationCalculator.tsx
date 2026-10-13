@@ -91,36 +91,36 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
   return (
     <div className="space-y-6">
       {/* Inputs */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-        <h3 className="text-sm font-semibold text-white">Enter Set Size (n) and Subset Selection (r)</h3>
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Enter Set Size (n) and Subset Selection (r)</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Total Items in Set (n)</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Total Items in Set (n)</label>
             <input
               type="number"
               min="0"
               max="500"
               value={nVal}
               onChange={(e) => setNVal(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Items to Choose (r)</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Items to Choose (r)</label>
             <input
               type="number"
               min="0"
               max={nVal}
               value={rVal}
               onChange={(e) => setRVal(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>
 
         {!isValid && (
-          <p className="text-xs text-rose-400">
+          <p className="text-xs text-rose-600 dark:text-rose-400">
             Ensure 0 ≤ r ≤ n (and n ≤ 500 for high-precision computation).
           </p>
         )}
@@ -130,27 +130,27 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
       {results && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Combinations nCr */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
                   Combinations (nCr) — Order Does NOT Matter
                 </span>
-                <span className="text-xs font-mono text-slate-500">C({n}, {r})</span>
+                <span className="text-xs font-mono text-zinc-500 dark:text-zinc-500">C({n}, {r})</span>
               </div>
 
               <div className="text-3xl sm:text-4xl font-extrabold font-mono text-white my-3 break-all">
                 {results.nCr}
               </div>
 
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
                 Formula: <code className="text-indigo-300 font-mono">n! / (r! × (n-r)!)</code>
               </p>
 
-              <div className="mt-4 pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+              <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 text-xs text-zinc-500 dark:text-zinc-400">
                 <div className="flex justify-between">
                   <span>With Repetition Allowed:</span>
-                  <span className="font-mono text-slate-200">{results.nCrRep}</span>
+                  <span className="font-mono text-zinc-800 dark:text-zinc-200">{results.nCrRep}</span>
                 </div>
               </div>
             </div>
@@ -166,27 +166,27 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
           </div>
 
           {/* Permutations nPr */}
-          <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider">
                   Permutations (nPr) — Order DOES Matter
                 </span>
-                <span className="text-xs font-mono text-slate-500">P({n}, {r})</span>
+                <span className="text-xs font-mono text-zinc-500 dark:text-zinc-500">P({n}, {r})</span>
               </div>
 
               <div className="text-3xl sm:text-4xl font-extrabold font-mono text-white my-3 break-all">
                 {results.nPr}
               </div>
 
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
                 Formula: <code className="text-cyan-300 font-mono">n! / (n-r)!</code>
               </p>
 
-              <div className="mt-4 pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+              <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 text-xs text-zinc-500 dark:text-zinc-400">
                 <div className="flex justify-between">
                   <span>With Repetition (nʳ):</span>
-                  <span className="font-mono text-slate-200">{results.nPowR}</span>
+                  <span className="font-mono text-zinc-800 dark:text-zinc-200">{results.nPowR}</span>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
             <button
               type="button"
               onClick={() => copyVal(results.nPr, 'npr')}
-              className="mt-6 w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition"
+              className="mt-6 w-full py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-800 dark:text-zinc-200 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition"
             >
               {copiedId === 'npr' ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
               {copiedId === 'npr' ? 'Copied' : 'Copy Permutations (nPr)'}

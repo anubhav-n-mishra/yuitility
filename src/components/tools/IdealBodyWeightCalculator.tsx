@@ -74,13 +74,13 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
   return (
     <div className="space-y-6">
       {/* Unit & Gender */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={() => setGender('male')}
             className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition ${
-              gender === 'male' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              gender === 'male' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Male
@@ -89,7 +89,7 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
             type="button"
             onClick={() => setGender('female')}
             className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition ${
-              gender === 'female' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              gender === 'female' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Female
@@ -101,7 +101,7 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
             type="button"
             onClick={() => setUnit('metric')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'metric' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'metric' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Metric (cm)
@@ -110,7 +110,7 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
             type="button"
             onClick={() => setUnit('imperial')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'imperial' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'imperial' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Imperial (ft/in)
@@ -120,37 +120,37 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Height Input */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Your Height</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Your Height</h3>
 
           {unit === 'metric' ? (
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Height in Centimeters</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Height in Centimeters</label>
               <input
                 type="number"
                 value={heightCm}
                 onChange={(e) => setHeightCm(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Feet (ft)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Feet (ft)</label>
                 <input
                   type="number"
                   value={heightFt}
                   onChange={(e) => setHeightFt(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-lg"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-lg"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Inches (in)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Inches (in)</label>
                 <input
                   type="number"
                   value={heightIn}
                   onChange={(e) => setHeightIn(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-lg"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-lg"
                 />
               </div>
             </div>
@@ -158,9 +158,9 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
         </div>
 
         {/* Results */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
               Average Ideal Weight
             </span>
             <div className="text-4xl font-extrabold font-mono text-white my-2">
@@ -168,27 +168,27 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
             </div>
 
             {results && (
-              <div className="space-y-3 mt-4 pt-4 border-t border-slate-800">
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 text-xs font-mono">
-                  <span className="text-slate-500 block mb-0.5">WHO Healthy BMI Range (18.5 – 24.9):</span>
-                  <span className="text-emerald-400 font-bold text-sm">{results.bmiRange}</span>
+              <div className="space-y-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs font-mono">
+                  <span className="text-zinc-500 dark:text-zinc-500 block mb-0.5">WHO Healthy BMI Range (18.5 – 24.9):</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">{results.bmiRange}</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 font-mono text-xs">
-                  <div className="p-2 bg-slate-950/80 rounded-lg border border-slate-800/80 flex justify-between">
-                    <span className="text-slate-500">Devine:</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950/80 rounded-lg border border-zinc-200 dark:border-zinc-800/80 flex justify-between">
+                    <span className="text-zinc-500 dark:text-zinc-500">Devine:</span>
                     <span className="text-white font-bold">{results.devine}</span>
                   </div>
-                  <div className="p-2 bg-slate-950/80 rounded-lg border border-slate-800/80 flex justify-between">
-                    <span className="text-slate-500">Robinson:</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950/80 rounded-lg border border-zinc-200 dark:border-zinc-800/80 flex justify-between">
+                    <span className="text-zinc-500 dark:text-zinc-500">Robinson:</span>
                     <span className="text-white font-bold">{results.robinson}</span>
                   </div>
-                  <div className="p-2 bg-slate-950/80 rounded-lg border border-slate-800/80 flex justify-between">
-                    <span className="text-slate-500">Miller:</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950/80 rounded-lg border border-zinc-200 dark:border-zinc-800/80 flex justify-between">
+                    <span className="text-zinc-500 dark:text-zinc-500">Miller:</span>
                     <span className="text-white font-bold">{results.miller}</span>
                   </div>
-                  <div className="p-2 bg-slate-950/80 rounded-lg border border-slate-800/80 flex justify-between">
-                    <span className="text-slate-500">Hamwi:</span>
+                  <div className="p-2 bg-zinc-50 dark:bg-zinc-950/80 rounded-lg border border-zinc-200 dark:border-zinc-800/80 flex justify-between">
+                    <span className="text-zinc-500 dark:text-zinc-500">Hamwi:</span>
                     <span className="text-white font-bold">{results.hamwi}</span>
                   </div>
                 </div>

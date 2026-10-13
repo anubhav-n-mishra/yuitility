@@ -61,54 +61,54 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Tile & Surface Specs</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Tile & Surface Specs</h3>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Surface Length (ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Surface Length (ft)</label>
               <input
                 type="number"
                 value={areaLength}
                 onChange={(e) => setAreaLength(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Surface Width (ft)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Surface Width (ft)</label>
               <input
                 type="number"
                 value={areaWidth}
                 onChange={(e) => setAreaWidth(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Tile Length (inches)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Tile Length (inches)</label>
               <input
                 type="number"
                 value={tileLengthIn}
                 onChange={(e) => setTileLengthIn(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Tile Width (inches)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Tile Width (inches)</label>
               <input
                 type="number"
                 value={tileWidthIn}
                 onChange={(e) => setTileWidthIn(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           {/* Quick presets */}
           <div>
-            <span className="text-[11px] text-slate-500 block mb-1">Popular Tile Sizes:</span>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-500 block mb-1">Popular Tile Sizes:</span>
             <div className="flex flex-wrap gap-1.5">
               {[
                 { l: '12', w: '12', label: '12" × 12"' },
@@ -123,7 +123,7 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
                     setTileLengthIn(preset.l);
                     setTileWidthIn(preset.w);
                   }}
-                  className="px-2 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded text-xs font-mono"
+                  className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono"
                 >
                   {preset.label}
                 </button>
@@ -133,11 +133,11 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
 
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Waste Factor (%)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Waste Factor (%)</label>
               <select
                 value={wastePct}
                 onChange={(e) => setWastePct(parseInt(e.target.value, 10))}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
               >
                 <option value="5">5% (Simple rectangular)</option>
                 <option value="10">10% (Standard cuts)</option>
@@ -146,42 +146,42 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
               </select>
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Tiles per Box</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Tiles per Box</label>
               <input
                 type="number"
                 min="1"
                 value={tilesPerBox}
                 onChange={(e) => setTilesPerBox(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
               Total Tiles Needed (Incl. Waste)
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? results.totalTilesWithWaste : '—'}
-              <span className="text-lg font-normal text-slate-400"> tiles</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> tiles</span>
             </div>
 
             {results && (
-              <div className="space-y-2 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Surface Area:</span>
                   <span className="font-bold text-white">{results.surfaceSqFt} sq ft</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Single Tile Area:</span>
                   <span className="font-bold text-white">{results.singleTileSqFt} sq ft</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Boxes to Purchase:</span>
-                  <span className="font-bold text-indigo-400">{results.boxesNeeded} boxes ({results.totalPurchasedTiles} tiles)</span>
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400">{results.boxesNeeded} boxes ({results.totalPurchasedTiles} tiles)</span>
                 </div>
               </div>
             )}

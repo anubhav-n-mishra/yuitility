@@ -408,7 +408,7 @@ export default function MortgageCalculator({
                   {calc.yearlySchedule.map((row) => (
                     <tr key={row.year} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
                       <td className="py-2 px-3 font-sans font-bold text-zinc-900 dark:text-zinc-100">Year {row.year}</td>
-                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-400">{fmt(row.principalPaid)}</td>
+                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{fmt(row.principalPaid)}</td>
                       <td className="py-2 px-3 text-amber-600 dark:text-amber-400">{fmt(row.interestPaid)}</td>
                       <td className="py-2 px-3 font-semibold text-zinc-800 dark:text-zinc-200">{fmt(row.totalPaid)}</td>
                       <td className="py-2 px-3 text-zinc-600 dark:text-zinc-400">{fmt(row.endingBalance)}</td>

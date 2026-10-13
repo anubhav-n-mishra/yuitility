@@ -63,8 +63,8 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
   return (
     <div className="space-y-6">
       {/* Unit Switcher */}
-      <div className="flex items-center justify-between bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-        <div className="flex items-center gap-2 text-indigo-400">
+      <div className="flex items-center justify-between bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <Footprints className="w-5 h-5" />
           <span className="text-sm font-semibold text-white">Steps to Calories Burned</span>
         </div>
@@ -74,7 +74,7 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
             type="button"
             onClick={() => setUnit('metric')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'metric' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'metric' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Metric (kg, cm)
@@ -83,7 +83,7 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
             type="button"
             onClick={() => setUnit('imperial')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'imperial' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'imperial' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Imperial (lbs, in)
@@ -93,19 +93,19 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Walking Metrics</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Walking Metrics</h3>
 
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs text-slate-300">Total Steps Walked</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300">Total Steps Walked</label>
               <div className="flex gap-1 text-[10px]">
                 {['5000', '8000', '10000', '15000'].map((preset) => (
                   <button
                     key={preset}
                     type="button"
                     onClick={() => setSteps(preset)}
-                    className="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded font-mono"
+                    className="px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded font-mono"
                   >
                     {parseInt(preset, 10).toLocaleString()}
                   </button>
@@ -116,41 +116,41 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
               type="number"
               value={steps}
               onChange={(e) => setSteps(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-xs text-slate-300 block mb-1">
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
               <input
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
             <div>
-              <label className="text-xs text-slate-300 block mb-1">
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'in'})
               </label>
               <input
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Walking Pace / Speed</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Walking Pace / Speed</label>
             <select
               value={intensity}
               onChange={(e) => setIntensity(parseFloat(e.target.value))}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
             >
               <option value="2.5">Casual Stroll (~2.5 mph / 4.0 km/h)</option>
               <option value="3.0">Moderate Pace (~3.0 mph / 4.8 km/h)</option>
@@ -161,33 +161,33 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-1">
               Estimated Energy Burned
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? `${results.caloriesBurned}` : '—'}
-              <span className="text-lg font-normal text-slate-400"> kcal</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> kcal</span>
             </div>
 
             {results && (
-              <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
+              <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <div>
-                    <span className="text-slate-500 text-[10px] block">Distance</span>
+                    <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Distance</span>
                     <span className="text-white font-bold">{results.distanceKm} km</span>
-                    <span className="text-[10px] text-slate-400 block">({results.distanceMiles} miles)</span>
+                    <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block">({results.distanceMiles} miles)</span>
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2">
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-cyan-400 shrink-0" />
                   <div>
-                    <span className="text-slate-500 text-[10px] block">Active Duration</span>
+                    <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Active Duration</span>
                     <span className="text-white font-bold">{results.timeFormatted}</span>
-                    <span className="text-[10px] text-slate-400 block">Stride ~{results.strideCm}cm</span>
+                    <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block">Stride ~{results.strideCm}cm</span>
                   </div>
                 </div>
               </div>

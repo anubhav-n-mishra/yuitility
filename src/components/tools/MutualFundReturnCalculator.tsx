@@ -148,7 +148,7 @@ export default function MutualFundReturnCalculator() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Estimated Wealth Gain</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.estimatedWealthGain, currency)}</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.estimatedWealthGain, currency)}</span>
             </div>
           </div>
         </div>

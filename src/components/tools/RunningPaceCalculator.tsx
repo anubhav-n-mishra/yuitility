@@ -100,13 +100,13 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
   return (
     <div className="space-y-6">
       {/* Top Switchers */}
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-        <div className="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <div className="flex items-center gap-1.5 bg-zinc-50 dark:bg-zinc-950 p-1 rounded-xl border border-zinc-200 dark:border-zinc-800">
           <button
             type="button"
             onClick={() => setMode('pace')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-              mode === 'pace' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
+              mode === 'pace' ? 'bg-indigo-600 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Calculate Pace
@@ -115,7 +115,7 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
             type="button"
             onClick={() => setMode('time')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-              mode === 'time' ? 'bg-indigo-600 text-white' : 'text-slate-400 hover:text-white'
+              mode === 'time' ? 'bg-indigo-600 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Calculate Finish Time
@@ -127,7 +127,7 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
             type="button"
             onClick={() => setUnit('km')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'km' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'km' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Kilometers (km)
@@ -136,7 +136,7 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
             type="button"
             onClick={() => setUnit('miles')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'miles' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'miles' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Miles (mi)
@@ -146,38 +146,38 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Race & Running Metrics</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Race & Running Metrics</h3>
 
           {/* Presets */}
           <div>
-            <span className="text-[11px] text-slate-500 block mb-1.5">Standard Distance Presets:</span>
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-500 block mb-1.5">Standard Distance Presets:</span>
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() => applyPreset(5)}
-                className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
               >
                 5K
               </button>
               <button
                 type="button"
                 onClick={() => applyPreset(10)}
-                className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
               >
                 10K
               </button>
               <button
                 type="button"
                 onClick={() => applyPreset(21.0975)}
-                className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
               >
                 Half Marathon
               </button>
               <button
                 type="button"
                 onClick={() => applyPreset(42.195)}
-                className="px-2.5 py-1 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg"
+                className="px-2.5 py-1 text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg"
               >
                 Marathon
               </button>
@@ -185,60 +185,60 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Distance ({unit})</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Distance ({unit})</label>
             <input
               type="number"
               step="0.01"
               value={distance}
               onChange={(e) => setDistance(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base"
             />
           </div>
 
           {mode === 'pace' ? (
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Total Time (Hours : Mins : Secs)</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Total Time (Hours : Mins : Secs)</label>
               <div className="grid grid-cols-3 gap-2 font-mono">
                 <input
                   type="number"
                   placeholder="H"
                   value={hours}
                   onChange={(e) => setHours(e.target.value)}
-                  className="bg-slate-950 border border-slate-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
                 />
                 <input
                   type="number"
                   placeholder="M"
                   value={minutes}
                   onChange={(e) => setMinutes(e.target.value)}
-                  className="bg-slate-950 border border-slate-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
                 />
                 <input
                   type="number"
                   placeholder="S"
                   value={seconds}
                   onChange={(e) => setSeconds(e.target.value)}
-                  className="bg-slate-950 border border-slate-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
                 />
               </div>
             </div>
           ) : (
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Pace (Mins : Secs per {unit})</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Pace (Mins : Secs per {unit})</label>
               <div className="grid grid-cols-2 gap-2 font-mono">
                 <input
                   type="number"
                   placeholder="Mins"
                   value={paceMins}
                   onChange={(e) => setPaceMins(e.target.value)}
-                  className="bg-slate-950 border border-slate-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
                 />
                 <input
                   type="number"
                   placeholder="Secs"
                   value={paceSecs}
                   onChange={(e) => setPaceSecs(e.target.value)}
-                  className="bg-slate-950 border border-slate-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
                 />
               </div>
             </div>
@@ -246,9 +246,9 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
         </div>
 
         {/* Results */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
               {mode === 'pace' ? 'Calculated Pace' : 'Predicted Finish Time'}
             </span>
             <div className="text-4xl sm:text-5xl font-black font-mono text-white my-2">
@@ -260,14 +260,14 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
             </div>
 
             {results && mode === 'pace' && (
-              <div className="space-y-2 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Alternate Pace:</span>
                   <span className="font-bold text-white">{results.altPace}</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Speed:</span>
-                  <span className="font-bold text-emerald-400">{results.speed}</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400">{results.speed}</span>
                 </div>
               </div>
             )}

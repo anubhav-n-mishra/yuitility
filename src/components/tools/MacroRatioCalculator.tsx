@@ -74,7 +74,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
   return (
     <div className="space-y-6">
       {/* Top Presets */}
-      <div className="flex flex-wrap items-center gap-2 bg-slate-900/60 p-2 rounded-2xl border border-slate-800">
+      <div className="flex flex-wrap items-center gap-2 bg-white dark:bg-zinc-900/60 shadow-sm p-2 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         {[
           { id: 'balanced', label: 'Balanced (40/30/30)' },
           { id: 'highProtein', label: 'High Protein Cut (30/45/25)' },
@@ -89,7 +89,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
               preset === d.id
                 ? 'bg-indigo-600 text-white shadow'
-                : 'bg-slate-950/60 text-slate-400 hover:text-white border border-slate-800/80'
+                : 'bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400 hover:text-white border border-zinc-200 dark:border-zinc-800/80'
             }`}
           >
             {d.label}
@@ -99,24 +99,24 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Inputs */}
-        <div className="lg:col-span-1 bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Calorie & Macro Targets</h3>
+        <div className="lg:col-span-1 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Calorie & Macro Targets</h3>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Target Calories (kcal/day)</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Target Calories (kcal/day)</label>
             <input
               type="number"
               value={calories}
               onChange={(e) => setCalories(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-3 pt-2">
             <div>
-              <div className="flex justify-between text-xs text-slate-300 mb-1">
+              <div className="flex justify-between text-xs text-zinc-700 dark:text-zinc-300 mb-1">
                 <span>Protein ({proteinPct}%)</span>
-                <span className="font-mono text-indigo-400">4 kcal / g</span>
+                <span className="font-mono text-indigo-600 dark:text-indigo-400">4 kcal / g</span>
               </div>
               <input
                 type="range"
@@ -132,7 +132,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
             </div>
 
             <div>
-              <div className="flex justify-between text-xs text-slate-300 mb-1">
+              <div className="flex justify-between text-xs text-zinc-700 dark:text-zinc-300 mb-1">
                 <span>Carbohydrates ({carbsPct}%)</span>
                 <span className="font-mono text-cyan-400">4 kcal / g</span>
               </div>
@@ -150,7 +150,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
             </div>
 
             <div>
-              <div className="flex justify-between text-xs text-slate-300 mb-1">
+              <div className="flex justify-between text-xs text-zinc-700 dark:text-zinc-300 mb-1">
                 <span>Fats ({fatPct}%)</span>
                 <span className="font-mono text-amber-400">9 kcal / g</span>
               </div>
@@ -168,15 +168,15 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
             </div>
 
             <div className="flex justify-between text-xs font-mono pt-1">
-              <span className="text-slate-500">Total Split:</span>
-              <span className={totalPct === 100 ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold'}>
+              <span className="text-zinc-500 dark:text-zinc-500">Total Split:</span>
+              <span className={totalPct === 100 ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-rose-600 dark:text-rose-400 font-bold'}>
                 {totalPct}% {totalPct !== 100 && '(must equal 100%)'}
               </span>
             </div>
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Meals Per Day</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Meals Per Day</label>
             <div className="flex gap-2">
               {[3, 4, 5, 6].map((m) => (
                 <button
@@ -184,7 +184,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
                   type="button"
                   onClick={() => setMealsCount(m)}
                   className={`flex-1 py-1.5 rounded-lg text-xs font-mono font-semibold transition ${
-                    mealsCount === m ? 'bg-slate-700 text-white' : 'bg-slate-950 text-slate-400 hover:text-white'
+                    mealsCount === m ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 hover:text-white'
                   }`}
                 >
                   {m} meals
@@ -198,52 +198,52 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
         <div className="lg:col-span-2 space-y-4">
           {/* Main Macro Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center">
-              <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider block mb-1">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 text-center">
+              <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
                 Protein ({proteinPct}%)
               </span>
               <div className="text-4xl font-extrabold font-mono text-white my-1">
                 {results ? `${results.proteinGrams}g` : '—'}
               </div>
-              <span className="text-xs text-slate-500 font-mono">
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono">
                 ~{results ? results.perMealProtein : 0}g / meal
               </span>
             </div>
 
-            <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 text-center">
               <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
                 Carbohydrates ({carbsPct}%)
               </span>
               <div className="text-4xl font-extrabold font-mono text-white my-1">
                 {results ? `${results.carbGrams}g` : '—'}
               </div>
-              <span className="text-xs text-slate-500 font-mono">
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono">
                 ~{results ? results.perMealCarbs : 0}g / meal
               </span>
             </div>
 
-            <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 text-center">
+            <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 text-center">
               <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider block mb-1">
                 Dietary Fats ({fatPct}%)
               </span>
               <div className="text-4xl font-extrabold font-mono text-white my-1">
                 {results ? `${results.fatGrams}g` : '—'}
               </div>
-              <span className="text-xs text-slate-500 font-mono">
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 font-mono">
                 ~{results ? results.perMealFat : 0}g / meal
               </span>
             </div>
           </div>
 
           {/* Visual Proportion Bar */}
-          <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 space-y-3">
-            <span className="text-xs text-slate-400 block">Caloric Ratio Breakdown</span>
-            <div className="w-full bg-slate-950 h-4 rounded-full overflow-hidden flex">
+          <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-3">
+            <span className="text-xs text-zinc-500 dark:text-zinc-400 block">Caloric Ratio Breakdown</span>
+            <div className="w-full bg-zinc-50 dark:bg-zinc-950 h-4 rounded-full overflow-hidden flex">
               <div className="bg-indigo-500 h-full" style={{ width: `${proteinPct}%` }} title="Protein" />
               <div className="bg-cyan-500 h-full" style={{ width: `${carbsPct}%` }} title="Carbs" />
               <div className="bg-amber-500 h-full" style={{ width: `${fatPct}%` }} title="Fats" />
             </div>
-            <div className="flex justify-between text-xs font-mono text-slate-400 pt-1">
+            <div className="flex justify-between text-xs font-mono text-zinc-500 dark:text-zinc-400 pt-1">
               <span className="flex items-center gap-1">
                 <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 inline-block" /> Protein
               </span>

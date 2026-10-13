@@ -199,7 +199,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
                   : 'border-zinc-300 dark:border-zinc-700 hover:border-rose-400 dark:hover:border-rose-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
               }`}
             >
-              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-rose-600 dark:text-rose-400 mb-4">
+              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-rose-600 dark:text-rose-600 dark:text-rose-400 mb-4">
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Remove Pages</p>
@@ -219,7 +219,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
               {/* File Info Bar */}
               <div className="flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
                 <div className="flex items-center gap-4 overflow-hidden">
-                  <div className="p-2.5 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-400">
+                  <div className="p-2.5 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-600 dark:text-rose-400">
                     <File className="w-6 h-6" />
                   </div>
                   <div className="truncate">
@@ -276,7 +276,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
                             className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-all ${
                               isDeleted
                                 ? 'bg-rose-600 text-white shadow-sm ring-2 ring-rose-400'
-                                : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700'
+                                : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-semibold border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700'
                             }`}
                             title={isDeleted ? `Page ${pNum} will be deleted` : `Page ${pNum} will be kept`}
                           >
@@ -297,7 +297,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
           <div className="space-y-6">
             <div className="p-6 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 rounded-lg">
+                <div className="p-2.5 bg-rose-100 dark:bg-rose-950/50 text-rose-600 dark:text-rose-600 dark:text-rose-400 rounded-lg">
                   <Scissors className="w-6 h-6" />
                 </div>
                 <div>
@@ -317,7 +317,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
                 </div>
                 <div className="flex justify-between py-1.5">
                   <span className="text-zinc-500">Pages in New PDF:</span>
-                  <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                  <span className="font-semibold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
                     {pageCount ? Math.max(0, pageCount - selectedPages.size) : '-'}
                   </span>
                 </div>

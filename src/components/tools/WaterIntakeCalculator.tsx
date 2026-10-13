@@ -54,8 +54,8 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
   return (
     <div className="space-y-6">
       {/* Unit Switcher */}
-      <div className="flex items-center justify-between bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-        <div className="flex items-center gap-2 text-indigo-400">
+      <div className="flex items-center justify-between bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <Droplet className="w-5 h-5" />
           <span className="text-sm font-semibold text-white">Daily Hydration Planner</span>
         </div>
@@ -65,7 +65,7 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
             type="button"
             onClick={() => setUnit('metric')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'metric' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'metric' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Metric (kg)
@@ -74,7 +74,7 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
             type="button"
             onClick={() => setUnit('imperial')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              unit === 'imperial' ? 'bg-slate-700 text-white' : 'text-slate-400 hover:text-white'
+              unit === 'imperial' ? 'bg-zinc-200 dark:bg-zinc-700 text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Imperial (lbs)
@@ -84,35 +84,35 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Your Routine & Factors</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Your Routine & Factors</h3>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Body Weight ({unit === 'metric' ? 'kg' : 'lbs'})
             </label>
             <input
               type="number"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Daily Physical Workout / Exercise (Minutes)
             </label>
             <input
               type="number"
               value={exerciseMins}
               onChange={(e) => setExerciseMins(e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
             />
           </div>
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Environment / Weather Climate</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Environment / Weather Climate</label>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
@@ -120,7 +120,7 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
                 className={`p-2.5 rounded-xl text-xs font-semibold border transition ${
                   climate === 'temperate'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400'
                 }`}
               >
                 Normal / Indoor
@@ -131,7 +131,7 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
                 className={`p-2.5 rounded-xl text-xs font-semibold border transition ${
                   climate === 'hot'
                     ? 'border-indigo-500 bg-indigo-950/40 text-white'
-                    : 'border-slate-800 bg-slate-950/60 text-slate-400'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/60 text-zinc-500 dark:text-zinc-400'
                 }`}
               >
                 Hot / Humid (+500ml)
@@ -141,42 +141,42 @@ export default function WaterIntakeCalculator({ onCopy }: WaterIntakeCalculatorP
         </div>
 
         {/* Results */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider block mb-1">
               Recommended Daily Water Intake
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? `${results.liters} L` : '—'}
-              <span className="text-sm font-normal text-slate-400"> / day</span>
+              <span className="text-sm font-normal text-zinc-500 dark:text-zinc-400"> / day</span>
             </div>
 
             {results && (
-              <div className="space-y-4 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
+              <div className="space-y-4 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2">
+                  <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
                     <GlassWater className="w-5 h-5 text-cyan-400 shrink-0" />
                     <div>
-                      <span className="text-slate-500 text-[10px] block">Glasses (250ml)</span>
+                      <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Glasses (250ml)</span>
                       <span className="text-white font-bold text-base">{results.glasses} cups</span>
                     </div>
                   </div>
-                  <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex items-center gap-2">
-                    <Droplet className="w-5 h-5 text-indigo-400 shrink-0" />
+                  <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
+                    <Droplet className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />
                     <div>
-                      <span className="text-slate-500 text-[10px] block">Fluid Ounces</span>
+                      <span className="text-zinc-500 dark:text-zinc-500 text-[10px] block">Fluid Ounces</span>
                       <span className="text-white font-bold text-base">{results.oz} fl oz</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800/80">
-                  <span className="text-[11px] text-slate-400 block mb-1.5">Glass Schedule Checklist:</span>
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
+                  <span className="text-[11px] text-zinc-500 dark:text-zinc-400 block mb-1.5">Glass Schedule Checklist:</span>
                   <div className="flex flex-wrap gap-1.5">
                     {Array.from({ length: Math.min(16, results.glasses) }).map((_, i) => (
                       <span
                         key={i}
-                        className="px-2 py-1 bg-slate-900 border border-slate-800 rounded text-cyan-300 text-[10px]"
+                        className="px-2 py-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded text-cyan-300 text-[10px]"
                       >
                         Glass {i + 1}
                       </span>

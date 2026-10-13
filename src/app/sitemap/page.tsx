@@ -10,14 +10,14 @@ import { Wrench, BookOpen, Layers, ShieldCheck, ChevronRight, FileText, Sparkles
 export const metadata: Metadata = {
   title: "HTML Sitemap: All Tools, Categories & Guides - Yuitility",
   description:
-    "Complete directory of all 132 free client-side browser tools, financial calculators, converters, category hubs, and technical guides on Yuitility.",
+    `Complete directory of all ${LIVE_TOOLS.length} free client-side browser tools, financial calculators, converters, category hubs, and technical guides on Yuitility.`,
   alternates: {
     canonical: absoluteUrl("/sitemap"),
   },
   openGraph: {
     title: "HTML Sitemap: All Tools, Categories & Guides - Yuitility",
     description:
-      "Explore the complete index of 132 private browser utilities, calculators, and guides across Yuitility.",
+      `Explore the complete index of ${LIVE_TOOLS.length} private browser utilities, calculators, and guides across Yuitility.`,
     url: absoluteUrl("/sitemap"),
     siteName: SITE_NAME,
     type: "website",
@@ -75,7 +75,7 @@ export default function HtmlSitemapPage() {
           </div>
         </section>
 
-        {/* 2. All 82+ Verified Tools Grouped by Category */}
+        {/* 2. All Verified Tools Grouped by Category */}
         <section aria-labelledby="heading-tools" className="space-y-8">
           <div className="flex items-center gap-3 border-b border-zinc-200 dark:border-zinc-800 pb-3">
             <Wrench className="w-5 h-5 text-rose-500" />

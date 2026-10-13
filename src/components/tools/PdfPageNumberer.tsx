@@ -217,7 +217,7 @@ export default function PdfPageNumberer({ onCopy, onShare }: PdfPageNumbererProp
                   : 'border-zinc-300 dark:border-zinc-700 hover:border-rose-400 dark:hover:border-rose-500 hover:bg-zinc-50 dark:hover:bg-zinc-900/50'
               }`}
             >
-              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-rose-600 dark:text-rose-400 mb-4">
+              <div className="p-4 bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-2xl text-rose-600 dark:text-rose-600 dark:text-rose-400 mb-4">
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Add Numbers</p>
@@ -237,7 +237,7 @@ export default function PdfPageNumberer({ onCopy, onShare }: PdfPageNumbererProp
               {/* File Info Bar */}
               <div className="flex items-center justify-between p-4 bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-xl">
                 <div className="flex items-center gap-4 overflow-hidden">
-                  <div className="p-2.5 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-400">
+                  <div className="p-2.5 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600 dark:text-rose-600 dark:text-rose-400">
                     <File className="w-6 h-6" />
                   </div>
                   <div className="truncate">
@@ -274,7 +274,7 @@ export default function PdfPageNumberer({ onCopy, onShare }: PdfPageNumbererProp
                         onClick={() => setFormat(item.val as any)}
                         className={`py-2 px-3 rounded-lg border text-xs font-semibold transition-all ${
                           format === item.val
-                            ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-400'
+                            ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-600 dark:text-rose-400'
                             : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
                         }`}
                       >
@@ -301,7 +301,7 @@ export default function PdfPageNumberer({ onCopy, onShare }: PdfPageNumbererProp
                         onClick={() => setPosition(item.val as any)}
                         className={`py-2 px-3 rounded-lg border text-xs font-medium transition-all ${
                           position === item.val
-                            ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-400 font-semibold'
+                            ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 text-rose-600 dark:text-rose-600 dark:text-rose-400 font-semibold'
                             : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
                         }`}
                       >

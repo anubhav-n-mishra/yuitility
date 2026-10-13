@@ -373,7 +373,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
           <div className="rounded-xl border border-blue-100 bg-blue-50/30 p-4 dark:border-blue-900/40 dark:bg-blue-950/20">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-600 dark:text-blue-400">
                   Prepayment / Foreclosure Modeling
                 </span>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
@@ -464,7 +464,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
 
             {enablePrepayment && interestSaved > 0 && (
               <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-3.5 dark:border-emerald-900/50 dark:bg-emerald-950/30">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-600 dark:text-emerald-400">
                   🎉 Prepayment Impact
                 </span>
                 <div className="mt-1 text-sm font-semibold text-emerald-900 dark:text-emerald-200">
@@ -520,7 +520,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
       <div className="border border-zinc-100 dark:border-zinc-800 rounded-xl overflow-hidden bg-white dark:bg-zinc-950">
         <button
           onClick={() => setShowAmortization(!showAmortization)}
-          className="w-full flex justify-between items-center p-4 bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-100 dark:border-zinc-800 outline-none"
+          className="w-full flex justify-between items-center p-4 bg-zinc-50 dark:bg-zinc-900/50 border-b border-zinc-100 dark:border-zinc-800 outline-none cursor-pointer"
         >
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -531,13 +531,16 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <button
+            <span
+              role="button"
+              tabIndex={0}
               onClick={(e) => { e.stopPropagation(); handleExportCSV(); }}
-              className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors font-medium mr-2"
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); handleExportCSV(); } }}
+              className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors font-medium mr-2 cursor-pointer"
             >
               <Download className="w-3 h-3" />
               CSV
-            </button>
+            </span>
             {showAmortization ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
           </div>
         </button>
@@ -559,7 +562,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
                   <tr key={s.year} className="hover:bg-zinc-50/30 dark:hover:bg-zinc-900/10 text-zinc-700 dark:text-zinc-300">
                     <td className="p-3 pl-4 font-sans font-medium text-zinc-900 dark:text-zinc-200">Year {s.year}</td>
                     <td className="p-3 text-right">{formatCurrency(s.principalPaid)}</td>
-                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-400">{formatCurrency(s.interestPaid)}</td>
+                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(s.interestPaid)}</td>
                     <td className="p-3 text-right font-semibold">{formatCurrency(s.totalPaid)}</td>
                     <td className="p-3 text-right pr-4 text-zinc-500 dark:text-zinc-400">{formatCurrency(s.balance)}</td>
                   </tr>

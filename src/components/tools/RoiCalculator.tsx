@@ -70,7 +70,7 @@ export default function RoiCalculator() {
         <div className="flex flex-col justify-between rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-cyan-50 p-6 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-300">Return on Investment (ROI)</p>
-            <p className={`mt-2 text-4xl font-extrabold ${stats.roiPercent >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600"}`}>
+            <p className={`mt-2 text-4xl font-extrabold ${stats.roiPercent >= 0 ? "text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" : "text-rose-600"}`}>
               {stats.roiPercent >= 0 ? "+" : ""}{stats.roiPercent.toFixed(2)}%
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function RoiCalculator() {
           <div className="mt-6 space-y-4 border-t border-blue-200/60 dark:border-zinc-800 pt-6">
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Net Profit / Loss</span>
-              <span className={`font-bold ${stats.netProfit >= 0 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600"}`}>
+              <span className={`font-bold ${stats.netProfit >= 0 ? "text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" : "text-rose-600"}`}>
                 {formatCurrency(stats.netProfit, currency)}
               </span>
             </div>

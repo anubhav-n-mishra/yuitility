@@ -110,10 +110,10 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
   };
 
   const renderMatrixInput = (label: string, mat: Matrix, matKey: 'A' | 'B', det: number) => (
-    <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
+    <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800">
       <div className="flex items-center justify-between mb-3">
-        <h4 className="text-sm font-semibold text-white">Matrix {matKey}</h4>
-        <span className="text-xs font-mono text-indigo-400">det({matKey}) = {det}</span>
+        <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">Matrix {matKey}</h4>
+        <span className="text-xs font-mono text-indigo-600 dark:text-indigo-400">det({matKey}) = {det}</span>
       </div>
 
       <div
@@ -127,7 +127,7 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
               type="number"
               value={val}
               onChange={(e) => updateCell(matKey, r, c, e.target.value)}
-              className="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-center font-mono text-white text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 text-center font-mono text-white text-sm focus:outline-none focus:border-indigo-500"
             />
           ))
         )}
@@ -136,14 +136,14 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
   );
 
   const renderMatrixResult = (title: string, mat: Matrix) => (
-    <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex flex-col justify-between">
+    <div className="bg-zinc-50 dark:bg-zinc-950/80 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex flex-col justify-between">
       <div>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-semibold text-slate-300">{title}</span>
+          <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">{title}</span>
           <button
             type="button"
             onClick={() => handleCopyMatrix(title, mat)}
-            className="text-slate-500 hover:text-white transition"
+            className="text-zinc-500 dark:text-zinc-500 hover:text-white transition"
             title="Copy matrix"
           >
             <Copy className="w-3.5 h-3.5" />
@@ -155,7 +155,7 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
         >
           {mat.map((row, r) =>
             row.map((val, c) => (
-              <div key={`${r}-${c}`} className="p-1.5 bg-slate-900 rounded border border-slate-800/80 text-white font-bold">
+              <div key={`${r}-${c}`} className="p-1.5 bg-white dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800/80 text-white font-bold">
                 {Number(val.toFixed(2))}
               </div>
             ))
@@ -168,15 +168,15 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
   return (
     <div className="space-y-6">
       {/* Dimension Switcher */}
-      <div className="flex items-center justify-between bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+      <div className="flex items-center justify-between bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
         <div className="flex items-center gap-2">
-          <Grid className="w-4 h-4 text-indigo-400" />
-          <span className="text-xs font-semibold text-slate-300">Matrix Dimension:</span>
+          <Grid className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+          <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">Matrix Dimension:</span>
           <button
             type="button"
             onClick={() => handleSizeChange(2)}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-              size === 2 ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              size === 2 ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             2 × 2
@@ -185,7 +185,7 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
             type="button"
             onClick={() => handleSizeChange(3)}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-              size === 3 ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              size === 3 ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             3 × 3
@@ -200,8 +200,8 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
       </div>
 
       {/* Results Grid */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-sm font-semibold text-white mb-4">Matrix Arithmetic & Transformation Results</h3>
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-4">Matrix Arithmetic & Transformation Results</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {renderMatrixResult('A + B (Addition)', addMat)}
           {renderMatrixResult('A - B (Subtraction)', subMat)}

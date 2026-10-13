@@ -165,6 +165,76 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
     "Enter your birth date to calculate exact age in years, months, and days down to the live second, plus zodiac details and next birthday countdown.",
   "markdown-viewer":
     "Drag-and-drop or upload any .md or .txt file to open it instantly, or paste Markdown text from your clipboard. The engine parses CommonMark and GitHub Flavored Markdown (GFM) directly in your browser memory, rendering real-time tables, task checklists, and code blocks with 1-click export to PDF, Word, or HTML.",
+  "case-converter":
+    "Paste text and select target casing (UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, kebab-case). The converter parses words using regex tokenization and outputs transformed text 100% locally.",
+  "character-counter":
+    "Type or paste text into the input field. The analyzer computes character count, word count, sentence count, paragraph count, and estimated reading time continuously in browser memory.",
+  "duplicate-line-remover":
+    "Paste a list of text lines. The tool compares line strings, removes duplicate entries, trims extra whitespace, and outputs a deduplicated list with optional sorting.",
+  "text-reverser":
+    "Input text and choose reversal mode (by character, word, or line). The tool splits string arrays and reverses order instantly using client-side JavaScript.",
+  "text-repeater":
+    "Enter a target phrase, specify repetition count (up to 10,000), and pick custom separators like spaces or newlines to generate repeated text blocks instantly.",
+  "slug-generator":
+    "Enter article titles or headings. The generator converts accents to ASCII, strips special symbols, replaces spaces with hyphens, and formats clean lowercase URL slugs.",
+  "text-to-ascii-art":
+    "Type text to render retro ASCII banner art using classic block letter mapping. The ASCII font matrix processes characters locally into copyable monospace text.",
+  "text-cleaner":
+    "Paste raw text from web pages or documents. Select cleaning filters such as removing HTML tags, converting smart quotes, stripping double spaces, or normalizing line breaks.",
+  "css-minifier-beautifier":
+    "Paste CSS code into the editor. Select Minify to remove comments and whitespace for production or Beautify to format selectors and properties with clean indentation.",
+  "js-minifier-beautifier":
+    "Paste JavaScript or TypeScript snippet. Minify strips comments and white space safely; Beautify aligns brace structures and formats line indents locally in your tab.",
+  "html-formatter":
+    "Paste HTML markup. Beautify aligns nested DOM elements with consistent indentation; Minify collapses extra spacing for optimized web page delivery.",
+  "json-to-csv-converter":
+    "Paste a JSON array of objects. The parser extracts object keys as CSV header columns and formats values into downloadable CSV spreadsheet rows.",
+  "color-format-converter":
+    "Input color hex or RGB values. Mathematical color conversion formulas calculate HEX, RGB, HSL, HSV, and CMYK color codes alongside WCAG contrast ratios.",
+  "pomodoro-timer":
+    "Start the 25-minute Pomodoro timer for focused work followed by 5-minute break intervals. Tracks completed Pomodoro cycles and triggers browser audio alerts.",
+  "countdown-timer":
+    "Set target duration in hours, minutes, and seconds. The timer computes precise countdown intervals using system timestamps and plays audio alarms upon completion.",
+  "world-clock":
+    "Select global cities to compare current times. The clock queries browser time zone databases via Intl.DateTimeFormat to display live local times and business hour overlaps.",
+  "number-base-converter":
+    "Input a number in Binary, Octal, Decimal, or Hexadecimal. The converter evaluates positional radix formulas to display values across all bases simultaneously.",
+  "jwt-decoder":
+    "Paste a JSON Web Token. The decoder splits header, payload, and signature segments, decodes Base64Url strings, and displays formatted JSON claims privately.",
+  "meeting-cost-calculator":
+    "Enter attendee count and average hourly compensation. The calculator multiplies duration by hourly rate to measure total financial cost and live dollar burn rate.",
+  "age-in-seconds-calculator":
+    "Select your birth date and time. The calculator computes exact elapsed seconds between your birth timestamp and the current time, accounting for leap years.",
+  "read-time-estimator":
+    "Paste article text or script. Word count algorithms estimate silent reading duration (200 WPM) and spoken presentation duration (130 WPM).",
+  "sip-step-up-calculator":
+    "Enter initial monthly SIP, annual percentage or fixed step-up amount, expected returns, and tenure. Compares standard SIP vs step-up SIP wealth accumulation.",
+  "ssy-calculator":
+    "Enter annual contribution amount and girl child age. The calculator models 15 years of deposits and 21 years of compounded growth under government SSY rules.",
+  "crypto-profit-calculator":
+    "Enter buy price, sell price, coin quantity, and trading fees. The calculator computes gross profit, fee deductions, net ROI, and break-even price targets.",
+  "calorie-deficit-calculator":
+    "Enter age, sex, weight, height, and activity level. Calculates TDEE using Mifflin-St Jeor and subtracts target calorie deficit for safe weekly weight loss.",
+  "ohms-law-calculator":
+    "Enter any two circuit parameters (Voltage, Current, Resistance, or Power). The calculator solves remaining electrical parameters using V = I × R equations.",
+  "power-consumption-calculator":
+    "Enter appliance wattage, daily usage hours, and electricity rate per kWh. Computes daily and monthly kWh usage and total electric utility bill costs.",
+  "speed-distance-time-calculator":
+    "Select variable to solve (Speed, Distance, or Time) and enter known values. Calculates exact results using s = d / t physics formulas.",
+  "image-color-picker":
+    "Upload an image file. Click anywhere on the HTML5 Canvas image preview to sample pixel colors and extract exact HEX, RGB, and HSL codes.",
+  "image-flipper":
+    "Upload an image and click Horizontal or Vertical flip. HTML5 Canvas flips pixel coordinates instantly and exports high-quality PNG or JPEG images.",
+  "svg-to-png-converter":
+    "Upload SVG file or paste vector markup. Render vector curves onto HTML5 Canvas at custom scale factors (1x-4x) and export crisp PNG raster images.",
+  "password-strength-checker":
+    "Type a password to evaluate character set entropy (bits) and estimate brute-force cracking duration based on offline mathematical analysis.",
+  "text-encryptor":
+    "Enter text and passphrase. Web Crypto API uses PBKDF2 key derivation and AES-256-GCM encryption to encode messages into secure Base64 ciphertext.",
+  "file-hash-verifier":
+    "Select a local file. Web Crypto API streams binary file data into cryptographic hashing functions to calculate MD5, SHA-256, and SHA-512 checksums.",
+  "exif-data-viewer":
+    "Upload a JPEG image. The viewer parses binary EXIF metadata headers to display camera model, shutter speed, ISO, GPS coordinates, and creation date.",
 };
 
 /**
@@ -181,6 +251,496 @@ export function getToolHowItWorks(tool: Tool): string {
  * Priority 1, Priority 2, and Content Pack FAQ Database
  */
 const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
+  "case-converter": [
+    {
+      question: "What text case transformations are supported?",
+      answer: "You can transform text into UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE with 1 click."
+    },
+    {
+      question: "How does Title Case conversion work?",
+      answer: "Title Case capitalizes the first letter of each major word while maintaining proper lowercase formatting for standard minor words unless at the beginning of a phrase."
+    },
+    {
+      question: "Is my text uploaded or stored on any server?",
+      answer: "No. All text string transformations execute 100% locally in browser memory without sending data to any external server."
+    }
+  ],
+  "character-counter": [
+    {
+      question: "Does the character count include spaces?",
+      answer: "The counter displays both total character count (including spaces) and net character count (excluding spaces) side-by-side."
+    },
+    {
+      question: "What are character limits for popular social media platforms?",
+      answer: "Twitter/X limit is 280 characters, LinkedIn post limit is 3,000 characters, Instagram caption limit is 2,200 characters, and SEO Meta Titles should be kept under 60 characters."
+    },
+    {
+      question: "How is reading time calculated?",
+      answer: "Estimated reading time is calculated based on an average adult reading speed of 200 words per minute."
+    }
+  ],
+  "duplicate-line-remover": [
+    {
+      question: "Can I remove duplicate lines case-insensitively?",
+      answer: "Yes, you can toggle case-sensitive matching on or off to combine duplicate lines regardless of uppercase or lowercase variations."
+    },
+    {
+      question: "Does it sort the output list automatically?",
+      answer: "You can choose to sort deduplicated lines alphabetically (A-Z or Z-A) or preserve the original line order of your input text."
+    },
+    {
+      question: "Can it strip empty blank lines?",
+      answer: "Yes, selecting the 'Remove Empty Lines' filter automatically cleans out blank lines and trailing spacing."
+    }
+  ],
+  "text-reverser": [
+    {
+      question: "What modes of text reversal are available?",
+      answer: "You can reverse individual character order (flip letters), reverse word sequence, or reverse line order top-to-bottom."
+    },
+    {
+      question: "Does it handle emojis and special Unicode characters?",
+      answer: "Yes, full Unicode code point splitting ensures emojis and multi-byte characters are reversed cleanly without breaking symbols."
+    },
+    {
+      question: "Is there any text length limit?",
+      answer: "No hard limits — client-side JavaScript reverses thousands of lines of text in milliseconds directly in device RAM."
+    }
+  ],
+  "text-repeater": [
+    {
+      question: "How many times can I repeat a text block?",
+      answer: "You can repeat any word, phrase, or line up to 10,000 times in a single click."
+    },
+    {
+      question: "Can I add custom separators between repeated items?",
+      answer: "Yes, choose separators including newlines, spaces, commas, hyphens, or enter custom delimiter characters."
+    },
+    {
+      question: "Is the repeated text easy to copy?",
+      answer: "Clicking the 'Copy' button instantly copies the full repeated string payload to your device clipboard."
+    }
+  ],
+  "slug-generator": [
+    {
+      question: "What makes a URL slug SEO-friendly?",
+      answer: "An SEO-friendly slug uses concise lowercase words separated by hyphens, removes special punctuation marks, and transliterates accented characters to standard ASCII."
+    },
+    {
+      question: "How are non-English accented letters processed?",
+      answer: "Accented characters like é, ü, and ñ are automatically normalized into clean ASCII equivalents (e, u, n)."
+    },
+    {
+      question: "Does it strip common stop words?",
+      answer: "You can toggle automatic stop word removal (a, an, the, and, or) to make URLs shorter and punchier for search engines."
+    }
+  ],
+  "text-to-ascii-art": [
+    {
+      question: "Where can I paste generated ASCII art?",
+      answer: "ASCII banners can be pasted in source code comments, GitHub README.md files, terminal startup scripts, and Discord messages."
+    },
+    {
+      question: "Why does ASCII art look misaligned on mobile?",
+      answer: "ASCII art relies on fixed-width monospace font alignment. Ensure your display uses a code block or `<pre>` tag for proper viewing."
+    },
+    {
+      question: "Is text sent to a remote API?",
+      answer: "No, ASCII character font matrix mapping is performed 100% client-side."
+    }
+  ],
+  "text-cleaner": [
+    {
+      question: "Can I strip HTML tags from copy-pasted web content?",
+      answer: "Yes, the cleaner removes all HTML tags (like `<p>`, `<div>`, `<a>`) while retaining raw unformatted plain text."
+    },
+    {
+      question: "How does it fix smart curly quotes?",
+      answer: "Word processor curly quotes (“”) and apostrophes (‘’) are converted to standard ASCII straight quotes (\" and ')."
+    },
+    {
+      question: "Does it collapse consecutive multiple spaces?",
+      answer: "Yes, double or multiple consecutive spaces are collapsed into single clean spaces across the text body."
+    }
+  ],
+  "css-minifier-beautifier": [
+    {
+      question: "How much file size savings does CSS minification provide?",
+      answer: "Minifying CSS typically reduces stylesheet file sizes by 15% to 40% by stripping comments, unneeded whitespace, and redundant line breaks."
+    },
+    {
+      question: "Will beautifying break valid CSS syntax?",
+      answer: "No, beautification reformats indentations and line breaks without altering selector logic, property rules, or media queries."
+    },
+    {
+      question: "Is my proprietary CSS code kept private?",
+      answer: "Yes, all CSS parsing and formatting runs entirely within your local browser tab."
+    }
+  ],
+  "js-minifier-beautifier": [
+    {
+      question: "Is client-side JS minification safe for sensitive code?",
+      answer: "Because processing happens entirely within your web browser sandbox, zero code bytes are uploaded to remote servers."
+    },
+    {
+      question: "Does it format modern ECMAScript / ES6+ code?",
+      answer: "Yes, arrow functions, async/await constructs, template literals, destructuring, and classes are supported."
+    },
+    {
+      question: "Can I copy minified code directly into production assets?",
+      answer: "Yes, 1-click copy exports valid minified JS output ready for distribution bundles."
+    }
+  ],
+  "html-formatter": [
+    {
+      question: "What is the difference between formatting and minifying HTML?",
+      answer: "Formatting adds clean indentation and line breaks for human readability. Minifying strips unnecessary whitespace to optimize network download speeds."
+    },
+    {
+      question: "Does it alter text inside `<pre>` or `<script>` tags?",
+      answer: "Content within `<pre>`, `<code>`, and `<script>` blocks is protected to prevent unintended code alteration."
+    },
+    {
+      question: "Is HTML parsing client-side?",
+      answer: "Yes, 100% browser-based DOM parser execution."
+    }
+  ],
+  "json-to-csv-converter": [
+    {
+      question: "Can it convert nested JSON structures to CSV?",
+      answer: "Nested object properties (e.g. `user.address.city`) are flattened into clear CSV header columns."
+    },
+    {
+      question: "Can I convert a CSV file back to JSON?",
+      answer: "Yes, bi-directional parsing allows uploading or pasting CSV content to generate JSON array objects."
+    },
+    {
+      question: "Is financial or database JSON safe to convert here?",
+      answer: "100% safe. Data parsing runs locally in your device RAM without network transmission."
+    }
+  ],
+  "color-format-converter": [
+    {
+      question: "What color spaces does this converter support?",
+      answer: "Converts between HEX, RGB, RGBA, HSL, HSLA, HSV, and CMYK for web and print graphics."
+    },
+    {
+      question: "How is the WCAG contrast ratio checked?",
+      answer: "The tool measures luminance contrast ratios against white and black backgrounds to ensure compliance with WCAG 2.1 AA/AAA accessibility standards."
+    },
+    {
+      question: "Can I click to copy color codes?",
+      answer: "Clicking any converted color format immediately copies the CSS value to your clipboard."
+    }
+  ],
+  "pomodoro-timer": [
+    {
+      question: "What is the standard Pomodoro interval setup?",
+      answer: "The classic setup consists of 25 minutes of focused work, followed by a 5-minute short break. After 4 work cycles, take a longer 15–30 minute break."
+    },
+    {
+      question: "Can I customize work and break times?",
+      answer: "Yes, you can adjust work duration, short break length, and long break intervals in timer settings."
+    },
+    {
+      question: "Does the timer chime when running in a background tab?",
+      answer: "Yes, Web Audio API sound notifications alert you when work or break intervals complete, even if switching tabs."
+    }
+  ],
+  "countdown-timer": [
+    {
+      question: "How accurate is the online countdown timer?",
+      answer: "The timer syncs against device hardware timestamps to prevent interval lag when switching browser tabs."
+    },
+    {
+      question: "What happens when the timer reaches 00:00:00?",
+      answer: "An audio alarm sounds and a visual completion message alerts you that time is up."
+    },
+    {
+      question: "Can I set countdowns for hours, minutes, and seconds?",
+      answer: "Yes, configure custom target durations for any length of time."
+    }
+  ],
+  "world-clock": [
+    {
+      question: "How are global time zones updated for Daylight Saving Time (DST)?",
+      answer: "The clock queries your browser's native `Intl.DateTimeFormat` database, which updates automatically for regional DST shifts."
+    },
+    {
+      question: "Can I compare overlapping business hours across remote teams?",
+      answer: "Yes, color-coded business hour indicators highlight standard working hours (9 AM - 5 PM) across cities."
+    },
+    {
+      question: "Which major time zones are included?",
+      answer: "Includes UTC, EST, PST, GMT, CET, IST, JST, AEST, and hundreds of searchable world cities."
+    }
+  ],
+  "number-base-converter": [
+    {
+      question: "Which numerical bases can be converted?",
+      answer: "Converts simultaneously across Binary (Base 2), Octal (Base 8), Decimal (Base 10), and Hexadecimal (Base 16)."
+    },
+    {
+      question: "How large of a number can be converted?",
+      answer: "Supports large 64-bit integer values without precision loss."
+    },
+    {
+      question: "Why are base conversions useful in computer science?",
+      answer: "Binary and hexadecimal representations are crucial for low-level memory addressing, bitwise operations, networking IP masks, and color codes."
+    }
+  ],
+  "jwt-decoder": [
+    {
+      question: "Is it safe to decode production JSON Web Tokens here?",
+      answer: "Yes! JWT decoding is performed 100% client-side in your web browser. Tokens are never transmitted over the internet or logged."
+    },
+    {
+      question: "What parts of a JWT are decoded?",
+      answer: "Splits and decodes the algorithm Header, JSON Claims Payload, and displays Signature verification details."
+    },
+    {
+      question: "How are timestamp claims (exp, iat, nbf) presented?",
+      answer: "Unix epoch timestamps are automatically converted into readable local date and time strings."
+    }
+  ],
+  "meeting-cost-calculator": [
+    {
+      question: "How is total meeting cost calculated?",
+      answer: "Formula: Total Cost = Attendee Count × (Average Hourly Rate / 60) × Meeting Duration in Minutes."
+    },
+    {
+      question: "Can I run the calculator live during a video call?",
+      answer: "Yes, start the live ticker to watch cumulative meeting cost accrue second-by-second on screen."
+    },
+    {
+      question: "Why should teams track meeting costs?",
+      answer: "Quantifying meeting costs fosters punctuality, tighter agendas, and eliminates low-value status meetings."
+    }
+  ],
+  "age-in-seconds-calculator": [
+    {
+      question: "Does the calculation account for leap years?",
+      answer: "Yes, exact UNIX epoch time subtraction factors in 366-day leap years precisely."
+    },
+    {
+      question: "What additional age breakdowns are shown?",
+      answer: "Displays your total age in seconds, minutes, hours, days, weeks, months, and estimated total heartbeats."
+    },
+    {
+      question: "Does the second counter update live?",
+      answer: "Yes, a real-time live ticker updates your age in seconds every second."
+    }
+  ],
+  "read-time-estimator": [
+    {
+      question: "What WPM speeds are used for calculation?",
+      answer: "Silent reading averages 200 words per minute (WPM); public speaking and presentation pace averages 130 WPM."
+    },
+    {
+      question: "Can I adjust the WPM reading speed?",
+      answer: "Yes, slide custom WPM values to calculate timings for fast readers or slow speech scripts."
+    },
+    {
+      question: "Does reading time impact blog engagement?",
+      answer: "Adding estimated read times to articles sets clear reader expectations and improves bounce rates."
+    }
+  ],
+  "sip-step-up-calculator": [
+    {
+      question: "What is a SIP Step-Up (Top-Up)?",
+      answer: "A SIP Step-Up automatically increases your monthly mutual fund investment by a fixed percentage (e.g. 10%) or dollar amount each year as your income grows."
+    },
+    {
+      question: "How much more wealth does a step-up SIP accumulate?",
+      answer: "Increasing contributions by 10% annually can increase your final maturity corpus by 70% to 100% over a 15-year tenure compared to a flat SIP."
+    },
+    {
+      question: "Are returns compounded monthly?",
+      answer: "Yes, compound growth is calculated monthly on the updated contribution amount for each yearly step-up phase."
+    }
+  ],
+  "ssy-calculator": [
+    {
+      question: "What is the deposit rules and maturity timeline for SSY?",
+      answer: "Under Sukanya Samriddhi Yojana, deposits are made for 15 years from account opening, and the scheme matures after 21 years."
+    },
+    {
+      question: "What is the maximum yearly deposit in SSY?",
+      answer: "The minimum annual deposit is ₹250 and maximum investment cap is ₹1.5 lakh per financial year."
+    },
+    {
+      question: "Are SSY returns tax-free?",
+      answer: "Yes, SSY enjoys EEE status — tax deduction under 80C on deposit, tax-free annual interest, and tax-free maturity proceeds."
+    }
+  ],
+  "crypto-profit-calculator": [
+    {
+      question: "Does the calculator include trading exchange fees?",
+      answer: "Yes, enter maker/taker percentage fees for buy and sell orders to compute true net profit or loss."
+    },
+    {
+      question: "Can I calculate break-even sell price?",
+      answer: "Yes, the tool computes the exact minimum sell price required to cover trading fees and avoid a loss."
+    },
+    {
+      question: "Is my crypto portfolio data private?",
+      answer: "100% private. All trade maths run locally in your tab memory without tracking."
+    }
+  ],
+  "calorie-deficit-calculator": [
+    {
+      question: "How does a calorie deficit cause weight loss?",
+      answer: "A calorie deficit occurs when you consume fewer calories than your body burns (TDEE), forcing your body to burn stored fat for energy."
+    },
+    {
+      question: "What is a healthy daily calorie deficit?",
+      answer: "A deficit of 300 to 500 calories per day is recommended for safe, sustainable fat loss of approximately 0.5 to 1 lb per week."
+    },
+    {
+      question: "How is TDEE calculated?",
+      answer: "TDEE (Total Daily Energy Expenditure) is calculated using the Mifflin-St Jeor formula for BMR multiplied by your physical activity factor."
+    }
+  ],
+  "ohms-law-calculator": [
+    {
+      question: "What are the core formulas for Ohm's Law?",
+      answer: "Voltage V = I × R, Current I = V / R, Resistance R = V / I, and Power P = V × I."
+    },
+    {
+      question: "What electrical units are supported?",
+      answer: "Calculates Volts (V), Amperes (A), Ohms (Ω), and Watts (W)."
+    },
+    {
+      question: "How many values do I need to input?",
+      answer: "Enter any two known values to compute the remaining electrical properties automatically."
+    }
+  ],
+  "power-consumption-calculator": [
+    {
+      question: "How do I calculate appliance kWh consumption?",
+      answer: "Formula: kWh = (Appliance Wattage × Hours Used Per Day × Days) / 1000."
+    },
+    {
+      question: "How is monthly electricity bill estimated?",
+      answer: "Multiply total monthly kWh consumed by your local electric utility rate per kWh."
+    },
+    {
+      question: "Which appliances use the most electricity?",
+      answer: "Air conditioners, water heaters, space heaters, clothes dryers, and refrigerators account for the highest kWh usage."
+    }
+  ],
+  "speed-distance-time-calculator": [
+    {
+      question: "What is the speed, distance, time equation?",
+      answer: "Speed = Distance / Time; Distance = Speed × Time; Time = Distance / Speed."
+    },
+    {
+      question: "What unit conversions are available?",
+      answer: "Supports kilometers, miles, meters, hours, minutes, seconds, km/h, and mph."
+    },
+    {
+      question: "Can I use this for running pace or trip planning?",
+      answer: "Yes, calculate travel duration, driving speeds, or running pace splits for races."
+    }
+  ],
+  "image-color-picker": [
+    {
+      question: "Are uploaded images stored on a server?",
+      answer: "No! Images are rendered locally on HTML5 Canvas in your browser. No images are uploaded to any server."
+    },
+    {
+      question: "Which color formats can I extract?",
+      answer: "Extract HEX, RGB, and HSL color codes with 1-click clipboard copying."
+    },
+    {
+      question: "Can it extract dominant color palettes?",
+      answer: "Yes, automatically extracts key accent colors from your image."
+    }
+  ],
+  "image-flipper": [
+    {
+      question: "Does flipping an image lower picture quality?",
+      answer: "No, HTML5 Canvas flips pixels at 100% full original image resolution."
+    },
+    {
+      question: "Can I flip horizontally and vertically at the same time?",
+      answer: "Yes, combine horizontal mirror flip and vertical flip."
+    },
+    {
+      question: "What image formats can I save?",
+      answer: "Export as PNG, JPEG, or WebP."
+    }
+  ],
+  "svg-to-png-converter": [
+    {
+      question: "Can I convert SVG to PNG with a transparent background?",
+      answer: "Yes, preserve vector transparency by keeping transparent background toggled on."
+    },
+    {
+      question: "Can I scale up SVG vector resolution for high-DPI retina printing?",
+      answer: "Yes, scale output to 2x, 3x, 4x or set custom high-pixel dimensions without quality degradation."
+    },
+    {
+      question: "Are SVG files uploaded to a remote server?",
+      answer: "No, SVG vectors render directly on client-side Canvas."
+    }
+  ],
+  "password-strength-checker": [
+    {
+      question: "Is it safe to test passwords online here?",
+      answer: "100% safe! Checking runs entirely inside your local browser tab memory using offline entropy formulas. Passwords are never sent over the network."
+    },
+    {
+      question: "What is password entropy in bits?",
+      answer: "Entropy measures mathematical unpredictability. Passwords above 60 bits are strong; above 80 bits are extremely secure."
+    },
+    {
+      question: "How is crack time estimated?",
+      answer: "Estimates time required for a high-speed GPU cluster performing billions of guesses per second to brute-force the password."
+    }
+  ],
+  "text-encryptor": [
+    {
+      question: "What algorithm is used for encryption?",
+      answer: "AES-256-GCM encryption with keys derived via PBKDF2 (100,000 iterations) using Web Crypto API."
+    },
+    {
+      question: "Can anyone decrypt my text without the secret key?",
+      answer: "No. Without your secret passphrase, AES-256-GCM ciphertext is mathematically unbreakable."
+    },
+    {
+      question: "Where are keys stored?",
+      answer: "Keys are generated ephemerally in browser RAM and are never saved or sent anywhere."
+    }
+  ],
+  "file-hash-verifier": [
+    {
+      question: "Are large files uploaded to calculate hashes?",
+      answer: "No! Files are read in local binary chunks using HTML5 FileReader API. ISOs or installers of any size are hashed locally."
+    },
+    {
+      question: "Which hash functions are calculated?",
+      answer: "Computes SHA-256, SHA-512, SHA-1, and MD5 checksums."
+    },
+    {
+      question: "Why check file hash checksums?",
+      answer: "Verifying checksums confirms that downloaded software has not been corrupted or altered."
+    }
+  ],
+  "exif-data-viewer": [
+    {
+      question: "What EXIF tags are extracted from photos?",
+      answer: "Camera make/model, shutter speed, aperture, ISO, focal length, creation timestamp, and GPS coordinates."
+    },
+    {
+      question: "Can I strip EXIF metadata for privacy before sharing photos online?",
+      answer: "Yes, click 'Strip EXIF Data' to export a clean copy of your photo with all location and camera metadata removed."
+    },
+    {
+      question: "Are photos uploaded to view EXIF data?",
+      answer: "No, EXIF headers are parsed locally in browser memory."
+    }
+  ],
   "markdown-viewer": [
     {
       question: "How do I open an MD file without installing special software?",

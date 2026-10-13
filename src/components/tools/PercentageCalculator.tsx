@@ -80,210 +80,210 @@ export default function PercentageCalculator({ onCopy }: PercentageCalculatorPro
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Card 1: What is X% of Y? */}
-        <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-3 text-indigo-400">
+            <div className="flex items-center gap-2 mb-3 text-indigo-600 dark:text-indigo-400">
               <Percent className="w-5 h-5" />
-              <h3 className="font-semibold text-white">What is X% of Y?</h3>
+              <h3 className="font-semibold text-zinc-900 dark:text-white">What is X% of Y?</h3>
             </div>
-            <p className="text-xs text-slate-400 mb-4">Calculate tax, tips, or fractional proportions.</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Calculate tax, tips, or fractional proportions.</p>
 
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Percentage (X%)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Percentage (X%)</label>
                 <input
                   type="number"
                   value={m1X}
                   onChange={(e) => setM1X(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
                 />
               </div>
-              <span className="text-slate-500 font-bold mt-5">% of</span>
+              <span className="text-zinc-500 dark:text-zinc-500 font-bold mt-5">% of</span>
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Total Value (Y)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Total Value (Y)</label>
                 <input
                   type="number"
                   value={m1Y}
                   onChange={(e) => setM1Y(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex items-center justify-between">
+          <div className="bg-zinc-50 dark:bg-zinc-950/80 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between">
             <div>
-              <span className="text-xs text-slate-500 block">Result</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Result</span>
               <span className="text-xl font-bold font-mono text-white">{r1 ? r1.val : '—'}</span>
             </div>
             {r1 && (
               <button
                 type="button"
                 onClick={() => copyVal(r1.val, 'm1')}
-                className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300 transition"
+                className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 transition"
               >
-                {copiedId === 'm1' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedId === 'm1' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
             )}
           </div>
         </div>
 
         {/* Card 2: X is what % of Y? */}
-        <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 mb-3 text-cyan-400">
               <Percent className="w-5 h-5" />
-              <h3 className="font-semibold text-white">X is what % of Y?</h3>
+              <h3 className="font-semibold text-zinc-900 dark:text-white">X is what % of Y?</h3>
             </div>
-            <p className="text-xs text-slate-400 mb-4">Find marks percentage, discount shares, or progress.</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Find marks percentage, discount shares, or progress.</p>
 
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Part Value (X)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Part Value (X)</label>
                 <input
                   type="number"
                   value={m2X}
                   onChange={(e) => setM2X(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
                 />
               </div>
-              <span className="text-slate-500 font-bold mt-5">is % of</span>
+              <span className="text-zinc-500 dark:text-zinc-500 font-bold mt-5">is % of</span>
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Whole Value (Y)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Whole Value (Y)</label>
                 <input
                   type="number"
                   value={m2Y}
                   onChange={(e) => setM2Y(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex items-center justify-between">
+          <div className="bg-zinc-50 dark:bg-zinc-950/80 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between">
             <div>
-              <span className="text-xs text-slate-500 block">Result</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Result</span>
               <span className="text-xl font-bold font-mono text-cyan-400">{r2 ? `${r2.val}%` : '—'}</span>
             </div>
             {r2 && (
               <button
                 type="button"
                 onClick={() => copyVal(`${r2.val}%`, 'm2')}
-                className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300 transition"
+                className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 transition"
               >
-                {copiedId === 'm2' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedId === 'm2' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
             )}
           </div>
         </div>
 
         {/* Card 3: Percentage Change (Increase / Decrease) */}
-        <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-3 text-emerald-400">
+            <div className="flex items-center gap-2 mb-3 text-emerald-600 dark:text-emerald-400">
               <Percent className="w-5 h-5" />
-              <h3 className="font-semibold text-white">Percentage Increase / Decrease</h3>
+              <h3 className="font-semibold text-zinc-900 dark:text-white">Percentage Increase / Decrease</h3>
             </div>
-            <p className="text-xs text-slate-400 mb-4">Calculate growth rate, price hike, or loss percent.</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Calculate growth rate, price hike, or loss percent.</p>
 
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Initial Value (X)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Initial Value (X)</label>
                 <input
                   type="number"
                   value={m3X}
                   onChange={(e) => setM3X(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
                 />
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-500 mt-5 shrink-0" />
+              <ArrowRight className="w-4 h-4 text-zinc-500 dark:text-zinc-500 mt-5 shrink-0" />
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Final Value (Y)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Final Value (Y)</label>
                 <input
                   type="number"
                   value={m3Y}
                   onChange={(e) => setM3Y(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex items-center justify-between">
+          <div className="bg-zinc-50 dark:bg-zinc-950/80 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between">
             <div>
-              <span className="text-xs text-slate-500 block">Rate of Change</span>
-              <span className={`text-xl font-bold font-mono ${r3?.isIncrease ? 'text-emerald-400' : 'text-rose-400'}`}>
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Rate of Change</span>
+              <span className={`text-xl font-bold font-mono ${r3?.isIncrease ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
                 {r3 ? `${r3.isIncrease ? '+' : '-'}${r3.val}%` : '—'}
               </span>
-              {r3 && <span className="text-xs text-slate-400 block mt-0.5">Absolute difference: {r3.diff}</span>}
+              {r3 && <span className="text-xs text-zinc-500 dark:text-zinc-400 block mt-0.5">Absolute difference: {r3.diff}</span>}
             </div>
             {r3 && (
               <button
                 type="button"
                 onClick={() => copyVal(`${r3.isIncrease ? '+' : '-'}${r3.val}%`, 'm3')}
-                className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300 transition"
+                className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 transition"
               >
-                {copiedId === 'm3' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedId === 'm3' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
             )}
           </div>
         </div>
 
         {/* Card 4: Add / Subtract Percentage */}
-        <div className="bg-slate-900/60 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2 mb-3 text-amber-400">
               <Percent className="w-5 h-5" />
-              <h3 className="font-semibold text-white">Add or Subtract %</h3>
+              <h3 className="font-semibold text-zinc-900 dark:text-white">Add or Subtract %</h3>
             </div>
-            <p className="text-xs text-slate-400 mb-4">Calculate final price with sales tax, VAT, or markdown.</p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Calculate final price with sales tax, VAT, or markdown.</p>
 
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
-                <label className="text-xs text-slate-400 block mb-1">Base Price / Value (Y)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Base Price / Value (Y)</label>
                 <input
                   type="number"
                   value={m4Y}
                   onChange={(e) => setM4Y(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-500"
                 />
               </div>
               <div className="w-20">
-                <label className="text-xs text-slate-400 block mb-1">Action</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Action</label>
                 <select
                   value={m4Op}
                   onChange={(e) => setM4Op(e.target.value as 'add' | 'sub')}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-2 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
                 >
                   <option value="add">+ Add</option>
                   <option value="sub">- Sub</option>
                 </select>
               </div>
               <div className="w-24">
-                <label className="text-xs text-slate-400 block mb-1">% Rate (X)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">% Rate (X)</label>
                 <input
                   type="number"
                   value={m4X}
                   onChange={(e) => setM4X(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 flex items-center justify-between">
+          <div className="bg-zinc-50 dark:bg-zinc-950/80 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between">
             <div>
-              <span className="text-xs text-slate-500 block">Final Total</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Final Total</span>
               <span className="text-xl font-bold font-mono text-amber-400">{r4 ? r4.val : '—'}</span>
-              {r4 && <span className="text-xs text-slate-400 block mt-0.5">{m4Op === 'add' ? 'Added' : 'Deducted'}: {r4.delta}</span>}
+              {r4 && <span className="text-xs text-zinc-500 dark:text-zinc-400 block mt-0.5">{m4Op === 'add' ? 'Added' : 'Deducted'}: {r4.delta}</span>}
             </div>
             {r4 && (
               <button
                 type="button"
                 onClick={() => copyVal(r4.val, 'm4')}
-                className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300 transition"
+                className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 transition"
               >
-                {copiedId === 'm4' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedId === 'm4' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
             )}
           </div>

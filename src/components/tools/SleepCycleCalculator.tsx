@@ -69,12 +69,12 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
   return (
     <div className="space-y-6">
       {/* Mode Switcher */}
-      <div className="flex items-center gap-2 bg-slate-900/60 p-1.5 rounded-xl border border-slate-800 w-fit">
+      <div className="flex items-center gap-2 bg-white dark:bg-zinc-900/60 shadow-sm p-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 w-fit">
         <button
           type="button"
           onClick={() => setMode('wakeAt')}
           className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition ${
-            mode === 'wakeAt' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
+            mode === 'wakeAt' ? 'bg-indigo-600 text-white shadow' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
           }`}
         >
           <Sun className="w-3.5 h-3.5" /> I need to wake up at...
@@ -83,7 +83,7 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
           type="button"
           onClick={() => setMode('sleepNow')}
           className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition ${
-            mode === 'sleepNow' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'
+            mode === 'sleepNow' ? 'bg-indigo-600 text-white shadow' : 'text-zinc-500 dark:text-zinc-400 hover:text-white'
           }`}
         >
           <Moon className="w-3.5 h-3.5" /> If I go to sleep right now...
@@ -92,27 +92,27 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Controls */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white">Sleep Settings</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Sleep Settings</h3>
 
           {mode === 'wakeAt' ? (
             <div>
-              <label className="text-xs text-slate-300 block mb-1">Target Wake Up Time</label>
+              <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Target Wake Up Time</label>
               <input
                 type="time"
                 value={wakeTime}
                 onChange={(e) => setWakeTime(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
           ) : (
-            <div className="p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-300">
+            <div className="p-4 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-xs text-zinc-700 dark:text-zinc-300">
               Calculating optimal wake-up intervals based on the current time.
             </div>
           )}
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Time to Fall Asleep ({latencyMins} minutes)
             </label>
             <input
@@ -124,7 +124,7 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
               onChange={(e) => setLatencyMins(parseInt(e.target.value, 10))}
               className="w-full accent-indigo-500"
             />
-            <span className="text-[11px] text-slate-500 mt-1 block">
+            <span className="text-[11px] text-zinc-500 dark:text-zinc-500 mt-1 block">
               Average adult takes 10 to 20 minutes to transition into sleep.
             </span>
           </div>
@@ -132,7 +132,7 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
 
         {/* Results Cards */}
         <div className="md:col-span-2 space-y-3">
-          <h4 className="text-sm font-semibold text-white">
+          <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">
             {mode === 'wakeAt' ? 'Recommended Bedtimes' : 'Recommended Wake Up Times'}
           </h4>
 
@@ -143,19 +143,19 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
                 className={`p-4 rounded-xl border flex items-center justify-between transition ${
                   item.recommended
                     ? 'border-emerald-500/60 bg-emerald-950/30'
-                    : 'border-slate-800 bg-slate-900/60'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 shadow-sm'
                 }`}
               >
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-2xl font-black font-mono text-white">{item.timeStr}</span>
                     {item.recommended && (
-                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                      <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
                         Optimal
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-slate-400 font-mono block mt-0.5">
+                  <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono block mt-0.5">
                     {item.count} sleep cycles ({item.hours} hours)
                   </span>
                 </div>
@@ -163,11 +163,11 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
                 <button
                   type="button"
                   onClick={() => handleCopy(item.timeStr)}
-                  className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg transition"
+                  className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg transition"
                   title="Copy time"
                 >
                   {copiedTime === item.timeStr ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -176,7 +176,7 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
             ))}
           </div>
 
-          <p className="text-xs text-slate-500 pt-2">
+          <p className="text-xs text-zinc-500 dark:text-zinc-500 pt-2">
             Waking up in the middle of a 90-minute sleep cycle causes sleep inertia and morning fatigue. Waking at the end of a cycle leaves you feeling alert and refreshed.
           </p>
         </div>

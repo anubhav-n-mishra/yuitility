@@ -123,9 +123,9 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
   return (
     <div className="space-y-6">
       {/* 1. Proportion Solver */}
-      <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-        <h3 className="text-sm font-semibold text-white mb-1">Proportion Solver (A : B = C : D)</h3>
-        <p className="text-xs text-slate-400 mb-4">Leave any one box blank to solve for the missing term.</p>
+      <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Proportion Solver (A : B = C : D)</h3>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Leave any one box blank to solve for the missing term.</p>
 
         <div className="flex flex-wrap items-center gap-3 font-mono text-sm">
           <div className="flex items-center gap-2">
@@ -134,19 +134,19 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
               placeholder="A"
               value={propA}
               onChange={(e) => setPropA(e.target.value)}
-              className="w-20 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
             />
-            <span className="text-slate-500 font-bold">:</span>
+            <span className="text-zinc-500 dark:text-zinc-500 font-bold">:</span>
             <input
               type="number"
               placeholder="B"
               value={propB}
               onChange={(e) => setPropB(e.target.value)}
-              className="w-20 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
 
-          <span className="text-indigo-400 font-bold text-lg">=</span>
+          <span className="text-indigo-600 dark:text-indigo-400 font-bold text-lg">=</span>
 
           <div className="flex items-center gap-2">
             <input
@@ -154,33 +154,33 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
               placeholder="C"
               value={propC}
               onChange={(e) => setPropC(e.target.value)}
-              className="w-20 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
             />
-            <span className="text-slate-500 font-bold">:</span>
+            <span className="text-zinc-500 dark:text-zinc-500 font-bold">:</span>
             <input
               type="number"
               placeholder="D (blank)"
               value={propD}
               onChange={(e) => setPropD(e.target.value)}
-              className="w-24 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>
 
         {solvedProportion && (
-          <div className="mt-4 p-4 bg-slate-950 rounded-xl border border-slate-800/80 flex items-center justify-between">
+          <div className="mt-4 p-4 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between">
             <div>
-              <span className="text-xs text-slate-500 block">Solved Missing Value</span>
-              <span className="text-xl font-bold font-mono text-emerald-400">
+              <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Solved Missing Value</span>
+              <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
                 {solvedProportion.unknown} = {solvedProportion.answer}
               </span>
             </div>
             <button
               type="button"
               onClick={() => copyVal(solvedProportion.answer.toString(), 'prop')}
-              className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300 transition"
+              className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 transition"
             >
-              {copiedId === 'prop' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+              {copiedId === 'prop' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
             </button>
           </div>
         )}
@@ -188,77 +188,77 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* 2. Ratio Simplifier */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-semibold text-white mb-1">Simplify Ratio</h3>
-            <p className="text-xs text-slate-400 mb-4">Reduce a 2-part ratio to simplest integer terms.</p>
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Simplify Ratio</h3>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Reduce a 2-part ratio to simplest integer terms.</p>
 
             <div className="flex items-center gap-3 font-mono mb-4">
               <input
                 type="number"
                 value={simpA}
                 onChange={(e) => setSimpA(e.target.value)}
-                className="w-24 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white"
+                className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white"
               />
-              <span className="text-slate-500 font-bold">:</span>
+              <span className="text-zinc-500 dark:text-zinc-500 font-bold">:</span>
               <input
                 type="number"
                 value={simpB}
                 onChange={(e) => setSimpB(e.target.value)}
-                className="w-24 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white"
+                className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white"
               />
             </div>
           </div>
 
           {simplified && (
-            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800/80 flex items-center justify-between">
+            <div className="bg-zinc-50 dark:bg-zinc-950 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80 flex items-center justify-between">
               <div>
-                <span className="text-xs text-slate-500 block">Simplest Form</span>
-                <span className="text-xl font-bold font-mono text-indigo-400">{simplified.simplified}</span>
+                <span className="text-xs text-zinc-500 dark:text-zinc-500 block">Simplest Form</span>
+                <span className="text-xl font-bold font-mono text-indigo-600 dark:text-indigo-400">{simplified.simplified}</span>
               </div>
               <button
                 type="button"
                 onClick={() => copyVal(simplified.simplified, 'simp')}
-                className="p-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-300 transition"
+                className="p-2 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 rounded-lg text-zinc-700 dark:text-zinc-300 transition"
               >
-                {copiedId === 'simp' ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedId === 'simp' ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           )}
         </div>
 
         {/* 3. Divide Sum by Ratio */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-semibold text-white mb-1">Divide Total by Ratio</h3>
-            <p className="text-xs text-slate-400 mb-4">Split money, shares, or mixture parts proportionally.</p>
+            <h3 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">Divide Total by Ratio</h3>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Split money, shares, or mixture parts proportionally.</p>
 
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Total Amount</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Total Amount</label>
                 <input
                   type="number"
                   value={totalSum}
                   onChange={(e) => setTotalSum(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-400 block mb-1">Ratio (e.g. 2 : 3 : 5)</label>
+                <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Ratio (e.g. 2 : 3 : 5)</label>
                 <input
                   type="text"
                   value={ratioParts}
                   onChange={(e) => setRatioParts(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
             </div>
           </div>
 
           {dividedResult && (
-            <div className="bg-slate-950 p-3 rounded-xl border border-slate-800/80 space-y-1.5 font-mono text-xs">
+            <div className="bg-zinc-50 dark:bg-zinc-950 p-3 rounded-xl border border-zinc-200 dark:border-zinc-800/80 space-y-1.5 font-mono text-xs">
               {dividedResult.shares.map((s, idx) => (
-                <div key={idx} className="flex justify-between items-center text-slate-300">
+                <div key={idx} className="flex justify-between items-center text-zinc-700 dark:text-zinc-300">
                   <span>Part {idx + 1} ({s.part} shares, {s.pct}%):</span>
                   <span className="font-bold text-white">{s.share}</span>
                 </div>

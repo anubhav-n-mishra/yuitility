@@ -72,8 +72,8 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
   return (
     <div className="space-y-6">
       {/* Shape Switcher */}
-      <div className="flex items-center justify-between bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
-        <div className="flex items-center gap-2 text-indigo-400">
+      <div className="flex items-center justify-between bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <HardHat className="w-5 h-5" />
           <span className="text-sm font-semibold text-white">Concrete Volume & Slab Estimator</span>
         </div>
@@ -83,7 +83,7 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
             type="button"
             onClick={() => setShape('slab')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              shape === 'slab' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              shape === 'slab' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Slab / Patio / Driveway
@@ -92,7 +92,7 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
             type="button"
             onClick={() => setShape('column')}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
-              shape === 'column' ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400 hover:text-white'
+              shape === 'column' ? 'bg-indigo-600 text-white' : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:text-white'
             }`}
           >
             Cylinder / Footing Column
@@ -102,74 +102,74 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Inputs */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4">
-          <h3 className="text-sm font-semibold text-white capitalize">{shape} Dimensions</h3>
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
+          <h3 className="text-sm font-semibold text-zinc-900 dark:text-white capitalize">{shape} Dimensions</h3>
 
           {shape === 'slab' ? (
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Length (Feet)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Length (Feet)</label>
                 <input
                   type="number"
                   value={lengthFt}
                   onChange={(e) => setLengthFt(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Width (Feet)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Width (Feet)</label>
                 <input
                   type="number"
                   value={widthFt}
                   onChange={(e) => setWidthFt(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Thickness (Inches)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Thickness (Inches)</label>
                 <input
                   type="number"
                   value={thicknessIn}
                   onChange={(e) => setThicknessIn(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
             </div>
           ) : (
             <div className="grid grid-cols-3 gap-3">
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Diameter (Inches)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Diameter (Inches)</label>
                 <input
                   type="number"
                   value={diameterIn}
                   onChange={(e) => setDiameterIn(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Depth (Feet)</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Depth (Feet)</label>
                 <input
                   type="number"
                   value={depthFt}
                   onChange={(e) => setDepthFt(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
               <div>
-                <label className="text-xs text-slate-300 block mb-1">Quantity</label>
+                <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Quantity</label>
                 <input
                   type="number"
                   min="1"
                   value={columnCount}
                   onChange={(e) => setColumnCount(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
                 />
               </div>
             </div>
           )}
 
           <div>
-            <label className="text-xs text-slate-300 block mb-1">Waste Factor (%)</label>
+            <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Waste Factor (%)</label>
             <div className="flex gap-2">
               {[5, 10, 15].map((wPct) => (
                 <button
@@ -179,7 +179,7 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
                   className={`flex-1 py-1.5 rounded-lg text-xs font-semibold ${
                     wastePct === wPct
                       ? 'bg-indigo-600 text-white'
-                      : 'bg-slate-950 text-slate-400 border border-slate-800'
+                      : 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800'
                   }`}
                 >
                   +{wPct}% Waste
@@ -190,30 +190,30 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
         </div>
 
         {/* Results Card */}
-        <div className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+        <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
-            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider block mb-1">
+            <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">
               Ready-Mix Truck Order Volume
             </span>
             <div className="text-5xl font-black font-mono text-white my-2">
               {results ? results.cuYards : '—'}
-              <span className="text-lg font-normal text-slate-400"> cu. yds (yd³)</span>
+              <span className="text-lg font-normal text-zinc-500 dark:text-zinc-400"> cu. yds (yd³)</span>
             </div>
 
             {results && (
-              <div className="space-y-2 mt-4 pt-4 border-t border-slate-800 font-mono text-xs">
-                <div className="flex justify-between text-slate-300">
+              <div className="space-y-2 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 font-mono text-xs">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Cubic Feet (ft³):</span>
                   <span className="font-bold text-white">{results.cuFt} cu ft</span>
                 </div>
-                <div className="flex justify-between text-slate-300">
+                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
                   <span>Cubic Meters (m³):</span>
                   <span className="font-bold text-white">{results.cuMeters} m³</span>
                 </div>
 
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs mt-3">
-                  <span className="text-slate-400">Or Pre-Mix Bags:</span>
-                  <span className="font-bold text-indigo-400 font-mono">
+                <div className="p-3 bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 flex justify-between items-center text-xs mt-3">
+                  <span className="text-zinc-500 dark:text-zinc-400">Or Pre-Mix Bags:</span>
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400 font-mono">
                     {results.bags80lb} bags (80 lb) or {results.bags60lb} bags (60 lb)
                   </span>
                 </div>

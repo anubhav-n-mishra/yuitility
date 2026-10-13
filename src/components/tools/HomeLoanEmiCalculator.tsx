@@ -442,7 +442,7 @@ export default function HomeLoanEmiCalculator({
           <div className="rounded-xl border border-blue-100 bg-blue-50/30 p-4 dark:border-blue-900/40 dark:bg-blue-950/20">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" />
                   Prepayment / Foreclosure Modeling
                 </span>
@@ -530,7 +530,7 @@ export default function HomeLoanEmiCalculator({
             <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-4 dark:border-emerald-900/50 dark:bg-emerald-950/25">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" />
                   Tax Deductions (Sec 24b & 80C)
                 </span>
                 <select
@@ -547,9 +547,9 @@ export default function HomeLoanEmiCalculator({
                 <span className="text-2xl font-display font-bold text-emerald-950 dark:text-emerald-100">
                   ~{fmt(annualTaxSaving)}
                 </span>
-                <span className="text-xs text-emerald-700 dark:text-emerald-400">/ year estimated</span>
+                <span className="text-xs text-emerald-700 dark:text-emerald-600 dark:text-emerald-400">/ year estimated</span>
               </div>
-              <p className="text-[11px] text-emerald-700/80 dark:text-emerald-400/80 mt-1 leading-tight">
+              <p className="text-[11px] text-emerald-700/80 dark:text-emerald-600 dark:text-emerald-400/80 mt-1 leading-tight">
                 Includes up to ₹2 Lakh interest deduction (Sec 24b) and ₹1.5 Lakh principal (Sec 80C).
               </p>
             </div>
@@ -595,13 +595,16 @@ export default function HomeLoanEmiCalculator({
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <button
+            <span
+              role="button"
+              tabIndex={0}
               onClick={(e) => { e.stopPropagation(); handleExportCSV(); }}
-              className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors font-medium mr-2"
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); handleExportCSV(); } }}
+              className="inline-flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors font-medium mr-2 cursor-pointer"
             >
               <Download className="w-3 h-3" />
               CSV
-            </button>
+            </span>
             {showAmortization ? <ChevronUp className="w-4 h-4 text-zinc-400" /> : <ChevronDown className="w-4 h-4 text-zinc-400" />}
           </div>
         </div>
@@ -615,7 +618,7 @@ export default function HomeLoanEmiCalculator({
                   <th className="p-3 text-right">Principal Repaid</th>
                   <th className="p-3 text-right">Interest Paid</th>
                   <th className="p-3 text-right">Total Installments</th>
-                  <th className="p-3 text-right text-emerald-600 dark:text-emerald-400">Est. Tax Benefit</th>
+                  <th className="p-3 text-right text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">Est. Tax Benefit</th>
                   <th className="p-3 text-right pr-4">Ending Balance</th>
                 </tr>
               </thead>
@@ -624,9 +627,9 @@ export default function HomeLoanEmiCalculator({
                   <tr key={s.year} className="hover:bg-zinc-50/30 dark:hover:bg-zinc-900/10 text-zinc-700 dark:text-zinc-300">
                     <td className="p-3 pl-4 font-sans font-medium text-zinc-900 dark:text-zinc-200">Year {s.year}</td>
                     <td className="p-3 text-right">{fmt(s.principalPaid)}</td>
-                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-400">{fmt(s.interestPaid)}</td>
+                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{fmt(s.interestPaid)}</td>
                     <td className="p-3 text-right font-semibold">{fmt(s.totalPaid)}</td>
-                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-400 font-sans font-medium">~{fmt(s.taxSaving)}</td>
+                    <td className="p-3 text-right text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-sans font-medium">~{fmt(s.taxSaving)}</td>
                     <td className="p-3 text-right pr-4 text-zinc-500 dark:text-zinc-400">{fmt(s.balance)}</td>
                   </tr>
                 ))}

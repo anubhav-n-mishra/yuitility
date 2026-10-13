@@ -113,7 +113,7 @@ export default function NpsCalculator() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Tax-Free Lump Sum (60%)</span>
-              <span className="font-semibold text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.lumpSum60Pct, currency)}</span>
+              <span className="font-semibold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{formatCurrency(stats.lumpSum60Pct, currency)}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Annuity Reinvestment (40%)</span>

@@ -179,7 +179,7 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
     Fire: 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-950/20 dark:text-orange-400 dark:border-orange-900',
     Earth: 'bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-900',
     Air: 'bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-950/20 dark:text-sky-400 dark:border-sky-900',
-    Water: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/20 dark:text-blue-400 dark:border-blue-900'
+    Water: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/20 dark:text-blue-600 dark:text-blue-400 dark:border-blue-900'
   };
 
   return (
@@ -291,13 +291,13 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
 
             {/* Live Ticker Clock for precision */}
             <div className="mt-5 flex items-center justify-center gap-2 bg-zinc-900 text-zinc-50 dark:bg-zinc-950 dark:border dark:border-zinc-900 py-3 rounded-lg font-mono text-xs shadow-inner">
-              <Clock className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+              <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 animate-pulse" />
               <span>
                 + {ageCalculations.hours.toString().padStart(2, '0')}h :{' '}
                 {ageCalculations.minutes.toString().padStart(2, '0')}m :{' '}
                 {ageCalculations.seconds.toString().padStart(2, '0')}s
               </span>
-              <span className="text-[10px] text-emerald-400 font-sans font-medium">(Ticking Live)</span>
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-sans font-medium">(Ticking Live)</span>
             </div>
           </div>
 
@@ -318,7 +318,7 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
                 <p className="text-[10px] text-zinc-400 uppercase tracking-tight">Mins</p>
               </div>
               <div className="bg-white dark:bg-zinc-950 border border-zinc-100 dark:border-zinc-900 py-3 rounded-lg">
-                <p className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{ageCalculations.nextBirthday.seconds}</p>
+                <p className="text-xl font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{ageCalculations.nextBirthday.seconds}</p>
                 <p className="text-[10px] text-zinc-400 uppercase tracking-tight">Secs</p>
               </div>
             </div>
@@ -342,7 +342,7 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
               </div>
               <div className="p-3 bg-white dark:bg-zinc-950 rounded-lg border border-zinc-100 dark:border-zinc-900">
                 <p className="text-xs text-zinc-400">Total Secs</p>
-                <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mt-1">{ageCalculations.totalSeconds.toLocaleString()}</p>
+                <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 mt-1">{ageCalculations.totalSeconds.toLocaleString()}</p>
               </div>
             </div>
           </div>

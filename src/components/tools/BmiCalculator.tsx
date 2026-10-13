@@ -40,7 +40,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
     if (bmi <= 0 || !isFinite(bmi)) return null;
 
     let category = 'Normal weight';
-    let categoryColor = 'text-emerald-600 dark:text-emerald-400';
+    let categoryColor = 'text-emerald-600 dark:text-emerald-600 dark:text-emerald-400';
     let advice = 'Maintain your current diet and active physical routine.';
 
     if (bmi < 18.5) {
@@ -49,7 +49,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
       advice = 'Consult a nutritionist to safely build muscle mass and increase healthy caloric intake.';
     } else if (bmi >= 18.5 && bmi < 25) {
       category = 'Normal weight';
-      categoryColor = 'text-emerald-600 dark:text-emerald-400';
+      categoryColor = 'text-emerald-600 dark:text-emerald-600 dark:text-emerald-400';
       advice = 'Great shape! Maintain a balanced diet and regular weekly physical activity.';
     } else if (bmi >= 25 && bmi < 30) {
       category = 'Overweight';

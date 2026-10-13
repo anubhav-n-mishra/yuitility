@@ -798,7 +798,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
                 setMarkdown('');
                 setFileName('untitled.md');
               }}
-              className="inline-flex items-center gap-1 px-2.5 py-2 text-xs font-semibold rounded-xl border border-rose-200 dark:border-rose-900/40 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
+              className="inline-flex items-center gap-1 px-2.5 py-2 text-xs font-semibold rounded-xl border border-rose-200 dark:border-rose-900/40 text-rose-600 dark:text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
               title="Clear editor"
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -1000,7 +1000,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
           <div className="flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
               <span className="flex items-center gap-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
-                <Eye className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Live Rendered Preview
+                <Eye className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" /> Live Rendered Preview
               </span>
               <div className="flex flex-wrap items-center gap-1.5">
                 <button
@@ -1051,7 +1051,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
       {/* Conversion & Capability Action Ribbon */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 flex items-start gap-3">
-          <div className="p-2 rounded-xl bg-purple-50 text-purple-600 dark:bg-purple-950/50 dark:text-purple-400 shrink-0">
+          <div className="p-2 rounded-xl bg-purple-50 text-purple-600 dark:bg-purple-950/50 dark:text-purple-600 dark:text-purple-400 shrink-0">
             <Printer className="w-4 h-4" />
           </div>
           <div>
@@ -1062,7 +1062,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
             <button
               type="button"
               onClick={handlePrintPdf}
-              className="mt-2 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:underline"
+              className="mt-2 text-xs font-semibold text-purple-600 dark:text-purple-600 dark:text-purple-400 hover:underline"
             >
               Print / Save PDF →
             </button>
@@ -1070,7 +1070,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
         </div>
 
         <div className="p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 flex items-start gap-3">
-          <div className="p-2 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400 shrink-0">
+          <div className="p-2 rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-600 dark:text-blue-400 shrink-0">
             <FileDown className="w-4 h-4" />
           </div>
           <div>
@@ -1081,7 +1081,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
             <button
               type="button"
               onClick={handleExportWord}
-              className="mt-2 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+              className="mt-2 text-xs font-semibold text-blue-600 dark:text-blue-600 dark:text-blue-400 hover:underline"
             >
               Download .doc →
             </button>
@@ -1089,7 +1089,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
         </div>
 
         <div className="p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 flex items-start gap-3">
-          <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-400 shrink-0">
+          <div className="p-2 rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-950/50 dark:text-emerald-600 dark:text-emerald-400 shrink-0">
             <Download className="w-4 h-4" />
           </div>
           <div>
@@ -1100,7 +1100,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
             <button
               type="button"
               onClick={() => handleDownload('html')}
-              className="mt-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+              className="mt-2 text-xs font-semibold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 hover:underline"
             >
               Download HTML →
             </button>
@@ -1110,7 +1110,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
 
       {/* Privacy & Feature Footer Callout */}
       <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-zinc-800 dark:bg-zinc-900/30 flex items-start gap-3 text-xs text-zinc-600 dark:text-zinc-400">
-        <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+        <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
         <div>
           <strong className="text-zinc-900 dark:text-zinc-200 font-semibold block mb-0.5">
             100% In-Browser Privacy &amp; Zero Server Uploads

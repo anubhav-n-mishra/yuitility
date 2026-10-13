@@ -138,7 +138,7 @@ export default function BmrCalculator() {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Heavy Exercise (6-7 days/wk)</span>
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{stats.active} kcal</span>
+              <span className="font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{stats.active} kcal</span>
             </div>
           </div>
         </div>

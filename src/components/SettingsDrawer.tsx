@@ -63,7 +63,7 @@ export default function SettingsDrawer({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[150] flex justify-end bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
       <div
         className="w-full max-w-sm bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 h-full shadow-2xl border-l border-zinc-200 dark:border-zinc-800 flex flex-col overflow-y-auto font-sans"
         role="dialog"

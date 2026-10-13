@@ -185,7 +185,7 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsRad(!isRad)}
-            className="px-3 py-1.5 text-xs font-bold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 rounded-md border border-blue-200 dark:border-blue-800"
+            className="px-3 py-1.5 text-xs font-bold bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-600 dark:text-blue-400 rounded-md border border-blue-200 dark:border-blue-800"
           >
             {isRad ? "RAD" : "DEG"}
           </button>
@@ -226,7 +226,7 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
           {/* Main Display */}
           <div className="bg-zinc-900 text-white rounded-2xl p-5 shadow-xl border border-zinc-800 flex flex-col justify-between min-h-[120px] font-mono">
             <div className="flex justify-between items-center text-xs text-zinc-400">
-              <span className="font-sans font-bold text-[10px] uppercase text-blue-400">
+              <span className="font-sans font-bold text-[10px] uppercase text-blue-600 dark:text-blue-400">
                 {isRad ? "RAD" : "DEG"} {is2nd ? "| 2ND" : ""}
               </span>
               <span className="min-h-[18px] overflow-x-auto custom-scrollbar">{expression}</span>
@@ -395,7 +395,7 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
             </button>
             <button
               onClick={() => appendToExpression("÷")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
+              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
             >
               ÷
             </button>
@@ -427,7 +427,7 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
             </button>
             <button
               onClick={() => appendToExpression("×")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
+              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
             >
               ×
             </button>
@@ -453,13 +453,13 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
             </button>
             <button
               onClick={() => appendToExpression("-")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
+              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
             >
               -
             </button>
             <button
               onClick={() => appendToExpression("+")}
-              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
+              className="p-3.5 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 dark:hover:bg-blue-900/60 text-blue-600 dark:text-blue-600 dark:text-blue-400 rounded-xl transition-colors text-lg"
             >
               +
             </button>

@@ -86,7 +86,7 @@ export default function UrlEncoderDecoder({ onCopy, onShare }: UrlEncoderProps) 
             onClick={() => setMode('encode')}
             className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               mode === 'encode'
-                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-400 shadow-sm'
+                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-600 dark:text-rose-400 shadow-sm'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900'
             }`}
           >
@@ -96,7 +96,7 @@ export default function UrlEncoderDecoder({ onCopy, onShare }: UrlEncoderProps) 
             onClick={() => setMode('decode')}
             className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               mode === 'decode'
-                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-400 shadow-sm'
+                ? 'bg-white dark:bg-zinc-900 text-rose-600 dark:text-rose-600 dark:text-rose-400 shadow-sm'
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900'
             }`}
           >

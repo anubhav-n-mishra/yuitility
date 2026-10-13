@@ -402,7 +402,7 @@ export default function RetirementCalculator({
                       <td className={`py-2 px-3 ${row.annualCashflow >= 0 ? 'text-zinc-700 dark:text-zinc-300' : 'text-red-500 dark:text-red-400'}`}>
                         {row.annualCashflow >= 0 ? `+${fmt(row.annualCashflow)}` : fmt(row.annualCashflow)}
                       </td>
-                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-400">+{fmt(row.annualGrowth)}</td>
+                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">+{fmt(row.annualGrowth)}</td>
                       <td className="py-2 px-3 font-bold text-zinc-900 dark:text-zinc-100">{fmt(row.endingNetWorth)}</td>
                     </tr>
                   ))}
