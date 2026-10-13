@@ -390,7 +390,7 @@ export default function Home() {
         <ScrollReveal delay={100} className="w-full relative z-10">
           <div id="tools-directory" className="max-w-7xl mx-auto space-y-6 scroll-mt-24">
             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
-              <div className="relative flex-1 group z-20" role="search">
+              <div className="relative flex-1 group z-50" role="search">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-hover)] rounded-2xl blur opacity-15 group-hover:opacity-25 transition duration-300"></div>
                 <div className="relative flex items-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm hover:shadow-md transition-all focus-within:ring-2 focus-within:ring-[var(--accent-primary)]">
                   <Search className="absolute left-4 w-5 h-5 text-zinc-400 group-focus-within:text-[var(--accent-primary)] transition-colors" aria-hidden="true" />

@@ -21,8 +21,24 @@ const formatDate = (dateStr: string) => {
   return `${months[parseInt(month, 10) - 1]} ${parseInt(day, 10)}, ${year}`;
 };
 
+function cleanFormula(raw: string): string {
+  return raw
+    .replace(/\$\$/g, "")
+    .replace(/\$/g, "")
+    .replace(/\\text\{([^}]+)\}/g, "$1")
+    .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, "($1) / ($2)")
+    .replace(/\\times/g, "×")
+    .replace(/\\left\(/g, "(")
+    .replace(/\\right\)/g, ")")
+    .replace(/\\Omega/g, "Ω")
+    .replace(/\\:/g, " ")
+    .replace(/\\,/g, " ")
+    .trim();
+}
+
 function parseInlineMarkdown(text: string): React.ReactNode[] {
-  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
+  const sanitizedText = text.replace(/\$([^$]+)\$/g, (_, math) => cleanFormula(math));
+  const parts = sanitizedText.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
   return parts.map((part, index) => {
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={index} className="font-bold text-zinc-950 dark:text-zinc-50">{part.slice(2, -2)}</strong>;
@@ -32,6 +48,19 @@ function parseInlineMarkdown(text: string): React.ReactNode[] {
         <code key={index} className="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 text-[var(--accent-primary)] font-mono text-xs rounded border border-zinc-200 dark:border-zinc-700">
           {part.slice(1, -1)}
         </code>
+      );
+    }
+    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const [, label, href] = linkMatch;
+      return (
+        <Link
+          key={index}
+          href={href}
+          className="font-semibold text-blue-600 hover:text-blue-700 dark:text-cyan-400 dark:hover:text-cyan-300 underline underline-offset-2"
+        >
+          {label}
+        </Link>
       );
     }
     return part;
@@ -66,25 +95,124 @@ function parseMarkdownToReact(content: string): React.ReactNode[] {
   const lines = content.split('\n');
   const elements: React.ReactNode[] = [];
   let currentList: React.ReactNode[] = [];
-  let inList = false;
+  let isNumberedList = false;
+  let inCodeBlock = false;
+  let codeBuffer: string[] = [];
+  let tableBuffer: string[] = [];
 
   const flushList = (key: string | number) => {
     if (currentList.length > 0) {
-      elements.push(
-        <ul key={`list-${key}`} className="list-disc pl-5 space-y-4 my-6 text-zinc-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
-          {currentList}
-        </ul>
-      );
+      if (isNumberedList) {
+        elements.push(
+          <ol key={`list-${key}`} className="list-decimal pl-5 space-y-3 my-6 text-zinc-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
+            {currentList}
+          </ol>
+        );
+      } else {
+        elements.push(
+          <ul key={`list-${key}`} className="list-disc pl-5 space-y-3 my-6 text-zinc-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
+            {currentList}
+          </ul>
+        );
+      }
       currentList = [];
-      inList = false;
     }
+  };
+
+  const flushTable = (key: string | number) => {
+    if (tableBuffer.length >= 2) {
+      const headerLine = tableBuffer[0];
+      const rows = tableBuffer.slice(2);
+      const parseRow = (row: string) =>
+        row
+          .split("|")
+          .map((c) => c.trim())
+          .filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+
+      const headers = parseRow(headerLine);
+
+      elements.push(
+        <div key={`table-${key}`} className="my-6 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+          <table className="w-full text-left text-xs sm:text-sm">
+            <thead className="bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+              <tr>
+                {headers.map((h, i) => (
+                  <th key={i} className="px-4 py-3 font-bold text-zinc-900 dark:text-zinc-100">
+                    {parseInlineMarkdown(h)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800 bg-white dark:bg-zinc-950">
+              {rows.map((r, rIdx) => {
+                const cells = parseRow(r);
+                return (
+                  <tr key={rIdx} className="hover:bg-zinc-50 dark:hover:bg-zinc-900/50">
+                    {cells.map((cell, cIdx) => (
+                      <td key={cIdx} className="px-4 py-3 text-zinc-700 dark:text-zinc-300">
+                        {parseInlineMarkdown(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+    tableBuffer = [];
   };
 
   lines.forEach((line, idx) => {
     const trimmed = line.trim();
 
+    // Code fence handling (``` or ```text)
+    if (trimmed.startsWith("```")) {
+      if (inCodeBlock) {
+        elements.push(
+          <pre key={`code-${idx}`} className="my-6 overflow-x-auto rounded-2xl border border-zinc-200 bg-zinc-900 p-4 font-mono text-xs sm:text-sm text-zinc-100 dark:border-zinc-800">
+            <code>{codeBuffer.join("\n")}</code>
+          </pre>
+        );
+        codeBuffer = [];
+        inCodeBlock = false;
+      } else {
+        flushList(idx);
+        flushTable(idx);
+        inCodeBlock = true;
+      }
+      return;
+    }
+
+    if (inCodeBlock) {
+      codeBuffer.push(line);
+      return;
+    }
+
+    // Markdown table row
+    if (trimmed.startsWith("|") && trimmed.endsWith("|")) {
+      flushList(idx);
+      tableBuffer.push(trimmed);
+      return;
+    } else if (tableBuffer.length > 0) {
+      flushTable(idx);
+    }
+
     if (!trimmed) {
       flushList(idx);
+      return;
+    }
+
+    // Block formulas ($$ ... $$)
+    if (trimmed.startsWith("$$") && trimmed.endsWith("$$")) {
+      flushList(idx);
+      const formulaText = cleanFormula(trimmed);
+      elements.push(
+        <div key={`formula-${idx}`} className="my-4 rounded-xl border border-blue-200 bg-blue-50/60 px-4 py-3 text-center font-mono text-sm font-semibold text-blue-900 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-cyan-300">
+          {formulaText}
+        </div>
+      );
       return;
     }
 
@@ -104,8 +232,22 @@ function parseMarkdownToReact(content: string): React.ReactNode[] {
           {parseInlineMarkdown(heading)}
         </h2>
       );
+    } else if (/^\d+\.\s+/.test(trimmed)) {
+      if (!isNumberedList && currentList.length > 0) {
+        flushList(idx);
+      }
+      isNumberedList = true;
+      const cleanLine = trimmed.replace(/^\d+\.\s+/, "");
+      currentList.push(
+        <li key={idx} className="leading-relaxed">
+          {parseInlineMarkdown(cleanLine)}
+        </li>
+      );
     } else if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
-      inList = true;
+      if (isNumberedList && currentList.length > 0) {
+        flushList(idx);
+      }
+      isNumberedList = false;
       const cleanLine = trimmed.replace(/^[-*]\s+/, "");
       currentList.push(
         <li key={idx} className="leading-relaxed">
@@ -123,6 +265,7 @@ function parseMarkdownToReact(content: string): React.ReactNode[] {
   });
 
   flushList("end");
+  flushTable("end");
   return elements;
 }
 

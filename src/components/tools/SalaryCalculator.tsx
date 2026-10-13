@@ -381,7 +381,7 @@ export default function SalaryCalculator({
           FY 2025-26 Tax slab notes (New Tax Regime)
         </h3>
         <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-          This calculator follows the standard tax structures of the New Tax Regime in India which includes a standard deduction of ₹75,000 for salaried employees. It applies the newest simplified slabs. Tax rebates under Section 87A are applied so that employees with total taxable income up to ₹7,000,000 pay no taxes.
+          This calculator follows the standard tax structures of the New Tax Regime in India which includes a standard deduction of ₹75,000 for salaried employees. It applies the newest simplified slabs. Tax rebates under Section 87A are applied so that employees with total taxable income up to ₹7,00,000 pay no taxes.
         </p>
       </div>
     </div>
