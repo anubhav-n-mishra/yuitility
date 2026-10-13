@@ -2,7 +2,7 @@
 
 # Yuitility
 
-**132+ lightning-fast, client-side web utilities engineered for zero latency and absolute privacy.**  
+**132+ client-side developer and utility tools running 100% in-browser with zero server uploads and complete privacy.**  
 *Everything runs 100% locally in your browser. No server uploads. No telemetry. No sign-ups.*
 
 [![Yuitility CI](https://github.com/anubhav-n-mishra/yuitility/actions/workflows/ci.yml/badge.svg)](https://github.com/anubhav-n-mishra/yuitility/actions/workflows/ci.yml)
@@ -75,7 +75,7 @@ For full architectural blueprints, see [docs/architecture.md](docs/architecture.
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/anubhav-n-mishra/yuitility.git
-   cd yutiliti
+   cd yuitility
    ```
 
 2. **Install dependencies**:

@@ -28,8 +28,8 @@ Before writing code, please understand the non-negotiable architectural principl
 
 1. **Fork and Clone the Repository**:
    ```bash
-   git clone https://github.com/<your-username>/yutiliti.git
-   cd yutiliti
+   git clone https://github.com/<your-username>/yuitility.git
+   cd yuitility
    ```
 
 2. **Install Dependencies**:

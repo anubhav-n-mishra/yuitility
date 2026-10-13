@@ -113,7 +113,7 @@ const rootGraphSchema = {
       foundingDate: "2024",
       sameAs: [
         "https://x.com/yuitility",
-        "https://github.com/yuitility",
+        "https://github.com/anubhav-n-mishra/yuitility",
       ],
       contactPoint: [
         {

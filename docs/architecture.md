@@ -66,7 +66,7 @@ To maintain high search quality and prevent phantom or broken URLs from indexing
 ## Directory Structure
 
 ```
-yutiliti/
+yuitility/
 ├── .github/                 # Workflows (CI, CodeQL, Dependabot) and issue templates
 ├── docs/                    # Architecture, security, and contribution guides
 ├── public/                  # Static brand assets, fonts, PWA manifest, and icons

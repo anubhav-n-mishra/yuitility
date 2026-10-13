@@ -160,6 +160,7 @@ export default function HoverFooter() {
         { label: "About Yuitility", href: "/about" },
         { label: "Guides & articles", href: "/blog" },
         { label: "Contact & Support", href: "/contact" },
+        { label: "GitHub (Source Code)", href: "https://github.com/anubhav-n-mishra/yuitility" },
         { label: "Privacy Policy", href: "/privacy" },
         { label: "Terms of Service", href: "/terms" },
         { label: "Cookie Policy", href: "/cookies" },
@@ -186,15 +187,28 @@ export default function HoverFooter() {
             <p className="text-xs text-zinc-400 leading-relaxed">
               {`100% in-browser utilities. ${LIVE_TOOLS.length} working tools, zero server data retention, no upload step.`}
             </p>
-            <a
-              href="https://amvelt.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors pt-2"
-            >
-              <span>Custom Dev & SEO by <strong>Amvelt.com</strong></span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            <div className="flex flex-col gap-2 pt-1">
+              <a
+                href="https://github.com/anubhav-n-mishra/yuitility"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                <span>anubhav-n-mishra/yuitility</span>
+              </a>
+              <a
+                href="https://amvelt.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                <span>Custom Dev & SEO by <strong>Amvelt.com</strong></span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
 
           {/* Link Columns */}
@@ -204,19 +218,36 @@ export default function HoverFooter() {
                 {section.title}
               </h4>
               <ul className="space-y-4 text-xs text-zinc-400">
-                {section.links.map((link) => (
-                  <li key={link.label} className="overflow-hidden">
-                    <Link
-                      href={link.href}
-                      className="hover:text-white transition-all duration-300 flex items-center gap-2 group py-1 w-fit"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)] opacity-0 -ml-3 group-hover:ml-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_8px_var(--accent-primary)] shrink-0" />
-                      <span className="group-hover:translate-x-0.5 transition-transform duration-350 font-medium">
-                        {link.label}
-                      </span>
-                    </Link>
-                  </li>
-                ))}
+                {section.links.map((link) => {
+                  const isExternal = link.href.startsWith("http");
+                  return (
+                    <li key={link.label} className="overflow-hidden">
+                      {isExternal ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-white transition-all duration-300 flex items-center gap-2 group py-1 w-fit"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)] opacity-0 -ml-3 group-hover:ml-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_8px_var(--accent-primary)] shrink-0" />
+                          <span className="group-hover:translate-x-0.5 transition-transform duration-350 font-medium">
+                            {link.label}
+                          </span>
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="hover:text-white transition-all duration-300 flex items-center gap-2 group py-1 w-fit"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-primary)] opacity-0 -ml-3 group-hover:ml-0 group-hover:opacity-100 transition-all duration-300 shadow-[0_0_8px_var(--accent-primary)] shrink-0" />
+                          <span className="group-hover:translate-x-0.5 transition-transform duration-350 font-medium">
+                            {link.label}
+                          </span>
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
