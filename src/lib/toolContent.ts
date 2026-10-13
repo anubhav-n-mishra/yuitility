@@ -1351,6 +1351,63 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
       answer: "Yes. All page copying and document creation occurs locally in your browser memory with zero network uploads.",
     },
   ],
+
+  "age-calculator": [
+    {
+      question: "How does the age calculator handle leap years and differing month lengths?",
+      answer: "The calculator computes elapsed time calendar-day by calendar-day using exact calendar rules. For leap years, February 29 is factored into day counts accurately without rough 30-day or 365-day approximations.",
+    },
+    {
+      question: "Does the calculation account for time zones or exact birth times?",
+      answer: "The live seconds counter runs against your local browser clock and the selected birth date/time. If an exact birth time is omitted, standard midnight (00:00:00) is used as the starting boundary.",
+    },
+    {
+      question: "Is my birth date or personal data stored or transmitted?",
+      answer: "No. Your birth date, zodiac signs, and countdown computations run 100% locally inside your browser memory. Nothing is sent to any server or recorded in a database.",
+    },
+    {
+      question: "Why might my age in days differ from multiplying years by 365?",
+      answer: "Multiplying years by 365 ignores leap years (366 days) and the varying lengths of elapsed calendar months (28 to 31 days). Our engine calculates every discrete calendar day elapsed between the two dates.",
+    },
+  ],
+
+  "pregnancy-due-date-calculator": [
+    {
+      question: "Which clinical formula is used to calculate the estimated due date (EDD)?",
+      answer: "The calculation applies Naegele's rule (adding 280 days or 40 weeks to the first day of your Last Menstrual Period) assuming an average 28-day menstrual cycle. If conception date is selected, 266 days are added.",
+    },
+    {
+      question: "How accurate is the estimated due date?",
+      answer: "An estimated due date is a clinical benchmark: only about 4-5% of babies are born on their exact due date, while roughly 80% arrive within two weeks before or after. Clinical ultrasound dating performed by your obstetrician remains the standard.",
+    },
+    {
+      question: "Does this pregnancy calculator provide medical diagnosis or replace obstetric care?",
+      answer: "No. This tool is designed strictly for personal gestational tracking and milestone planning. Always consult your obstetrician, certified midwife, or healthcare provider for medical evaluation and clinical dating scans.",
+    },
+    {
+      question: "Is any health or pregnancy timeline information uploaded?",
+      answer: "No. All date calculations and trimester milestone schedules are computed strictly on your device inside browser memory. Your health data remains completely confidential.",
+    },
+  ],
+
+  "standard-calculator": [
+    {
+      question: "What numerical precision and rounding does this calculator provide?",
+      answer: "Calculations use IEEE 754 double-precision floating-point arithmetic. Standard operations are rounded to avoid standard binary floating-point artifacts (like 0.1 + 0.2 = 0.30000000000000004) up to 10 decimal places.",
+    },
+    {
+      question: "Are there calculation limits or operations throttling?",
+      answer: "No. Because the math engine executes entirely in your browser using JavaScript, you can execute arithmetic operations, chains, and memory recalls with zero latency and no server throttling.",
+    },
+    {
+      question: "Does the standard calculator support keyboard shortcuts?",
+      answer: "Yes. You can use standard number keys (0-9), decimal point (.), operations (+, -, *, /), Enter or = for equals, and Escape or Backspace for clear/delete.",
+    },
+    {
+      question: "Does the calculator operate offline?",
+      answer: "Yes. Once loaded, the calculator does not make any external server calls and operates seamlessly without an active internet connection.",
+    },
+  ],
 };
 
 /**
@@ -1481,8 +1538,8 @@ export function getToolFaqs(tool: Tool): FAQItem[] {
         answer: `Yes. The tool parses values and evaluates the formulas showing mathematical steps and equations to help you understand the solution.`
       },
       {
-        question: `Is the mathematical precision guaranteed?`,
-        answer: `Yes. The calculator uses JavaScript double-precision floating-point arithmetic and custom rounding algorithms to ensure decimal accuracy for homework and engineering.`
+        question: `How does the calculator handle numerical precision and rounding?`,
+        answer: `Calculations execute client-side using standard IEEE 754 double-precision floating-point arithmetic with decimal rounding applied to prevent floating-point artifacts.`
       },
       {
         question: `Are there limits to how many calculations I can run?`,
