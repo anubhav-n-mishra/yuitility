@@ -21,7 +21,7 @@ export default function RdCalculator({ onCopy }: RdCalculatorProps) {
     const rate = interestRate / 100;
     const N = tenureMonths;
 
-    if (P <= 0 || rate <= 0 || N <= 0) return null;
+    if (P <= 0 || rate < 0 || N <= 0) return null;
 
     let maturityValue = 0;
     for (let i = 1; i <= N; i++) {
@@ -55,7 +55,7 @@ export default function RdCalculator({ onCopy }: RdCalculatorProps) {
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Monthly Installment ({currObj.symbol})</label>
-            <input
+            <input aria-label="Monthly Installment ( )"
               type="number"
               value={monthlyDeposit}
               step="500"
@@ -67,7 +67,7 @@ export default function RdCalculator({ onCopy }: RdCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (% p.a.)</label>
-              <input
+              <input aria-label="Interest Rate (% p.a.)"
                 type="number"
                 value={interestRate}
                 step="0.25"
@@ -77,7 +77,7 @@ export default function RdCalculator({ onCopy }: RdCalculatorProps) {
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure (Months)</label>
-              <input
+              <input aria-label="Tenure (Months)"
                 type="number"
                 value={tenureMonths}
                 step="6"

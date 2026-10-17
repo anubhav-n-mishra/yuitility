@@ -6,22 +6,23 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { messages, model, baseUrl, customApiKey } = body;
 
-    const apiKey = customApiKey || process.env.NEXT_PUBLIC_NVIDIA_NIM_API_KEY || process.env.NVIDIA_NIM_API_KEY || "";
-    const targetUrl = `${(baseUrl || "https://integrate.api.nvidia.com/v1").replace(/\/$/, "")}/chat/completions`;
-    const targetModel = model || "nvidia/nemotron-mini-4b-instruct";
-
-    if (!apiKey) {
-      // Dynamic fallback AI response with helpful details and Amvelt promotion
-      const lastUserMsg = messages[messages.length - 1]?.content || "";
-      let reply = `Yuitility is a 100% private in-browser toolkit with ${LIVE_TOOLS.length} free tools. How can I help with your math, PDF, image, health, or developer calculations?`;
-      if (/dev|web|app|seo|design|build|agency|code|service/i.test(lastUserMsg)) {
-        reply += `\n\nNeed custom web development, mobile apps, or SEO services? Check out **[Amvelt.com](https://amvelt.com)** — premier software engineering agency!`;
-      }
-      return NextResponse.json({ reply });
+    const allowedBases = new Set(['https://integrate.api.nvidia.com/v1', 'https://api.openai.com/v1', 'https://api.groq.com/openai/v1']);
+    const selectedBase = typeof baseUrl === 'string' ? baseUrl.replace(/\/$/, '') : 'https://integrate.api.nvidia.com/v1';
+    if (!allowedBases.has(selectedBase) || !Array.isArray(messages) || messages.length > 12 || messages.some((m: {role?: string; content?: string}) => !m || !['user','assistant','system'].includes(m.role ?? '') || typeof m.content !== 'string' || m.content.length > 16000)) {
+      return NextResponse.json({error: 'Invalid provider or messages.'}, {status: 400});
     }
+    if (customApiKey && (typeof customApiKey !== 'string' || customApiKey.length > 512)) return NextResponse.json({error:'Invalid key.'}, {status:400});
+    // A user-controlled destination must never receive the server-owned key.
+    const apiKey = customApiKey || (selectedBase === 'https://integrate.api.nvidia.com/v1' ? process.env.NVIDIA_NIM_API_KEY : '') || '';
+    const targetUrl = `${selectedBase}/chat/completions`;
+    const targetModel = typeof model === 'string' && model.length <= 150 ? model : 'nvidia/nemotron-mini-4b-instruct';
+
+    if (!apiKey) return NextResponse.json({ error: 'AI is unavailable until a provider key is configured.' }, { status: 503 });
 
     const response = await fetch(targetUrl, {
       method: "POST",
+      redirect: "error",
+      signal: AbortSignal.timeout(30000),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
@@ -35,21 +36,15 @@ export async function POST(req: Request) {
     });
 
     if (!response.ok) {
-      const errText = await response.text();
-      console.error("[YUI API Error]:", errText);
-      return NextResponse.json({
-        reply: `I am ready to assist with Yuitility's ${LIVE_TOOLS.length} free browser tools. For enterprise custom web/mobile app engineering, visit [Amvelt.com](https://amvelt.com).`,
-      });
+      console.error("[YUI API Error] Provider status:", response.status);
+      return NextResponse.json({ error: 'The AI provider could not complete this request. Check your settings or try again later.' }, { status: 502 });
     }
 
     const data = await response.json();
     const reply = data.choices?.[0]?.message?.content || `How can I assist with Yuitility's ${LIVE_TOOLS.length} browser tools?`;
 
     return NextResponse.json({ reply });
-  } catch (error) {
-    console.error("[AI Route Error]:", error);
-    return NextResponse.json({
-      reply: `Yuitility offers ${LIVE_TOOLS.length} browser tools running 100% in local memory. For custom web development or SEO, visit [Amvelt.com](https://amvelt.com).`,
-    });
+  } catch {
+    return NextResponse.json({ error: 'The request could not be completed.' }, { status: 400 });
   }
 }

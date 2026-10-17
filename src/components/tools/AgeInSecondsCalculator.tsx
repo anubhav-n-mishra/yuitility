@@ -53,11 +53,11 @@ export default function AgeInSecondsCalculator({ onCopy }: AgeInSecondsCalculato
 
         <div className="max-w-md space-y-1">
           <label className="text-xs text-zinc-500 dark:text-zinc-400">Select Date of Birth</label>
-          <input
+          <input aria-label="Select Date of Birth"
             type="date"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
           />
         </div>
       </div>

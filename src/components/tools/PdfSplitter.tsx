@@ -1,3 +1,4 @@
+import { pageSelection } from '@/src/lib/pageSelection';
 import React, { useState, useRef } from 'react';
 import { UploadCloud, File, Trash2, Share2, Download, RefreshCw, Scissors } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
@@ -58,28 +59,7 @@ export default function PdfSplitter({ onCopy, onShare }: PdfSplitterProps) {
   };
 
   const parsePageRange = (rangeStr: string, maxPages: number): number[] => {
-    const pages = new Set<number>();
-    const parts = rangeStr.split(',').map(p => p.trim());
-    
-    for (const part of parts) {
-      if (!part) continue;
-      
-      if (part.includes('-')) {
-        const [start, end] = part.split('-').map(n => parseInt(n, 10));
-        if (!isNaN(start) && !isNaN(end) && start <= end) {
-          for (let i = start; i <= end; i++) {
-            if (i > 0 && i <= maxPages) pages.add(i - 1); // 0-indexed for pdf-lib
-          }
-        }
-      } else {
-        const page = parseInt(part, 10);
-        if (!isNaN(page) && page > 0 && page <= maxPages) {
-          pages.add(page - 1);
-        }
-      }
-    }
-    
-    return Array.from(pages).sort((a, b) => a - b);
+    return pageSelection(rangeStr,maxPages).map(page=>page-1);
   };
 
   const handleSplit = async () => {
@@ -174,7 +154,7 @@ export default function PdfSplitter({ onCopy, onShare }: PdfSplitterProps) {
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Split</p>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Processed 100% locally in your browser.</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -196,7 +176,7 @@ export default function PdfSplitter({ onCopy, onShare }: PdfSplitterProps) {
                     </p>
                   </div>
                 </div>
-                <button
+                <button aria-label="Remove selected file"
                   onClick={() => setFile(null)}
                   className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                 >
@@ -206,7 +186,7 @@ export default function PdfSplitter({ onCopy, onShare }: PdfSplitterProps) {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Pages to Extract</label>
-                <input
+                <input aria-label="Pages to Extract"
                   type="text"
                   value={pageRange}
                   onChange={(e) => setPageRange(e.target.value)}

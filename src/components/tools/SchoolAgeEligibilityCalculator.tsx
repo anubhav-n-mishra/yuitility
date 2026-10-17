@@ -68,7 +68,7 @@ export default function SchoolAgeEligibilityCalculator({ onCopy }: SchoolAgeElig
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Child Date of Birth</label>
-            <input
+            <input aria-label="Child Date of Birth"
               type="date"
               value={dob}
               onChange={(e) => setDob(e.target.value)}
@@ -79,7 +79,7 @@ export default function SchoolAgeEligibilityCalculator({ onCopy }: SchoolAgeElig
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">School Year</label>
-              <select
+              <select aria-label="School Year"
                 value={academicYear}
                 onChange={(e) => setAcademicYear(Number(e.target.value))}
                 className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
@@ -92,7 +92,7 @@ export default function SchoolAgeEligibilityCalculator({ onCopy }: SchoolAgeElig
 
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Cutoff Date</label>
-              <select
+              <select aria-label="Cutoff Date"
                 value={cutoffMonthDay}
                 onChange={(e) => setCutoffMonthDay(e.target.value)}
                 className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"

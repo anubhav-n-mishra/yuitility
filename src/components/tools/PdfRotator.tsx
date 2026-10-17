@@ -1,3 +1,4 @@
+import { pageSelection } from '@/src/lib/pageSelection';
 import React, { useState, useRef } from 'react';
 import { UploadCloud, File, Trash2, Share2, Download, RefreshCw, RotateCw, RotateCcw } from 'lucide-react';
 import { PDFDocument, degrees } from 'pdf-lib';
@@ -57,26 +58,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
   };
 
   const parsePageNumbers = (str: string, max: number): Set<number> => {
-    const pages = new Set<number>();
-    const parts = str.split(',').map((s) => s.trim());
-    for (const part of parts) {
-      if (part.includes('-')) {
-        const [startStr, endStr] = part.split('-').map((s) => s.trim());
-        const start = parseInt(startStr, 10);
-        const end = parseInt(endStr, 10);
-        if (!isNaN(start) && !isNaN(end)) {
-          const lower = Math.max(1, Math.min(start, end));
-          const upper = Math.min(max, Math.max(start, end));
-          for (let i = lower; i <= upper; i++) pages.add(i);
-        }
-      } else {
-        const num = parseInt(part, 10);
-        if (!isNaN(num) && num >= 1 && num <= max) {
-          pages.add(num);
-        }
-      }
-    }
-    return pages;
+    return new Set(pageSelection(str,max));
   };
 
   const handleRotate = async () => {
@@ -195,7 +177,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                 Processed 100% locally. Safe for confidential legal & personal documents.
               </p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -287,7 +269,7 @@ export default function PdfRotator({ onCopy, onShare }: PdfRotatorProps) {
 
                   {pageScope === 'custom' && (
                     <div className="pt-2">
-                      <input
+                      <input aria-label="Pages to Rotate"
                         type="text"
                         value={customRange}
                         onChange={(e) => setCustomRange(e.target.value)}

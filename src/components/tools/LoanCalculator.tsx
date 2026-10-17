@@ -1,3 +1,4 @@
+import { payment } from '@/src/lib/calculations';
 import React, { useState, useMemo } from 'react';
 import { DollarSign, Percent, Calendar, RefreshCw, PieChart } from 'lucide-react';
 import CurrencySelector from '@/src/components/CurrencySelector';
@@ -21,9 +22,9 @@ export default function LoanCalculator({ onCopy }: LoanCalculatorProps) {
     const r = rate / 12 / 100;
     const n = tenureYears * 12;
 
-    if (P <= 0 || rate <= 0 || tenureYears <= 0) return null;
+    if (P <= 0 || rate < 0 || tenureYears <= 0) return null;
 
-    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const emi = payment(P, r, n);
     const totalPayment = emi * n;
     const totalInterest = totalPayment - P;
 
@@ -54,7 +55,7 @@ export default function LoanCalculator({ onCopy }: LoanCalculatorProps) {
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Loan Amount ({currObj.symbol})</label>
-            <input
+            <input aria-label="Loan Amount ( )"
               type="number"
               value={amount}
               step="10000"
@@ -66,7 +67,7 @@ export default function LoanCalculator({ onCopy }: LoanCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (% p.a.)</label>
-              <input
+              <input aria-label="Interest Rate (% p.a.)"
                 type="number"
                 value={rate}
                 step="0.1"
@@ -76,7 +77,7 @@ export default function LoanCalculator({ onCopy }: LoanCalculatorProps) {
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure (Years)</label>
-              <input
+              <input aria-label="Tenure (Years)"
                 type="number"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}

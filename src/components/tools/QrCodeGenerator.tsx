@@ -43,7 +43,8 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
       case 'phone':
         return `tel:${phoneNo}`;
       case 'wifi':
-        return `WIFI:S:${wifiSsid};T:${wifiSecurity};P:${wifiPass};;`;
+        const escapeWifi = (value: string) => value.replace(/[\\;,:"']/g, '\\$&');
+        return `WIFI:S:${escapeWifi(wifiSsid)};T:${wifiSecurity};P:${escapeWifi(wifiPass)};;`;
       default:
         return 'Yuitility';
     }
@@ -189,7 +190,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
             {activeType === 'url' && (
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Destination Link / Website URL</label>
-                <input
+                <input aria-label="Destination Link / Website URL"
                   type="text"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
@@ -202,7 +203,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
             {activeType === 'text' && (
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Enter Plain Text Block</label>
-                <textarea
+                <textarea aria-label="Enter Plain Text Block"
                   rows={4}
                   value={rawText}
                   onChange={(e) => setRawText(e.target.value)}
@@ -216,7 +217,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
               <div className="grid grid-cols-1 gap-4">
                 <div className="space-y-1">
                   <label className="text-xs font-medium text-zinc-500">Recipient Email</label>
-                  <input
+                  <input aria-label="Recipient Email"
                     type="email"
                     value={emailTo}
                     onChange={(e) => setEmailTo(e.target.value)}
@@ -226,7 +227,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-medium text-zinc-500">Subject</label>
-                  <input
+                  <input aria-label="Subject"
                     type="text"
                     value={emailSubject}
                     onChange={(e) => setEmailSubject(e.target.value)}
@@ -235,7 +236,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-medium text-zinc-500">Body Content</label>
-                  <textarea
+                  <textarea aria-label="Body Content"
                     rows={2}
                     value={emailBody}
                     onChange={(e) => setEmailBody(e.target.value)}
@@ -248,7 +249,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
             {activeType === 'phone' && (
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Mobile/Phone Number (with Country Code)</label>
-                <input
+                <input aria-label="Mobile/Phone Number (with Country Code)"
                   type="tel"
                   value={phoneNo}
                   onChange={(e) => setPhoneNo(e.target.value)}
@@ -262,7 +263,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1 md:col-span-2">
                   <label className="text-xs font-medium text-zinc-500">Network Name (SSID)</label>
-                  <input
+                  <input aria-label="Network Name (SSID)"
                     type="text"
                     value={wifiSsid}
                     onChange={(e) => setWifiSsid(e.target.value)}
@@ -271,7 +272,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-medium text-zinc-500">Security Type</label>
-                  <select
+                  <select aria-label="Security Type"
                     value={wifiSecurity}
                     onChange={(e) => setWifiSecurity(e.target.value as any)}
                     className="w-full px-3 py-2 text-sm bg-white dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 outline-none text-zinc-950 dark:text-zinc-50"
@@ -283,7 +284,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
                 </div>
                 <div className="space-y-1">
                   <label className="text-xs font-medium text-zinc-500">Password</label>
-                  <input
+                  <input aria-label="Password"
                     type="password"
                     disabled={wifiSecurity === 'nopass'}
                     value={wifiPass}
@@ -303,13 +304,13 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Foreground Color</label>
                 <div className="flex gap-2 items-center">
-                  <input
+                  <input aria-label="Foreground Color"
                     type="color"
                     value={fgColor}
                     onChange={(e) => setFgColor(e.target.value)}
                     className="w-8 h-8 rounded border overflow-hidden cursor-pointer bg-transparent"
                   />
-                  <input
+                  <input aria-label="Foreground Color"
                     type="text"
                     value={fgColor}
                     onChange={(e) => setFgColor(e.target.value)}
@@ -321,13 +322,13 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Background Color</label>
                 <div className="flex gap-2 items-center">
-                  <input
+                  <input aria-label="Background Color"
                     type="color"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
                     className="w-8 h-8 rounded border overflow-hidden cursor-pointer bg-transparent"
                   />
-                  <input
+                  <input aria-label="Background Color"
                     type="text"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
@@ -338,7 +339,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
 
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Error Correction Level</label>
-                <select
+                <select aria-label="Error Correction Level"
                   value={correctionLevel}
                   onChange={(e) => setCorrectionLevel(e.target.value as any)}
                   className="w-full px-3 py-1.5 text-xs bg-white dark:bg-zinc-950 rounded border border-zinc-200 dark:border-zinc-800 outline-none text-zinc-950 dark:text-zinc-50"
@@ -352,7 +353,7 @@ export default function QrCodeGenerator({ onCopy, onShare }: QrCodeGeneratorProp
 
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Frame Margin (Modules)</label>
-                <input
+                <input aria-label="Frame Margin (Modules)"
                   type="number"
                   min="0"
                   max="12"

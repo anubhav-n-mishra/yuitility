@@ -16,7 +16,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
   const [bgColor, setBgColor] = useState<string>('#ffffff');
   const [isDragging, setIsDragging] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const collageRef = useRef<HTMLDivElement>(null);
 
@@ -50,7 +50,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
       alert('Please upload image files only.');
       return;
     }
-    
+
     if (images.length + validFiles.length > 20) {
       alert('You can only add up to 20 images max.');
       return;
@@ -61,7 +61,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
       url: URL.createObjectURL(file),
       file
     }));
-    
+
     setImages(prev => [...prev, ...newImages]);
   };
 
@@ -76,17 +76,17 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
   const handleDownload = async () => {
     if (!collageRef.current || images.length === 0) return;
     setIsProcessing(true);
-    
+
     try {
       const canvas = await html2canvas(collageRef.current, {
         useCORS: true,
         backgroundColor: bgColor,
         scale: 2 // High quality export
       });
-      
+
       const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
       if (!blob) throw new Error("Failed to generate blob");
-      
+
       const blobUrl = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = blobUrl;
@@ -111,7 +111,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
     const count = images.length;
     if (layout === 'row') return 'grid-flow-col auto-cols-fr';
     if (layout === 'column') return 'grid-flow-row auto-rows-fr';
-    
+
     // Default Grid logic based on count
     if (count === 1) return 'grid-cols-1';
     if (count === 2) return 'grid-cols-2';
@@ -148,10 +148,10 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
+
         {/* Left Inputs Pane */}
         <div className="lg:col-span-4 space-y-6">
-          
+
           <div
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -166,7 +166,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
             <UploadCloud className="w-6 h-6 text-indigo-500 mb-2" />
             <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Add More Photos</p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">{images.length}/20 images added</p>
-            <input
+            <input aria-label="Choose files"
               type="file"
               ref={fileInputRef}
               onChange={handleFileChange}
@@ -177,7 +177,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
           </div>
 
           <div className="bg-zinc-50/50 dark:bg-zinc-900/20 border border-zinc-100 dark:border-zinc-900 rounded-xl p-6 space-y-6">
-            
+
             <div className="space-y-3">
               <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Layout Style</label>
               <div className="grid grid-cols-3 gap-2">
@@ -211,7 +211,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Padding (Spacing)</label>
                   <span className="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-bold">{padding}px</span>
                 </div>
-                <input
+                <input aria-label="Padding (Spacing) (slider)"
                   type="range"
                   min="0"
                   max="50"
@@ -224,13 +224,13 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
               <div className="space-y-2">
                 <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Background Color</label>
                 <div className="flex gap-2">
-                  <input
+                  <input aria-label="Background Color"
                     type="color"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
                     className="w-10 h-10 rounded cursor-pointer border-0 bg-transparent p-0"
                   />
-                  <input 
+                  <input aria-label="Background Color"
                     type="text"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
@@ -257,7 +257,7 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
 
         {/* Right Output Dashboard Pane */}
         <div className="lg:col-span-8 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 md:p-8 flex items-center justify-center min-h-[500px] overflow-hidden relative">
-          
+
           {images.length === 0 ? (
             <div className="flex flex-col items-center justify-center text-zinc-400 space-y-4">
               <LayoutDashboard className="w-16 h-16 opacity-20" />
@@ -265,10 +265,10 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
             </div>
           ) : (
             <div className="w-full h-full max-h-[70vh] overflow-y-auto overflow-x-hidden flex items-center justify-center custom-scrollbar">
-              <div 
+              <div
                 ref={collageRef}
                 className={`w-full h-auto grid ${getGridClass()} transition-all`}
-                style={{ 
+                style={{
                   gap: `${padding}px`,
                   backgroundColor: bgColor,
                   padding: `${padding}px`
@@ -276,17 +276,17 @@ export default function PhotoCollageMaker({ onCopy, onShare }: PhotoCollageMaker
               >
                 {images.map(img => (
                   <div key={img.id} className="relative group overflow-hidden rounded flex items-center justify-center" style={{ backgroundColor: bgColor }}>
-                    <img 
-                      src={img.url} 
-                      alt="collage item" 
+                    <img
+                      src={img.url}
+                      alt="collage item"
                       className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105"
                       style={{ display: 'block' }} // important for html2canvas to not render weird gaps
                     />
-                    
+
                     {/* Delete button (hidden from html2canvas automatically because we only hover) */}
-                    <button 
+                    <button aria-label="Remove image"
                       onClick={() => removeImage(img.id)}
-                      className="absolute top-2 right-2 p-1.5 bg-red-500/80 hover:bg-red-500 text-white rounded-md opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm z-10"
+                      className="absolute top-2 right-2 p-1.5 bg-red-500/80 hover:bg-red-500 text-white rounded-md opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity backdrop-blur-sm z-10"
                       data-html2canvas-ignore="true" // Ensure this button is never in the exported image
                     >
                       <Trash2 className="w-4 h-4" />

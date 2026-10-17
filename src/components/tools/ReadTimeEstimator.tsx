@@ -56,12 +56,12 @@ export default function ReadTimeEstimator({ onCopy }: ReadTimeEstimatorProps) {
           </button>
         </div>
 
-        <textarea
+        <textarea aria-label="Text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={8}
           placeholder="Paste article body text..."
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
         />
 
         <div className="flex justify-between items-center text-xs text-zinc-500 dark:text-zinc-400">

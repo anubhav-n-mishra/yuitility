@@ -3,8 +3,17 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { type, name, email, message, toolId } = body;
+    const raw = await req.text();
+    if(raw.length>20000)return NextResponse.json({error:'Message is too large.'},{status:413});
+    let body: any;
+    try {body=JSON.parse(raw);}catch{return NextResponse.json({error:'Invalid JSON.'},{status:400});}
+    if(!body || typeof body!=='object' || Array.isArray(body))return NextResponse.json({error:'Invalid submission.'},{status:400});
+    const {type,email}=body;
+    if(!['request','feedback','bug'].includes(type) || typeof email!=='string' || email.length>254 || !/^[^\s<>,;:"()\[\]\\]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(email) || typeof body.message!=='string' || !body.message.trim() || body.message.length>10000 || (body.name!==undefined && (typeof body.name!=='string'||body.name.length>200)) || (body.toolId!==undefined && (typeof body.toolId!=='string'||body.toolId.length>150)))return NextResponse.json({error:'Enter a valid email and message.'},{status:400});
+    const escape=(value:string)=>value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    const name=escape(body.name||'');
+    const message=escape(body.message);
+    const toolId=escape(body.toolId||'');
 
     if (!email || !message) {
       return NextResponse.json(
@@ -19,6 +28,7 @@ export async function POST(req: Request) {
     const pass = process.env.ZOHO_SMTP_PASSWORD?.replace(/\s+/g, "");
 
     const ownerEmails = process.env.SEND_EMAIL_TO || "";
+    if(!pass || !ownerEmails)return NextResponse.json({error:'Contact delivery is currently unavailable. Please email hello@yuitility.app.'},{status:503});
 
     const subjectMap: Record<string, string> = {
       request: "[Yuitility] New Tool Proposal Received",
@@ -117,7 +127,7 @@ export async function POST(req: Request) {
               
               <p style="font-size: 14px; color: #475569; margin: 0 0 16px 0; line-height: 1.5;">We have received your ${type === 'request' ? 'tool request' : type === 'bug' ? 'bug report' : 'feedback'}.</p>
               
-              <p style="font-size: 14px; color: #1e293b; line-height: 1.6; margin: 0 0 24px 0;">Our team reviews all submissions promptly. If you requested a new tool, our target SLA is adding high-demand tools within 24 hours!</p>
+              <p style="font-size: 14px; color: #1e293b; line-height: 1.6; margin: 0 0 24px 0;">We will review your submission. Response and implementation times depend on the request.</p>
               
               <!-- Divider -->
               <div style="height: 1px; background-color: #f1f5f9; margin-bottom: 20px;"></div>
@@ -162,7 +172,7 @@ export async function POST(req: Request) {
         }
       }
     } else {
-      console.log("[SMTP Simulation] Submission received:", { type, name, email, message, toolId });
+      return NextResponse.json({error:'Contact delivery is unavailable.'},{status:503});
     }
 
     return NextResponse.json({
@@ -170,11 +180,8 @@ export async function POST(req: Request) {
       message: "Your submission has been received. Thank you!",
     });
   } catch (error) {
-    console.error("[Contact API Error - SMTP]:", error);
-    // Gracefully return success to client so user submission is never blocked
     return NextResponse.json({
-      success: true,
-      message: "Your submission has been recorded successfully. Thank you!",
-    });
+      error: "Delivery failed. Please try again or email hello@yuitility.app.",
+    },{status:502});
   }
 }

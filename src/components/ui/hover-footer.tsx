@@ -144,6 +144,7 @@ export default function HoverFooter() {
       title: "Tool Categories",
       links: [
         { label: "All tools", href: "/tools" },
+        { label: "Site directory", href: "/sitemap" },
         { label: "Finance & Wealth", href: "/category/finance" },
         { label: "Calculators & Maths", href: "/category/math" },
         { label: "PDF Tools", href: "/category/pdf" },
@@ -185,7 +186,7 @@ export default function HoverFooter() {
               <span className="text-white text-2xl font-bold font-display tracking-tight">Yuitility</span>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              {`100% in-browser utilities. ${LIVE_TOOLS.length} working tools, zero server data retention, no upload step.`}
+              {`${LIVE_TOOLS.length} browser tools with local file processing. Optional AI chat and contact messages use servers.`}
             </p>
             <div className="flex flex-col gap-2 pt-1">
               <a

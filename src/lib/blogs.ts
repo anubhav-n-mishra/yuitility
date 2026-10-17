@@ -3,6 +3,7 @@ export interface BlogPost {
   title: string;
   description: string;
   date: string;
+  updated?: string;
   category: string;
   readTime: string;
   author: string;
@@ -11,621 +12,424 @@ export interface BlogPost {
   keywords: string[];
 }
 
+export function readingTime(content: string): string {
+ const words = content.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[#*`|]/g, " ").trim().split(/\s+/).filter(Boolean).length;
+ return `${Math.max(1, Math.ceil(words / 200))} min read`;
+}
+
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "how-to-use-scientific-calculator-online",
-    title: "Mastering the Scientific Calculator: Trig & Logarithms",
-    description: "Learn how to calculate trigonometric formulas, powers, factorials, and logarithmic equations with our free, high-precision scientific calculator.",
-    date: "2026-08-01",
-    category: "Math & Calculators",
-    readTime: "4 min read",
-    author: "Team Yuitility",
-    toolId: "scientific-calculator",
-    keywords: ["scientific calculator online","free scientific calculator","trigonometry calculator","logarithm calculator online"],
-    content: `The scientific calculator on Yuitility is designed for students, engineers, and researchers who need fast, accurate mathematical evaluation directly in the browser.
-
-### Key Capabilities
-- **Trigonometry and Inverse Functions**: Easily compute sin, cos, tan, asin, acos, atan, as well as hyperbolic functions. Toggle between Degrees (DEG) and Radians (RAD) formats.
-- **Logarithmic and Exponential Calculations**: Evaluates natural logarithm, common logarithm, powers, square roots, cube roots, and exponent functions.
-- **Parentheses and Order of Operations**: Type complex expressions using parenthesis for automatic order of operations evaluation.
-- **Memory Functions**: Store values in local memory to chain multi-step calculations without retyping.
-
-### Why Client-Side Math Matters
-Traditional online scientific calculators perform remote server calls on every button press. Yuitility processes calculations using standard JavaScript math subroutines locally, guaranteeing zero latency and 100% offline support.`
+    "slug": "how-to-use-scientific-calculator-online",
+    "title": "Scientific Calculator: Angles, Powers and Precision",
+    "description": "Before entering a long expression in the Scientific Calculator, verify a few known values. In degree mode, sin(30) should be approximately 0.5. In radian mode, sin(π/6) should give the ",
+    "date": "2026-08-01",
+    "category": "Math & Calculators",
+    "readTime": "4 min read",
+    "author": "Team Yuitility",
+    "toolId": "scientific-calculator",
+    "keywords": [
+      "scientific calculator online",
+      "free scientific calculator",
+      "trigonometry calculator",
+      "logarithm calculator online"
+    ],
+    "content": "Before entering a long expression in the [Scientific Calculator](/tools/scientific-calculator), verify a few known values. In degree mode, sin(30) should be approximately 0.5. In radian mode, sin(π/6) should give the same value. A different answer may mean the angle mode is wrong.\n\n### Reproduce the operation order\nCompare 2 + 3 × 4 = 14 with (2 + 3) × 4 = 20. Use parentheses around a negative base: (-2)^2 is 4. A parser may interpret -2^2 as -(2^2). When notation is ambiguous, split the expression into explicit steps.\n\nCheck that log(100) means the base-10 logarithm and returns 2. ln denotes the natural logarithm. Keep the expression with the saved result so another person can reproduce it.\n\n### Read precision honestly\nJavaScript numbers have finite precision. Very large factorials overflow, and subtraction of nearly equal numbers can lose precision. Keep extra digits during intermediate steps and round only when justified by the input. A displayed last digit is not a proof of exactness. See [JavaScript Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number).",
+    "updated": "2026-10-13"
   },
   {
-    slug: "understanding-salary-take-home-pay-and-epf",
-    title: "Salary Take-Home Pay, In-Hand Income and EPF Deductions",
-    description: "A complete guide to calculating your monthly in-hand salary, annual CTC breakdown, Employee Provident Fund (EPF) deductions, and net income.",
-    date: "2026-07-28",
-    category: "Finance & Wealth",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "salary-calculator",
-    keywords: ["salary take home calculator","in hand salary calculator","epf deduction formula","ctc to in hand calculator"],
-    content: `Understanding your actual monthly in-hand salary from your total Cost to Company (CTC) offer letter is crucial for financial planning.
-
-### Standard Salary Components
-1. **Basic Salary**: Typically represents 40% to 50% of your total CTC.
-2. **House Rent Allowance (HRA)**: Provided for rent accommodation and offers tax exemption benefits under income tax rules.
-3. **Employee Provident Fund (EPF)**: Standard 12% deduction from your Basic Salary contributed towards long-term retirement savings.
-4. **Performance Bonus and Allowances**: Variable incentives paid monthly or annually.
-
-### How to Use the Yuitility Salary Calculator
-Select your preferred currency, enter your annual CTC, customize your Basic Salary percentage, and toggle EPF inclusion to view your exact monthly net take-home pay instantly.`
+    "slug": "understanding-salary-take-home-pay-and-epf",
+    "title": "CTC to Take-Home: A Worked FY 2025–26 Example",
+    "description": "Cost to Company is an employer budget, not your bank credit. The India Salary Calculator models salary-only income under the new regime for FY 2025–26 / AY 2026–27. It does not automati",
+    "date": "2026-07-28",
+    "category": "Finance & Wealth",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "salary-calculator",
+    "keywords": [
+      "salary take home calculator",
+      "in hand salary calculator",
+      "epf deduction formula",
+      "ctc to in hand calculator"
+    ],
+    "content": "Cost to Company is an employer budget, not your bank credit. The [India Salary Calculator](/tools/salary-calculator) models salary-only income under the new regime for FY 2025–26 / AY 2026–27. It does not automatically model every benefit in an offer letter.\n\n### Reproduce a ₹10 lakh example\nEnter ₹10,00,000 CTC, 50% basic pay, ₹1,00,000 included annual bonus, capped EPF and ₹2,500 annual professional tax. Keep other deductions at zero and resident rebate eligibility selected.\n\nEmployer EPF is capped at ₹21,600 per year in this scenario. Gross salary is therefore ₹9,78,400. The included bonus remains taxable. After the ₹75,000 standard deduction, taxable salary is ₹9,03,400. The eligible resident rebate reduces tax to zero at this level.\n\nEmployee EPF of ₹21,600 and professional tax of ₹2,500 are deducted from pay. Annual net including the bonus is ₹9,54,300. Because the ₹1,00,000 bonus is paid separately, regular monthly net is (₹9,54,300 − ₹1,00,000) / 12 = ₹71,191.67.\n\n### Three differences that change the answer\nA bonus included in CTC differs from a bonus on top of CTC; this calculator assumes it is included. Payroll deductions are not automatically tax deductions: employee EPF and professional tax reduce pay here but not the new-regime taxable base. Professional tax also varies by state; enter zero where it does not apply.\n\n### Check the scope\nAnnual tax is spread evenly across twelve months. Actual bonus withholding may happen in particular months. Employer insurance, gratuity, NPS, stock awards, special-rate income and surcharge are outside this model. Compare these with your offer and payroll statement.\n\nCheck the named year and regime against the [Income Tax Department guidance](https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1). A salary estimate is not a tax return.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "why-in-browser-pdf-tools-are-more-secure",
-    title: "Why In-Browser PDF Processing is More Secure Than Uploads",
-    description: "Why uploading bank statements or tax forms to remote converters exposes you to privacy risks - and how local PDF-Lib browser processing protects you.",
-    date: "2026-07-25",
-    category: "PDF Tools",
-    readTime: "6 min read",
-    author: "Team Yuitility",
-    toolId: "pdf-merger",
-    keywords: ["private pdf merger","pdf editor offline","merge pdf without upload","secure pdf tools online"],
-    content: `When you use traditional web converters to merge, compress, or split PDF files, your documents travel across public internet servers and are stored on third-party cloud storage disks.
-
-### The In-Browser Advantage
-Yuitility utilizes PDF-Lib compiled into web bundle modules. When you drag and drop PDF files into Yuitility:
-1. Files are read into your browser's local memory.
-2. Page merging, rotation, splitting, or reordering happens locally on your CPU using native JavaScript.
-3. The rendered PDF is downloaded directly from local blob memory.
-4. **Zero bytes of data leave your device.**
-
-This guarantees complete compliance with data privacy regulations for financial, medical, and personal documents.`
+    "slug": "why-in-browser-pdf-tools-are-more-secure",
+    "title": "Merge PDFs Locally: Verify the File and the Data Flow",
+    "description": "The PDF Merger combines selected files in browser memory. This removes a file-processing upload step, but does not guarantee regulatory compliance or protect a compromised device.",
+    "date": "2026-07-25",
+    "category": "PDF Tools",
+    "readTime": "6 min read",
+    "author": "Team Yuitility",
+    "toolId": "pdf-merger",
+    "keywords": [
+      "private pdf merger",
+      "pdf editor offline",
+      "merge pdf without upload",
+      "secure pdf tools online"
+    ],
+    "content": "The [PDF Merger](/tools/pdf-merger) combines selected files in browser memory. This removes a file-processing upload step, but does not guarantee regulatory compliance or protect a compromised device.\n\n### Start with a reproducible sample\nCreate two small PDFs with visible labels A1, A2 and B1. Select them, arrange their order using the available controls and merge. Open the download in a separate viewer. Confirm three pages in the expected order, with selectable text where the original had selectable text.\n\nRepeat with your intended files after the sample behaves correctly. Keep the originals. Inspect rotation, page sizes, annotations, links and important form fields. Combining documents does not preserve the validity of signatures over the original file bytes.\n\n### Verify local processing\nOpen developer tools, select Network and operate the merger with sample files. Inspect outgoing request payloads. Requests for application code differ from uploading PDF content. The separate AI assistant and contact form send messages to servers: do not paste document contents into them as part of a privacy test.\n\n### Practical limits\nLarge documents consume device memory. Mobile browsers may terminate a tab before a desktop browser would. Try a smaller set if processing fails. Encrypted or malformed files may need a different workflow. There is no universal promise that every PDF feature survives a rewrite.\n\nThe application uses [pdf-lib](https://pdf-lib.js.org/docs/api/classes/pdfdocument) for document manipulation. Keep original files as a recovery copy and verify the exported document before distributing it. For size reduction, the [PDF Structure Optimizer](/tools/pdf-compressor) rewrites objects and removes metadata; it does not recompress embedded photographs.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "optimizing-web-images-webp-avif-jpg-conversion",
-    title: "Optimizing Web Images: WebP vs AVIF vs PNG Compression Guide",
-    description: "Learn how to compress web images, convert PNG/JPG to WebP, and reduce image page weight by up to 80% without losing visual quality.",
-    date: "2026-07-20",
-    category: "Image & Media",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "image-compressor",
-    keywords: ["image compressor online","convert png to webp","compress image without losing quality","webp converter free"],
-    content: `High-resolution images account for over 60% of total web page payload size. Optimizing your images is essential for achieving 100/100 Google PageSpeed scores and fast mobile loading times.
-
-### Image Format Comparison
-- **WebP**: Modern image format providing superior lossy and lossless compression for web graphics. Reduces file size by 25% to 34% compared to JPEG.
-- **AVIF**: Next-generation format offering even higher compression efficiency than WebP with excellent color retention.
-- **JPEG/PNG**: Universal compatibility for legacy browsers.`
+    "slug": "optimizing-web-images-webp-avif-jpg-conversion",
+    "title": "Choose WebP, PNG or JPEG with a Real Comparison",
+    "description": "Image compression depends on dimensions, format, quality and picture content. There is no universal “80% smaller with no loss” setting. Use the Image Compressor and Format Converter to ",
+    "date": "2026-07-20",
+    "category": "Image & Media",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "image-compressor",
+    "keywords": [
+      "image compressor online",
+      "convert png to webp",
+      "compress image without losing quality",
+      "webp converter free"
+    ],
+    "content": "Image compression depends on dimensions, format, quality and picture content. There is no universal “80% smaller with no loss” setting. Use the [Image Compressor](/tools/image-compressor) and [Format Converter](/tools/format-converter) to compare outputs from your actual image.\n\n### A useful comparison workflow\n1. Keep an original and note its pixel dimensions and file size.\n2. Resize to the largest dimensions the destination needs, allowing for high-density displays where appropriate.\n3. Export a candidate. Inspect it at the intended display size and 100% zoom. Check small text, gradients, hair, sharp edges and transparent boundaries.\n4. Compare bytes using (original − output) / original × 100. Reducing 800,000 bytes to 320,000 bytes is a 60% reduction. This is an arithmetic example, not a universal benchmark.\n5. Open the final download in the application where it will be used.\n\n### Format choices\nJPEG is common for photographs without transparency. PNG supports lossless graphics and transparency but can be large for photographs. WebP supports lossy and lossless forms and is worth comparing. This converter exports WebP, PNG or JPEG, not GIF or AVIF. Canvas conversion creates a still image and does not preserve animation.\n\n### Quality settings have limits\nA quality setting is an encoder input, not a percentage of visual fidelity. Two formats or browsers may produce different files at the same setting. Repeated lossy recompression can accumulate artifacts; start from the original for each comparison.\n\nConsult the [MDN image format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types) for format characteristics. Choose the measured file and visible result, not a promised PageSpeed score.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-calculate-home-loan-prepayment-savings",
-    title: "How Home Loan Prepayments Reduce Interest and Shorten Tenure",
-    description: "Discover how making extra principal prepayments on your mortgage or home loan can save you thousands in interest and shave years off your loan tenure.",
-    date: "2026-08-09",
-    category: "Finance & Wealth",
-    readTime: "6 min read",
-    author: "Team Yuitility",
-    toolId: "home-loan-emi-calculator",
-    keywords: ["home loan prepayment calculator","how extra mortgage payments save interest","reduce home loan tenure","partial home loan prepayment"],
-    content: `Making partial prepayments on your home loan is one of the most effective strategies to build long-term wealth. Because home loans use reducing-balance interest formulas, early payments directly reduce your principal balance, which in turn shrinks total interest accrued over the life of the loan.
-
-### The Impact of Early Principal Prepayments
-
-When you start a 20-year or 30-year mortgage, the vast majority of your initial monthly payments go toward interest rather than principal reduction. By making an extra lump-sum payment or adding a small recurring amount each year, you bypass years of compounding interest.
-
-| Prepayment Strategy | Initial Principal | Loan Tenure | Total Interest Saved | Tenure Reduction |
-| :--- | :--- | :--- | :--- | :--- |
-| **Standard EMI (No Prepayment)** | $300,000 | 20 Years | $0 (Base Interest) | 0 Months |
-| **1 Extra EMI Paid Annually** | $300,000 | 20 Years | $42,500+ Saved | ~3.5 Years Shorter |
-| **5% Principal Prepayment Yearly** | $300,000 | 20 Years | $98,000+ Saved | ~7 Years Shorter |
-
-### Key Benefits of Home Loan Prepayment
-
-1. **Massive Interest Savings**: Reducing your principal early reduces the base on which monthly interest is computed.
-2. **Accelerated Equity Building**: You gain full ownership of your property much faster.
-3. **Financial Freedom**: Eliminating monthly debt obligations frees up cash flow for retirement investments or emergency buffers.
-
-### How to Calculate Your Prepayment Savings
-
-Use the free **[Home Loan EMI Calculator](/tools/home-loan-emi-calculator)** on Yuitility to input your loan amount, interest rate, and tenure. You can experiment with different prepayment amounts and observe how your total repayment schedule changes instantly.
-
-All calculations run 100% locally in your web browser, ensuring complete privacy for your financial planning.`
+    "slug": "how-to-calculate-home-loan-prepayment-savings",
+    "title": "Home Loan Prepayment: Compare the Same Loan Twice",
+    "description": "Prepayment reduces the balance on which future interest is charged. Savings depend on rate, timing, remaining term, fees and whether the lender reduces the payment or the term. A saving",
+    "date": "2026-08-09",
+    "category": "Finance & Wealth",
+    "readTime": "6 min read",
+    "author": "Team Yuitility",
+    "toolId": "home-loan-emi-calculator",
+    "keywords": [
+      "home loan prepayment calculator",
+      "how extra mortgage payments save interest",
+      "reduce home loan tenure",
+      "partial home loan prepayment"
+    ],
+    "content": "Prepayment reduces the balance on which future interest is charged. Savings depend on rate, timing, remaining term, fees and whether the lender reduces the payment or the term. A savings table without those assumptions cannot be reproduced.\n\n### First-month example\nFor principal 100,000 at 6% nominal annual interest, monthly interest is 500. If the payment is 1,000, only 500 reduces principal. An extra 2,000 principal payment leaves 97,500 instead of 99,500. With an unchanged rate, next-month interest becomes 487.50 instead of 497.50.\n\n### Compare like for like\nUse the [Home Loan EMI Calculator](/tools/home-loan-emi-calculator) for a baseline, then change only a supported prepayment assumption. Record the date, payment, rate and remaining term. Holding the payment fixed differs from recalculating it after prepayment.\n\nAn unchanged rate is an assumption, not a lender commitment. Include prepayment charges and verify the lender’s allocation rules. The month above explains the mechanism; it is not a quoted lifetime saving for an unspecified loan.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "step-up-sip-vs-regular-sip-wealth-comparison",
-    title: "Step-Up SIP vs Regular SIP: How Increasing Investments Yearly Supercharges Corpus",
-    description: "Learn why increasing your monthly mutual fund SIP by 10% each year yields up to double the total wealth compared to a fixed flat SIP over 15 years.",
-    date: "2026-08-11",
-    category: "Finance & Wealth",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "sip-step-up-calculator",
-    keywords: ["step up sip calculator","top up sip returns comparison","annual sip increment wealth","mutual fund step up sip vs regular sip"],
-    content: `A Systematic Investment Plan (SIP) is a proven tool for dollar-cost averaging in mutual funds. However, maintaining a fixed monthly investment for 10 or 20 years ignores a key economic reality: your income grows over time. A Step-Up SIP (also known as a Top-Up SIP) automatically increases your monthly contribution each year to align with annual salary raises.
-
-### Comparison: Regular SIP vs 10% Annual Step-Up SIP
-
-Assume an initial monthly investment of $500 per month for 15 years at an expected annual return rate of 12%.
-
-| Investment Plan | Monthly Start | Annual Step-Up | Total Invested | Final Projected Corpus | Net Wealth Gain |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Regular Flat SIP** | $500 | 0% (Flat) | $90,000 | $249,790 | +$159,790 |
-| **Step-Up SIP (10% Yearly)** | $500 | 10% Annual | $190,635 | $461,840 | +$271,205 |
-
-### Why Step-Up SIPs Outperform Flat Investments
-
-- **Matches Salary Increments**: As your annual earnings increase, allocating a portion of your raise prevents lifestyle inflation.
-- **Amplified Compounding**: Additional capital introduced in years 2 through 10 compounds aggressively over the remaining horizon.
-- **Disciplined Wealth Accumulation**: Automated annual increases eliminate the hassle of manually opening new SIP folios.
-
-### Estimate Your Corpus with Yuitility
-
-Calculate your potential wealth growth using the **[SIP Step-Up Calculator](/tools/sip-step-up-calculator)** on Yuitility. Enter your starting amount, annual step-up percentage, target duration, and expected return rate to view a complete year-by-year growth table instantly.`
+    "slug": "step-up-sip-vs-regular-sip-wealth-comparison",
+    "title": "Step-Up SIP: Separate Extra Deposits from Returns",
+    "description": "A step-up SIP increases contributions over time. A larger final balance can reflect more money deposited, not only investment gains. Compare both in the Step-Up SIP Calculator.",
+    "date": "2026-08-11",
+    "category": "Finance & Wealth",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "sip-step-up-calculator",
+    "keywords": [
+      "step up sip calculator",
+      "top up sip returns comparison",
+      "annual sip increment wealth",
+      "mutual fund step up sip vs regular sip"
+    ],
+    "content": "A step-up SIP increases contributions over time. A larger final balance can reflect more money deposited, not only investment gains. Compare both in the [Step-Up SIP Calculator](/tools/sip-step-up-calculator).\n\n### Check deposits first\nAt 5,000 per month, year-one contributions are 60,000. A 10% annual step-up makes year-two contributions 5,500 per month, or 66,000. The two-year total is 126,000 before growth, compared with 120,000 for an unchanged contribution.\n\nIf a projection reports a 10,000 advantage for the step-up scenario, 6,000 comes from extra contributions in this example. The rest may be modeled growth, depending on timing and return assumptions.\n\n### Keep scenarios comparable\nUse the same duration, return and contribution timing. Check when the annual increase begins. At 0% return, projected balance should equal total deposits; this is a useful verification case.\n\nA constant return smooths market variation and excludes fees and tax unless explicitly modeled. A projected target is not a guaranteed mutual-fund outcome. Review contribution affordability as well as the final balance.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "convert-json-to-csv-excel-developer-guide",
-    title: "How to Convert JSON Data Arrays into Excel CSV Spreadsheets",
-    description: "A step-by-step developer guide to converting JSON API arrays into clean CSV files for Excel analysis without uploading data to remote servers.",
-    date: "2026-08-13",
-    category: "Developer & Text",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "json-to-csv-converter",
-    keywords: ["convert json to csv online","json array to excel converter","export json to csv browser","json to csv parser free"],
-    content: `JSON is the standard format for web APIs, database exports, and configuration files. However, business analysts, managers, and accountants often require tabular CSV files to perform spreadsheet formulas, pivot tables, and charts in Microsoft Excel or Google Sheets.
-
-### Key Considerations When Converting JSON to CSV
-
-1. **Array Structure**: Your JSON input should be an array of uniform objects where each object key becomes a CSV column header.
-2. **Nested Objects**: Nested properties (such as \`user.address.city\`) must be flattened into dot-notation column names.
-3. **Delimiter Handling**: Text strings containing commas or quotation marks must be escaped with double quotes to prevent column misalignment.
-
-### How to Convert JSON to CSV in Browser
-
-1. Paste your JSON array into the **[JSON to CSV Converter](/tools/json-to-csv-converter)** on Yuitility.
-2. The client-side parser parses keys, extracts headers, and formats rows automatically.
-3. Click **Download CSV** to save the spreadsheet directly to your device.
-
-\`\`\`json
-[
-  { "id": 1, "name": "Alice Smith", "role": "Developer", "department": "Engineering" },
-  { "id": 2, "name": "Bob Jones", "role": "Designer", "department": "Product" }
-]
-\`\`\`
-
-Converted CSV Output:
-\`\`\`csv
-id,name,role,department
-1,"Alice Smith",Developer,Engineering
-2,"Bob Jones",Designer,Product
-\`\`\`
-
-### Data Privacy Guarantee
-
-Pasting customer records or internal database logs into third-party online converters can create compliance vulnerabilities. Yuitility processes all JSON parsing 100% locally in browser RAM, ensuring your data is never uploaded or saved on any remote server.`
+    "slug": "convert-json-to-csv-excel-developer-guide",
+    "title": "JSON to CSV: Quoting, Nested Values and Import",
+    "description": "The JSON to CSV Converter expects a non-empty array of objects. CSV has one cell at each row-and-column intersection; JSON can contain arrays and objects inside values. Decide how to re",
+    "date": "2026-08-13",
+    "category": "Developer & Text",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "json-to-csv-converter",
+    "keywords": [
+      "convert json to csv online",
+      "json array to excel converter",
+      "export json to csv browser",
+      "json to csv parser free"
+    ],
+    "content": "The [JSON to CSV Converter](/tools/json-to-csv-converter) expects a non-empty array of objects. CSV has one cell at each row-and-column intersection; JSON can contain arrays and objects inside values. Decide how to represent those structures before exporting.\n\n### Reproduce a quoting test\nTry an object whose name field contains A, B, whose note includes quotation marks, and whose identifier is the string 0012. A comma-containing field needs quotes in comma-delimited CSV. Quotes inside a quoted field are doubled. The identifier must remain text when imported into a spreadsheet.\n\nThe converter uses the union of object keys as headers. A missing key or null produces an empty cell. Nested objects and arrays are serialized as JSON text inside a cell, not expanded into rows or columns. Flatten deliberately if your analysis needs separate columns.\n\n### Import instead of double-clicking\nUse the spreadsheet’s text import controls to choose delimiter and encoding. Import identifiers as text so leading zeroes survive and long numbers are not rounded. Cells beginning with formula characters are prefixed with an apostrophe for spreadsheet safety; this intentionally changes the raw cell value.\n\n### Verify the output\nCompare row counts, headers, a comma-containing value, a newline and a missing field. Keep the JSON alongside the CSV. CSV cannot preserve every JSON type without conventions, so a successful download does not prove semantic equivalence.\n\nQuoting conventions are described in [RFC 4180](https://www.rfc-editor.org/rfc/rfc4180). Spreadsheet behavior can still vary by application.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-pomodoro-technique-improves-coding-productivity",
-    title: "Boosting Focus with the 25-Minute Pomodoro Technique",
-    description: "How structuring your workday into 25-minute focus intervals and 5-minute breaks improves coding productivity and prevents cognitive fatigue.",
-    date: "2026-08-15",
-    category: "Everyday Utilities",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "pomodoro-timer",
-    keywords: ["pomodoro technique for developers","25 minute focus timer online","boost coding productivity pomodoro","free pomodoro interval timer"],
-    content: `Context switching and constant digital interruptions are major obstacles for software developers, writers, and knowledge workers. The Pomodoro Technique, developed by Francesco Cirillo, provides a structured framework to maintain deep focus while managing mental energy.
-
-### Core Mechanics of the Pomodoro Cycle
-
-1. **Select a Clear Task**: Choose a single work item to focus on exclusively.
-2. **Set the Timer for 25 Minutes**: Work on the task without checking email, social media, or messaging apps.
-3. **Take a 5-Minute Short Break**: Step away from the screen, stretch, or hydrate.
-4. **Repeat and Rest**: After completing 4 focus blocks (100 minutes of work), take a longer 15 to 30-minute restorative break.
-
-| Interval Phase | Duration | Recommended Action |
-| :--- | :--- | :--- |
-| **Focus Sprint** | 25 Minutes | Deep work, coding, writing, debugging |
-| **Short Break** | 5 Minutes | Hydrate, stretch, rest your eyes |
-| **Long Break** | 15–30 Minutes | Walk, snack, disconnect from screens |
-
-### Why 25-Minute Work Blocks Work
-
-- **Overcomes Procrastination**: Committing to just 25 minutes reduces psychological resistance to starting difficult tasks.
-- **Prevents Mental Burnout**: Regular scheduled breaks keep your brain fresh throughout long workdays.
-- **Measures Real Output**: Tracking completed Pomodoro cycles provides accurate data on task estimation.
-
-Start your next focus session using the free **[Pomodoro Timer](/tools/pomodoro-timer)** on Yuitility. Features include audio alerts, customizable work/break durations, and zero ads.`
+    "slug": "how-pomodoro-technique-improves-coding-productivity",
+    "title": "Try a Focus Timer Without Treating 25 Minutes as a Rule",
+    "description": "A timer gives a task a visible boundary, but the duration should fit the work. Try the Pomodoro Timer with a specific outcome, such as writing one test or reviewing one function.",
+    "date": "2026-08-15",
+    "category": "Everyday Utilities",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "pomodoro-timer",
+    "keywords": [
+      "pomodoro technique for developers",
+      "25 minute focus timer online",
+      "boost coding productivity pomodoro",
+      "free pomodoro interval timer"
+    ],
+    "content": "A timer gives a task a visible boundary, but the duration should fit the work. Try the [Pomodoro Timer](/tools/pomodoro-timer) with a specific outcome, such as writing one test or reviewing one function.\n\n### Run a small experiment\nChoose a task you can describe in one sentence. Remove distractions, start a 25-minute session if that length suits you, and note interruptions instead of switching tasks immediately. Afterwards, record what was completed and whether the timer helped. Take a break before choosing the next task.\n\nDeep debugging may suit a longer uninterrupted period; routine administration may suit shorter blocks. The timer does not establish one scientifically optimal duration for everyone.\n\n### Check browser behavior\nA background tab or sleeping device can throttle timers. Sound and notifications depend on browser settings and permissions. Test them before relying on the timer as an alarm.\n\nCompare completed work and interruption count across similar sessions, not just the number of cycles. Adjust or stop the technique if it increases stress or interrupts useful concentration.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-calculate-daily-calorie-deficit-for-fat-loss",
-    title: "How to Calculate a Safe Calorie Deficit for Sustainable Fat Loss",
-    description: "Learn how to calculate your Total Daily Energy Expenditure (TDEE) and establish a realistic 300 to 500 calorie deficit to burn fat without sacrificing muscle.",
-    date: "2026-08-17",
-    category: "Health & Lifestyle",
-    readTime: "6 min read",
-    author: "Team Yuitility",
-    toolId: "calorie-deficit-calculator",
-    keywords: ["calorie deficit calculator fat loss","how to calculate TDEE for weight loss","safe daily calorie deficit","bmr and tdee calculator"],
-    content: `Weight loss fundamentally relies on energy balance. When you consume fewer calories than your body expends for daily physiological functions and physical movement, your body converts stored adipose tissue into energy.
-
-### Understanding Key Metabolic Indicators
-
-- **Basal Metabolic Rate (BMR)**: The baseline number of calories your body burns at complete rest to maintain vital organs. Calculated using the Mifflin-St Jeor equation.
-- **Total Daily Energy Expenditure (TDEE)**: Your BMR multiplied by your physical activity multiplier (sedentary, moderate, or active lifestyle).
-
-### Determining Your Safe Calorie Deficit
-
-Aggressive starvation diets often lead to muscle loss, metabolic slowing, and rapid weight regain. A moderate daily calorie deficit of 300 to 500 calories below your TDEE yields sustainable fat loss of approximately 0.5 to 1 pound per week.
-
-| Goal Objective | Deficit Margin | Target Rate of Loss | Muscle Preservation |
-| :--- | :--- | :--- | :--- |
-| **Conservative Cut** | 300 Calories/day | 0.5 lbs / week | Maximum |
-| **Standard Cut** | 500 Calories/day | 1.0 lbs / week | High (with high protein intake) |
-| **Aggressive Cut** | 750+ Calories/day | 1.5+ lbs / week | Risk of muscle loss & fatigue |
-
-### Calculate Your Daily Targets
-
-Calculate your personalized targets using the **[Calorie Deficit Calculator](/tools/calorie-deficit-calculator)** on Yuitility. Enter your age, gender, height, weight, and activity level to view your maintenance calories and deficit options instantly.`
+    "slug": "how-to-calculate-daily-calorie-deficit-for-fat-loss",
+    "title": "Calorie Deficit Estimates: Know the Model’s Limits",
+    "description": "A calorie calculator estimates energy needs from limited inputs. It does not measure metabolism, establish a safe intake or predict an exact weight change. Read the Calorie Deficit Calc",
+    "date": "2026-08-17",
+    "category": "Health & Lifestyle",
+    "readTime": "6 min read",
+    "author": "Team Yuitility",
+    "toolId": "calorie-deficit-calculator",
+    "keywords": [
+      "calorie deficit calculator fat loss",
+      "how to calculate TDEE for weight loss",
+      "safe daily calorie deficit",
+      "bmr and tdee calculator"
+    ],
+    "content": "A calorie calculator estimates energy needs from limited inputs. It does not measure metabolism, establish a safe intake or predict an exact weight change. Read the [Calorie Deficit Calculator](/tools/calorie-deficit-calculator) as an illustration.\n\n### Separate arithmetic from a recommendation\nIf estimated maintenance is 2,300 kcal, subtracting an illustrative 300 kcal gives 2,000 kcal. Both the maintenance figure and the chosen difference need scrutiny. This does not recommend that every person eat 2,000 kcal or use that difference.\n\nActivity categories are broad. People choosing the same category may expend different amounts of energy. Intake records also have measurement error, and short-term weight changes can reflect water and digestion rather than body fat.\n\n### Scope matters\nGeneric adult calculators do not replace individual care, especially for children, pregnancy, breastfeeding, eating-disorder history or conditions affecting nutrition. A low calculated result is not evidence of a safe target.\n\nSee the [NIDDK Body Weight Planner](https://www.niddk.nih.gov/health-information/weight-management/body-weight-planner) for model context and discuss personal targets with a qualified clinician or registered dietitian. Numerical precision on a screen is formatting, not proof of physiological precision.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "convert-svg-to-png-high-resolution-graphics",
-    title: "Converting Vector SVG Files to High Resolution PNG Images",
-    description: "How designers and front-end developers convert vector SVG graphics into crisp raster PNGs at 2x, 3x, and 4x retina resolutions locally.",
-    date: "2026-08-19",
-    category: "Image & Media",
-    readTime: "4 min read",
-    author: "Team Yuitility",
-    toolId: "svg-to-png-converter",
-    keywords: ["convert svg to png online","svg to png transparent background","vector to png high resolution","svg converter client side"],
-    content: `Scalable Vector Graphics (SVG) are ideal for responsive web icons, logos, and illustrations because they scale infinitely without pixelation. However, many desktop applications, email clients, social media platforms, and slide decks require standard bitmap images like PNG or JPEG.
-
-### Advantages of Converting SVG to PNG
-
-1. **Universal Display**: PNG images display consistently across legacy email readers, office suites, and photo software.
-2. **Transparent Backgrounds**: PNG retains vector alpha channel transparency for overlays.
-3. **High Resolution Rasterization**: Exporting SVGs at 2x, 3x, or 4x pixel multipliers produces sharp graphics for 4K displays and print materials.
-
-| Export Resolution | Scale Multiplier | Intended Use Case |
-| :--- | :--- | :--- |
-| **1x Standard** | 100% Original | Standard web graphics & email templates |
-| **2x Retina** | 200% Output | High-DPI smartphones & laptops |
-| **4x Ultra HD** | 400% Output | Print documents, posters & presentations |
-
-### In-Browser Conversion Guide
-
-Upload your SVG file to the **[SVG to PNG Converter](/tools/svg-to-png-converter)** on Yuitility. Adjust target width, height, or scaling factor, and download your transparent PNG instantly. Zero file uploads required.`
+    "slug": "convert-svg-to-png-high-resolution-graphics",
+    "title": "SVG to PNG: Dimensions, Fonts and Rendering Checks",
+    "description": "SVG describes shapes; PNG stores pixels. The SVG to PNG Converter chooses a raster size for drawing those shapes when a destination needs a PNG.",
+    "date": "2026-08-19",
+    "category": "Image & Media",
+    "readTime": "4 min read",
+    "author": "Team Yuitility",
+    "toolId": "svg-to-png-converter",
+    "keywords": [
+      "convert svg to png online",
+      "svg to png transparent background",
+      "vector to png high resolution",
+      "svg converter client side"
+    ],
+    "content": "SVG describes shapes; PNG stores pixels. The [SVG to PNG Converter](/tools/svg-to-png-converter) chooses a raster size for drawing those shapes when a destination needs a PNG.\n\n### Choose dimensions deliberately\nA logo displayed at 600 CSS pixels wide might use a 1200-pixel image for a high-density display. Preserve aspect ratio: doubling a 600 × 300 image gives 1200 × 600, not 1200 × 300.\n\nAn SVG can reference fonts, images, filters or external resources. Missing fonts may render differently; external resources may fail. Inspect the export rather than assuming every valid SVG renders identically. An embedded raster image does not gain detail by enlarging the SVG wrapper.\n\n### Verify the download\nCheck output dimensions in another viewer. Inspect fine text and strokes at 100% zoom. For transparent output, inspect edges on both light and dark backgrounds. Retain the SVG as the editable source.\n\nSee the [SVG documentation](https://developer.mozilla.org/en-US/docs/Web/SVG) for vector-format behavior. A larger file is not automatically a better image.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "decoding-jwt-tokens-locally-browser-security",
-    title: "Demystifying JSON Web Tokens: How to Decode JWT Claims Privately",
-    description: "Understand the anatomy of JSON Web Tokens (JWT) including headers, payload claims, and signatures, and why decoding them locally protects API security.",
-    date: "2026-08-21",
-    category: "Developer & Text",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "jwt-decoder",
-    keywords: ["decode jwt token online","jwt payload viewer free","jwt header claims parser","private jwt decoder browser"],
-    content: `JSON Web Tokens (JWT) are widely used for client-server authentication in modern web applications. A standard JWT consists of three Base64URL-encoded strings separated by dots (\`header.payload.signature\`).
-
-### Structure of a JWT
-
-1. **Header**: Defines the signing algorithm (such as RS256 or HS256) and token type.
-2. **Payload (Claims)**: Contains user identity data, permissions, issue timestamp (\`iat\`), and expiration timestamp (\`exp\`).
-3. **Signature**: Cryptographic hash validating token integrity.
-
-\`\`\`text
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsaWNlIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-\`\`\`
-
-### Why Local JWT Decoding is Essential
-
-Pasting production authentication tokens into public cloud decoders can expose sensitive session keys, user IDs, and API authorizations. 
-
-Using the **[JWT Decoder](/tools/jwt-decoder)** on Yuitility allows you to inspect payload claims and formatted dates locally in your browser memory. No tokens are sent over the network.`
+    "slug": "decoding-jwt-tokens-locally-browser-security",
+    "title": "Decode JWT Claims Locally Without Trusting Them",
+    "description": "Decoding and verification are different operations. The JWT Decoder displays readable token sections. It does not establish that the issuer signed the token, that the signature is valid",
+    "date": "2026-08-21",
+    "category": "Developer & Text",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "jwt-decoder",
+    "keywords": [
+      "decode jwt token online",
+      "jwt payload viewer free",
+      "jwt header claims parser",
+      "private jwt decoder browser"
+    ],
+    "content": "Decoding and verification are different operations. The [JWT Decoder](/tools/jwt-decoder) displays readable token sections. It does not establish that the issuer signed the token, that the signature is valid or that your application should accept it.\n\n### Inspect the structure\nA common signed compact JWT has three dot-separated sections: header, payload and signature. Header and payload use base64url encoding. Encoding is not encryption; anyone with the token can generally read these sections. Never paste a real production bearer token into a public chat or issue report.\n\n### Work with a harmless example\nUse a synthetic payload such as {\"sub\":\"demo\",\"role\":\"reader\"}. Editing a payload can still leave readable JSON. That demonstrates why displayed claims are not proof of authenticity: acceptance requires verification with the correct key and algorithm.\n\n### Expiration is one check\nAn exp claim typically uses seconds since the Unix epoch. Convert seconds, not milliseconds. A future expiration does not establish the correct issuer, audience, signature or authorization. Clock tolerance and acceptance policies belong to the validating system.\n\nUse a maintained verification library in application code, restrict accepted algorithms and keys, and validate required claims. See [RFC 7519](https://www.rfc-editor.org/rfc/rfc7519). The local decoder is an inspection aid, not an authentication decision.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "sukanya-samriddhi-yojana-ssy-tax-free-savings",
-    title: "Sukanya Samriddhi Yojana (SSY): Complete Guide to Deposits and Interest",
-    description: "A comprehensive guide to India's Sukanya Samriddhi Yojana (SSY) scheme, calculating 15 years of contributions, 21-year maturity growth, and tax benefits.",
-    date: "2026-08-23",
-    category: "Finance & Wealth",
-    readTime: "6 min read",
-    author: "Team Yuitility",
-    toolId: "ssy-calculator",
-    keywords: ["sukanya samriddhi yojana calculator","ssy maturity interest calculation","ssy tax exemption section 80C","girl child financial planning ssy"],
-    content: `Sukanya Samriddhi Yojana (SSY) is a government-backed savings initiative designed to secure the higher education and financial future of girl children in India.
-
-### Key Rules of the SSY Scheme
-
-- **Account Opening**: Can be opened for a girl child from birth up to 10 years of age.
-- **Deposit Window**: Contributions are made for 15 years from account opening.
-- **Maturity Duration**: The scheme matures after 21 years.
-- **Contribution Limits**: Minimum deposit of ₹250 and maximum limit of ₹150,000 per financial year.
-- **Exempt-Exempt-Exempt (EEE) Status**: Contributions qualify for Section 80C tax deductions, annual interest growth is tax-free, and maturity payouts are 100% tax-exempt.
-
-### Maturity Projection Example
-
-Assuming an annual deposit of ₹100,000 for 15 years at an illustrative interest rate of 8.2% per annum:
-
-| Financial Milestone | Time Period | Contribution Outflow | Accumulated Corpus |
-| :--- | :--- | :--- | :--- |
-| **Deposit Phase** | Years 1 to 15 | ₹1,500,000 | ~₹3,500,000 |
-| **Growth Only Phase** | Years 16 to 21 | ₹0 (No new deposit) | ~₹5,500,000+ |
-
-Calculate your exact maturity corpus using the **[SSY Calculator](/tools/ssy-calculator)** on Yuitility.`
+    "slug": "sukanya-samriddhi-yojana-ssy-tax-free-savings",
+    "title": "SSY Projections: Check the Rate and Deposit Timing",
+    "description": "A savings projection depends on deposits and the rates applied over time. The SSY Calculator is a scenario tool; a displayed default is not a promise of a constant future rate.",
+    "date": "2026-08-23",
+    "category": "Finance & Wealth",
+    "readTime": "6 min read",
+    "author": "Team Yuitility",
+    "toolId": "ssy-calculator",
+    "keywords": [
+      "sukanya samriddhi yojana calculator",
+      "ssy maturity interest calculation",
+      "ssy tax exemption section 80C",
+      "girl child financial planning ssy"
+    ],
+    "content": "A savings projection depends on deposits and the rates applied over time. The [SSY Calculator](/tools/ssy-calculator) is a scenario tool; a displayed default is not a promise of a constant future rate.\n\n### Separate deposits and interest\nTwelve monthly deposits of 5,000 total 60,000 in a year. Fifteen such years total 900,000 before interest. Actual contribution limits, eligibility and permitted deposit periods must be checked separately against current scheme documentation.\n\nDeposit dates matter when interest depends on a qualifying balance. Grouping deposits annually may differ from an account calculation using monthly balances. Read the timing assumptions before comparing a projection with a passbook.\n\n### Verify outside the calculator\nCheck current rates, account dates, contribution limits, withdrawal conditions and eligibility with the official account provider. Do not infer tax eligibility from a projected maturity amount.\n\nRun a lower-rate scenario as well as the default, and save the assumed rate and date with the result. This is a method for evaluating a projection, not current account-opening or tax advice.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "understanding-password-entropy-and-crack-times",
-    title: "Password Entropy Explained: What Makes a Password Uncrackable?",
-    description: "Learn the mathematics of password entropy in bits, why length beats complex special characters, and how GPU brute-force cracking speeds affect security.",
-    date: "2026-08-25",
-    category: "Developer & Text",
-    readTime: "6 min read",
-    author: "Team Yuitility",
-    toolId: "password-strength-checker",
-    keywords: ["password entropy calculator","password crack time estimation","how to measure password strength","bits of entropy explained"],
-    content: `Password strength is not determined by arbitrary complexity rules, but by mathematical unpredictability, measured in bits of entropy.
-
-### The Mathematics of Password Entropy
-
-Entropy is calculated using the formula:
-$$E = L \times \log_2(R)$$
-
-Where:
-- **L** is the character length of the password.
-- **R** is the pool size of unique characters (lowercase, uppercase, numbers, symbols).
-
-### Length vs Complexity Comparison
-
-| Password Example | Length | Character Pool | Bit Entropy | Estimated GPU Crack Time |
-| :--- | :--- | :--- | :--- | :--- |
-| \`Tr0ub4d0r&1\` | 10 chars | Mixed (94 pool) | ~65 bits | Days to Weeks |
-| \`correct horse battery staple\` | 28 chars | Lowercase + Space (27 pool) | ~133 bits | Billions of Years |
-
-Long passphrases provide exponential resistance against high-speed GPU hash cracking clusters.
-
-Test your credentials privately using the **[Password Strength Checker](/tools/password-strength-checker)** on Yuitility.`
+    "slug": "understanding-password-entropy-and-crack-times",
+    "title": "Password Scores Are Estimates, Not Crack-Time Guarantees",
+    "description": "The Password Strength Checker evaluates local heuristics. It cannot know an attacker’s resources, a service’s hashing settings, rate limits or whether a password has leaked.",
+    "date": "2026-08-25",
+    "category": "Developer & Text",
+    "readTime": "6 min read",
+    "author": "Team Yuitility",
+    "toolId": "password-strength-checker",
+    "keywords": [
+      "password entropy calculator",
+      "password crack time estimation",
+      "how to measure password strength",
+      "bits of entropy explained"
+    ],
+    "content": "The [Password Strength Checker](/tools/password-strength-checker) evaluates local heuristics. It cannot know an attacker’s resources, a service’s hashing settings, rate limits or whether a password has leaked.\n\n### Understand the entropy formula\nFor uniformly random independent characters from N symbols, length L has L × log2(N) bits of selection entropy. Sixteen characters chosen uniformly from 64 symbols give 96 bits. The same formula does not describe a human phrase merely because it contains several character classes.\n\nPredictable substitutions and appended years do not make a familiar word random. A tool can overstate strength when it counts the possible alphabet but ignores how the string was chosen.\n\n### Use the score appropriately\nTest invented strings, not a credential you depend on. Distinguish search-space size from a crack-time estimate, which requires a stated guessing rate and storage model.\n\nUse unique credentials, a trustworthy password manager and available multifactor authentication. A local score is feedback about a string, not a breach check or security certification. No password is made “uncrackable” by a green indicator.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "estimating-room-paint-volume-and-renovation-costs",
-    title: "How Much Paint Do You Need? Wall Square Footage Calculation Guide",
-    description: "A practical home renovation guide to measuring wall area, subtracting doors and windows, and computing exact paint gallon coverage for DIY projects.",
-    date: "2026-08-27",
-    category: "Everyday Utilities",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "paint-volume-calculator",
-    keywords: ["paint volume calculator wall area","how much paint for room square footage","calculate paint gallons needed","room wall paint cost estimator"],
-    content: `Accurately estimating paint requirements for home interior projects prevents mid-project store trips or wasteful overspending.
-
-### Step-by-Step Wall Measurement Formula
-
-1. **Calculate Total Wall Perimeter**: Add the lengths of all four room walls.
-2. **Compute Gross Wall Area**: Multiply total perimeter by ceiling height.
-3. **Subtract Door & Window Openings**: Subtract 21 sq ft per door and 15 sq ft per standard window.
-4. **Account for Coats**: Multiply net wall square footage by the number of planned paint coats (typically 2 coats).
-5. **Apply Standard Coverage Rate**: One gallon of interior wall paint covers roughly 350 to 400 square feet.
-
-\`\`\`text
-Net Surface Area = [(Perimeter × Height) - Openings] × Number of Coats
-Gallons Needed = Net Surface Area ÷ 350
-\`\`\`
-
-Use the **[Paint Volume Calculator](/tools/paint-volume-calculator)** on Yuitility to input room dimensions and generate an instant materials checklist.`
+    "slug": "estimating-room-paint-volume-and-renovation-costs",
+    "title": "Paint Quantity: Area, Coats and Coverage",
+    "description": "The Paint Volume Calculator helps with area arithmetic. Product coverage and wall condition determine the real quantity required.",
+    "date": "2026-08-27",
+    "category": "Everyday Utilities",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "paint-volume-calculator",
+    "keywords": [
+      "paint volume calculator wall area",
+      "how much paint for room square footage",
+      "calculate paint gallons needed",
+      "room wall paint cost estimator"
+    ],
+    "content": "The [Paint Volume Calculator](/tools/paint-volume-calculator) helps with area arithmetic. Product coverage and wall condition determine the real quantity required.\n\n### Work through one room\nA 4 m × 3 m room with 2.5 m walls has wall area 2 × (4 + 3) × 2.5 = 35 m² before openings. If doors and windows total 5 m², paintable area is 30 m². Two coats at an assumed 10 m² per litre per coat require 30 × 2 / 10 = 6 litres.\n\nAn explicit 10% allowance gives 6.6 litres. Round the purchase to available container sizes while keeping the allowance visible.\n\n### Check the inputs\nUse one unit system. Add the ceiling only if it will be painted, and calculate it separately if the product differs. Rough or unpainted walls can change coverage and preparation requirements. Start with manufacturer coverage, then account for the actual surface.\n\nPaint volume is not a complete renovation cost. Primer, repairs, labour and drying time need separate planning. Keep the measurements so the estimate can be checked before purchasing.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "understanding-crypto-trading-fees-and-break-even",
-    title: "How Crypto Trading Fees Impact Your Real Returns",
-    description: "Why exchange maker/taker fees eat into profit margins, how to calculate net crypto ROI, and finding your exact break-even exit price when trading.",
-    date: "2026-08-29",
-    category: "Finance & Wealth",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "crypto-profit-calculator",
-    keywords: ["crypto profit calculator exchange fees","calculate crypto break even sell price","crypto trading maker taker fee impact","net crypto roi calculator"],
-    content: `Cryptocurrency trading platforms charge percentage fees on both buying (entry) and selling (exit) orders. Failing to account for maker and taker fees can turn a seemingly profitable trade into a net loss.
-
-### Breakdown of Trading Expenses
-
-1. **Buy Order Fee**: Charged as a percentage of the total purchase order.
-2. **Sell Order Fee**: Deducted from total proceeds upon liquidation.
-3. **Network Gas Fees**: On-chain transfer expenses for decentralized exchanges.
-
-### Net ROI Calculation Example
-
-Suppose you buy $2,000 worth of crypto with a 0.5% buy fee and plan to sell when the asset rises 5%:
-
-| Transaction Stage | Nominal Value | Exchange Fee | Net Portfolio Cash |
-| :--- | :--- | :--- | :--- |
-| **Buy Outflow** | $2,000 | $10.00 (0.5%) | -$2,010 Outflow |
-| **Sell Inflow (+5% Price)** | $2,100 | $10.50 (0.5%) | +$2,089.50 Net |
-| **True Realized Profit** | +$100 Gross | -$20.50 Fees | **+$79.50 Net Profit** |
-
-Calculate exact net profit and break-even sell prices using the **[Crypto Profit Calculator](/tools/crypto-profit-calculator)** on Yuitility.`
+    "slug": "understanding-crypto-trading-fees-and-break-even",
+    "title": "Trading Fees: A Checkable Break-Even Example",
+    "description": "Profit is net sale proceeds minus acquisition cost and fees. The Crypto Profit Calculator models a transaction; it neither forecasts prices nor calculates tax liability.",
+    "date": "2026-08-29",
+    "category": "Finance & Wealth",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "crypto-profit-calculator",
+    "keywords": [
+      "crypto profit calculator exchange fees",
+      "calculate crypto break even sell price",
+      "crypto trading maker taker fee impact",
+      "net crypto roi calculator"
+    ],
+    "content": "Profit is net sale proceeds minus acquisition cost and fees. The [Crypto Profit Calculator](/tools/crypto-profit-calculator) models a transaction; it neither forecasts prices nor calculates tax liability.\n\n### Include both sides\nBuy one unit at 1,000 with a 1% fee paid in cash: cost is 1,010. Sell at 1,100 with a 1% fee deducted from proceeds: receive 1,089. Profit is 79, not the 100 price increase. Return on the 1,010 cost is approximately 7.82%.\n\nFor break-even price P, P × 0.99 = 1,010. Therefore P is approximately 1,020.20. Simply adding two percentage points gives only an approximation.\n\n### Check fee units\nFees may be paid in cash, the purchased asset or another token. These change the quantity or cost basis. Spread, slippage, network charges and conversion costs may be separate.\n\nSave quantities and fee assumptions with the result. Multiple lots or fees in another asset require more detailed accounting; this single-transaction example does not reproduce a complete trading history.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-strip-exif-metadata-from-photos-for-privacy",
-    title: "Why You Should Strip EXIF Location Data Before Sharing Photos Online",
-    description: "Understand the hidden GPS coordinates, camera specs, and creation timestamps embedded in JPEG photos, and how stripping EXIF data protects your privacy.",
-    date: "2026-08-31",
-    category: "Image & Media",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "exif-data-viewer",
-    keywords: ["strip EXIF metadata from photo","remove GPS location from image","view photo EXIF tags online","private image metadata remover"],
-    content: `Every photo taken with a smartphone or digital camera contains embedded metadata known as Exchangeable Image File Format (EXIF) data.
-
-### Common Metadata Recorded in Images
-
-- **GPS Location**: Exact latitude, longitude, and altitude of where the photo was taken.
-- **Timestamp**: Date and time of capture.
-- **Device Identifiers**: Camera make, model, serial number, and lens hardware.
-- **Camera Settings**: Shutter speed, ISO sensitivity, aperture, and flash status.
-
-### Privacy Risks of Sharing Raw Images
-
-Posting unstripped images online can inadvertently reveal your home address, child's school location, or daily routines to strangers.
-
-Inspect and sanitize image headers privately using the **[EXIF Data Viewer](/tools/exif-data-viewer)** on Yuitility. Strip all GPS and device metadata locally before publishing photos.`
+    "slug": "how-to-strip-exif-metadata-from-photos-for-privacy",
+    "title": "Inspect JPEG EXIF Without Inventing Missing Metadata",
+    "description": "The JPEG EXIF Inspector reads supported tags from the selected JPEG. It does not guess a camera from a filename or insert example camera values when metadata is missing.",
+    "date": "2026-08-31",
+    "category": "Image & Media",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "exif-data-viewer",
+    "keywords": [
+      "strip EXIF metadata from photo",
+      "remove GPS location from image",
+      "view photo EXIF tags online",
+      "private image metadata remover"
+    ],
+    "content": "The [JPEG EXIF Inspector](/tools/exif-data-viewer) reads supported tags from the selected JPEG. It does not guess a camera from a filename or insert example camera values when metadata is missing.\n\n### What is inspected\nThe parser checks a JPEG APP1 EXIF block and reads a bounded set of TIFF tags: camera make/model, orientation, selected timestamps, exposure, aperture, ISO, focal length, dimensions and GPS values. GPS may appear as degrees, minutes and seconds plus a hemisphere reference. A timestamp is camera-supplied data, not proof of when a picture was taken.\n\n### Compare two real files\nInspect an original JPEG from your camera and a copy exported by an editor. Compare the fields. Some exports preserve metadata; others remove or rewrite it. Do not assume every exporter behaves identically from one sample.\n\nA file can lack supported EXIF fields while containing XMP, thumbnails or manufacturer-specific metadata. This tool does not parse PNG, HEIC or WebP metadata. Filename and byte count are file properties, not camera EXIF.\n\n### Inspection is not removal\nOpening a JPEG does not change it or strip location data. Use an appropriate removal workflow and inspect the output independently before sharing. Also check for addresses, faces and other information visible in the pixels; removing metadata cannot remove those details.\n\nKeep the original while testing. This is a limited report about parsed fields, not a guarantee that an image is anonymous.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-clean-and-deduplicate-large-text-lists",
-    title: "Cleaning Messy Data Lists: Removing Duplicates and Smart Quotes",
-    description: "A practical workflow for marketers, developers, and writers to deduplicate line lists, strip double spaces, and normalize curly quotes instantly.",
-    date: "2026-09-02",
-    category: "Developer & Text",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "duplicate-line-remover",
-    keywords: ["remove duplicate lines online","deduplicate text list free","clean text smart quotes online","strip blank lines from text"],
-    content: `Clean data lists are essential when preparing email campaigns, database records, or software configurations. Copying text from word processors often introduces duplicates, smart quotes, and unneeded blank lines.
-
-### Essential Data Cleaning Operations
-
-1. **Deduplication**: Compare lines to remove duplicate entries, with optional case-sensitivity.
-2. **Whitespace Trimming**: Remove leading and trailing spaces from each line.
-3. **Smart Quote Normalization**: Convert curly quotes (“”) and apostrophes (‘’) into standard ASCII straight quotes.
-4. **Empty Line Filtering**: Strip blank lines to keep output clean and compact.
-
-Deduplicate and clean lists instantly using the **[Duplicate Line Remover](/tools/duplicate-line-remover)** and **[Text Cleaner](/tools/text-cleaner)** on Yuitility.`
+    "slug": "how-to-clean-and-deduplicate-large-text-lists",
+    "title": "Deduplicate Lines Without Losing Meaningful Differences",
+    "description": "Duplicate removal depends on what “the same” means. Check the available comparison options in the Duplicate Line Remover before replacing a production list.",
+    "date": "2026-09-02",
+    "category": "Developer & Text",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "duplicate-line-remover",
+    "keywords": [
+      "remove duplicate lines online",
+      "deduplicate text list free",
+      "clean text smart quotes online",
+      "strip blank lines from text"
+    ],
+    "content": "Duplicate removal depends on what “the same” means. Check the available comparison options in the [Duplicate Line Remover](/tools/duplicate-line-remover) before replacing a production list.\n\n### Test with four lines\nUse apple, Apple, apple with a trailing space, and a second exact apple. Exact comparison should distinguish capitalization and trailing space. Case-insensitive comparison may merge the first pair; trimming whitespace may merge another. The right policy depends on the data.\n\nPreserve order when the first occurrence matters. Sort only when sorted output is intended. Leading zeroes, case and punctuation can be significant in identifiers, so indiscriminate cleaning may corrupt them.\n\n### Verify the output\nKeep the original. Compare counts and inspect removed examples. Test blank lines and lines containing spaces, and check Windows versus Unix line endings if the list moves between systems.\n\nFor structured data with quoted fields or embedded newlines, use the format’s parser rather than treating each line as a record. Deduplication is safe only when the comparison policy matches the meaning of the records.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "calculating-appliance-electricity-power-consumption",
-    title: "How to Calculate Appliance Electricity Usage and Lower Utility Bills",
-    description: "Learn how to convert appliance Wattage ratings into Kilowatt-Hours (kWh), measure daily power consumption, and estimate monthly electric bill costs.",
-    date: "2026-09-04",
-    category: "Everyday Utilities",
-    readTime: "6 min read",
-    author: "Team Yuitility",
-    toolId: "power-consumption-calculator",
-    keywords: ["appliance electricity usage calculator","convert Watts to kWh monthly cost","calculate electric bill by appliance","air conditioner power consumption kWh"],
-    content: `Understanding electricity usage per appliance helps identify high-cost devices and optimize home energy consumption.
-
-### The Conversion Formula: Watts to kWh
-
-Power companies bill electricity in Kilowatt-Hours (kWh). To convert appliance Wattage to monthly cost:
-
-$$\text{Daily kWh} = \frac{\text{Watts} \times \text{Hours Used Per Day}}{1000}$$
-$$\text{Monthly Cost} = \text{Daily kWh} \times 30 \text{ Days} \times \text{Rate Per kWh}$$
-
-### Appliance Electricity Consumption Comparison
-
-| Appliance | Rating (Watts) | Daily Usage | Monthly Energy (kWh) | Est. Monthly Cost ($0.16/kWh) |
-| :--- | :--- | :--- | :--- | :--- |
-| **Window AC Unit** | 1,500W | 8 Hours | 360 kWh | $57.60 |
-| **Gaming PC** | 450W | 6 Hours | 81 kWh | $12.96 |
-| **Refrigerator** | 150W | 24 Hours (Compressor on 30%) | 36 kWh | $5.76 |
-
-Calculate your home appliance power expenses using the **[Power Consumption Calculator](/tools/power-consumption-calculator)** on Yuitility.`
+    "slug": "calculating-appliance-electricity-power-consumption",
+    "title": "Estimate Appliance Energy from Watts and Time",
+    "description": "Power is a rate measured in watts; billed energy is commonly measured in kilowatt-hours. The Power Consumption Calculator makes a usage scenario explicit.",
+    "date": "2026-09-04",
+    "category": "Everyday Utilities",
+    "readTime": "6 min read",
+    "author": "Team Yuitility",
+    "toolId": "power-consumption-calculator",
+    "keywords": [
+      "appliance electricity usage calculator",
+      "convert Watts to kWh monthly cost",
+      "calculate electric bill by appliance",
+      "air conditioner power consumption kWh"
+    ],
+    "content": "Power is a rate measured in watts; billed energy is commonly measured in kilowatt-hours. The [Power Consumption Calculator](/tools/power-consumption-calculator) makes a usage scenario explicit.\n\n### Check the units\nA constant 100 W for 5 hours uses 100 / 1000 × 5 = 0.5 kWh. Repeated for 30 days, that is 15 kWh. At an illustrative 0.20 per kWh, the energy charge is 3.00 currency units, excluding fixed charges and other tariff components.\n\n### Maximum power is not average power\nA heater cycles, a refrigerator changes load and a laptop charger’s maximum rating does not equal average laptop consumption. Use measured energy over a representative period when possible, rather than assuming maximum draw whenever a device is plugged in.\n\nCheck flat, tiered or time-dependent rates and include standby use separately when relevant. Mixing W and kW creates a factor-of-1,000 error.\n\nThe estimate covers the modeled appliance. Other devices, taxes and service charges explain why it will not reproduce an entire household bill.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-open-and-view-md-files-online",
-    title: "Viewing and Converting Markdown Files Without Desktop Software",
-    description: "How to open .md files directly in your web browser, render GitHub Flavored Markdown, and convert documentation to clean PDF or Word formats.",
-    date: "2026-09-06",
-    category: "Developer & Text",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "markdown-viewer",
-    keywords: ["open md file online free","markdown viewer browser","convert md to pdf online","github markdown viewer private"],
-    content: `Markdown (.md) is the preferred text format for software documentation, GitHub repositories, and static site generators. Opening and rendering formatted Markdown without installing desktop editors can be inconvenient.
-
-### Key Capabilities of In-Browser Markdown Viewers
-
-- **Semantic Rendering**: Converts raw Markdown text into styled headings, aligned tables, syntax-highlighted code blocks, and checklists.
-- **Export to PDF**: Uses print-optimized typography rules to generate clean PDF documents.
-- **Export to Word (.doc)**: Generates standalone Office documents compatible with Microsoft Word and Google Docs.
-- **100% Local Processing**: File reading and rendering happen in local browser memory without server uploads.
-
-Open, edit, and export your Markdown files using the **[Markdown Viewer](/tools/markdown-viewer)** on Yuitility.`
+    "slug": "how-to-open-and-view-md-files-online",
+    "title": "Preview Markdown and Verify the Export",
+    "description": "The Markdown Viewer provides local editing and preview. Markdown implementations differ; check the system where the document will ultimately be published.",
+    "date": "2026-09-06",
+    "category": "Developer & Text",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "markdown-viewer",
+    "keywords": [
+      "open md file online free",
+      "markdown viewer browser",
+      "convert md to pdf online",
+      "github markdown viewer private"
+    ],
+    "content": "The [Markdown Viewer](/tools/markdown-viewer) provides local editing and preview. Markdown implementations differ; check the system where the document will ultimately be published.\n\n### Build a compatibility sample\nInclude a heading, emphasis, link, code fence, table and checklist. Preview it, export using available controls and inspect the downloaded document separately. Check page breaks, long code lines, tables and link destinations. A file opening successfully does not establish identical layout.\n\nFor a README, inspect the final repository rendering. Platform extensions, HTML handling and alerts may differ from this viewer.\n\n### Watch relative paths\nA path such as ./images/diagram.png is relative to the document location. A standalone preview may not have access to the repository file tree. A missing image can be a path issue rather than invalid Markdown.\n\nRetain the .md file as the source and treat PDF or Word output as delivery formats. The [CommonMark specification](https://spec.commonmark.org/0.31.2/) defines core syntax; platforms can add extensions. Test the features your actual document relies on.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "understanding-ohms-law-voltage-current-resistance",
-    title: "Ohm's Law Simplified: Calculating Voltage, Current, and Power",
-    description: "An intuitive guide for electronics hobbyists and students to solve Voltage, Current, Resistance, and Power equations with practical circuit examples.",
-    date: "2026-09-08",
-    category: "Math & Calculators",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "ohms-law-calculator",
-    keywords: ["ohms law calculator voltage current","calculate electrical power watts","voltage resistance current formula","electronics circuit calculator online"],
-    content: `Ohm's Law describes the relationship between voltage, current, and resistance in electrical circuits.
-
-### Fundamental Ohm's Law Equations
-
-- **Voltage (V)**: $V = I \times R$ (Volts)
-- **Current (I)**: $I = \frac{V}{R}$ (Amperes)
-- **Resistance (R)**: $R = \frac{V}{I}$ (Ohms $\Omega$)
-- **Power (P)**: $P = V \times I = I^2 \times R$ (Watts)
-
-### Practical Resistor Sizing Example
-
-When connecting a standard 2V LED to a 9V power source with a target current of 20mA (0.02A):
-
-$$\text{Required Resistance} = \frac{9\text{V} - 2\text{V}}{0.02\text{A}} = \frac{7\text{V}}{0.02\text{A}} = 350\:\Omega$$
-
-Solve circuit parameters quickly using the **[Ohm's Law Calculator](/tools/ohms-law-calculator)** on Yuitility.`
+    "slug": "understanding-ohms-law-voltage-current-resistance",
+    "title": "Ohm’s Law: An Example with Explicit Units",
+    "description": "For an ideal resistive DC circuit, V = I × R. The Ohm’s Law Calculator solves the missing quantity, but does not establish that a real circuit is safe.",
+    "date": "2026-09-08",
+    "category": "Math & Calculators",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "ohms-law-calculator",
+    "keywords": [
+      "ohms law calculator voltage current",
+      "calculate electrical power watts",
+      "voltage resistance current formula",
+      "electronics circuit calculator online"
+    ],
+    "content": "For an ideal resistive DC circuit, V = I × R. The [Ohm’s Law Calculator](/tools/ohms-law-calculator) solves the missing quantity, but does not establish that a real circuit is safe.\n\n### Verify two ways\nTwelve volts across 6 Ω gives 2 A. Power is V × I = 24 W. The equivalent I²R expression gives 2² × 6 = 24 W, providing an independent check.\n\nConvert 250 mA to 0.25 A before using base units. Similarly, 2 kΩ means 2,000 Ω. A unit error can produce a precise-looking answer that is wrong by a factor of 1,000.\n\n### Respect the boundary\nComponents have tolerances and operating limits. Nonlinear devices do not obey a fixed resistance in every condition. AC circuits may require impedance and phase, rather than resistance alone. Dividing nonzero voltage by zero resistance is undefined in this ideal calculation.\n\nUse component specifications and appropriate engineering checks before building hardware. This example demonstrates arithmetic; it is not wiring guidance or a substitute for electrical safety requirements.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-encrypt-sensitive-text-in-browser",
-    title: "Private Text Encryption: How AES-256 Keeps Secret Messages Safe",
-    description: "Learn how AES-256-GCM browser encryption converts confidential text notes and credentials into unbreakable Base64 ciphertext using Web Crypto API.",
-    date: "2026-09-10",
-    category: "Developer & Text",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "text-encryptor",
-    keywords: ["encrypt text online aes 256","private text encryption browser","secret message encryptor passphrase","web crypto api client side encryption"],
-    content: `Transmitting sensitive passwords, recovery keys, or confidential notes over unencrypted channels introduces risk. Client-side encryption ensures text is transformed into ciphertext before sharing.
-
-### How Web Crypto AES-256-GCM Works
-
-1. **Key Derivation (PBKDF2)**: Converts your secret passphrase into a 256-bit key using 100,000 hashing iterations.
-2. **Authenticated Encryption (AES-GCM)**: Encrypts plain text into ciphertext while generating an authentication tag to prevent tampering.
-3. **Base64 Encoding**: Formats binary ciphertext into shareable text strings.
-
-Encrypt and decrypt secret messages securely using the **[Text Encryptor](/tools/text-encryptor)** on Yuitility. All operations execute strictly on your device CPU.`
+    "slug": "how-to-encrypt-sensitive-text-in-browser",
+    "title": "Local Text Encryption: Save the Envelope and Protect the Key",
+    "description": "The Text Encryptor uses Web Crypto AES-256-GCM. It derives a key with PBKDF2-SHA256, 600,000 iterations, a fresh 16-byte salt and a fresh 12-byte nonce for each encryption.",
+    "date": "2026-09-10",
+    "category": "Developer & Text",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "text-encryptor",
+    "keywords": [
+      "encrypt text online aes 256",
+      "private text encryption browser",
+      "secret message encryptor passphrase",
+      "web crypto api client side encryption"
+    ],
+    "content": "The [Text Encryptor](/tools/text-encryptor) uses Web Crypto AES-256-GCM. It derives a key with PBKDF2-SHA256, 600,000 iterations, a fresh 16-byte salt and a fresh 12-byte nonce for each encryption.\n\n### Try a harmless round trip\nEnter a test message and a passphrase of at least twelve characters. Encrypt and save the complete JSON envelope. Switch to decrypt, paste the envelope and enter the same passphrase. The original Unicode text should return exactly. An incorrect passphrase or modified ciphertext should produce an error rather than plausible garbage.\n\n### What to save\nThe envelope includes version, algorithm identifiers, iteration count, salt, nonce and ciphertext. Keep these together. Salt and nonce are not passwords; the passphrase is the secret. Store it separately rather than sending it alongside the encrypted message through the same channel.\n\nRepeated encryption of identical input produces different envelopes because fresh randomness is used. That does not change the recovered plaintext.\n\n### Limits that still matter\nEncryption cannot protect text already exposed on a compromised device. Weak or reused passphrases remain vulnerable to guessing; the minimum length check is not a strength guarantee. There is no key-recovery service. Legacy XOR output from the previous implementation is not a v1 authenticated envelope.\n\nDo not paste messages or keys into the separate AI assistant. See [MDN Web Crypto documentation](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt) for authenticated encryption. This is a local utility, not an audited secret-management system.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-calculate-meeting-costs-and-improve-focus",
-    title: "The True Cost of Meetings: How Unnecessary Calls Drain Team Budgets",
-    description: "Quantifying the dollar cost per minute of corporate team meetings, eliminating low-value status syncs, and reclaiming uninterrupted engineering focus.",
-    date: "2026-09-12",
-    category: "Everyday Utilities",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "meeting-cost-calculator",
-    keywords: ["calculate meeting cost per hour","financial cost of corporate meetings","meeting expense calculator live","reduce meeting burnout productivity"],
-    content: `Recurring corporate meetings carry substantial hidden financial costs. Calculating the hourly cost of attendee salaries highlights the value of productive work time.
-
-### Meeting Cost Formula
-
-$$\text{Total Cost} = \text{Attendee Count} \times \left(\frac{\text{Average Hourly Rate}}{60}\right) \times \text{Duration (Minutes)}$$
-
-### Real Cost Example
-
-Consider a 1-hour recurring weekly meeting with 8 senior engineers earning an average of $75/hour:
-
-| Meeting Frequency | Attendee Count | Hourly Rate | Weekly Cost | Annualized Cost |
-| :--- | :--- | :--- | :--- | :--- |
-| **1 Hour / Week** | 8 Engineers | $75 / hour | $600 / meeting | **$30,000 / year** |
-
-Track meeting expenses live using the **[Meeting Cost Calculator](/tools/meeting-cost-calculator)** on Yuitility.`
+    "slug": "how-to-calculate-meeting-costs-and-improve-focus",
+    "title": "Meeting Cost: Estimate Time, Then Assess Value",
+    "description": "A meeting-cost estimate turns attendee time into an approximate labour cost. It does not prove a meeting is wasteful: useful coordination can avoid more work later. Use the Meeting Cost",
+    "date": "2026-09-12",
+    "category": "Everyday Utilities",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "meeting-cost-calculator",
+    "keywords": [
+      "calculate meeting cost per hour",
+      "financial cost of corporate meetings",
+      "meeting expense calculator live",
+      "reduce meeting burnout productivity"
+    ],
+    "content": "A meeting-cost estimate turns attendee time into an approximate labour cost. It does not prove a meeting is wasteful: useful coordination can avoid more work later. Use the [Meeting Cost Calculator](/tools/meeting-cost-calculator) as one planning input.\n\n### Make units visible\nSix attendees at an assumed hourly cost of 40, meeting for 45 minutes, give 6 × 40 × 45 / 60 = 180 currency units. Repeated weekly for 50 weeks, that is an illustrative 9,000 annual time cost.\n\nWhen deriving hourly cost from salary, state the hours denominator. Salary divided by 2,080 assumes 40 hours for 52 weeks. Fully loaded cost may also include benefits and overhead; mixing it with salary-only rates makes comparisons misleading.\n\n### Compare alternatives fairly\nEstimate a shorter meeting, fewer attendees or asynchronous preparation while keeping necessary decision-makers involved. Record the intended outcome and whether it happened.\n\nPreparation, follow-up and opportunity costs are excluded unless entered explicitly. Removing a useful meeting can move costs elsewhere. Save the assumptions with the estimate instead of treating the number as a verdict.",
+    "updated": "2026-10-13"
   },
   {
-    slug: "how-to-extract-colors-from-images-for-web-design",
-    title: "Extracting Color Palettes from Images for Modern Web Design",
-    description: "How UI designers sample exact HEX and RGB color codes from photos, extract harmonious color palettes, and verify WCAG contrast ratios in browser.",
-    date: "2026-09-14",
-    category: "Image & Media",
-    readTime: "5 min read",
-    author: "Team Yuitility",
-    toolId: "image-color-picker",
-    keywords: ["image color picker online eyedropper","extract hex code from photo","image color palette generator free","wcag contrast color picker browser"],
-    content: `Color choices define brand identity and user experience. Extracting key colors from reference imagery helps establish cohesive UI palettes.
-
-### Workflow for Extracting Web Palettes
-
-1. **Sample Key Pixel Colors**: Use a browser canvas eyedropper to inspect brand photography, logos, or hero artwork.
-2. **Extract Hex & RGB Codes**: Copy exact hexadecimal values (\`#2563EB\`) directly to your CSS stylesheets.
-3. **Verify WCAG Contrast Ratios**: Ensure foreground text maintains a contrast ratio of at least 4.5:1 against background colors for accessibility compliance.
-
-Extract color palettes and inspect pixel colors using the **[Image Color Picker](/tools/image-color-picker)** on Yuitility.`
+    "slug": "how-to-extract-colors-from-images-for-web-design",
+    "title": "Sample Image Colors and Check Text Contrast",
+    "description": "The Image Color Picker samples pixels for a palette. An attractive swatch does not automatically produce a readable text/background pair.",
+    "date": "2026-09-14",
+    "category": "Image & Media",
+    "readTime": "5 min read",
+    "author": "Team Yuitility",
+    "toolId": "image-color-picker",
+    "keywords": [
+      "image color picker online eyedropper",
+      "extract hex code from photo",
+      "image color palette generator free",
+      "wcag contrast color picker browser"
+    ],
+    "content": "The [Image Color Picker](/tools/image-color-picker) samples pixels for a palette. An attractive swatch does not automatically produce a readable text/background pair.\n\n### Sample deliberately\nCompare multiple pixels from a region, not one edge pixel. Anti-aliasing, compression, gradients and shadows can alter nearby values. Save the HEX or RGB value and source image so the sample is reproducible.\n\nFor brand assets, compare with the original design specification if available. Resizing and color management can make a screenshot sample differ from the intended source color.\n\n### Check the pair\nUse the [Color Palette tool](/tools/color-palette) to compare foreground and background. Evaluate actual text size, weight and interaction states. A pair suitable for a large heading may fail for small body text. Test light and dark themes separately and avoid using color as the only status indicator.\n\nThe [WCAG contrast criterion](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) explains text requirements. A passing color pair is one accessibility check, not certification of the whole interface.",
+    "updated": "2026-10-13"
   }
-];
+].map(post => ({ ...post, readTime: readingTime(post.content) }));

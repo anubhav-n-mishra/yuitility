@@ -109,29 +109,29 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
             <div className="grid grid-cols-3 gap-3">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Length (Feet)</label>
-                <input
+                <input aria-label="Length (Feet)"
                   type="number"
                   value={lengthFt}
                   onChange={(e) => setLengthFt(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Width (Feet)</label>
-                <input
+                <input aria-label="Width (Feet)"
                   type="number"
                   value={widthFt}
                   onChange={(e) => setWidthFt(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Thickness (Inches)</label>
-                <input
+                <input aria-label="Thickness (Inches)"
                   type="number"
                   value={thicknessIn}
                   onChange={(e) => setThicknessIn(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
             </div>
@@ -139,30 +139,30 @@ export default function ConcreteVolumeCalculator({ onCopy }: ConcreteVolumeCalcu
             <div className="grid grid-cols-3 gap-3">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Diameter (Inches)</label>
-                <input
+                <input aria-label="Diameter (Inches)"
                   type="number"
                   value={diameterIn}
                   onChange={(e) => setDiameterIn(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Depth (Feet)</label>
-                <input
+                <input aria-label="Depth (Feet)"
                   type="number"
                   value={depthFt}
                   onChange={(e) => setDepthFt(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Quantity</label>
-                <input
+                <input aria-label="Quantity"
                   type="number"
                   min="1"
                   value={columnCount}
                   onChange={(e) => setColumnCount(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
             </div>

@@ -38,14 +38,14 @@ export default function CurrencyConverterTool() {
     <div className="space-y-8">
       <div className="border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <h2 className="text-xl font-bold text-zinc-900 dark:text-white">Global Currency Converter</h2>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">Convert foreign exchange currencies instantly with live mid-market exchange rate estimations.</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">Convert foreign exchange currencies instantly with fixed illustrative rates. These are sample assumptions, not live market quotes.</p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-5 rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
           <div>
             <label className="block text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Amount to Convert</label>
-            <input
+            <input aria-label="Amount to Convert"
               type="number"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
@@ -56,7 +56,7 @@ export default function CurrencyConverterTool() {
           <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">From</label>
-              <select
+              <select aria-label="From"
                 value={fromCurrency}
                 onChange={(e) => setFromCurrency(e.target.value)}
                 className="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-2 text-sm font-bold text-zinc-900 dark:text-white"
@@ -78,7 +78,7 @@ export default function CurrencyConverterTool() {
 
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">To</label>
-              <select
+              <select aria-label="To"
                 value={toCurrency}
                 onChange={(e) => setToCurrency(e.target.value)}
                 className="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-3 py-2 text-sm font-bold text-zinc-900 dark:text-white"
@@ -101,7 +101,7 @@ export default function CurrencyConverterTool() {
 
           <div className="mt-6 space-y-2 border-t border-blue-200/60 dark:border-zinc-800 pt-6">
             <div className="flex justify-between text-xs text-zinc-500">
-              <span>Exchange Rate</span>
+              <span>Illustrative cross-rate (not live)</span>
               <span>1 {fromCurrency} = {((EXCHANGE_RATES[toCurrency] || 1) / (EXCHANGE_RATES[fromCurrency] || 1)).toFixed(4)} {toCurrency}</span>
             </div>
           </div>

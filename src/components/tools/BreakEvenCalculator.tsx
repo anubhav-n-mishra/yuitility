@@ -45,7 +45,7 @@ export default function BreakEvenCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Total Fixed Overhead Costs</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(fixedCosts, currency)}</span>
             </div>
-            <input
+            <input aria-label="Total Fixed Overhead Costs (slider)"
               type="range"
               min="1000"
               max="200000"
@@ -61,7 +61,7 @@ export default function BreakEvenCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Variable Cost Per Unit</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(variableCostPerUnit, currency)}</span>
             </div>
-            <input
+            <input aria-label="Variable Cost Per Unit (slider)"
               type="range"
               min="1"
               max="1000"
@@ -77,7 +77,7 @@ export default function BreakEvenCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Selling Price Per Unit</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(pricePerUnit, currency)}</span>
             </div>
-            <input
+            <input aria-label="Selling Price Per Unit (slider)"
               type="range"
               min="5"
               max="2000"

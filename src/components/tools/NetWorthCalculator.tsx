@@ -64,7 +64,7 @@ export default function NetWorthCalculator() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Cash & Savings</label>
-                <input
+                <input aria-label="Cash & Savings"
                   type="number"
                   value={cashSavings}
                   onChange={(e) => setCashSavings(Number(e.target.value))}
@@ -73,7 +73,7 @@ export default function NetWorthCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Investments / Stocks</label>
-                <input
+                <input aria-label="Investments / Stocks"
                   type="number"
                   value={investments}
                   onChange={(e) => setInvestments(Number(e.target.value))}
@@ -82,7 +82,7 @@ export default function NetWorthCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Real Estate Value</label>
-                <input
+                <input aria-label="Real Estate Value"
                   type="number"
                   value={realEstateValue}
                   onChange={(e) => setRealEstateValue(Number(e.target.value))}
@@ -91,7 +91,7 @@ export default function NetWorthCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Vehicles & Personal</label>
-                <input
+                <input aria-label="Vehicles & Personal"
                   type="number"
                   value={otherAssets}
                   onChange={(e) => setOtherAssets(Number(e.target.value))}
@@ -106,7 +106,7 @@ export default function NetWorthCalculator() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Mortgages / Housing</label>
-                <input
+                <input aria-label="Mortgages / Housing"
                   type="number"
                   value={mortgageDebt}
                   onChange={(e) => setMortgageDebt(Number(e.target.value))}
@@ -115,7 +115,7 @@ export default function NetWorthCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Vehicle / Auto Loans</label>
-                <input
+                <input aria-label="Vehicle / Auto Loans"
                   type="number"
                   value={vehicleLoans}
                   onChange={(e) => setVehicleLoans(Number(e.target.value))}
@@ -124,7 +124,7 @@ export default function NetWorthCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Credit Card Balances</label>
-                <input
+                <input aria-label="Credit Card Balances"
                   type="number"
                   value={creditCardDebt}
                   onChange={(e) => setCreditCardDebt(Number(e.target.value))}
@@ -133,7 +133,7 @@ export default function NetWorthCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-medium text-zinc-600 dark:text-zinc-400 mb-1">Other Personal Loans</label>
-                <input
+                <input aria-label="Other Personal Loans"
                   type="number"
                   value={otherLiabilities}
                   onChange={(e) => setOtherLiabilities(Number(e.target.value))}

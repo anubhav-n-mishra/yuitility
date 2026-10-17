@@ -1,3 +1,4 @@
+import { calendarDate, calendarDifference } from '@/src/lib/calendar';
 import React, { useState, useEffect, useMemo } from 'react';
 import { Calendar, Clock, RefreshCw, Sparkles, Star } from 'lucide-react';
 
@@ -17,8 +18,8 @@ export default function AgeCalculatorInMonths({ onCopy }: AgeCalculatorInMonthsP
   }, []);
 
   const stats = useMemo(() => {
-    const start = new Date(dob);
-    const end = targetDate ? new Date(targetDate) : currentTime;
+    const start = calendarDate(dob);
+    const end = targetDate ? calendarDate(targetDate) : currentTime;
 
     if (isNaN(start.getTime()) || isNaN(end.getTime()) || end < start) {
       return null;
@@ -31,20 +32,7 @@ export default function AgeCalculatorInMonths({ onCopy }: AgeCalculatorInMonthsP
     const totalDays = Math.floor(totalHours / 24);
     const totalWeeks = Math.floor(totalDays / 7);
 
-    // Exact Year and Month calculation
-    let years = end.getFullYear() - start.getFullYear();
-    let months = end.getMonth() - start.getMonth();
-    let days = end.getDate() - start.getDate();
-
-    if (days < 0) {
-      months--;
-      const prevMonthLastDay = new Date(end.getFullYear(), end.getMonth(), 0).getDate();
-      days += prevMonthLastDay;
-    }
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
+    const {years,months,days} = calendarDifference(start,end);
 
     const totalMonths = years * 12 + months + (days / 30.4375);
     const exactTotalMonthsInt = years * 12 + months;
@@ -79,7 +67,7 @@ export default function AgeCalculatorInMonths({ onCopy }: AgeCalculatorInMonthsP
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Date of Birth</label>
-            <input
+            <input aria-label="Date of Birth"
               type="date"
               value={dob}
               onChange={(e) => setDob(e.target.value)}
@@ -89,7 +77,7 @@ export default function AgeCalculatorInMonths({ onCopy }: AgeCalculatorInMonthsP
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Target / As of Date</label>
-            <input
+            <input aria-label="Target / As of Date"
               type="date"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}

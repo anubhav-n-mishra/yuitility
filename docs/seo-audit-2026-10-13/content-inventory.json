@@ -1,0 +1,244 @@
+{
+  "liveTools": 167,
+  "presets": 36,
+  "deepContent": 31,
+  "handwrittenFaqs": 70,
+  "blogStats": [
+    {
+      "slug": "how-to-use-scientific-calculator-online",
+      "words": 133,
+      "readTime": "4 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "understanding-salary-take-home-pay-and-epf",
+      "words": 116,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "why-in-browser-pdf-tools-are-more-secure",
+      "words": 106,
+      "readTime": "6 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "optimizing-web-images-webp-avif-jpg-conversion",
+      "words": 78,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-calculate-home-loan-prepayment-savings",
+      "words": 289,
+      "readTime": "6 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "step-up-sip-vs-regular-sip-wealth-comparison",
+      "words": 251,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "convert-json-to-csv-excel-developer-guide",
+      "words": 226,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-pomodoro-technique-improves-coding-productivity",
+      "words": 236,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-calculate-daily-calorie-deficit-for-fat-loss",
+      "words": 235,
+      "readTime": "6 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "convert-svg-to-png-high-resolution-graphics",
+      "words": 186,
+      "readTime": "4 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "decoding-jwt-tokens-locally-browser-security",
+      "words": 122,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "sukanya-samriddhi-yojana-ssy-tax-free-savings",
+      "words": 191,
+      "readTime": "6 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "understanding-password-entropy-and-crack-times",
+      "words": 152,
+      "readTime": "6 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "estimating-room-paint-volume-and-renovation-costs",
+      "words": 140,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "understanding-crypto-trading-fees-and-break-even",
+      "words": 175,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-strip-exif-metadata-from-photos-for-privacy",
+      "words": 117,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-clean-and-deduplicate-large-text-lists",
+      "words": 99,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "calculating-appliance-electricity-power-consumption",
+      "words": 152,
+      "readTime": "6 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-open-and-view-md-files-online",
+      "words": 110,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "understanding-ohms-law-voltage-current-resistance",
+      "words": 105,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-encrypt-sensitive-text-in-browser",
+      "words": 92,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-calculate-meeting-costs-and-improve-focus",
+      "words": 120,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    },
+    {
+      "slug": "how-to-extract-colors-from-images-for-web-design",
+      "words": 95,
+      "readTime": "5 min read",
+      "externalCitations": 0
+    }
+  ],
+  "presetReferences": [
+    {
+      "slug": "vtu",
+      "url": "https://vtu.ac.in"
+    },
+    {
+      "slug": "anna-university",
+      "url": "https://www.annauniv.edu"
+    },
+    {
+      "slug": "mumbai-university",
+      "url": "https://mu.ac.in"
+    },
+    {
+      "slug": "ktu",
+      "url": "https://ktu.edu.in"
+    },
+    {
+      "slug": "cbse",
+      "url": "https://cbse.gov.in"
+    },
+    {
+      "slug": "sppu",
+      "url": "http://unipune.ac.in"
+    },
+    {
+      "slug": "gtu",
+      "url": "https://www.gtu.ac.in"
+    },
+    {
+      "slug": "aktu",
+      "url": "https://aktu.ac.in"
+    },
+    {
+      "slug": "sbi-bank",
+      "url": "https://sbi.co.in"
+    },
+    {
+      "slug": "hdfc-bank",
+      "url": "https://www.hdfcbank.com"
+    },
+    {
+      "slug": "30-year-fixed",
+      "url": "https://www.freddiemac.com/pmms"
+    },
+    {
+      "slug": "15-year-fixed",
+      "url": "https://www.freddiemac.com/pmms"
+    },
+    {
+      "slug": "fha-loan",
+      "url": "https://www.hud.gov"
+    },
+    {
+      "slug": "va-loan",
+      "url": "https://www.va.gov/housing-assistance/home-loans/"
+    },
+    {
+      "slug": "canada-cmhc",
+      "url": "https://www.cmhc-schl.gc.ca"
+    },
+    {
+      "slug": "uk-repayment",
+      "url": "https://www.bankofengland.co.uk"
+    },
+    {
+      "slug": "401k-growth",
+      "url": "https://www.irs.gov"
+    },
+    {
+      "slug": "roth-ira",
+      "url": "https://www.irs.gov"
+    },
+    {
+      "slug": "fire-movement",
+      "url": "https://www.aaii.com"
+    },
+    {
+      "slug": "sp500-index",
+      "url": "https://www.spglobal.com"
+    },
+    {
+      "slug": "60-month-auto-loan",
+      "url": "https://www.federalreserve.gov/releases/g19/"
+    },
+    {
+      "slug": "github-readme",
+      "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"
+    },
+    {
+      "slug": "changelog",
+      "url": "https://keepachangelog.com/en/1.1.0/"
+    },
+    {
+      "slug": "documentation",
+      "url": "https://commonmark.org"
+    }
+  ]
+}

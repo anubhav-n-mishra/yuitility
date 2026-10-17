@@ -52,7 +52,7 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
     // Component breakdown of TDEE
     const bmrFinal = Math.round(bmrMifflin);
     const tef = Math.round(tdeeMifflin * 0.1); // ~10% thermic effect of food
-    const neat = Math.round(tdeeMifflin * 0.15); // NEAT
+    const neat = Math.min(Math.round(tdeeMifflin * 0.15), Math.max(0,tdeeMifflin-bmrFinal-tef)); // NEAT
     const eat = Math.max(0, tdeeMifflin - bmrFinal - tef - neat); // Exercise
 
     return {
@@ -132,20 +132,20 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Age</label>
-              <input
+              <input aria-label="Age"
                 type="number"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Body Fat % (opt)</label>
-              <input
+              <input aria-label="Body Fat % (opt)"
                 type="number"
                 value={bodyFat}
                 onChange={(e) => setBodyFat(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -155,32 +155,32 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
-              <input
+              <input aria-label="Weight ( )"
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'in'})
               </label>
-              <input
+              <input aria-label="Height ( )"
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Activity Multiplier</label>
-            <select
+            <select aria-label="Activity Multiplier"
               value={activity}
               onChange={(e) => setActivity(parseFloat(e.target.value))}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-xs"
             >
               <option value="1.2">Sedentary: Desk job, little exercise</option>
               <option value="1.375">Light: 1-2 workouts / week</option>
@@ -198,7 +198,7 @@ export default function TdeeCalculator({ onCopy }: TdeeCalculatorProps) {
               <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider block mb-1">
                 Total Daily Energy Expenditure (TDEE)
               </span>
-              <div className="text-5xl font-black font-mono text-white my-2">
+              <div className="text-5xl font-black font-mono text-zinc-900 dark:text-white my-2">
                 {results ? `${results.tdee.toLocaleString()} kcal` : '—'}
                 <span className="text-sm font-normal text-zinc-500 dark:text-zinc-400"> / day</span>
               </div>

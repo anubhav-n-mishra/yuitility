@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { zonedWallTime } from '@/src/lib/calendar';
 import { Globe, Copy, Check, Clock, Sun, Moon, Sparkles } from 'lucide-react';
 
 interface TimeZoneConverterProps {
@@ -33,13 +34,14 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
   const [copied, setCopied] = useState<boolean>(false);
 
   // Construct target ISO timestamp from selected date and time in baseTz
-  const baseDateTime = new Date(`${selectedDate}T${selectedTime}:00`);
+  const baseDateTime = zonedWallTime(selectedDate, selectedTime, baseTz);
 
   const setNow = () => {
     const now = new Date();
     setSelectedDate(now.toISOString().split('T')[0]);
+    setBaseTz('UTC');
     setSelectedTime(
-      `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`
+      `${now.getUTCHours().toString().padStart(2, '0')}:${now.getUTCMinutes().toString().padStart(2, '0')}`
     );
   };
 
@@ -93,6 +95,7 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
 
   return (
     <div className="space-y-6">
+      {!Number.isFinite(+baseDateTime) && <p role="alert">Choose a valid, unambiguous local date and time. Clock changes can skip or repeat times; choose a time outside that transition.</p>}
       {/* Top Controller */}
       <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -111,30 +114,30 @@ export default function TimeZoneConverter({ onCopy }: TimeZoneConverterProps) {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Date</label>
-            <input
+            <input aria-label="Date"
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
             />
           </div>
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Time</label>
-            <input
+            <input aria-label="Time"
               type="time"
               value={selectedTime}
               onChange={(e) => setSelectedTime(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
             />
           </div>
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Origin Reference Time Zone</label>
-            <select
+            <select aria-label="Origin Reference Time Zone"
               value={baseTz}
               onChange={(e) => setBaseTz(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-xs"
             >
               {DEFAULT_CITIES.map((c) => (
                 <option key={c.tz} value={c.tz}>

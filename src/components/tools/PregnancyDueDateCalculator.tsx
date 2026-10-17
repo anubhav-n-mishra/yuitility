@@ -119,7 +119,7 @@ export default function PregnancyDueDateCalculator({ onCopy }: PregnancyDueDateC
               {method === 'conception' && 'Date of Conception'}
               {method === 'ultrasound' && 'Date of Ultrasound Scan'}
             </label>
-            <input
+            <input aria-label="Calculation start date"
               type="date"
               value={inputDate}
               onChange={(e) => setInputDate(e.target.value)}
@@ -130,7 +130,7 @@ export default function PregnancyDueDateCalculator({ onCopy }: PregnancyDueDateC
           {method === 'lmp' && (
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Average Cycle Length (Days)</label>
-              <input
+              <input aria-label="Average Cycle Length (Days)"
                 type="number"
                 min="20"
                 max="45"
@@ -144,7 +144,7 @@ export default function PregnancyDueDateCalculator({ onCopy }: PregnancyDueDateC
           {method === 'ultrasound' && (
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Gestational Age at Scan (Weeks)</label>
-              <input
+              <input aria-label="Gestational Age at Scan (Weeks)"
                 type="number"
                 min="4"
                 max="36"

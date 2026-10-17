@@ -1,0 +1,122 @@
+{
+  "pages": 240,
+  "statuses": {
+    "200": 240
+  },
+  "errors": [],
+  "duplicates": {
+    "title": [],
+    "description": [],
+    "canonical": []
+  },
+  "scripts": 26,
+  "brokenScripts": [],
+  "initialScriptGzipBytes": {
+    "/": 263168,
+    "/tools/standard-calculator": 323354,
+    "/tools/salary-calculator": 323354,
+    "/tools/mortgage-calculator/va-loan": 328437
+  },
+  "rssItems": 23,
+  "embeds": [
+    {
+      "path": "/embed/standard-calculator",
+      "status": 200,
+      "bytes": 7045,
+      "headers": {
+        "Content-Security-Policy": "frame-ancestors *",
+        "X-Robots-Tag": "noindex, follow",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+        "x-nextjs-cache": "HIT",
+        "x-nextjs-prerender": "1",
+        "x-nextjs-stale-time": "300",
+        "X-Powered-By": "Next.js",
+        "Cache-Control": "s-maxage=31536000",
+        "ETag": "\"109jxpcus53ptt\"",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Encoding": "gzip",
+        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked"
+      }
+    },
+    {
+      "path": "/embed/mortgage-calculator/va-loan",
+      "status": 200,
+      "bytes": 9467,
+      "headers": {
+        "Content-Security-Policy": "frame-ancestors *",
+        "X-Robots-Tag": "noindex, follow",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+        "x-nextjs-cache": "HIT",
+        "x-nextjs-prerender": "1",
+        "x-nextjs-stale-time": "300",
+        "X-Powered-By": "Next.js",
+        "Cache-Control": "s-maxage=31536000",
+        "ETag": "\"70hj9yi1oowhi\"",
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Encoding": "gzip",
+        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Connection": "close",
+        "Transfer-Encoding": "chunked"
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "path": "/_next/static/media/Inter_Medium-s.p.3mx_ru0c2nzc3.woff",
+      "status": 200,
+      "bytes": 31284,
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "frame-ancestors 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Accept-Ranges": "bytes",
+        "Last-Modified": "Sat, 17 Oct 2026 04:20:27 GMT",
+        "ETag": "W/\"7a34-1a14816f870\"",
+        "Content-Type": "font/woff",
+        "Content-Length": "31284",
+        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Connection": "close"
+      }
+    },
+    {
+      "path": "/_next/static/media/SpaceGrotesk_Bold-s.p.2f82em-z48vvn.woff",
+      "status": 200,
+      "bytes": 16416,
+      "headers": {
+        "X-Frame-Options": "SAMEORIGIN",
+        "Content-Security-Policy": "frame-ancestors 'self'",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Accept-Ranges": "bytes",
+        "Last-Modified": "Sat, 17 Oct 2026 04:20:27 GMT",
+        "ETag": "W/\"4020-1a14816f811\"",
+        "Content-Type": "font/woff",
+        "Content-Length": "16416",
+        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Connection": "close"
+      }
+    }
+  ],
+  "notFound": 404
+}

@@ -20,7 +20,7 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
       ? parseFloat(heightCm) / 2.54
       : (parseFloat(heightFt) || 0) * 12 + (parseFloat(heightIn) || 0);
 
-  const inchesOver5Ft = Math.max(0, totalInches - 60);
+  const inchesOver5Ft = totalInches - 60;
 
   const results = (() => {
     if (isNaN(totalInches) || totalInches < 48 || totalInches > 96) return null;
@@ -126,31 +126,31 @@ export default function IdealBodyWeightCalculator({ onCopy }: IdealBodyWeightCal
           {unit === 'metric' ? (
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Height in Centimeters</label>
-              <input
+              <input aria-label="Height in Centimeters"
                 type="number"
                 value={heightCm}
                 onChange={(e) => setHeightCm(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Feet (ft)</label>
-                <input
+                <input aria-label="Feet (ft)"
                   type="number"
                   value={heightFt}
                   onChange={(e) => setHeightFt(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-lg"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-lg"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Inches (in)</label>
-                <input
+                <input aria-label="Inches (in)"
                   type="number"
                   value={heightIn}
                   onChange={(e) => setHeightIn(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-lg"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-lg"
                 />
               </div>
             </div>

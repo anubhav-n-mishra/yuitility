@@ -1,3 +1,4 @@
+import { numericDataset } from '@/src/lib/numeric';
 import React, { useState, useMemo } from 'react';
 import { Calculator, RefreshCw, Hash } from 'lucide-react';
 
@@ -10,10 +11,7 @@ export default function MeanCalculator({ onCopy }: MeanCalculatorProps) {
   const [inputText, setInputText] = useState<string>('10, 15, 20, 25, 30, 35, 40');
 
   const stats = useMemo(() => {
-    const numbers = inputText
-      .split(/[\s,;\n]+/)
-      .map((v) => parseFloat(v.trim()))
-      .filter((v) => !isNaN(v));
+    const numbers = numericDataset(inputText);
 
     if (numbers.length === 0) return null;
 
@@ -38,7 +36,7 @@ export default function MeanCalculator({ onCopy }: MeanCalculatorProps) {
     // Variance & Standard Deviation
     const sqDiffs = numbers.map((n) => Math.pow(n - mean, 2));
     const popVariance = sqDiffs.reduce((acc, v) => acc + v, 0) / count;
-    const sampleVariance = count > 1 ? sqDiffs.reduce((acc, v) => acc + v, 0) / (count - 1) : popVariance;
+    const sampleVariance = count > 1 ? sqDiffs.reduce((acc, v) => acc + v, 0) / (count - 1) : NaN;
     const stdDev = Math.sqrt(sampleVariance);
 
     return {
@@ -47,8 +45,8 @@ export default function MeanCalculator({ onCopy }: MeanCalculatorProps) {
       mean: mean.toFixed(4),
       geometricMean: geometricMean ? geometricMean.toFixed(4) : 'N/A (Requires > 0)',
       harmonicMean: harmonicMean ? harmonicMean.toFixed(4) : 'N/A (Requires > 0)',
-      sampleVariance: sampleVariance.toFixed(4),
-      stdDev: stdDev.toFixed(4),
+      sampleVariance: count>1 ? sampleVariance.toFixed(4) : 'Undefined (need 2 values)',
+      stdDev: count>1 ? stdDev.toFixed(4) : 'Undefined (need 2 values)',
     };
   }, [inputText]);
 
@@ -65,7 +63,7 @@ export default function MeanCalculator({ onCopy }: MeanCalculatorProps) {
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
               Numbers (Separated by commas or spaces)
             </label>
-            <textarea
+            <textarea aria-label="Numbers (Separated by commas or spaces)"
               rows={5}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}

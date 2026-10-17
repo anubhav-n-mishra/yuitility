@@ -1,5 +1,6 @@
 "use client";
 
+import Modal from "./Modal";
 import React, { useState, useEffect } from "react";
 import { X, Send, CheckCircle2, Wrench, MessageSquare, AlertTriangle, Loader2, Zap } from "lucide-react";
 import { TOOLS } from "@/src/types";
@@ -26,18 +27,7 @@ export default function ContactModal({ isOpen, onClose, initialType = "request" 
     setErrorMsg("");
   }, [initialType, isOpen]);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
+if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +69,7 @@ export default function ContactModal({ isOpen, onClose, initialType = "request" 
   };
 
   return (
-    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <Modal label="Contact Yuitility" onClose={onClose} className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div
         className="w-full max-w-lg bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden font-sans"
         role="dialog"
@@ -88,7 +78,7 @@ export default function ContactModal({ isOpen, onClose, initialType = "request" 
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-100 dark:border-zinc-800">
           <h2 className="text-lg font-bold">Contact & Community</h2>
-          <button
+          <button aria-label="Close dialog"
             onClick={onClose}
             className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
@@ -228,7 +218,7 @@ export default function ContactModal({ isOpen, onClose, initialType = "request" 
                     : "Your Feedback or Suggestions"}{" "}
                   <span className="text-red-500">*</span>
                 </label>
-                <textarea
+                <textarea aria-label={activeTab === "request" ? "Tool Description & Functionality" : activeTab === "bug" ? "Describe the issue or error" : "Your Feedback or Suggestions"}
                   required
                   rows={4}
                   value={message}
@@ -263,6 +253,6 @@ export default function ContactModal({ isOpen, onClose, initialType = "request" 
           )}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }

@@ -83,7 +83,7 @@ export default function ToolsDirectoryClient({ orderedCategories }: ToolsDirecto
             {/* Search Input */}
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400 pointer-events-none" />
-              <input
+              <input aria-label="Search tools by title or keywords..."
                 type="text"
                 placeholder="Search tools by title or keywords..."
                 value={searchQuery}

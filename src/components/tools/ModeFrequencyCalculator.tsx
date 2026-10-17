@@ -19,12 +19,12 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
     .map((t) => t.trim())
     .filter(Boolean);
 
-  const numbers = tokens.map((t) => Number(t)).filter((n) => !isNaN(n));
+  const numbers = tokens.map((t) => Number(t)).filter(Number.isFinite);
   const isNumeric = numbers.length === tokens.length && tokens.length > 0;
 
   // Frequency Map
   const freqMap = new Map<string, number>();
-  for (const item of tokens) {
+  for (const item of (isNumeric ? numbers.map(String) : tokens)) {
     freqMap.set(item, (freqMap.get(item) || 0) + 1);
   }
 
@@ -45,7 +45,7 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
 
   // Check if every item has the same frequency > 1 and multiple unique items -> No mode
   const allSameCount = freqMap.size > 1 && Array.from(freqMap.values()).every((c) => c === maxFreq);
-  const hasMode = modes.length > 0 && !allSameCount;
+  const hasMode = modes.length > 0;
 
   // Numeric stats if all inputs are numbers
   let mean: number | null = null;
@@ -116,12 +116,12 @@ export default function ModeFrequencyCalculator({ onCopy }: ModeFrequencyCalcula
           </button>
         </div>
 
-        <textarea
+        <textarea aria-label="Enter Data Set (Numbers or Words, comma or space separated)"
           rows={3}
           value={inputData}
           onChange={(e) => setInputData(e.target.value)}
           placeholder="e.g. 10, 15, 20, 15, 30, 15, 25"
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
         />
       </div>
 

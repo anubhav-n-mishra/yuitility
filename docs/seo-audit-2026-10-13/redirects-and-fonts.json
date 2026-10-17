@@ -1,0 +1,44 @@
+[
+  {
+    "url": "http://yuitility.app/tools/word-counter",
+    "status": 308,
+    "location": "https://yuitility.app/tools/word-counter",
+    "contentType": "text/plain"
+  },
+  {
+    "url": "https://yuitility.app/tools/word-counter",
+    "status": 301,
+    "location": "https://www.yuitility.app/tools/word-counter",
+    "contentType": "text/plain"
+  },
+  {
+    "url": "http://www.yuitility.app/tools/word-counter",
+    "status": 308,
+    "location": "https://www.yuitility.app/tools/word-counter",
+    "contentType": "text/plain"
+  },
+  {
+    "url": "https://www.yuitility.app/tools/word-counter/",
+    "status": 308,
+    "location": "/tools/word-counter",
+    "contentType": "text/plain"
+  },
+  {
+    "url": "https://www.yuitility.app/html-sitemap",
+    "status": 308,
+    "location": "/sitemap",
+    "contentType": "text/plain"
+  },
+  {
+    "url": "https://www.yuitility.app/fonts/inter-medium.woff",
+    "status": 404,
+    "location": null,
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.yuitility.app/fonts/Inter-Medium.woff",
+    "status": 301,
+    "location": "/fonts/inter-medium.woff",
+    "contentType": "text/plain"
+  }
+]

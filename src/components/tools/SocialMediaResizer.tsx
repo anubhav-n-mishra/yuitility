@@ -192,7 +192,7 @@ export default function SocialMediaResizer({ onCopy, onShare }: SocialMediaResiz
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Upload a photo to crop</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -204,7 +204,7 @@ export default function SocialMediaResizer({ onCopy, onShare }: SocialMediaResiz
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Original Image</h3>
-                <button
+                <button aria-label="Remove selected file"
                   onClick={handleReset}
                   className="p-1.5 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-md transition-colors"
                 >

@@ -24,7 +24,7 @@ export default function FdCalculator({ onCopy }: FdCalculatorProps) {
     const t = tenureYears;
     const n = 4; // Quarterly compounding
 
-    if (P <= 0 || effectiveRate <= 0 || tenureYears <= 0) return null;
+    if (P <= 0 || effectiveRate < 0 || tenureYears <= 0) return null;
 
     const maturityAmount = P * Math.pow(1 + r / n, n * t);
     const interestEarned = maturityAmount - P;
@@ -52,7 +52,7 @@ export default function FdCalculator({ onCopy }: FdCalculatorProps) {
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Deposit Amount ({currObj.symbol})</label>
-            <input
+            <input aria-label="Deposit Amount ( )"
               type="number"
               value={depositAmount}
               step="10000"
@@ -64,7 +64,7 @@ export default function FdCalculator({ onCopy }: FdCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (% p.a.)</label>
-              <input
+              <input aria-label="Interest Rate (% p.a.)"
                 type="number"
                 value={interestRate}
                 step="0.25"
@@ -74,7 +74,7 @@ export default function FdCalculator({ onCopy }: FdCalculatorProps) {
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure (Years)</label>
-              <input
+              <input aria-label="Tenure (Years)"
                 type="number"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}

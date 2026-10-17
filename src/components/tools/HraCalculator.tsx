@@ -36,7 +36,7 @@ export default function HraCalculator() {
   }, [basicSalaryAnnual, hraReceivedAnnual, rentPaidAnnual, isMetroCity]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8"><p className="text-sm text-zinc-600 dark:text-zinc-400">India old-regime HRA illustration. Salary input must include DA forming part of retirement benefits and eligible turnover commission where applicable. Exemption is not available under the new regime. Changing the displayed currency does not change these rules.</p>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-white">HRA Exemption Calculator</h2>
@@ -52,7 +52,7 @@ export default function HraCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Annual Basic Salary + DA</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(basicSalaryAnnual, currency)}</span>
             </div>
-            <input
+            <input aria-label="Annual Basic Salary + DA (slider)"
               type="range"
               min="100000"
               max="3000000"
@@ -68,7 +68,7 @@ export default function HraCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Annual HRA Received</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(hraReceivedAnnual, currency)}</span>
             </div>
-            <input
+            <input aria-label="Annual HRA Received (slider)"
               type="range"
               min="10000"
               max="1500000"
@@ -84,7 +84,7 @@ export default function HraCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Annual Rent Paid</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(rentPaidAnnual, currency)}</span>
             </div>
-            <input
+            <input aria-label="Annual Rent Paid (slider)"
               type="range"
               min="10000"
               max="1500000"

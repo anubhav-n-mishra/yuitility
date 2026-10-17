@@ -26,15 +26,8 @@ const SettingsDrawer = dynamic(() => import('./SettingsDrawer'), { ssr: false })
 
 export default function Header() {
   const pathname = usePathname() || '';
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      return document.documentElement.classList.contains('dark');
-    }
-    return false;
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  useEffect(() => { setDarkMode(document.documentElement.classList.contains('dark')); }, []);
   const [mounted, setMounted] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [accentColor, setAccentColor] = useState<'blue' | 'emerald' | 'indigo' | 'rose' | 'amber'>('blue');
@@ -219,7 +212,7 @@ export default function Header() {
             <button
               onClick={toggleDarkMode}
               className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
-              aria-label="Toggle dark mode"
+              aria-label="Toggle dark mode" aria-pressed={darkMode}
             >
               {!mounted ? (
                 <Sun className="w-4 h-4 text-amber-400" />
@@ -233,7 +226,7 @@ export default function Header() {
             <button
               onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
               className="md:hidden p-1.5 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
-              aria-label="Toggle Navigation Menu"
+              aria-label="Toggle Navigation Menu" aria-expanded={isMobileNavOpen}
             >
               {isMobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

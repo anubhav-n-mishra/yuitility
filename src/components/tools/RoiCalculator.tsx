@@ -39,7 +39,7 @@ export default function RoiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Initial Amount Invested</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(initialInvestment, currency)}</span>
             </div>
-            <input
+            <input aria-label="Initial Amount Invested (slider)"
               type="range"
               min="1000"
               max="500000"
@@ -55,7 +55,7 @@ export default function RoiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Final Returned Value</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(finalValue, currency)}</span>
             </div>
-            <input
+            <input aria-label="Final Returned Value (slider)"
               type="range"
               min="1000"
               max="1000000"

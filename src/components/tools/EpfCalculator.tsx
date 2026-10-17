@@ -14,24 +14,27 @@ export default function EpfCalculator() {
   const [interestRate, setInterestRate] = useState(8.25);
 
   const stats = useMemo(() => {
-    const years = Math.max(1, retirementAge - currentAge);
+    const years = Math.max(0, retirementAge - currentAge);
     let totalBalance = Math.max(0, currentEpfBalance);
     let currentBasic = Math.max(0, monthlyBasicSalary);
     let totalEmployeeContrib = 0;
     let totalEmployerContrib = 0;
 
     for (let yr = 0; yr < years; yr++) {
+      let annualInterest = 0;
       for (let m = 0; m < 12; m++) {
+        annualInterest += totalBalance * interestRate / 1200;
         const empContrib = currentBasic * 0.12;
-        // EPF portion of employer is 3.67% (8.33% goes to EPS capped at 1250)
-        const empPfundPortion = currentBasic * 0.0367;
+        // Full-basic employer share less EPS (8.33%, capped at 1250/month).
+        const pension = Math.min(currentBasic * 0.0833,1250);
+        const empPfundPortion = currentBasic * 0.12 - pension;
 
         totalBalance += empContrib + empPfundPortion;
         totalEmployeeContrib += empContrib;
         totalEmployerContrib += empPfundPortion;
       }
       // Apply annual interest
-      totalBalance += totalBalance * (interestRate / 100);
+      totalBalance += annualInterest;
       currentBasic += currentBasic * (expectedSalaryIncrease / 100);
     }
 
@@ -47,7 +50,7 @@ export default function EpfCalculator() {
   }, [monthlyBasicSalary, currentAge, retirementAge, currentEpfBalance, expectedSalaryIncrease, interestRate]);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8"><p className="text-sm text-zinc-600 dark:text-zinc-400">Illustration assumes 12% employee and employer contributions on full basic, EPS at 8.33% capped at ₹1,250/month, end-of-month deposits, interest on opening monthly balances credited annually, and salary rises each year. Capped-wage and non-EPS membership cases differ.</p>
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-white">EPF Calculator (Employee Provident Fund)</h2>
@@ -63,7 +66,7 @@ export default function EpfCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Monthly Basic + DA</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(monthlyBasicSalary, currency)}</span>
             </div>
-            <input
+            <input aria-label="Monthly Basic + DA (slider)"
               type="range"
               min="10000"
               max="300000"
@@ -77,7 +80,7 @@ export default function EpfCalculator() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Current Age</label>
-              <input
+              <input aria-label="Current Age"
                 type="number"
                 value={currentAge}
                 onChange={(e) => setCurrentAge(Number(e.target.value))}
@@ -86,7 +89,7 @@ export default function EpfCalculator() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Retirement Age</label>
-              <input
+              <input aria-label="Retirement Age"
                 type="number"
                 value={retirementAge}
                 onChange={(e) => setRetirementAge(Number(e.target.value))}
@@ -100,7 +103,7 @@ export default function EpfCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">EPF Interest Rate (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{interestRate}%</span>
             </div>
-            <input
+            <input aria-label="EPF Interest Rate (%) (slider)"
               type="range"
               min="7"
               max="10"

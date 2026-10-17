@@ -74,7 +74,7 @@ export default function ServiceWorkerRegister() {
         <div>
           <p className="text-xs font-bold leading-tight">Working Offline</p>
           <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-tight mt-0.5">
-            Tools run 100% locally in your browser with zero network needed.
+            Previously loaded tools may work offline. New tools, model downloads and AI chat need a connection.
           </p>
         </div>
       </div>

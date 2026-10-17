@@ -91,21 +91,21 @@ export default function PercentageCalculator({ onCopy }: PercentageCalculatorPro
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Percentage (X%)</label>
-                <input
+                <input aria-label="Percentage (X%)"
                   type="number"
                   value={m1X}
                   onChange={(e) => setM1X(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
                 />
               </div>
               <span className="text-zinc-500 dark:text-zinc-500 font-bold mt-5">% of</span>
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Total Value (Y)</label>
-                <input
+                <input aria-label="Total Value (Y)"
                   type="number"
                   value={m1Y}
                   onChange={(e) => setM1Y(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
                 />
               </div>
             </div>
@@ -140,21 +140,21 @@ export default function PercentageCalculator({ onCopy }: PercentageCalculatorPro
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Part Value (X)</label>
-                <input
+                <input aria-label="Part Value (X)"
                   type="number"
                   value={m2X}
                   onChange={(e) => setM2X(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
                 />
               </div>
               <span className="text-zinc-500 dark:text-zinc-500 font-bold mt-5">is % of</span>
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Whole Value (Y)</label>
-                <input
+                <input aria-label="Whole Value (Y)"
                   type="number"
                   value={m2Y}
                   onChange={(e) => setM2Y(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-cyan-500"
                 />
               </div>
             </div>
@@ -189,21 +189,21 @@ export default function PercentageCalculator({ onCopy }: PercentageCalculatorPro
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Initial Value (X)</label>
-                <input
+                <input aria-label="Initial Value (X)"
                   type="number"
                   value={m3X}
                   onChange={(e) => setM3X(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
                 />
               </div>
               <ArrowRight className="w-4 h-4 text-zinc-500 dark:text-zinc-500 mt-5 shrink-0" />
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Final Value (Y)</label>
-                <input
+                <input aria-label="Final Value (Y)"
                   type="number"
                   value={m3Y}
                   onChange={(e) => setM3Y(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </div>
@@ -241,19 +241,19 @@ export default function PercentageCalculator({ onCopy }: PercentageCalculatorPro
             <div className="flex items-center gap-2 mb-4">
               <div className="flex-1">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Base Price / Value (Y)</label>
-                <input
+                <input aria-label="Base Price / Value (Y)"
                   type="number"
                   value={m4Y}
                   onChange={(e) => setM4Y(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-amber-500"
                 />
               </div>
               <div className="w-20">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Action</label>
-                <select
+                <select aria-label="Action"
                   value={m4Op}
                   onChange={(e) => setM4Op(e.target.value as 'add' | 'sub')}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-zinc-900 dark:text-white text-sm focus:outline-none focus:border-amber-500"
                 >
                   <option value="add">+ Add</option>
                   <option value="sub">- Sub</option>
@@ -261,11 +261,11 @@ export default function PercentageCalculator({ onCopy }: PercentageCalculatorPro
               </div>
               <div className="w-24">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">% Rate (X)</label>
-                <input
+                <input aria-label="% Rate (X)"
                   type="number"
                   value={m4X}
                   onChange={(e) => setM4X(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-amber-500"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-amber-500"
                 />
               </div>
             </div>

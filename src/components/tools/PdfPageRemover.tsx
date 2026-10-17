@@ -1,3 +1,4 @@
+import { pageSelection } from '@/src/lib/pageSelection';
 import React, { useState, useRef } from 'react';
 import { UploadCloud, File, Trash2, Share2, Download, RefreshCw, Scissors, Check } from 'lucide-react';
 import { PDFDocument } from 'pdf-lib';
@@ -59,26 +60,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
   };
 
   const parsePagesString = (str: string, max: number): Set<number> => {
-    const pages = new Set<number>();
-    const parts = str.split(',').map((s) => s.trim());
-    for (const part of parts) {
-      if (part.includes('-')) {
-        const [startStr, endStr] = part.split('-').map((s) => s.trim());
-        const start = parseInt(startStr, 10);
-        const end = parseInt(endStr, 10);
-        if (!isNaN(start) && !isNaN(end)) {
-          const lower = Math.max(1, Math.min(start, end));
-          const upper = Math.min(max, Math.max(start, end));
-          for (let i = lower; i <= upper; i++) pages.add(i);
-        }
-      } else {
-        const num = parseInt(part, 10);
-        if (!isNaN(num) && num >= 1 && num <= max) {
-          pages.add(num);
-        }
-      }
-    }
-    return pages;
+    return new Set(pageSelection(str,max));
   };
 
   const handleInputChange = (val: string) => {
@@ -206,7 +188,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                 Processed 100% locally on your device. Zero file uploads.
               </p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -244,7 +226,7 @@ export default function PdfPageRemover({ onCopy, onShare }: PdfPageRemoverProps)
                   <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                     Pages to Delete (comma-separated or ranges)
                   </label>
-                  <input
+                  <input aria-label="Pages to Delete (comma-separated or ranges)"
                     type="text"
                     value={pagesToDeleteInput}
                     onChange={(e) => handleInputChange(e.target.value)}

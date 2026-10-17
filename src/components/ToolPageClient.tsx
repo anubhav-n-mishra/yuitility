@@ -1,5 +1,7 @@
 "use client";
+import Modal from "@/src/components/Modal";
 
+import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, Copy, Moon, ShieldCheck, Sun, ArrowRight, BookOpen, Award, Code2, X } from "lucide-react";
@@ -13,180 +15,180 @@ import { BLOG_POSTS } from "@/src/lib/blogs";
 import PwaInstallButton from "./PwaInstallButton";
 import Header from "@/src/components/Header";
 import HoverFooter from "@/src/components/ui/hover-footer";
-import EmiCalculator from "@/src/components/tools/EmiCalculator";
-import SipCalculator from "@/src/components/tools/SipCalculator";
-import AgeCalculator from "@/src/components/tools/AgeCalculator";
-import PasswordGenerator from "@/src/components/tools/PasswordGenerator";
-import QrCodeGenerator from "@/src/components/tools/QrCodeGenerator";
-import WordCounter from "@/src/components/tools/WordCounter";
-import ImageCompressor from "@/src/components/tools/ImageCompressor";
-import SalaryCalculator from "@/src/components/tools/SalaryCalculator";
-import JsonFormatter from "@/src/components/tools/JsonFormatter";
-import ColorPalette from "@/src/components/tools/ColorPalette";
-import PdfMerger from "@/src/components/tools/PdfMerger";
-import PdfSplitter from "@/src/components/tools/PdfSplitter";
-import ImageToPdf from "@/src/components/tools/ImageToPdf";
-import PdfWatermarker from "@/src/components/tools/PdfWatermarker";
-import PdfMetadata from "@/src/components/tools/PdfMetadata";
-import PdfRotator from "@/src/components/tools/PdfRotator";
-import PdfPageNumberer from "@/src/components/tools/PdfPageNumberer";
-import PdfPageRemover from "@/src/components/tools/PdfPageRemover";
-import BackgroundRemover from "@/src/components/tools/BackgroundRemover";
-import ImageResizer from "@/src/components/tools/ImageResizer";
-import FormatConverter from "@/src/components/tools/FormatConverter";
-import PdfCompressor from "@/src/components/tools/PdfCompressor";
-import ZipExtractor from "@/src/components/tools/ZipExtractor";
-import UnitConverter from "@/src/components/tools/UnitConverter";
-import MemeMaker from "@/src/components/tools/MemeMaker";
-import FaviconGenerator from "@/src/components/tools/FaviconGenerator";
-import OgImageGenerator from "@/src/components/tools/OgImageGenerator";
-import SocialMediaResizer from "@/src/components/tools/SocialMediaResizer";
-import FakeDataGenerator from "@/src/components/tools/FakeDataGenerator";
-import PhotoCollageMaker from "@/src/components/tools/PhotoCollageMaker";
-import AgeCalculatorInMonths from "@/src/components/tools/AgeCalculatorInMonths";
-import DogAgeCalculator from "@/src/components/tools/DogAgeCalculator";
-import PregnancyDueDateCalculator from "@/src/components/tools/PregnancyDueDateCalculator";
-import RetirementCalculator from "@/src/components/tools/RetirementCalculator";
-import ZodiacAgeCalculator from "@/src/components/tools/ZodiacAgeCalculator";
-import SchoolAgeEligibilityCalculator from "@/src/components/tools/SchoolAgeEligibilityCalculator";
-import MedianCalculator from "@/src/components/tools/MedianCalculator";
-import MeanCalculator from "@/src/components/tools/MeanCalculator";
-import ModCalculator from "@/src/components/tools/ModCalculator";
-import ZodiacSunMoonCalculator from "@/src/components/tools/ZodiacSunMoonCalculator";
-import BmiCalculator from "@/src/components/tools/BmiCalculator";
-import DeathCalculator from "@/src/components/tools/DeathCalculator";
-import LoanCalculator from "@/src/components/tools/LoanCalculator";
-import EducationLoanEmiCalculator from "@/src/components/tools/EducationLoanEmiCalculator";
-import PersonalLoanEmiCalculator from "@/src/components/tools/PersonalLoanEmiCalculator";
-import BikeLoanEmiCalculator from "@/src/components/tools/BikeLoanEmiCalculator";
-import CarLoanEmiCalculator from "@/src/components/tools/CarLoanEmiCalculator";
-import HomeLoanEmiCalculator from "@/src/components/tools/HomeLoanEmiCalculator";
-import MortgageCalculator from "@/src/components/tools/MortgageCalculator";
-import InterestCalculator from "@/src/components/tools/InterestCalculator";
-import FdCalculator from "@/src/components/tools/FdCalculator";
-import RdCalculator from "@/src/components/tools/RdCalculator";
-import CompoundInterestCalculator from "@/src/components/tools/CompoundInterestCalculator";
-import SimpleInterestCalculator from "@/src/components/tools/SimpleInterestCalculator";
-import PpfCalculator from "@/src/components/tools/PpfCalculator";
-import GoldLoanEmiCalculator from "@/src/components/tools/GoldLoanEmiCalculator";
-import BusinessLoanEmiCalculator from "@/src/components/tools/BusinessLoanEmiCalculator";
-import SwpCalculator from "@/src/components/tools/SwpCalculator";
-import EpfCalculator from "@/src/components/tools/EpfCalculator";
-import NpsCalculator from "@/src/components/tools/NpsCalculator";
-import GratuityCalculator from "@/src/components/tools/GratuityCalculator";
-import HraCalculator from "@/src/components/tools/HraCalculator";
-import IncomeTaxCalculator from "@/src/components/tools/IncomeTaxCalculator";
-import GstCalculator from "@/src/components/tools/GstCalculator";
-import CreditCardEmiCalculator from "@/src/components/tools/CreditCardEmiCalculator";
-import NetWorthCalculator from "@/src/components/tools/NetWorthCalculator";
-import EmergencyFundCalculator from "@/src/components/tools/EmergencyFundCalculator";
-import RoiCalculator from "@/src/components/tools/RoiCalculator";
-import CagrCalculator from "@/src/components/tools/CagrCalculator";
-import IrrCalculator from "@/src/components/tools/IrrCalculator";
-import BreakEvenCalculator from "@/src/components/tools/BreakEvenCalculator";
-import ProfitMarginCalculator from "@/src/components/tools/ProfitMarginCalculator";
-import DiscountCalculator from "@/src/components/tools/DiscountCalculator";
-import CommissionCalculator from "@/src/components/tools/CommissionCalculator";
-import CurrencyConverterTool from "@/src/components/tools/CurrencyConverterTool";
-import MutualFundReturnCalculator from "@/src/components/tools/MutualFundReturnCalculator";
-import DividendCalculator from "@/src/components/tools/DividendCalculator";
-import StockAverageCalculator from "@/src/components/tools/StockAverageCalculator";
-import BmrCalculator from "@/src/components/tools/BmrCalculator";
-import BodyFatCalculator from "@/src/components/tools/BodyFatCalculator";
+const EmiCalculator = dynamic(() => import("@/src/components/tools/EmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SipCalculator = dynamic(() => import("@/src/components/tools/SipCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const AgeCalculator = dynamic(() => import("@/src/components/tools/AgeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PasswordGenerator = dynamic(() => import("@/src/components/tools/PasswordGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const QrCodeGenerator = dynamic(() => import("@/src/components/tools/QrCodeGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const WordCounter = dynamic(() => import("@/src/components/tools/WordCounter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ImageCompressor = dynamic(() => import("@/src/components/tools/ImageCompressor"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SalaryCalculator = dynamic(() => import("@/src/components/tools/SalaryCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const JsonFormatter = dynamic(() => import("@/src/components/tools/JsonFormatter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ColorPalette = dynamic(() => import("@/src/components/tools/ColorPalette"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfMerger = dynamic(() => import("@/src/components/tools/PdfMerger"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfSplitter = dynamic(() => import("@/src/components/tools/PdfSplitter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ImageToPdf = dynamic(() => import("@/src/components/tools/ImageToPdf"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfWatermarker = dynamic(() => import("@/src/components/tools/PdfWatermarker"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfMetadata = dynamic(() => import("@/src/components/tools/PdfMetadata"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfRotator = dynamic(() => import("@/src/components/tools/PdfRotator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfPageNumberer = dynamic(() => import("@/src/components/tools/PdfPageNumberer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfPageRemover = dynamic(() => import("@/src/components/tools/PdfPageRemover"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BackgroundRemover = dynamic(() => import("@/src/components/tools/BackgroundRemover"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ImageResizer = dynamic(() => import("@/src/components/tools/ImageResizer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FormatConverter = dynamic(() => import("@/src/components/tools/FormatConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PdfCompressor = dynamic(() => import("@/src/components/tools/PdfCompressor"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ZipExtractor = dynamic(() => import("@/src/components/tools/ZipExtractor"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const UnitConverter = dynamic(() => import("@/src/components/tools/UnitConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MemeMaker = dynamic(() => import("@/src/components/tools/MemeMaker"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FaviconGenerator = dynamic(() => import("@/src/components/tools/FaviconGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const OgImageGenerator = dynamic(() => import("@/src/components/tools/OgImageGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SocialMediaResizer = dynamic(() => import("@/src/components/tools/SocialMediaResizer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FakeDataGenerator = dynamic(() => import("@/src/components/tools/FakeDataGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PhotoCollageMaker = dynamic(() => import("@/src/components/tools/PhotoCollageMaker"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const AgeCalculatorInMonths = dynamic(() => import("@/src/components/tools/AgeCalculatorInMonths"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DogAgeCalculator = dynamic(() => import("@/src/components/tools/DogAgeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PregnancyDueDateCalculator = dynamic(() => import("@/src/components/tools/PregnancyDueDateCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const RetirementCalculator = dynamic(() => import("@/src/components/tools/RetirementCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ZodiacAgeCalculator = dynamic(() => import("@/src/components/tools/ZodiacAgeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SchoolAgeEligibilityCalculator = dynamic(() => import("@/src/components/tools/SchoolAgeEligibilityCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MedianCalculator = dynamic(() => import("@/src/components/tools/MedianCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MeanCalculator = dynamic(() => import("@/src/components/tools/MeanCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ModCalculator = dynamic(() => import("@/src/components/tools/ModCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ZodiacSunMoonCalculator = dynamic(() => import("@/src/components/tools/ZodiacSunMoonCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BmiCalculator = dynamic(() => import("@/src/components/tools/BmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DeathCalculator = dynamic(() => import("@/src/components/tools/DeathCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const LoanCalculator = dynamic(() => import("@/src/components/tools/LoanCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const EducationLoanEmiCalculator = dynamic(() => import("@/src/components/tools/EducationLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PersonalLoanEmiCalculator = dynamic(() => import("@/src/components/tools/PersonalLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BikeLoanEmiCalculator = dynamic(() => import("@/src/components/tools/BikeLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CarLoanEmiCalculator = dynamic(() => import("@/src/components/tools/CarLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const HomeLoanEmiCalculator = dynamic(() => import("@/src/components/tools/HomeLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MortgageCalculator = dynamic(() => import("@/src/components/tools/MortgageCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const InterestCalculator = dynamic(() => import("@/src/components/tools/InterestCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FdCalculator = dynamic(() => import("@/src/components/tools/FdCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const RdCalculator = dynamic(() => import("@/src/components/tools/RdCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CompoundInterestCalculator = dynamic(() => import("@/src/components/tools/CompoundInterestCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SimpleInterestCalculator = dynamic(() => import("@/src/components/tools/SimpleInterestCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PpfCalculator = dynamic(() => import("@/src/components/tools/PpfCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const GoldLoanEmiCalculator = dynamic(() => import("@/src/components/tools/GoldLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BusinessLoanEmiCalculator = dynamic(() => import("@/src/components/tools/BusinessLoanEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SwpCalculator = dynamic(() => import("@/src/components/tools/SwpCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const EpfCalculator = dynamic(() => import("@/src/components/tools/EpfCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const NpsCalculator = dynamic(() => import("@/src/components/tools/NpsCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const GratuityCalculator = dynamic(() => import("@/src/components/tools/GratuityCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const HraCalculator = dynamic(() => import("@/src/components/tools/HraCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const IncomeTaxCalculator = dynamic(() => import("@/src/components/tools/IncomeTaxCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const GstCalculator = dynamic(() => import("@/src/components/tools/GstCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CreditCardEmiCalculator = dynamic(() => import("@/src/components/tools/CreditCardEmiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const NetWorthCalculator = dynamic(() => import("@/src/components/tools/NetWorthCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const EmergencyFundCalculator = dynamic(() => import("@/src/components/tools/EmergencyFundCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const RoiCalculator = dynamic(() => import("@/src/components/tools/RoiCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CagrCalculator = dynamic(() => import("@/src/components/tools/CagrCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const IrrCalculator = dynamic(() => import("@/src/components/tools/IrrCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BreakEvenCalculator = dynamic(() => import("@/src/components/tools/BreakEvenCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ProfitMarginCalculator = dynamic(() => import("@/src/components/tools/ProfitMarginCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DiscountCalculator = dynamic(() => import("@/src/components/tools/DiscountCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CommissionCalculator = dynamic(() => import("@/src/components/tools/CommissionCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CurrencyConverterTool = dynamic(() => import("@/src/components/tools/CurrencyConverterTool"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MutualFundReturnCalculator = dynamic(() => import("@/src/components/tools/MutualFundReturnCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DividendCalculator = dynamic(() => import("@/src/components/tools/DividendCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const StockAverageCalculator = dynamic(() => import("@/src/components/tools/StockAverageCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BmrCalculator = dynamic(() => import("@/src/components/tools/BmrCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BodyFatCalculator = dynamic(() => import("@/src/components/tools/BodyFatCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import StandardCalculator from "@/src/components/tools/StandardCalculator";
-import ScientificCalculator from "@/src/components/tools/ScientificCalculator";
+const StandardCalculator = dynamic(() => import("@/src/components/tools/StandardCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ScientificCalculator = dynamic(() => import("@/src/components/tools/ScientificCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import UuidV4Generator from "@/src/components/tools/UuidV4Generator";
-import Base64EncoderDecoder from "@/src/components/tools/Base64EncoderDecoder";
-import UrlEncoderDecoder from "@/src/components/tools/UrlEncoderDecoder";
-import LoremIpsumGenerator from "@/src/components/tools/LoremIpsumGenerator";
-import HashGenerator from "@/src/components/tools/HashGenerator";
-import HexColorConverter from "@/src/components/tools/HexColorConverter";
-import MorseCodeTranslator from "@/src/components/tools/MorseCodeTranslator";
-import RegexTester from "@/src/components/tools/RegexTester";
-import MarkdownToHtml from "@/src/components/tools/MarkdownToHtml";
-import MarkdownViewer from "@/src/components/tools/MarkdownViewer";
-import DiffChecker from "@/src/components/tools/DiffChecker";
+const UuidV4Generator = dynamic(() => import("@/src/components/tools/UuidV4Generator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const Base64EncoderDecoder = dynamic(() => import("@/src/components/tools/Base64EncoderDecoder"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const UrlEncoderDecoder = dynamic(() => import("@/src/components/tools/UrlEncoderDecoder"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const LoremIpsumGenerator = dynamic(() => import("@/src/components/tools/LoremIpsumGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const HashGenerator = dynamic(() => import("@/src/components/tools/HashGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const HexColorConverter = dynamic(() => import("@/src/components/tools/HexColorConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MorseCodeTranslator = dynamic(() => import("@/src/components/tools/MorseCodeTranslator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const RegexTester = dynamic(() => import("@/src/components/tools/RegexTester"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MarkdownToHtml = dynamic(() => import("@/src/components/tools/MarkdownToHtml"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MarkdownViewer = dynamic(() => import("@/src/components/tools/MarkdownViewer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DiffChecker = dynamic(() => import("@/src/components/tools/DiffChecker"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import PercentageCalculator from "@/src/components/tools/PercentageCalculator";
-import CgpaCalculator from "@/src/components/tools/CgpaCalculator";
-import CgpaToPercentage from "@/src/components/tools/CgpaToPercentage";
-import GpaCalculator from "@/src/components/tools/GpaCalculator";
-import DateDifferenceCalculator from "@/src/components/tools/DateDifferenceCalculator";
-import ModeFrequencyCalculator from "@/src/components/tools/ModeFrequencyCalculator";
-import StandardDeviationCalculator from "@/src/components/tools/StandardDeviationCalculator";
-import ProbabilityCalculator from "@/src/components/tools/ProbabilityCalculator";
-import PermutationCombinationCalculator from "@/src/components/tools/PermutationCombinationCalculator";
-import FactorialCalculator from "@/src/components/tools/FactorialCalculator";
-import MatrixCalculator from "@/src/components/tools/MatrixCalculator";
-import QuadraticSolver from "@/src/components/tools/QuadraticSolver";
-import FractionToDecimal from "@/src/components/tools/FractionToDecimal";
-import RatioProportionCalculator from "@/src/components/tools/RatioProportionCalculator";
-import GeometryAreaCalculator from "@/src/components/tools/GeometryAreaCalculator";
+const PercentageCalculator = dynamic(() => import("@/src/components/tools/PercentageCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CgpaCalculator = dynamic(() => import("@/src/components/tools/CgpaCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CgpaToPercentage = dynamic(() => import("@/src/components/tools/CgpaToPercentage"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const GpaCalculator = dynamic(() => import("@/src/components/tools/GpaCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DateDifferenceCalculator = dynamic(() => import("@/src/components/tools/DateDifferenceCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ModeFrequencyCalculator = dynamic(() => import("@/src/components/tools/ModeFrequencyCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const StandardDeviationCalculator = dynamic(() => import("@/src/components/tools/StandardDeviationCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ProbabilityCalculator = dynamic(() => import("@/src/components/tools/ProbabilityCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PermutationCombinationCalculator = dynamic(() => import("@/src/components/tools/PermutationCombinationCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FactorialCalculator = dynamic(() => import("@/src/components/tools/FactorialCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MatrixCalculator = dynamic(() => import("@/src/components/tools/MatrixCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const QuadraticSolver = dynamic(() => import("@/src/components/tools/QuadraticSolver"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FractionToDecimal = dynamic(() => import("@/src/components/tools/FractionToDecimal"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const RatioProportionCalculator = dynamic(() => import("@/src/components/tools/RatioProportionCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const GeometryAreaCalculator = dynamic(() => import("@/src/components/tools/GeometryAreaCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import LeanBodyMassCalculator from "@/src/components/tools/LeanBodyMassCalculator";
-import IdealBodyWeightCalculator from "@/src/components/tools/IdealBodyWeightCalculator";
-import DailyCalorieCalculator from "@/src/components/tools/DailyCalorieCalculator";
-import WaterIntakeCalculator from "@/src/components/tools/WaterIntakeCalculator";
-import MacroRatioCalculator from "@/src/components/tools/MacroRatioCalculator";
-import ProteinIntakeCalculator from "@/src/components/tools/ProteinIntakeCalculator";
-import TdeeCalculator from "@/src/components/tools/TdeeCalculator";
-import OneRepMaxCalculator from "@/src/components/tools/OneRepMaxCalculator";
-import OvulationCalculator from "@/src/components/tools/OvulationCalculator";
-import TargetHeartRateCalculator from "@/src/components/tools/TargetHeartRateCalculator";
-import WaistHipRatioCalculator from "@/src/components/tools/WaistHipRatioCalculator";
-import SleepCycleCalculator from "@/src/components/tools/SleepCycleCalculator";
-import SmokingCostCalculator from "@/src/components/tools/SmokingCostCalculator";
-import RunningPaceCalculator from "@/src/components/tools/RunningPaceCalculator";
-import StepToCalorieCalculator from "@/src/components/tools/StepToCalorieCalculator";
+const LeanBodyMassCalculator = dynamic(() => import("@/src/components/tools/LeanBodyMassCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const IdealBodyWeightCalculator = dynamic(() => import("@/src/components/tools/IdealBodyWeightCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DailyCalorieCalculator = dynamic(() => import("@/src/components/tools/DailyCalorieCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const WaterIntakeCalculator = dynamic(() => import("@/src/components/tools/WaterIntakeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MacroRatioCalculator = dynamic(() => import("@/src/components/tools/MacroRatioCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ProteinIntakeCalculator = dynamic(() => import("@/src/components/tools/ProteinIntakeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TdeeCalculator = dynamic(() => import("@/src/components/tools/TdeeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const OneRepMaxCalculator = dynamic(() => import("@/src/components/tools/OneRepMaxCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const OvulationCalculator = dynamic(() => import("@/src/components/tools/OvulationCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TargetHeartRateCalculator = dynamic(() => import("@/src/components/tools/TargetHeartRateCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const WaistHipRatioCalculator = dynamic(() => import("@/src/components/tools/WaistHipRatioCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SleepCycleCalculator = dynamic(() => import("@/src/components/tools/SleepCycleCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SmokingCostCalculator = dynamic(() => import("@/src/components/tools/SmokingCostCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const RunningPaceCalculator = dynamic(() => import("@/src/components/tools/RunningPaceCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const StepToCalorieCalculator = dynamic(() => import("@/src/components/tools/StepToCalorieCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import RoomSquareFootageCalculator from "@/src/components/tools/RoomSquareFootageCalculator";
-import FlooringCalculator from "@/src/components/tools/FlooringCalculator";
-import TileCountCalculator from "@/src/components/tools/TileCountCalculator";
-import PaintVolumeCalculator from "@/src/components/tools/PaintVolumeCalculator";
-import BrickCountCalculator from "@/src/components/tools/BrickCountCalculator";
-import ConcreteVolumeCalculator from "@/src/components/tools/ConcreteVolumeCalculator";
-import CementMortarCalculator from "@/src/components/tools/CementMortarCalculator";
-import AcBtuCalculator from "@/src/components/tools/AcBtuCalculator";
+const RoomSquareFootageCalculator = dynamic(() => import("@/src/components/tools/RoomSquareFootageCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FlooringCalculator = dynamic(() => import("@/src/components/tools/FlooringCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TileCountCalculator = dynamic(() => import("@/src/components/tools/TileCountCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PaintVolumeCalculator = dynamic(() => import("@/src/components/tools/PaintVolumeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const BrickCountCalculator = dynamic(() => import("@/src/components/tools/BrickCountCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ConcreteVolumeCalculator = dynamic(() => import("@/src/components/tools/ConcreteVolumeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CementMortarCalculator = dynamic(() => import("@/src/components/tools/CementMortarCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const AcBtuCalculator = dynamic(() => import("@/src/components/tools/AcBtuCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import TimeZoneConverter from "@/src/components/tools/TimeZoneConverter";
+const TimeZoneConverter = dynamic(() => import("@/src/components/tools/TimeZoneConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
-import CaseConverter from "@/src/components/tools/CaseConverter";
-import CharacterCounter from "@/src/components/tools/CharacterCounter";
-import DuplicateLineRemover from "@/src/components/tools/DuplicateLineRemover";
-import TextReverser from "@/src/components/tools/TextReverser";
-import TextRepeater from "@/src/components/tools/TextRepeater";
-import SlugGenerator from "@/src/components/tools/SlugGenerator";
-import TextToAsciiArt from "@/src/components/tools/TextToAsciiArt";
-import TextCleaner from "@/src/components/tools/TextCleaner";
-import CssMinifierBeautifier from "@/src/components/tools/CssMinifierBeautifier";
-import JsMinifierBeautifier from "@/src/components/tools/JsMinifierBeautifier";
-import HtmlFormatter from "@/src/components/tools/HtmlFormatter";
-import JsonToCsvConverter from "@/src/components/tools/JsonToCsvConverter";
-import ColorFormatConverter from "@/src/components/tools/ColorFormatConverter";
-import PomodoroTimer from "@/src/components/tools/PomodoroTimer";
-import CountdownTimer from "@/src/components/tools/CountdownTimer";
-import WorldClock from "@/src/components/tools/WorldClock";
-import NumberBaseConverter from "@/src/components/tools/NumberBaseConverter";
-import JwtDecoder from "@/src/components/tools/JwtDecoder";
-import MeetingCostCalculator from "@/src/components/tools/MeetingCostCalculator";
-import AgeInSecondsCalculator from "@/src/components/tools/AgeInSecondsCalculator";
-import ReadTimeEstimator from "@/src/components/tools/ReadTimeEstimator";
-import SipStepUpCalculator from "@/src/components/tools/SipStepUpCalculator";
-import SsyCalculator from "@/src/components/tools/SsyCalculator";
-import CryptoProfitCalculator from "@/src/components/tools/CryptoProfitCalculator";
-import CalorieDeficitCalculator from "@/src/components/tools/CalorieDeficitCalculator";
-import OhmsLawCalculator from "@/src/components/tools/OhmsLawCalculator";
-import PowerConsumptionCalculator from "@/src/components/tools/PowerConsumptionCalculator";
-import SpeedDistanceTimeCalculator from "@/src/components/tools/SpeedDistanceTimeCalculator";
-import ImageColorPicker from "@/src/components/tools/ImageColorPicker";
-import ImageFlipper from "@/src/components/tools/ImageFlipper";
-import SvgToPngConverter from "@/src/components/tools/SvgToPngConverter";
-import PasswordStrengthChecker from "@/src/components/tools/PasswordStrengthChecker";
-import TextEncryptor from "@/src/components/tools/TextEncryptor";
-import FileHashVerifier from "@/src/components/tools/FileHashVerifier";
-import ExifDataViewer from "@/src/components/tools/ExifDataViewer";
+const CaseConverter = dynamic(() => import("@/src/components/tools/CaseConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CharacterCounter = dynamic(() => import("@/src/components/tools/CharacterCounter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const DuplicateLineRemover = dynamic(() => import("@/src/components/tools/DuplicateLineRemover"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TextReverser = dynamic(() => import("@/src/components/tools/TextReverser"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TextRepeater = dynamic(() => import("@/src/components/tools/TextRepeater"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SlugGenerator = dynamic(() => import("@/src/components/tools/SlugGenerator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TextToAsciiArt = dynamic(() => import("@/src/components/tools/TextToAsciiArt"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TextCleaner = dynamic(() => import("@/src/components/tools/TextCleaner"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CssMinifierBeautifier = dynamic(() => import("@/src/components/tools/CssMinifierBeautifier"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const JsMinifierBeautifier = dynamic(() => import("@/src/components/tools/JsMinifierBeautifier"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const HtmlFormatter = dynamic(() => import("@/src/components/tools/HtmlFormatter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const JsonToCsvConverter = dynamic(() => import("@/src/components/tools/JsonToCsvConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ColorFormatConverter = dynamic(() => import("@/src/components/tools/ColorFormatConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PomodoroTimer = dynamic(() => import("@/src/components/tools/PomodoroTimer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CountdownTimer = dynamic(() => import("@/src/components/tools/CountdownTimer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const WorldClock = dynamic(() => import("@/src/components/tools/WorldClock"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const NumberBaseConverter = dynamic(() => import("@/src/components/tools/NumberBaseConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const JwtDecoder = dynamic(() => import("@/src/components/tools/JwtDecoder"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const MeetingCostCalculator = dynamic(() => import("@/src/components/tools/MeetingCostCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const AgeInSecondsCalculator = dynamic(() => import("@/src/components/tools/AgeInSecondsCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ReadTimeEstimator = dynamic(() => import("@/src/components/tools/ReadTimeEstimator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SipStepUpCalculator = dynamic(() => import("@/src/components/tools/SipStepUpCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SsyCalculator = dynamic(() => import("@/src/components/tools/SsyCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CryptoProfitCalculator = dynamic(() => import("@/src/components/tools/CryptoProfitCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const CalorieDeficitCalculator = dynamic(() => import("@/src/components/tools/CalorieDeficitCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const OhmsLawCalculator = dynamic(() => import("@/src/components/tools/OhmsLawCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PowerConsumptionCalculator = dynamic(() => import("@/src/components/tools/PowerConsumptionCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SpeedDistanceTimeCalculator = dynamic(() => import("@/src/components/tools/SpeedDistanceTimeCalculator"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ImageColorPicker = dynamic(() => import("@/src/components/tools/ImageColorPicker"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ImageFlipper = dynamic(() => import("@/src/components/tools/ImageFlipper"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const SvgToPngConverter = dynamic(() => import("@/src/components/tools/SvgToPngConverter"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const PasswordStrengthChecker = dynamic(() => import("@/src/components/tools/PasswordStrengthChecker"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const TextEncryptor = dynamic(() => import("@/src/components/tools/TextEncryptor"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const FileHashVerifier = dynamic(() => import("@/src/components/tools/FileHashVerifier"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
+const ExifDataViewer = dynamic(() => import("@/src/components/tools/ExifDataViewer"), { loading: () => <p role="status" className="p-6 text-sm">Loading tool…</p> });
 
 import ShareToast from "./ShareToast";
 
@@ -200,134 +202,11 @@ type ToolComponentProps = {
   onCopy: (value: string) => void;
   onShare: (title: string, path: string) => void;
   onTriggerShareToast?: () => void;
+  presetParams?: Record<string, any>;
 };
 
-function GenericInteractiveTool({ tool, onCopy, onShare }: { tool: Tool; onCopy: (v: string) => void; onShare: (t: string, p: string) => void }) {
-  const [val1, setVal1] = useState<number>(100);
-  const [val2, setVal2] = useState<number>(10);
-  const [inputText, setInputText] = useState<string>("Sample input data for " + tool.title);
-  const [copied, setCopied] = useState<boolean>(false);
-
-  const resultValue = useMemo(() => {
-    if (tool.id.includes("percentage") || tool.id.includes("discount")) {
-      return ((val1 * val2) / 100).toFixed(2);
-    }
-    if (tool.id.includes("converter") || tool.id.includes("base64") || tool.id.includes("url")) {
-      try {
-        if (tool.id.includes("base64")) return btoa(inputText);
-        if (tool.id.includes("url")) return encodeURIComponent(inputText);
-        return inputText.toUpperCase();
-      } catch {
-        return "Encoding Error";
-      }
-    }
-    return (val1 * val2).toLocaleString();
-  }, [val1, val2, inputText, tool.id]);
-
-  const handleCopyResult = () => {
-    onCopy(resultValue);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800 pb-4">
-        <div>
-          <h2 className="text-xl font-bold font-display text-zinc-950 dark:text-white">{tool.title}</h2>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{tool.description}</p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-4 bg-zinc-50 dark:bg-zinc-900/60 p-5 rounded-2xl border border-zinc-200/80 dark:border-zinc-800">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500">Input Parameters</h3>
-
-          {tool.id.includes("converter") || tool.id.includes("generator") || tool.id.includes("json") || tool.id.includes("encoder") || tool.id.includes("text") || tool.id.includes("lorem") ? (
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Target Text / Data</label>
-              <textarea
-                rows={4}
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                className="w-full p-3 text-xs font-mono rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 outline-none focus:border-blue-500 resize-none"
-              />
-            </div>
-          ) : (
-            <>
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs font-medium text-zinc-700 dark:text-zinc-300">
-                  <span>Primary Value (X)</span>
-                  <input
-                    type="number"
-                    value={val1}
-                    onChange={(e) => setVal1(parseFloat(e.target.value) || 0)}
-                    className="w-24 text-right px-2 py-0.5 text-xs rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 font-mono"
-                  />
-                </div>
-                <input
-                  type="range"
-                  min="1"
-                  max="10000"
-                  value={val1}
-                  onChange={(e) => setVal1(parseFloat(e.target.value) || 1)}
-                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs font-medium text-zinc-700 dark:text-zinc-300">
-                  <span>Secondary Parameter (Y)</span>
-                  <input
-                    type="number"
-                    value={val2}
-                    onChange={(e) => setVal2(parseFloat(e.target.value) || 0)}
-                    className="w-24 text-right px-2 py-0.5 text-xs rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 font-mono"
-                  />
-                </div>
-                <input
-                  type="range"
-                  min="1"
-                  max="100"
-                  value={val2}
-                  onChange={(e) => setVal2(parseFloat(e.target.value) || 1)}
-                  className="w-full h-1 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                />
-              </div>
-            </>
-          )}
-        </div>
-
-        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-zinc-900 dark:to-zinc-950 p-6 rounded-2xl border border-blue-100 dark:border-zinc-800 flex flex-col justify-between space-y-4">
-          <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Calculated Result</span>
-            <div className="mt-3 p-4 bg-white dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 font-mono text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400 break-all select-all shadow-inner">
-              {resultValue}
-            </div>
-          </div>
-
-          <div className="pt-4 border-t border-zinc-200/60 dark:border-zinc-800 flex items-center justify-between">
-            <button
-              onClick={handleCopyResult}
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1.5"
-            >
-              <Copy className="w-3.5 h-3.5" /> {copied ? "Copied!" : "Copy Result"}
-            </button>
-            <button
-              onClick={() => onShare(tool.title, tool.id)}
-              className="px-4 py-2 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 font-semibold text-xs rounded-xl border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-all"
-            >
-              Share Tool
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export function ToolRenderer({ tool, onCopy, onShare, onTriggerShareToast }: { tool: Tool } & ToolComponentProps) {
-  const props = { onCopy, onShare, onTriggerShareToast };
+export function ToolRenderer({ tool, onCopy, onShare, onTriggerShareToast, presetParams }: { tool: Tool } & ToolComponentProps) {
+  const props = { onCopy, onShare, onTriggerShareToast, ...presetParams };
 
   switch (tool.id) {
     case "standard-calculator": return <StandardCalculator {...props} />;
@@ -504,20 +383,13 @@ export function ToolRenderer({ tool, onCopy, onShare, onTriggerShareToast }: { t
     case "file-hash-verifier": return <FileHashVerifier {...props} />;
     case "exif-data-viewer": return <ExifDataViewer {...props} />;
 
-    default: return <GenericInteractiveTool tool={tool} onCopy={onCopy} onShare={onShare} />;
+    default: return <p role="status" className="p-6">This tool is not available yet. Please choose another tool from the directory.</p>;
   }
 }
 
 export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      return document.documentElement.classList.contains('dark');
-    }
-    return false;
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  useEffect(() => { setDarkMode(document.documentElement.classList.contains('dark')); }, []);
   const [message, setMessage] = useState("");
   const [showShareToast, setShowShareToast] = useState(false);
   const [showEmbedModal, setShowEmbedModal] = useState(false);
@@ -607,7 +479,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
               type="button"
               onClick={() => {
                 const url = `${window.location.origin}${toolPath(tool.id)}`;
-                const text = encodeURIComponent(`Try this free 100% private ${tool.title} on Yuitility: ${url}`);
+                const text = encodeURIComponent(`Try this free browser-based ${tool.title} on Yuitility: ${url}`);
                 window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
               }}
               className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-all active:scale-95"
@@ -646,7 +518,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
               Was this {tool.title.toLowerCase().includes("calculator") ? "calculator" : "tool"} helpful and accurate?
             </h3>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              Leave a quick 1-click rating to help us continuously refine and improve our client-side utilities.
+              Your rating stays in this browser and is not sent to us. Use Contact to report an issue.
             </p>
           </div>
           <div className="mt-3 sm:mt-0 flex items-center justify-center sm:justify-end gap-1.5">
@@ -687,15 +559,15 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
                 <div className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-blue-600 dark:text-cyan-400" />
                   <h2 className="text-lg font-display font-bold text-zinc-950 dark:text-white">
-                    Popular Presets &amp; Verified Formulas
+                    Presets &amp; Formula Scenarios
                   </h2>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1 max-w-2xl">
-                  Pre-configured parameters, institutional benchmarks, and official regulations for {tool.title.toLowerCase()}.
+                  Explore pre-filled assumptions and calculation scenarios for {tool.title.toLowerCase()}.
                 </p>
               </div>
               <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 dark:bg-zinc-800 dark:text-cyan-300">
-                {presets.length} Verified Presets
+                {presets.length} Presets
               </span>
             </div>
 
@@ -709,7 +581,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100/80 text-blue-800 dark:bg-zinc-800 dark:text-cyan-300">
-                        {preset.badge || "Verified Preset"}
+                        {preset.badge || "Preset"}
                       </span>
                     </div>
                     <h3 className="text-sm font-bold text-zinc-900 group-hover:text-blue-600 dark:text-zinc-100 dark:group-hover:text-cyan-300 transition-colors">
@@ -746,7 +618,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
                   </span>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5 max-w-2xl">
-                  Add this fast, responsive, 100% private calculator directly to your blog, university portal, or company site. No API keys required, zero server uploads, instant execution.
+                  Add this fast, responsive, browser-based calculator directly to your blog, university portal, or company site. No API key required. Check the tool’s assumptions and limitations before sharing results.
                 </p>
               </div>
             </div>
@@ -773,7 +645,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
           </div>
 
           <div className="relative">
-            <textarea
+            <textarea aria-label="Embed Snippet"
               readOnly
               rows={2}
               value={embedSnippet}
@@ -820,7 +692,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
               <ShieldCheck className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
               <h2 className="mt-4 font-display text-xl font-bold text-zinc-950 dark:text-white">{tool.title} Privacy &amp; Security</h2>
               <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
-                All calculation subroutines and file manipulation algorithms for this tool execute locally within your web browser&apos;s memory.
+                This tool processes its inputs in your browser. The optional AI assistant and contact form send their messages to a server; avoid copying private tool data into them.
               </p>
               <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">How to Verify in Browser DevTools</h3>
@@ -835,50 +707,18 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
                   </li>
                   <li className="flex gap-2">
                     <span className="font-bold text-emerald-600 dark:text-emerald-400">3.</span>
-                    <span>Run the tool &mdash; verify that 0 payload data or files are transmitted to external servers.</span>
+                    <span>Run the tool and inspect request payloads. Tool code or models may download; your input files should not be uploaded. AI chat and contact messages use separate server endpoints.</span>
                   </li>
                 </ol>
               </div>
             </div>
 
-            {/* DevTools Verification Guide */}
-            <div className="rounded-3xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
-              <div className="flex items-center gap-2.5 mb-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-zinc-100 text-xs font-mono font-bold text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">F12</span>
-                <h3 className="font-display text-base font-bold text-zinc-950 dark:text-white">Verify Zero Network Uploads</h3>
-              </div>
-              <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-3">
-                Verify our privacy claims directly in your browser:
-              </p>
-              <ol className="text-xs text-zinc-600 dark:text-zinc-400 space-y-1.5 list-decimal pl-4">
-                <li>Press <kbd className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 font-mono text-[10px]">F12</kbd> (or Cmd+Option+I) to open DevTools.</li>
-                <li>Switch to the <strong>Network</strong> tab.</li>
-                <li>Operate the {tool.title.toLowerCase()} above.</li>
-                <li>Observe: <strong>0 outgoing requests</strong> are sent to any remote server.</li>
-              </ol>
-            </div>
-
-            {linkedGuide && (
-              <div className="rounded-3xl border border-zinc-200 bg-gradient-to-br from-blue-50/20 to-cyan-50/20 dark:from-zinc-900 dark:to-cyan-950/20 p-6 dark:border-zinc-800 sm:p-8 flex flex-col justify-between">
-                <div>
-                  <BookOpen className="h-8 w-8 text-blue-600 dark:text-cyan-300" />
-                  <h2 className="mt-4 font-display text-xl font-bold text-zinc-950 dark:text-white">Tutorial Guide</h2>
-                  <p className="mt-3 text-xs leading-relaxed text-zinc-550 dark:text-zinc-400">{linkedGuide.description}</p>
-                </div>
-                <Link
-                  href={`/blog/${linkedGuide.slug}`}
-                  className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-blue-650 hover:text-blue-750 dark:text-cyan-300 dark:hover:text-cyan-200 transition-colors"
-                >
-                  Read Full Tutorial <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            )}
           </aside>
         </section>
 
         {deep && <ToolDeepDive tool={tool} deep={deep} />}
 
-        <section className="mt-12">
+        {faqs.length > 0 && <section className="mt-12">
           <div className="mb-6">
             <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">Frequently Asked Questions about the {tool.title}</h2>
             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Frequently asked questions about calculation formulas, privacy, and usage.</p>
@@ -891,7 +731,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
               </article>
             ))}
           </div>
-        </section>
+        </section>}
 
         {relatedTools.length > 0 && <section className="mt-12 border-t border-zinc-200 pt-10 dark:border-zinc-800">
           <h2 className="font-display text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">Tools Related to {tool.title}</h2>
@@ -906,12 +746,12 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
 
         {/* Embed Widget Modal */}
         {showEmbedModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <Modal label="Embed this tool" onClose={() => setShowEmbedModal(false)} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
             <div className="relative w-full max-w-xl rounded-3xl border border-zinc-200 bg-white p-6 shadow-2xl dark:border-zinc-800 dark:bg-zinc-900 sm:p-7">
               <button
                 type="button"
                 onClick={() => setShowEmbedModal(false)}
-                className="absolute top-5 right-5 rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transition"
+                className="absolute top-5 right-5 rounded-lg p-1.5 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transition"
                 aria-label="Close embed modal"
               >
                 <X className="w-5 h-5" />
@@ -926,15 +766,15 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
                 </h3>
               </div>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-4">
-                Add this 100% private, interactive calculator to your website, blog, or university portal. Zero server tracking, zero external scripts, instant in-browser execution.
+                Add this interactive tool to your website. Calculations run in the embedded browser frame. See the tool’s assumptions before sharing results.
               </p>
 
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">HTML Embed Snippet</label>
-                  <span className="text-[10px] text-zinc-400 font-mono">iframe responsive standard</span>
+                  <span className="text-[10px] text-zinc-600 font-mono">iframe responsive standard</span>
                 </div>
-                <textarea
+                <textarea aria-label="HTML Embed Snippet"
                   readOnly
                   rows={4}
                   value={embedSnippet}
@@ -964,7 +804,7 @@ export default function ToolPageClient({ tool, deep }: ToolPageClientProps) {
                 </a>
               </div>
             </div>
-          </div>
+          </Modal>
         )}
       </main>
 

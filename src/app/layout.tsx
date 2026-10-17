@@ -4,20 +4,20 @@ import "./globals.css";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/src/lib/site";
 import dynamic from "next/dynamic";
 import ServiceWorkerRegister from "@/src/components/ServiceWorkerRegister";
-import CookieBanner from "@/src/components/CookieBanner";
+import SiteOverlays from "@/src/components/SiteOverlays";
 
-const AiChatbot = dynamic(() => import("@/src/components/AiChatbot"));
+
 
 const inter = localFont({
   src: "../../public/fonts/Inter-Medium.woff",
-  variable: "--font-inter",
+  variable: "--font-inter-local",
   display: "swap",
   weight: "100 900",
 });
 
 const spaceGrotesk = localFont({
   src: "../../public/fonts/SpaceGrotesk-Bold.woff",
-  variable: "--font-display",
+  variable: "--font-display-local",
   display: "swap",
   weight: "300 800",
 });
@@ -25,7 +25,7 @@ const spaceGrotesk = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Free Browser Tools & Calculators (100% Private) | Yuitility",
+    default: "Free Browser Tools & Calculators (Local Processing) | Yuitility",
     template: "%s",
   },
   description: SITE_DESCRIPTION,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: SITE_NAME,
-    title: "Free Browser Tools & Calculators (100% Private) | Yuitility",
+    title: "Free Browser Tools & Calculators (Local Processing) | Yuitility",
     description: SITE_DESCRIPTION,
     locale: "en_US",
     images: [
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@yuitility",
     creator: "@yuitility",
-    title: "Free Browser Tools & Calculators (100% Private) | Yuitility",
+    title: "Free Browser Tools & Calculators (Local Processing) | Yuitility",
     description: SITE_DESCRIPTION,
     images: ["/brand/og-home.png"],
   },
@@ -131,7 +131,6 @@ const rootGraphSchema = {
         height: 630,
       },
       description: SITE_DESCRIPTION,
-      foundingDate: "2024",
       sameAs: [
         "https://x.com/yuitility",
         "https://github.com/anubhav-n-mishra/yuitility",
@@ -202,8 +201,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning>
         <ServiceWorkerRegister />
-        <CookieBanner />
-        <AiChatbot />
+        <SiteOverlays />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(rootGraphSchema) }}

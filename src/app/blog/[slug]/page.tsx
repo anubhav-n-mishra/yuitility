@@ -366,7 +366,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               },
             ],
             datePublished: post.date,
-            dateModified: post.date,
+            dateModified: post.updated ?? post.date,
             author: {
               "@type": "Organization",
               name: post.author,

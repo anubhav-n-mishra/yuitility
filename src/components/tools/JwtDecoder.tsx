@@ -16,8 +16,12 @@ export default function JwtDecoder({ onCopy }: JwtDecoderProps) {
         return { error: 'Invalid JWT format: A valid JWT must contain 3 parts separated by dots.' };
       }
 
-      const header = JSON.parse(atob(parts[0].replace(/-/g, '+').replace(/_/g, '/')));
-      const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
+      const decodePart = (part: string) => {
+        const binary=atob(part.replace(/-/g,'+').replace(/_/g,'/'));
+        return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(Uint8Array.from(binary,c=>c.charCodeAt(0))));
+      };
+      const header = decodePart(parts[0]);
+      const payload = decodePart(parts[1]);
 
       return { header, payload, signature: parts[2] };
     } catch {
@@ -47,12 +51,12 @@ export default function JwtDecoder({ onCopy }: JwtDecoderProps) {
             🔒 Decoded 100% locally in browser tab
           </span>
         </div>
-        <textarea
+        <textarea aria-label="JWT token"
           value={jwt}
           onChange={(e) => setJwt(e.target.value)}
           rows={4}
           placeholder="Paste JWT string here..."
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-xs focus:outline-none focus:border-indigo-500 resize-none break-all"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-xs focus:outline-none focus:border-indigo-500 resize-none break-all"
         />
       </div>
 

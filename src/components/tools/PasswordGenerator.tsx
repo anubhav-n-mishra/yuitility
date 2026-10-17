@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { secureIndex } from '@/src/lib/random';
 import { RefreshCw, Share2, Copy, Check, Shield, ShieldAlert, Eye, EyeOff } from 'lucide-react';
 
 interface PasswordGeneratorProps {
@@ -53,13 +54,13 @@ export default function PasswordGenerator({ onCopy, onShare }: PasswordGenerator
       
       // Ensure at least one char from each selected group is included to maximize strength
       const mandatory: string[] = [];
-      if (includeUppercase && upper) mandatory.push(upper[Math.floor(Math.random() * upper.length)]);
-      if (includeLowercase && lower) mandatory.push(lower[Math.floor(Math.random() * lower.length)]);
-      if (includeNumbers && numbers) mandatory.push(numbers[Math.floor(Math.random() * numbers.length)]);
-      if (includeSymbols && symbols) mandatory.push(symbols[Math.floor(Math.random() * symbols.length)]);
+      if (includeUppercase && upper) mandatory.push(upper[secureIndex(upper.length)]);
+      if (includeLowercase && lower) mandatory.push(lower[secureIndex(lower.length)]);
+      if (includeNumbers && numbers) mandatory.push(numbers[secureIndex(numbers.length)]);
+      if (includeSymbols && symbols) mandatory.push(symbols[secureIndex(symbols.length)]);
 
       for (let i = 0; i < length; i++) {
-        pwd += allowedChars[Math.floor(Math.random() * allowedChars.length)];
+        pwd += allowedChars[secureIndex(allowedChars.length)];
       }
 
       // Mix in mandatory characters to guarantee strict inclusion rules
@@ -71,7 +72,8 @@ export default function PasswordGenerator({ onCopy, onShare }: PasswordGenerator
       });
 
       // Shuffle array
-      const shuffled = pwdArray.sort(() => Math.random() - 0.5).join('');
+      for(let i=pwdArray.length-1;i>0;i--){const j=secureIndex(i+1);[pwdArray[i],pwdArray[j]]=[pwdArray[j],pwdArray[i]];}
+      const shuffled = pwdArray.join('');
       newPasswords.push(shuffled);
     }
     setPasswords(newPasswords);
@@ -117,12 +119,12 @@ export default function PasswordGenerator({ onCopy, onShare }: PasswordGenerator
       text = 'text-amber-500';
     } else if (bits < 80) {
       score = 75;
-      label = 'Strong (Secure)';
+      label = 'Longer random password';
       color = 'bg-emerald-500';
       text = 'text-emerald-500';
     } else {
       score = 100;
-      label = 'Military Grade (Unbreakable)';
+      label = 'Long random password';
       color = 'bg-blue-600';
       text = 'text-blue-600';
     }
@@ -182,7 +184,7 @@ export default function PasswordGenerator({ onCopy, onShare }: PasswordGenerator
               <div className="flex justify-between items-center">
                 <label className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Character Length</label>
                 <div className="flex items-center gap-2">
-                  <input
+                  <input aria-label="Character Length"
                     type="number"
                     min="6"
                     max="128"
@@ -192,7 +194,7 @@ export default function PasswordGenerator({ onCopy, onShare }: PasswordGenerator
                   />
                 </div>
               </div>
-              <input
+              <input aria-label="Character Length (slider)"
                 type="range"
                 min="6"
                 max="64"
@@ -347,7 +349,7 @@ export default function PasswordGenerator({ onCopy, onShare }: PasswordGenerator
             {/* Strength Meter details (Only for the first password in batch) */}
             <div className="space-y-4 pt-4 border-t border-zinc-100 dark:border-zinc-900">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-semibold text-zinc-600 dark:text-zinc-400">Calculated Entropy:</span>
+                <span className="font-semibold text-zinc-600 dark:text-zinc-400">Calculated Pool-size upper bound:</span>
                 <span className="font-mono font-bold text-zinc-800 dark:text-zinc-200">{metrics.bits} Bits</span>
               </div>
 

@@ -168,7 +168,7 @@ export default function ZipExtractor({ onCopy, onShare }: ZipExtractorProps) {
             <p className="text-xs font-bold text-amber-600 dark:text-amber-500 mt-3 bg-amber-50 dark:bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-200 dark:border-amber-500/20">
               Warning: Max file size: 300MB. Very large ZIPs may crash the browser.
             </p>
-            <input
+            <input aria-label="Choose files"
               type="file"
               ref={fileInputRef}
               onChange={handleFileChange}
@@ -199,7 +199,7 @@ export default function ZipExtractor({ onCopy, onShare }: ZipExtractorProps) {
                 >
                   Download Info
                 </button>
-                <button
+                <button aria-label="Remove selected file"
                   onClick={handleReset}
                   className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-colors"
                 >

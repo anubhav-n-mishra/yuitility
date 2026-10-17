@@ -1,3 +1,4 @@
+import { payment } from '@/src/lib/calculations';
 import React, { useState, useMemo } from 'react';
 import { User, Percent, DollarSign, ShieldAlert } from 'lucide-react';
 import CurrencySelector from '@/src/components/CurrencySelector';
@@ -22,9 +23,9 @@ export default function PersonalLoanEmiCalculator({ onCopy }: PersonalLoanEmiCal
     const r = interestRate / 12 / 100;
     const n = tenureYears * 12;
 
-    if (P <= 0 || interestRate <= 0 || tenureYears <= 0) return null;
+    if (P <= 0 || interestRate < 0 || tenureYears <= 0) return null;
 
-    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const emi = payment(P, r, n);
     const totalInterest = emi * n - P;
     const processingFee = (P * processingFeePercent) / 100;
     const totalCost = P + totalInterest + processingFee;
@@ -52,7 +53,7 @@ export default function PersonalLoanEmiCalculator({ onCopy }: PersonalLoanEmiCal
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Loan Amount ({currObj.symbol})</label>
-            <input
+            <input aria-label="Loan Amount ( )"
               type="number"
               value={loanAmount}
               step="25000"
@@ -64,7 +65,7 @@ export default function PersonalLoanEmiCalculator({ onCopy }: PersonalLoanEmiCal
           <div className="grid grid-cols-3 gap-2">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (%)</label>
-              <input
+              <input aria-label="Interest Rate (%)"
                 type="number"
                 value={interestRate}
                 step="0.5"
@@ -74,7 +75,7 @@ export default function PersonalLoanEmiCalculator({ onCopy }: PersonalLoanEmiCal
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure (Years)</label>
-              <input
+              <input aria-label="Tenure (Years)"
                 type="number"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}
@@ -83,7 +84,7 @@ export default function PersonalLoanEmiCalculator({ onCopy }: PersonalLoanEmiCal
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Fee (% Loan)</label>
-              <input
+              <input aria-label="Fee (% Loan)"
                 type="number"
                 value={processingFeePercent}
                 step="0.5"

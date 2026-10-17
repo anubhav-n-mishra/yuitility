@@ -39,7 +39,7 @@ export default function CommissionCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Total Sales Revenue</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(salesAmount, currency)}</span>
             </div>
-            <input
+            <input aria-label="Total Sales Revenue (slider)"
               type="range"
               min="500"
               max="500000"
@@ -55,7 +55,7 @@ export default function CommissionCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Commission Rate (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{commissionRate}%</span>
             </div>
-            <input
+            <input aria-label="Commission Rate (%) (slider)"
               type="range"
               min="0.5"
               max="30"

@@ -1,3 +1,4 @@
+import {jsonToCsv} from '@/src/lib/csv';
 import React, { useState, useMemo } from 'react';
 import { ArrowRightLeft, Copy, Check, Download } from 'lucide-react';
 
@@ -16,26 +17,7 @@ export default function JsonToCsvConverter({ onCopy }: JsonToCsvConverterProps) 
 
   const { csvResult, error } = useMemo(() => {
     try {
-      const parsed = JSON.parse(jsonInput);
-      if (!Array.isArray(parsed) || parsed.length === 0) {
-        return { csvResult: '', error: 'Input must be a non-empty JSON array of objects' };
-      }
-
-      const headers = Array.from(new Set(parsed.flatMap((obj) => Object.keys(obj))));
-      const csvRows = [headers.join(delimiter)];
-
-      for (const row of parsed) {
-        const values = headers.map((header) => {
-          const val = row[header] !== undefined ? String(row[header]) : '';
-          const escaped = val.replace(/"/g, '""');
-          return escaped.includes(delimiter) || escaped.includes('\n') || escaped.includes('"')
-            ? `"${escaped}"`
-            : escaped;
-        });
-        csvRows.push(values.join(delimiter));
-      }
-
-      return { csvResult: csvRows.join('\n'), error: null };
+      return {csvResult: jsonToCsv(jsonInput, delimiter), error: null};
     } catch (err: any) {
       return { csvResult: '', error: err.message || 'Invalid JSON format' };
     }
@@ -59,10 +41,12 @@ export default function JsonToCsvConverter({ onCopy }: JsonToCsvConverterProps) 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
   return (
     <div className="space-y-6">
+      <p className="text-sm text-zinc-600 dark:text-zinc-400">Nested values are kept as JSON inside cells. Formula-like strings are prefixed with an apostrophe for spreadsheet safety. Import identifier columns as text to preserve leading zeroes.</p>
       <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <ArrowRightLeft className="w-5 h-5" />
@@ -71,10 +55,10 @@ export default function JsonToCsvConverter({ onCopy }: JsonToCsvConverterProps) 
 
         <div className="flex items-center gap-3 text-xs">
           <label className="text-zinc-500 dark:text-zinc-400">Delimiter:</label>
-          <select
+          <select aria-label="Delimiter:"
             value={delimiter}
             onChange={(e) => setDelimiter(e.target.value as any)}
-            className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-1.5 text-white text-xs font-mono focus:outline-none"
+            className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-1.5 text-zinc-900 dark:text-white text-xs font-mono focus:outline-none"
           >
             <option value=",">Comma (,)</option>
             <option value=";">Semicolon (;)</option>
@@ -87,11 +71,11 @@ export default function JsonToCsvConverter({ onCopy }: JsonToCsvConverterProps) 
         <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Input JSON Array</h4>
-            <textarea
+            <textarea aria-label="JSON input"
               value={jsonInput}
               onChange={(e) => setJsonInput(e.target.value)}
               rows={12}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-xs focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-xs focus:outline-none focus:border-indigo-500 resize-none"
             />
             {error && <p className="text-xs text-rose-600 dark:text-rose-400 mt-2 font-mono">{error}</p>}
           </div>
@@ -118,7 +102,7 @@ export default function JsonToCsvConverter({ onCopy }: JsonToCsvConverterProps) 
                 </button>
               </div>
             </div>
-            <textarea
+            <textarea aria-label="CSV output"
               readOnly
               value={csvResult}
               rows={12}

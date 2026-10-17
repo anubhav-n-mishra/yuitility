@@ -38,35 +38,35 @@ export default function PowerConsumptionCalculator({ onCopy }: PowerConsumptionC
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Appliance Power (Watts)</label>
-            <input
+            <input aria-label="Appliance Power (Watts)"
               type="number"
               value={wattage}
               onChange={(e) => setWattage(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Daily Usage (Hours/Day)</label>
-            <input
+            <input aria-label="Daily Usage (Hours/Day)"
               type="number"
               min={0.5}
               max={24}
               step={0.5}
               value={hoursPerDay}
               onChange={(e) => setHoursPerDay(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Electricity Rate (per kWh / Unit)</label>
-            <input
+            <input aria-label="Electricity Rate (per kWh / Unit)"
               type="number"
               step="0.5"
               value={costPerKwh}
               onChange={(e) => setCostPerKwh(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

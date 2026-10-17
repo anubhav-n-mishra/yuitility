@@ -140,7 +140,7 @@ export default function UrlEncoderDecoder({ onCopy, onShare }: UrlEncoderProps) 
             <span className="font-semibold uppercase tracking-wider">{mode === 'encode' ? 'Raw URL / String Input' : 'Encoded URL Input'}</span>
             <span>{input.length} characters</span>
           </div>
-          <textarea
+          <textarea aria-label="URL conversion input"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === 'encode' ? 'Type or paste raw URL/text...' : 'Paste percent-encoded URL (e.g. %20, %2F)...'}
@@ -165,7 +165,7 @@ export default function UrlEncoderDecoder({ onCopy, onShare }: UrlEncoderProps) 
           </div>
 
           <div className="relative h-72">
-            <textarea
+            <textarea aria-label="URL conversion output"
               readOnly
               value={error || output}
               placeholder="Output will appear here instantly..."

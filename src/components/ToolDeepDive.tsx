@@ -117,11 +117,11 @@ export default function ToolDeepDive({ tool, deep }: { tool: Tool; deep: DeepCon
                 </svg>
               </span>
               <h3 className="font-display text-lg font-bold text-zinc-950 dark:text-white">
-                Statutory Authorities &amp; Official References
+                Sources &amp; Further Reading
               </h3>
             </div>
             <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
-              Regulatory standards, published statutory gazettes, and official research governing this computation.
+              References for the rules or methods discussed here. Check applicability to your situation.
             </p>
 
             <div className="mt-5 grid gap-4 sm:grid-cols-2">

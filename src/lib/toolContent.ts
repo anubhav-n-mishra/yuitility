@@ -6,14 +6,11 @@ import { FAQItem, Tool } from "@/src/types";
 const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "dog-age-calculator":
     "Enter your dog's age and size/breed group. Our calculator converts it to human years using updated veterinary formulas — not the old \"multiply by 7\" myth. Small breeds age slower after year two; large breeds age faster. Results are instant and run entirely in your browser.",
-  "death-calculator":
-    "Enter your age, sex, and basic lifestyle factors (smoking, exercise, etc.). Our calculator estimates statistical life expectancy based on actuarial and public health data. This is a statistical estimate for informational and planning purposes only — not a medical prediction.",
+  "death-calculator": "Enter your current age and a later hypothetical planning age. The tool subtracts the two and converts the time span into approximate days using a 365.2425-day average year. It uses no medical data and predicts no health outcome.",
   "education-loan-emi-calculator":
     "Enter your loan amount, interest rate, tenure, and moratorium period (the time during your course when repayment is paused). The calculator computes your EMI, total interest, and shows how moratorium interest gets added to your principal before repayment begins.",
-  "salary-calculator":
-    "Enter your annual CTC (Cost to Company). The calculator breaks it down into basic pay, HRA, allowances, EPF contribution, professional tax, and income tax deductions to show your actual monthly in-hand salary.",
-  "mortgage-calculator":
-    "Enter loan amount, interest rate, and tenure. The calculator computes your monthly EMI using the standard reducing-balance formula, and (for the PITI version) adds property tax, insurance, and HOA fees for a full monthly payment picture.",
+  "salary-calculator": "Enter CTC, included bonus, basic-pay share and payroll deductions. Employer EPF is removed from CTC; the gross salary including bonus is taxed after the standard deduction. Regular monthly pay excludes the separately paid bonus.",
+  "mortgage-calculator": "Select a loan model and enter a lender rate, down payment and repayment period. VA purchase loans use the stated funding-fee options and no PMI. For other models, enter quoted insurance or fees. The schedule shows principal and interest, not an eligibility decision.",
   "home-loan-emi-calculator":
     "Enter loan amount, interest rate, and tenure. The calculator computes your monthly EMI using the standard reducing-balance formula, and adds property tax, insurance, and HOA fees for a full monthly payment picture.",
   "emi-calculator":
@@ -26,8 +23,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
     "Enter the two-wheeler's on-road price, down payment amount, interest rate, and tenure to calculate your monthly EMI and total repayment.",
   "personal-loan-emi-calculator":
     "Enter your loan amount, interest rate, and tenure. The calculator shows your EMI, total interest, and total repayment, and can factor in processing fees for a true cost comparison.",
-  "retirement-calculator":
-    "Enter your current age, target retirement age, expected monthly expenses, and expected returns. The calculator projects your required retirement corpus, adjusted for inflation, and the monthly savings needed to reach it.",
+  "retirement-calculator": "Choose an inflation-adjusted target, FIRE target or contribution-growth scenario. Enter the assumptions shown in that mode. Projections assume constant returns; 2026 account contribution limits are held flat and do not determine eligibility.",
   "fd-calculator":
     "Enter your deposit amount, interest rate, and tenure. The calculator computes your maturity value based on the compounding frequency (typically quarterly for Indian bank FDs).",
   "rd-calculator":
@@ -74,8 +70,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
     "Enter your last drawn basic salary and completed years of service (minimum 5 years). The calculator computes your lump sum gratuity benefit under the Payment of Gratuity Act 1972.",
   "hra-calculator":
     "Enter your basic salary, HRA received, annual rent paid, and city type (metro vs non-metro). The calculator applies Section 10(13A) rules to find your exact tax-exempt HRA and taxable portion.",
-  "income-tax-calculator":
-    "Enter your gross annual income and total tax deductions. The calculator estimates your progressive tax liability, effective tax rate, and net annual take-home pay instantly in your browser.",
+  "income-tax-calculator": "Enter annual gross salary, including bonus, and resident rebate eligibility. The tool applies the ₹75,000 standard deduction and shows each new-regime slab, rebate, marginal relief and cess. Salary-only cases up to ₹50 lakh are supported.",
   "gst-calculator":
     "Enter your transaction amount, GST rate (5%, 12%, 18%, 28%), and toggle inclusive vs exclusive tax calculation. The tool computes net price, total GST, CGST, and SGST breakdowns.",
   "credit-card-emi-calculator":
@@ -99,7 +94,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "commission-calculator":
     "Enter your total sales revenue and commission percentage rate. The calculator computes total commission earnings payout and net proceeds for the seller.",
   "currency-converter":
-    "Enter the amount and select source and target currencies (USD, EUR, GBP, INR, AUD, CAD, JPY, AED, SGD). The converter calculates live foreign exchange values locally.",
+    "Enter the amount and select source and target currencies (USD, EUR, GBP, INR, AUD, CAD, JPY, AED, SGD). The converter uses fixed illustrative exchange assumptions, not live market quotes.",
   "mutual-fund-return-calculator":
     "Choose lump sum or monthly SIP mode, enter your investment amount, return rate, and tenure. The calculator projects total invested principal, wealth gain, and final maturity corpus.",
   "dividend-calculator":
@@ -121,10 +116,8 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
     "Upload a PDF document, select your preferred numbering format (e.g. 'Page 1 of N' or '1, 2, 3...'), choose placement (header or footer), font size, and color. The tool stamps page numbers client-side with zero data uploads.",
   "pdf-page-remover":
     "Upload any PDF document, select the specific pages you want to delete by clicking the interactive page badges or entering page ranges (e.g. 2, 4-6). The tool strips the unwanted pages and downloads your cleaned document instantly.",
-  "format-converter":
-    "Select image files and pick target output formats (WebP, PNG, JPEG, GIF). Client-side canvas encoding converts format types without external server processing.",
-  "pdf-compressor":
-    "Upload PDF files and choose compression preset levels. Client-side stream optimization reduces file megabytes while preserving document legibility.",
+  "format-converter": "Choose an image, select WebP, PNG or JPEG output and run the conversion. The canvas export creates a still image; it does not preserve animation or provide GIF/AVIF output.",
+  "pdf-compressor": "Choose a PDF and run the single optimization action. It removes metadata and rewrites PDF object streams; it does not recompress embedded images or offer quality presets. Compare the result size and inspect the downloaded document.",
   "zip-extractor":
     "Select ZIP archives from your file system. The browser unpacks compressed files into accessible folders, letting you view and download files offline.",
   "unit-converter":
@@ -156,7 +149,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "mod-calculator":
     "Enter dividend integer A and divisor integer B. The calculator computes the modulo remainder ($A \\\\bmod B$) and quotient for programming and math.",
   "zodiac-sun-moon-calculator":
-    "Enter your birth date, birth time, and location. Astronomical algorithms compute your Sun sign, Moon sign, and Rising sign (Ascendant) positions.",
+    "Enter a birth date to explore traditional calendar Sun signs. Moon and rising signs require astronomical data and are not calculated here.",
   "loan-calculator":
     "Enter loan amount, interest rate, and repayment tenure. The calculator computes monthly payments, total interest payable, and total loan cost.",
   "interest-calculator":
@@ -184,9 +177,9 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "css-minifier-beautifier":
     "Paste CSS code into the editor. Select Minify to remove comments and whitespace for production or Beautify to format selectors and properties with clean indentation.",
   "js-minifier-beautifier":
-    "Paste JavaScript or TypeScript snippet. Minify strips comments and white space safely; Beautify aligns brace structures and formats line indents locally in your tab.",
+    "Paste a JavaScript snippet. Minify strips comments and white space safely; Beautify aligns brace structures and formats line indents locally in your tab.",
   "html-formatter":
-    "Paste HTML markup. Beautify aligns nested DOM elements with consistent indentation; Minify collapses extra spacing for optimized web page delivery.",
+    "Paste HTML markup. Beautify aligns nested DOM elements with consistent indentation; Preserve mode keeps significant whitespace intact; it does not claim compression.",
   "json-to-csv-converter":
     "Paste a JSON array of objects. The parser extracts object keys as CSV header columns and formats values into downloadable CSV spreadsheet rows.",
   "color-format-converter":
@@ -210,7 +203,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "sip-step-up-calculator":
     "Enter initial monthly SIP, annual percentage or fixed step-up amount, expected returns, and tenure. Compares standard SIP vs step-up SIP wealth accumulation.",
   "ssy-calculator":
-    "Enter annual contribution amount and girl child age. The calculator models 15 years of deposits and 21 years of compounded growth under government SSY rules.",
+    "Enter annual contribution amount and girl child age. Choose an assumed annual rate. The illustration deposits at the start of each of 15 years and compounds through year 21; actual rates and deposit timing can differ.",
   "crypto-profit-calculator":
     "Enter buy price, sell price, coin quantity, and trading fees. The calculator computes gross profit, fee deductions, net ROI, and break-even price targets.",
   "calorie-deficit-calculator":
@@ -227,14 +220,10 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
     "Upload an image and click Horizontal or Vertical flip. HTML5 Canvas flips pixel coordinates instantly and exports high-quality PNG or JPEG images.",
   "svg-to-png-converter":
     "Upload SVG file or paste vector markup. Render vector curves onto HTML5 Canvas at custom scale factors (1x-4x) and export crisp PNG raster images.",
-  "password-strength-checker":
-    "Type a password to evaluate character set entropy (bits) and estimate brute-force cracking duration based on offline mathematical analysis.",
-  "text-encryptor":
-    "Enter text and passphrase. Web Crypto API uses PBKDF2 key derivation and AES-256-GCM encryption to encode messages into secure Base64 ciphertext.",
-  "file-hash-verifier":
-    "Select a local file. Web Crypto API streams binary file data into cryptographic hashing functions to calculate MD5, SHA-256, and SHA-512 checksums.",
-  "exif-data-viewer":
-    "Upload a JPEG image. The viewer parses binary EXIF metadata headers to display camera model, shutter speed, ISO, GPS coordinates, and creation date.",
+  "password-strength-checker": "Scores length and character classes locally. The heuristic does not measure true entropy, check leaked-password databases or estimate an attacker’s actual cracking time.",
+  "text-encryptor": "Uses Web Crypto AES-256-GCM with PBKDF2-SHA256, 600,000 iterations, a random 16-byte salt and 12-byte nonce. Save the complete envelope and protect the passphrase separately.",
+  "file-hash-verifier": "Reads the selected file into memory and calculates SHA-256 with Web Crypto. Compare the digest with a checksum obtained independently from a trusted source. Device memory limits apply.",
+  "exif-data-viewer": "Reads supported JPEG APP1 EXIF tags from the selected file. PNG, HEIC, WebP and maker-note metadata are not parsed. Missing fields remain absent; inspection does not change the file.",
 };
 
 /**
@@ -244,7 +233,7 @@ export function getToolHowItWorks(tool: Tool): string {
   if (CUSTOM_HOW_IT_WORKS[tool.id]) {
     return CUSTOM_HOW_IT_WORKS[tool.id];
   }
-  return `Enter your input parameters or select your files. Our ${tool.title.toLowerCase()} processes your data instantly using standard browser algorithms. All operations run 100% locally on your device with no server uploads, no data storage, and no account registration required.`;
+  return `Use the controls in ${tool.title} to enter your data, then review the result and any limitations shown in the workspace. File and calculator processing happens in this browser; the optional AI chat is a separate server-backed service.`;
 }
 
 /**
@@ -394,7 +383,7 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
   "html-formatter": [
     {
       question: "What is the difference between formatting and minifying HTML?",
-      answer: "Formatting adds clean indentation and line breaks for human readability. Minifying strips unnecessary whitespace to optimize network download speeds."
+      answer: "Beautify formats HTML for readability. Preserve mode leaves significant whitespace unchanged; it does not claim compression."
     },
     {
       question: "Does it alter text inside `<pre>` or `<script>` tags?",
@@ -402,7 +391,7 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
     },
     {
       question: "Is HTML parsing client-side?",
-      answer: "Yes, 100% browser-based DOM parser execution."
+      answer: "Formatting uses a parser in your browser. Source markup is not uploaded."
     }
   ],
   "json-to-csv-converter": [
@@ -510,7 +499,7 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
     },
     {
       question: "Can I run the calculator live during a video call?",
-      answer: "Yes, start the live ticker to watch cumulative meeting cost accrue second-by-second on screen."
+      answer: "Edit the duration to recalculate the cost during a meeting. This tool does not include a live timer."
     },
     {
       question: "Why should teams track meeting costs?",
@@ -528,7 +517,7 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
     },
     {
       question: "Does the second counter update live?",
-      answer: "Yes, a real-time live ticker updates your age in seconds every second."
+      answer: "The breakdown recalculates when the date input changes; it is not a continuously ticking clock."
     }
   ],
   "read-time-estimator": [
@@ -687,58 +676,42 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
   ],
   "password-strength-checker": [
     {
-      question: "Is it safe to test passwords online here?",
-      answer: "100% safe! Checking runs entirely inside your local browser tab memory using offline entropy formulas. Passwords are never sent over the network."
+      "question": "Does a high score guarantee a secure password?",
+      "answer": "No. Predictable strings can satisfy length and character-class checks. Use unique randomly generated credentials; do not treat the score as a security certification."
     },
     {
-      question: "What is password entropy in bits?",
-      answer: "Entropy measures mathematical unpredictability. Passwords above 60 bits are strong; above 80 bits are extremely secure."
-    },
-    {
-      question: "How is crack time estimated?",
-      answer: "Estimates time required for a high-speed GPU cluster performing billions of guesses per second to brute-force the password."
+      "question": "Does this check breach databases?",
+      "answer": "No. It evaluates local character-pattern heuristics only. Test invented examples rather than a password you currently depend on."
     }
   ],
   "text-encryptor": [
     {
-      question: "What algorithm is used for encryption?",
-      answer: "AES-256-GCM encryption with keys derived via PBKDF2 (100,000 iterations) using Web Crypto API."
+      "question": "How is the key derived?",
+      "answer": "PBKDF2-SHA256 with 600,000 iterations derives a 256-bit AES key from the passphrase and a fresh random salt. Each encryption also uses a fresh 12-byte nonce."
     },
     {
-      question: "Can anyone decrypt my text without the secret key?",
-      answer: "No. Without your secret passphrase, AES-256-GCM ciphertext is mathematically unbreakable."
-    },
-    {
-      question: "Where are keys stored?",
-      answer: "Keys are generated ephemerally in browser RAM and are never saved or sent anywhere."
+      "question": "Can a weak passphrase still be guessed?",
+      "answer": "Yes. A minimum length check is not proof of strength. Use a unique, hard-to-guess passphrase. There is no recovery service; legacy XOR output is not compatible with this authenticated envelope."
     }
   ],
   "file-hash-verifier": [
     {
-      question: "Are large files uploaded to calculate hashes?",
-      answer: "No! Files are read in local binary chunks using HTML5 FileReader API. ISOs or installers of any size are hashed locally."
+      "question": "Which hash is computed?",
+      "answer": "This file checker computes SHA-256. It does not stream arbitrarily large files or calculate MD5, SHA-1 or SHA-512."
     },
     {
-      question: "Which hash functions are calculated?",
-      answer: "Computes SHA-256, SHA-512, SHA-1, and MD5 checksums."
-    },
-    {
-      question: "Why check file hash checksums?",
-      answer: "Verifying checksums confirms that downloaded software has not been corrupted or altered."
+      "question": "Does a matching checksum prove the file is safe?",
+      "answer": "No. A match establishes consistency with the checksum you supplied. Authenticate the checksum source separately; a malicious file can have a matching checksum published by its distributor."
     }
   ],
   "exif-data-viewer": [
     {
-      question: "What EXIF tags are extracted from photos?",
-      answer: "Camera make/model, shutter speed, aperture, ISO, focal length, creation timestamp, and GPS coordinates."
+      "question": "Does this remove EXIF data?",
+      "answer": "No. This is an inspector. It does not modify your file, remove metadata or guarantee anonymity. Inspect any separately cleaned export again before sharing."
     },
     {
-      question: "Can I strip EXIF metadata for privacy before sharing photos online?",
-      answer: "Yes, click 'Strip EXIF Data' to export a clean copy of your photo with all location and camera metadata removed."
-    },
-    {
-      question: "Are photos uploaded to view EXIF data?",
-      answer: "No, EXIF headers are parsed locally in browser memory."
+      "question": "Which files and tags are supported?",
+      "answer": "JPEG files up to 30 MB, with selected camera, date, exposure, orientation, dimension and GPS tags. No supported tags found does not mean the file has no other metadata."
     }
   ],
   "markdown-viewer": [
@@ -784,23 +757,14 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
 
   "death-calculator": [
     {
-      question: "Is this a real prediction of when I will die?",
-      answer: "No. This tool provides a statistical life expectancy estimate based on population-level data (age, sex, lifestyle factors). It cannot predict individual outcomes and should not be used for medical or financial decisions without professional advice.",
+      "question": "What does the life horizon illustration actually calculate?",
+      "answer": "Enter your current age and a later hypothetical planning age. The tool subtracts the two and converts the time span into approximate days using a 365.2425-day average year. It uses no medical data and predicts no health outcome."
     },
     {
-      question: "What factors affect the estimate?",
-      answer: "Common inputs include current age, biological sex, smoking status, exercise frequency, and sometimes BMI or family history — all of which are statistically linked to life expectancy trends.",
-    },
-    {
-      question: "Why do calculators like this exist?",
-      answer: "They're commonly used for insurance planning, retirement savings estimates, and general health awareness — helping people think about long-term financial and wellness planning.",
-    },
-    {
-      question: "Can lifestyle changes improve my estimate?",
-      answer: "Statistically, yes — quitting smoking, regular exercise, and maintaining a healthy weight are all associated with increased life expectancy in population studies.",
-    },
+      "question": "What should I check before relying on this result?",
+      "answer": "Check the displayed inputs, assumptions and limitations. Defaults are examples. For financial, academic or health decisions, verify the applicable rules with the relevant professional or institution."
+    }
   ],
-
   "education-loan-emi-calculator": [
     {
       question: "What is a moratorium period in an education loan?",
@@ -822,42 +786,24 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
 
   "salary-calculator": [
     {
-      question: "Why is my in-hand salary lower than my CTC divided by 12?",
-      answer: "CTC includes components that don't reach your bank account directly — employer's EPF contribution, gratuity, insurance premiums — plus deductions like employee PF, professional tax, and TDS.",
+      "question": "What does the india salary calculator actually calculate?",
+      "answer": "Enter CTC, included bonus, basic-pay share and payroll deductions. Employer EPF is removed from CTC; the gross salary including bonus is taxed after the standard deduction. Regular monthly pay excludes the separately paid bonus."
     },
     {
-      question: "Does this calculator account for the new vs old tax regime?",
-      answer: "Yes, the calculation can be adjusted based on which tax regime you're under, since deductions and slab rates differ significantly between the two.",
-    },
-    {
-      question: "What is EPF and why is it deducted?",
-      answer: "Employee Provident Fund is a mandatory retirement savings deduction (typically 12% of basic pay), matched by an equal employer contribution, that builds a retirement corpus.",
-    },
-    {
-      question: "Is my salary information private when using this tool?",
-      answer: "Yes. All salary calculations execute 100% locally in your browser memory. Your CTC and tax figures are never transmitted to any external server or saved anywhere.",
-    },
+      "question": "What should I check before relying on this result?",
+      "answer": "Check the displayed inputs, assumptions and limitations. Defaults are examples. For financial, academic or health decisions, verify the applicable rules with the relevant professional or institution."
+    }
   ],
-
   "mortgage-calculator": [
     {
-      question: "What does PITI stand for?",
-      answer: "Principal, Interest, Taxes, and Insurance — the four components that typically make up a full monthly mortgage payment in the US.",
+      "question": "What does the mortgage payment calculator actually calculate?",
+      "answer": "Select a loan model and enter a lender rate, down payment and repayment period. VA purchase loans use the stated funding-fee options and no PMI. For other models, enter quoted insurance or fees. The schedule shows principal and interest, not an eligibility decision."
     },
     {
-      question: "How does loan tenure affect total interest paid?",
-      answer: "Longer tenures lower your monthly EMI but significantly increase total interest paid over the loan's life. Shorter tenures cost more per month but save substantially on total interest.",
-    },
-    {
-      question: "Are there tax benefits on home loan interest?",
-      answer: "In India, home loan interest is deductible under Section 24(b) (up to ₹2 lakh/year for self-occupied property) and principal repayment under Section 80C.",
-    },
-    {
-      question: "Are my loan calculations saved on Yuitility?",
-      answer: "No. All calculations run strictly in your browser memory. Your loan amount, interest rate, and property figures are 100% private and never uploaded to any server.",
-    },
+      "question": "What should I check before relying on this result?",
+      "answer": "Check the displayed inputs, assumptions and limitations. Defaults are examples. For financial, academic or health decisions, verify the applicable rules with the relevant professional or institution."
+    }
   ],
-
   "home-loan-emi-calculator": [
     {
       question: "What does PITI stand for?",
@@ -974,23 +920,14 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
 
   "retirement-calculator": [
     {
-      question: "Why does inflation matter so much in retirement planning?",
-      answer: "Over 20-30 years, even moderate inflation significantly erodes purchasing power — expenses that feel comfortable today will cost substantially more by the time you retire, so plans need to account for this.",
+      "question": "What does the retirement scenario calculator actually calculate?",
+      "answer": "Choose an inflation-adjusted target, FIRE target or contribution-growth scenario. Enter the assumptions shown in that mode. Projections assume constant returns; 2026 account contribution limits are held flat and do not determine eligibility."
     },
     {
-      question: "How is the required corpus calculated?",
-      answer: "Generally by estimating your annual post-retirement expenses (inflation-adjusted) and calculating the lump sum needed to sustain those withdrawals for your expected retirement duration, accounting for continued investment growth.",
-    },
-    {
-      question: "What return rate should I assume?",
-      answer: "This depends on your investment mix — conservative (largely debt) portfolios might assume 6-8%, while equity-heavy portfolios might assume higher long-term averages, though actual returns vary and are never guaranteed.",
-    },
-    {
-      question: "Is my retirement goal stored anywhere?",
-      answer: "No. All projections execute locally in your browser memory with zero server tracking.",
-    },
+      "question": "What should I check before relying on this result?",
+      "answer": "Check the displayed inputs, assumptions and limitations. Defaults are examples. For financial, academic or health decisions, verify the applicable rules with the relevant professional or institution."
+    }
   ],
-
   "fd-calculator": [
     {
       question: "How often does bank FD interest compound?",
@@ -1422,155 +1359,8 @@ export function getToolFaqs(tool: Tool): FAQItem[] {
     }));
   }
 
-  const toolName = tool.title;
-  const nameLower = toolName.toLowerCase();
-  const cat = tool.category;
+  return []; // Only publish FAQs that describe an actual, reviewed tool capability.
 
-  if (cat === "finance") {
-    return [
-      {
-        question: `How does the ${toolName} calculate results?`,
-        answer: `The ${nameLower} computes exact results instantly using verified mathematical interest formulas and amortization models as you adjust the sliders or input fields.`
-      },
-      {
-        question: `Does using this ${nameLower} require sharing my financial data?`,
-        answer: `No. All calculations run strictly inside your local browser memory. Yuitility does not transmit, log, or store your assets, inputs, or personal information.`
-      },
-      {
-        question: `Is the ${toolName} compatible with multiple currencies?`,
-        answer: `Yes. You can work with USD, EUR, GBP, INR, or any local currency format because the calculations are purely numerical. We support direct numeric entry for all fields.`
-      },
-      {
-        question: `Can I export results from this ${nameLower} tool?`,
-        answer: `Yes. Once the calculations are computed, you can copy the values directly or copy the breakdown table to your clipboard for your spreadsheets.`
-      }
-    ];
-  }
-
-  if (cat === "pdf") {
-    return [
-      {
-        question: `Is it safe to upload confidential files to this ${toolName}?`,
-        answer: `Yes, 100% safe. You are not uploading anything. This ${nameLower} runs entirely client-side using JavaScript, meaning files are read and processed locally in your browser.`
-      },
-      {
-        question: `Will this ${nameLower} compress or modify the original PDF?`,
-        answer: `No. The tool processes a copy of your document locally and generates a new download link. Your original file remains untouched on your hard drive.`
-      },
-      {
-        question: `Are there file size or count limits on this free ${nameLower}?`,
-        answer: `No. Since processing runs locally on your computer, there are no artificial server caps on file size. Your device's memory is the only limit.`
-      },
-      {
-        question: `Do I need to sign up or pay to export my document?`,
-        answer: `No registration is required. You can compile and download your document instantly without signing up, without watermarks, and without paying fees.`
-      }
-    ];
-  }
-
-  if (cat === "developer") {
-    return [
-      {
-        question: `Is this ${toolName} safe for credentials or proprietary code?`,
-        answer: `Yes. Because this is a client-side utility, all formatting, key generation, and encoding happen locally. No data is sent over the network to external servers.`
-      },
-      {
-        question: `Can I use the ${nameLower} offline?`,
-        answer: `Yes. Once you load this page, you can disconnect from the internet and continue using the ${nameLower} features because all code runs in your local tab.`
-      },
-      {
-        question: `How does this tool handle formatting errors?`,
-        answer: `The developer compiler parses inputs instantly and shows inline syntax errors or warnings to help you locate and fix bugs in your syntax.`
-      },
-      {
-        question: `Is there any API usage limit for this ${toolName}?`,
-        answer: `There are no limits because it does not make API calls. You can run as many operations as you need directly on your machine.`
-      }
-    ];
-  }
-
-  if (cat === "media" || cat === "utility" || cat === "conversion") {
-    return [
-      {
-        question: `Will my images or files have watermarks after using this ${toolName}?`,
-        answer: `No. All outputs are exported in high resolution without watermarks, branding, or modifications. You own 100% of your generated assets.`
-      },
-      {
-        question: `Does this ${nameLower} send media files to a server?`,
-        answer: `No files are ever uploaded. Processing is executed in your browser via HTML5 canvas and WebAssembly, keeping your photos and documents completely private.`
-      },
-      {
-        question: `What formats are supported by this ${toolName}?`,
-        answer: `It supports all standard web formats. You can input standard files and export them to WebP, PNG, JPEG, or GIF formats depending on your needs.`
-      },
-      {
-        question: `Can I process multiple files in batch?`,
-        answer: `Yes. You can input multiple assets, configure the parameters, and process them sequentially directly inside your browser tab.`
-      }
-    ];
-  }
-
-  if (cat === "health") {
-    return [
-      {
-        question: `How accurate is the ${toolName}?`,
-        answer: `The ${nameLower} uses standard health and fitness formulas (such as Mifflin-St Jeor or US Navy methods) to estimate values. These are statistical estimates, not medical diagnoses.`
-      },
-      {
-        question: `Does this health calculator save my weight or measurements?`,
-        answer: `No. Your age, height, weight, and other biological metrics are calculated locally. No data is tracked or uploaded to any medical database.`
-      },
-      {
-        question: `Is the ${toolName} free for personal planning?`,
-        answer: `Yes. Yuitility health tools are completely free, ad-free, and require no account registration or subscriptions.`
-      },
-      {
-        question: `Should I use these results as professional medical advice?`,
-        answer: `No. These results are for educational purposes. Consult a physician or certified fitness coach before starting any diet, training, or health plan.`
-      }
-    ];
-  }
-
-  if (cat === "math" || cat === "education") {
-    return [
-      {
-        question: `Does this ${toolName} show step-by-step mathematical calculations?`,
-        answer: `Yes. The tool parses values and evaluates the formulas showing mathematical steps and equations to help you understand the solution.`
-      },
-      {
-        question: `How does the calculator handle numerical precision and rounding?`,
-        answer: `Calculations execute client-side using standard IEEE 754 double-precision floating-point arithmetic with decimal rounding applied to prevent floating-point artifacts.`
-      },
-      {
-        question: `Are there limits to how many calculations I can run?`,
-        answer: `No. Because all calculations compile locally in your browser, you can perform unlimited math operations without throttling.`
-      },
-      {
-        question: `Can I use this ${nameLower} offline in a classroom?`,
-        answer: `Yes. Simply keep the tab open in your browser, and you can calculate results offline without an active internet connection.`
-      }
-    ];
-  }
-
-  // Fallback for general categories
-  return [
-    {
-      question: `What is the primary function of this ${toolName}?`,
-      answer: `The ${nameLower} executes calculations, transforms text, or compiles documents locally in your browser tab without external servers.`
-    },
-    {
-      question: `Is my personal data safe with this ${toolName}?`,
-      answer: `Yes. Because all execution is client-side, your files, keys, and values are never sent to external servers, protecting your data privacy.`
-    },
-    {
-      question: `Do I need to install any browser plugins to use this?`,
-      answer: `No. The utility is built using HTML5 and vanilla JavaScript, running natively in all modern mobile and desktop browsers.`
-    },
-    {
-      question: `Is this ${toolName} free forever?`,
-      answer: `Yes. All tools on Yuitility are 100% free with no hidden charges, trial limits, or account requirements.`
-    }
-  ];
 }
 
 /**

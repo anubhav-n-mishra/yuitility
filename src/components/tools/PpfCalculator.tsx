@@ -21,7 +21,7 @@ export default function PpfCalculator({ onCopy }: PpfCalculatorProps) {
     const r = interestRate / 100;
     const t = tenureYears;
 
-    if (P <= 0 || interestRate <= 0 || tenureYears <= 0) return null;
+    if (P <= 0 || interestRate < 0 || tenureYears <= 0) return null;
 
     let balance = 0;
     let totalInvested = 0;
@@ -60,7 +60,7 @@ export default function PpfCalculator({ onCopy }: PpfCalculatorProps) {
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
               Annual Investment Amount ({currObj.symbol})
             </label>
-            <input
+            <input aria-label="Annual Investment Amount ( )"
               type="number"
               value={annualDeposit}
               min="500"
@@ -74,7 +74,7 @@ export default function PpfCalculator({ onCopy }: PpfCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Govt Interest Rate (% p.a.)</label>
-              <input
+              <input aria-label="Govt Interest Rate (% p.a.)"
                 type="number"
                 value={interestRate}
                 step="0.1"
@@ -84,7 +84,7 @@ export default function PpfCalculator({ onCopy }: PpfCalculatorProps) {
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure Period</label>
-              <select
+              <select aria-label="Tenure Period"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}
                 className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"

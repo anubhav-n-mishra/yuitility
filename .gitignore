@@ -5,6 +5,7 @@ node_modules/
 
 # Testing & Coverage
 coverage/
+__pycache__/
 *.lcov
 
 # Next.js Build Output & Cache

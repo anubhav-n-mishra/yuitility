@@ -66,12 +66,12 @@ export default function CharacterCounter({ onCopy }: CharacterCounterProps) {
             {copiedKey === 'text' ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />} Copy Text
           </button>
         </div>
-        <textarea
+        <textarea aria-label="Text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={6}
           placeholder="Start typing or paste text..."
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500 transition resize-none"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500 transition resize-none"
         />
         <div className="flex justify-between items-center mt-2 text-xs text-zinc-500 dark:text-zinc-400">
           <span>Sentences: {sentenceCount}</span>

@@ -1,3 +1,4 @@
+import { payment } from '@/src/lib/calculations';
 import React, { useState, useMemo } from 'react';
 import { Car, DollarSign, Percent } from 'lucide-react';
 import CurrencySelector from '@/src/components/CurrencySelector';
@@ -39,9 +40,9 @@ export default function CarLoanEmiCalculator({
     const r = interestRate / 12 / 100;
     const n = tenureYears * 12;
 
-    if (netLoanAmount <= 0 || interestRate <= 0 || tenureYears <= 0) return null;
+    if (netLoanAmount <= 0 || interestRate < 0 || tenureYears <= 0) return null;
 
-    const emi = (netLoanAmount * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const emi = payment(netLoanAmount, r, n);
     const totalPayment = emi * n;
     const totalInterest = totalPayment - netLoanAmount;
 
@@ -68,7 +69,7 @@ export default function CarLoanEmiCalculator({
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Car On-Road Price ({currObj.symbol})</label>
-            <input
+            <input aria-label="Car On-Road Price ( )"
               type="number"
               value={carPrice}
               step="25000"
@@ -80,7 +81,7 @@ export default function CarLoanEmiCalculator({
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Down Payment (₹)</label>
-              <input
+              <input aria-label="Down Payment (₹)"
                 type="number"
                 value={downPayment}
                 step="10000"
@@ -90,7 +91,7 @@ export default function CarLoanEmiCalculator({
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Trade-In Value (₹)</label>
-              <input
+              <input aria-label="Trade-In Value (₹)"
                 type="number"
                 value={tradeInValue}
                 step="5000"
@@ -103,7 +104,7 @@ export default function CarLoanEmiCalculator({
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (% p.a.)</label>
-              <input
+              <input aria-label="Interest Rate (% p.a.)"
                 type="number"
                 value={interestRate}
                 step="0.25"
@@ -113,7 +114,7 @@ export default function CarLoanEmiCalculator({
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure (Years)</label>
-              <input
+              <input aria-label="Tenure (Years)"
                 type="number"
                 value={tenureYears}
                 onChange={(e) => setTenureYears(Number(e.target.value))}

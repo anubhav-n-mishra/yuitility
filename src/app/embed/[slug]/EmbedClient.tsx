@@ -3,15 +3,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ExternalLink, CheckCircle2, ShieldCheck } from "lucide-react";
+import type { ToolPreset } from "@/src/lib/toolPresets";
 import { Tool } from "@/src/types";
 import { toolPath } from "@/src/lib/site";
 import { ToolRenderer } from "@/src/components/ToolPageClient";
 
 interface EmbedClientProps {
   tool: Tool;
+  preset?: ToolPreset;
 }
 
-export default function EmbedClient({ tool }: EmbedClientProps) {
+export default function EmbedClient({ tool, preset }: EmbedClientProps) {
+  const fullPath = preset ? `/tools/${tool.id}/${preset.presetSlug}` : toolPath(tool.id);
   const [message, setMessage] = useState<string>("");
   const [isDark, setIsDark] = useState<boolean>(false);
 
@@ -34,7 +37,7 @@ export default function EmbedClient({ tool }: EmbedClientProps) {
   };
 
   const share = async (title: string, path: string) => {
-    const url = `${window.location.origin}${toolPath(tool.id)}`;
+    const url = `${window.location.origin}${fullPath}`;
     await copy(url);
   };
 
@@ -45,7 +48,7 @@ export default function EmbedClient({ tool }: EmbedClientProps) {
         <div className="flex items-center gap-2">
           <img src="/brand/yuitility-logo.png" alt="Yuitility logo" width={22} height={22} className="h-5.5 w-5.5 object-contain" />
           <h1 className="font-display font-bold text-sm tracking-tight text-zinc-900 dark:text-white m-0 p-0">
-            {tool.title}
+            {preset?.h1 ?? tool.title}
           </h1>
         </div>
         <div className="flex items-center gap-2">
@@ -53,7 +56,7 @@ export default function EmbedClient({ tool }: EmbedClientProps) {
             <ShieldCheck className="w-3.5 h-3.5" /> 100% In-Browser Privacy
           </span>
           <a
-            href={toolPath(tool.id)}
+            href={fullPath}
             target="_blank"
             rel="noopener"
             className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-cyan-400 dark:hover:text-cyan-300 transition"
@@ -66,7 +69,7 @@ export default function EmbedClient({ tool }: EmbedClientProps) {
 
       {/* Main Tool Component */}
       <div className="flex-1">
-        <ToolRenderer tool={tool} onCopy={copy} onShare={share} />
+        <ToolRenderer tool={tool} onCopy={copy} onShare={share} presetParams={preset?.presetParams} />
       </div>
 
       {/* Attribution Footer */}
@@ -75,7 +78,7 @@ export default function EmbedClient({ tool }: EmbedClientProps) {
           🔒 Client-side only • Zero data uploaded
         </span>
         <a
-          href={toolPath(tool.id)}
+          href={fullPath}
           target="_blank"
           rel="noopener"
           className="font-semibold text-blue-600 hover:underline dark:text-cyan-400 inline-flex items-center gap-1"

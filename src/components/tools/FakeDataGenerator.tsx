@@ -178,7 +178,7 @@ export default function FakeDataGenerator({ onCopy, onShare }: FakeDataGenerator
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Row Count</label>
-                  <input
+                  <input aria-label="Row Count"
                     type="number"
                     min="1"
                     max="1000"
@@ -190,7 +190,7 @@ export default function FakeDataGenerator({ onCopy, onShare }: FakeDataGenerator
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Export Format</label>
-                  <select
+                  <select aria-label="Export Format"
                     value={format}
                     onChange={(e) => setFormat(e.target.value as ExportFormat)}
                     className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-semibold"

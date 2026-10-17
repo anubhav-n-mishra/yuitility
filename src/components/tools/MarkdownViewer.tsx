@@ -743,7 +743,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
           </div>
 
           <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
-            <input
+            <input aria-label="Choose files"
               type="file"
               ref={fileInputRef}
               accept=".md,.markdown,.txt"

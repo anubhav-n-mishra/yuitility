@@ -121,7 +121,7 @@ export default function UuidV4Generator({ onCopy, onShare }: UuidV4GeneratorProp
                 <span>Quantity</span>
                 <span className="font-semibold text-rose-600">{quantity} UUIDs</span>
               </div>
-              <input
+              <input aria-label="Quantity (slider)"
                 type="range"
                 min="1"
                 max="50"

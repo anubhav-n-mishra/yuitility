@@ -159,7 +159,7 @@ export default function PdfMetadata({ onCopy, onShare }: PdfMetadataProps) {
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Upload PDF to Inspect</p>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Processed 100% locally in your browser.</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -181,7 +181,7 @@ export default function PdfMetadata({ onCopy, onShare }: PdfMetadataProps) {
                     </p>
                   </div>
                 </div>
-                <button
+                <button aria-label="Remove selected file"
                   onClick={() => setFile(null)}
                   className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                 >
@@ -193,33 +193,33 @@ export default function PdfMetadata({ onCopy, onShare }: PdfMetadataProps) {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Title</label>
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
+                    <input aria-label="Title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Author</label>
-                    <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
+                    <input aria-label="Author" type="text" value={author} onChange={(e) => setAuthor(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
                   </div>
                 </div>
 
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Subject</label>
-                  <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
+                  <input aria-label="Subject" type="text" value={subject} onChange={(e) => setSubject(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
                     <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Creator</label>
-                    <input type="text" value={creator} onChange={(e) => setCreator(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
+                    <input aria-label="Creator" type="text" value={creator} onChange={(e) => setCreator(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
                   </div>
                   <div className="space-y-1">
                     <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Producer</label>
-                    <input type="text" value={producer} onChange={(e) => setProducer(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
+                    <input aria-label="Producer" type="text" value={producer} onChange={(e) => setProducer(e.target.value)} className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
                   </div>
                 </div>
 
                 <div className="space-y-1">
                   <label className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">Keywords</label>
-                  <input type="text" value={keywords} onChange={(e) => setKeywords(e.target.value)} placeholder="Comma separated..." className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
+                  <input aria-label="Keywords" type="text" value={keywords} onChange={(e) => setKeywords(e.target.value)} placeholder="Comma separated..." className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-sm outline-none focus:border-purple-500" />
                 </div>
               </div>
             </div>

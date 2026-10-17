@@ -52,7 +52,7 @@ export default function CreditCardEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Credit Card Purchase / Balance</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(purchaseAmount, currency)}</span>
             </div>
-            <input
+            <input aria-label="Credit Card Purchase / Balance (slider)"
               type="range"
               min="500"
               max="50000"
@@ -68,7 +68,7 @@ export default function CreditCardEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Annual Interest Rate (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{annualInterestRate}%</span>
             </div>
-            <input
+            <input aria-label="Annual Interest Rate (%) (slider)"
               type="range"
               min="10"
               max="42"
@@ -84,7 +84,7 @@ export default function CreditCardEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Tenure (Months)</label>
               <span className="text-blue-600 dark:text-cyan-300">{tenureMonths} Months</span>
             </div>
-            <input
+            <input aria-label="Tenure (Months) (slider)"
               type="range"
               min="3"
               max="36"

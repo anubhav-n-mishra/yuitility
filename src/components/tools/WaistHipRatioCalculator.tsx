@@ -130,11 +130,11 @@ export default function WaistHipRatioCalculator({ onCopy }: WaistHipRatioCalcula
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Waist Circumference ({unit === 'metric' ? 'cm' : 'inches'})
             </label>
-            <input
+            <input aria-label="Waist Circumference ( )"
               type="number"
               value={waist}
               onChange={(e) => setWaist(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
             <span className="text-[11px] text-zinc-500 dark:text-zinc-500 mt-1 block">
               Measure at the narrowest point, usually just above the belly button.
@@ -145,11 +145,11 @@ export default function WaistHipRatioCalculator({ onCopy }: WaistHipRatioCalcula
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Hip Circumference ({unit === 'metric' ? 'cm' : 'inches'})
             </label>
-            <input
+            <input aria-label="Hip Circumference ( )"
               type="number"
               value={hip}
               onChange={(e) => setHip(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
             <span className="text-[11px] text-zinc-500 dark:text-zinc-500 mt-1 block">
               Measure at the widest part of the buttocks.

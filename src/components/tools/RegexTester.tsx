@@ -61,16 +61,16 @@ export default function RegexTester({ onCopy, onShare }: RegexProps) {
   }, [pattern, activeFlags, testString]);
 
   const highlightedHtml = useMemo(() => {
-    if (!pattern || error || matches.length === 0) {
-      return testString;
+    const escape = (value: string) => value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    if (error || !matches.length) return escape(testString);
+    let cursor=0, html='';
+    for(const match of matches) {
+      html+=escape(testString.slice(cursor,match.index));
+      html+='<mark class="bg-rose-500/20 text-rose-700 dark:text-rose-300">'+escape(match.match)+'</mark>';
+      cursor=match.index+match.match.length;
     }
-    try {
-      const re = new RegExp(pattern, activeFlags);
-      return testString.replace(re, (m) => `<mark class="bg-rose-500/20 text-rose-700 dark:text-rose-300 font-semibold px-0.5 rounded border border-rose-500/30">${m}</mark>`);
-    } catch {
-      return testString;
-    }
-  }, [pattern, activeFlags, testString, error, matches]);
+    return html+escape(testString.slice(cursor));
+  },[testString,error,matches]);
 
   return (
     <div className="space-y-8">
@@ -102,7 +102,7 @@ export default function RegexTester({ onCopy, onShare }: RegexProps) {
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           <div className="relative flex-1">
             <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono text-zinc-400 text-sm">/</span>
-            <input
+            <input aria-label="Regular expression"
               type="text"
               value={pattern}
               onChange={(e) => setPattern(e.target.value)}
@@ -154,7 +154,7 @@ export default function RegexTester({ onCopy, onShare }: RegexProps) {
             <span className="font-semibold uppercase tracking-wider">Test String</span>
             <span>{testString.length} chars</span>
           </div>
-          <textarea
+          <textarea aria-label="Test text"
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Type or paste test text here..."

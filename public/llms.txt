@@ -1,46 +1,94 @@
 # Yuitility
 
-> [Yuitility](https://www.yuitility.app) is a 100% private, free online browser-based toolkit offering 132 client-side utilities and calculators for financial math, PDF operations, image conversion, developer encoding, health metrics, and construction estimators. All processing runs entirely in client-side WebAssembly and JavaScript memory with zero server uploads, no accounts, and no tracking.
+> 167 free browser tools for calculations, documents, images and text. File tools process inputs locally. The optional AI assistant sends messages through the site server to its selected provider; the contact form also uses a server. Hosting requests and optional model downloads require a network connection. See each tool for supported formats, assumptions and limits.
 
-## Core Platform
-- [Home & Tool Catalog](https://www.yuitility.app/): Interactive catalog of all 132 browser-based tools and calculators.
-- [Complete Tool Directory](https://www.yuitility.app/tools): Single-page listing of every tool across all categories.
-- [Full LLM Specification](https://www.yuitility.app/llms-full.txt): Comprehensive API and schema directory for AI agents.
-- [About Yuitility](https://www.yuitility.app/about): Privacy policy, architecture, and client-side computing philosophy.
-- [Blog & Guides](https://www.yuitility.app/blog): Engineering deep-dives, calculator tutorials, and privacy guides.
+## Site resources
+- [Tool directory](https://www.yuitility.app/tools)
+- [About and editorial responsibility](https://www.yuitility.app/about)
+- [Privacy](https://www.yuitility.app/privacy)
+- [Guides](https://www.yuitility.app/blog)
+- [XML sitemap](https://www.yuitility.app/sitemap.xml)
+- [HTML sitemap](https://www.yuitility.app/sitemap)
 
-## Tool Categories
-- [Finance & Wealth Calculators](https://www.yuitility.app/category/finance): EMI, loan repayment, SIP, SWP, salary take-home, income tax, EPF, PPF, NPS, GST, and investment analytics.
-- [Calculators & Mathematics](https://www.yuitility.app/category/math): Standard, scientific, mean, median, percentage, GPA/CGPA, matrix, and probability calculators.
-- [PDF & Document Utilities](https://www.yuitility.app/category/pdf): In-browser client-side PDF merging, splitting, compressing, watermarking, metadata editing, and rotation.
-- [Developer Utilities](https://www.yuitility.app/category/developer): JSON formatter, Regex tester, UUID generator, Base64 encoder, URL encoder, Hash generator, and text diff checker.
-- [Image & Media Tools](https://www.yuitility.app/category/media): Browser-based image compressor, resizer, background remover, format converter, and meme maker.
-- [Utility & Construction](https://www.yuitility.app/category/utility): Room square footage, flooring, brick count, paint estimator, concrete volume, and everyday unit converters.
+## Tool index
+[All 167 tool descriptions](https://www.yuitility.app/llms-full.txt)
 
-## Popular Tools
-- [EMI Calculator](https://www.yuitility.app/tools/emi-calculator): Calculate monthly EMI, principal-to-interest breakdown, and amortization schedule.
-- [SIP Calculator](https://www.yuitility.app/tools/sip-calculator): Mutual fund systematic investment plan return and wealth projection calculator.
-- [Age Calculator](https://www.yuitility.app/tools/age-calculator): Exact age calculation down to years, months, days, hours, and next birthday countdown.
-- [Salary Calculator](https://www.yuitility.app/tools/salary-calculator): Monthly in-hand salary estimator calculating EPF, professional tax, and income tax deductions.
-- [PDF Merger](https://www.yuitility.app/tools/pdf-merger): Fast, 100% private in-browser tool to combine multiple PDF files into one.
-- [PDF Splitter](https://www.yuitility.app/tools/pdf-splitter): Extract pages or split PDF documents locally without uploading to external servers.
-- [Image Compressor](https://www.yuitility.app/tools/image-compressor): Client-side image compression reducing PNG, JPEG, and WebP file sizes.
-- [Background Remover](https://www.yuitility.app/tools/background-remover): Client-side AI background removal using in-browser WebAssembly.
-- [JSON Formatter](https://www.yuitility.app/tools/json-formatter): Validate, beautify, minify, and inspect JSON data structures in memory.
-- [Password Generator](https://www.yuitility.app/tools/password-generator): Cryptographically secure random password and passphrase generator using Web Crypto API.
-- [QR Code Generator](https://www.yuitility.app/tools/qr-code-generator): Create high-resolution custom QR codes for URLs, WiFi, contact cards, and text.
-- [Word Counter](https://www.yuitility.app/tools/word-counter): Real-time word, character, sentence, paragraph, and reading time counter.
-- [Unit Converter](https://www.yuitility.app/tools/unit-converter): Universal converter for length, weight, volume, temperature, and speed.
-- [Standard Calculator](https://www.yuitility.app/tools/standard-calculator): Clean, instant basic arithmetic calculator with memory register and history.
-- [Scientific Calculator](https://www.yuitility.app/tools/scientific-calculator): Full-featured scientific calculator with trigonometric, logarithmic, and exponential operations.
-- [Income Tax Calculator](https://www.yuitility.app/tools/income-tax-calculator): Compare Old vs New tax regimes with accurate slab deductions.
-- [GST Calculator](https://www.yuitility.app/tools/gst-calculator): Inclusive and exclusive goods and services tax calculator.
-- [PPF Calculator](https://www.yuitility.app/tools/ppf-calculator): Public Provident Fund maturity and interest accumulation calculator.
-- [FD Calculator](https://www.yuitility.app/tools/fd-calculator): Fixed deposit maturity amount and compounded interest returns.
-- [RD Calculator](https://www.yuitility.app/tools/rd-calculator): Recurring deposit future value and total interest estimator.
-
-## Optional & Related Resources
-- [XML Sitemap](https://www.yuitility.app/sitemap.xml): Machine-readable sitemap of all canonical URLs.
-- [HTML Sitemap](https://www.yuitility.app/sitemap): Human-readable hierarchical index of all site pages.
-- [Robots.txt](https://www.yuitility.app/robots.txt): Crawler and agent indexing instructions.
-- [Engineering Partner](https://amvelt.com): Amvelt software engineering agency for enterprise web, app, and SEO development.
+- [Standard Calculator](https://www.yuitility.app/tools/standard-calculator): Fast, clean basic calculator for everyday calculations with memory and history.
+- [Scientific Calculator](https://www.yuitility.app/tools/scientific-calculator): Full scientific calculator with trig, logarithms, powers, roots, DEG/RAD, and memory.
+- [EMI Calculator](https://www.yuitility.app/tools/emi-calculator): Calculate monthly loan repayments, total interest, and view a detailed amortization schedule.
+- [SIP Investment Calculator](https://www.yuitility.app/tools/sip-calculator): Forecast your mutual fund SIP wealth growth with expected annual returns over time.
+- [Password Generator](https://www.yuitility.app/tools/password-generator): Generate highly secure random passwords with customizable parameters and strength analysis.
+- [QR Code Generator](https://www.yuitility.app/tools/qr-code-generator): Create custom QR codes for texts, URLs, WiFi networks, phone numbers, and emails.
+- [Image Compressor](https://www.yuitility.app/tools/image-compressor): Reduce image file size instantly in your browser while preserving optimal visual quality.
+- [PDF Merger](https://www.yuitility.app/tools/pdf-merger): Combine multiple PDF files into a single document seamlessly.
+- [PDF Splitter](https://www.yuitility.app/tools/pdf-splitter): Extract specific pages from a PDF or split it into individual files.
+- [Rotate PDF Pages](https://www.yuitility.app/tools/pdf-rotator): Rotate all or specific pages in a PDF document clockwise or counter-clockwise.
+- [Add Page Numbers to PDF](https://www.yuitility.app/tools/pdf-page-numbers): Insert custom page numbers, headers, and footers across PDF documents.
+- [Remove PDF Pages](https://www.yuitility.app/tools/pdf-page-remover): Delete unwanted pages or blank sheets from PDF files and download clean documents.
+- [AI Background Remover](https://www.yuitility.app/tools/background-remover): Remove image backgrounds in your browser with a local AI model.
+- [Image Format Converter](https://www.yuitility.app/tools/format-converter): Convert images to WebP, PNG or JPEG locally.
+- [PDF Structure Optimizer](https://www.yuitility.app/tools/pdf-compressor): Optimize PDF structure and metadata without uploading.
+- [ZIP File Extractor](https://www.yuitility.app/tools/zip-extractor): Open ZIP archives online, preview contents, and extract files locally.
+- [Meme Maker](https://www.yuitility.app/tools/meme-maker): Create classic image macros with custom top and bottom text.
+- [Open Graph (OG) Generator](https://www.yuitility.app/tools/og-image-generator): Design beautiful Open Graph images for social media sharing.
+- [Social Media Resizer](https://www.yuitility.app/tools/social-media-resizer): Instantly crop images to exact sizes for Instagram, X, LinkedIn, etc.
+- [Fake Data Generator](https://www.yuitility.app/tools/fake-data-generator): Generate mock JSON, SQL, or CSV data for software testing.
+- [Photo Collage Maker](https://www.yuitility.app/tools/photo-collage-maker): Combine multiple photos into beautiful grid and story layouts.
+- [Age Calculator in Months](https://www.yuitility.app/tools/age-calculator-in-months): Calculate your exact age directly in months, weeks, days, hours, and seconds.
+- [Dog Age Calculator](https://www.yuitility.app/tools/dog-age-calculator): Convert dog age to human years accurately based on breed weight and size.
+- [Pregnancy Due Date Calculator](https://www.yuitility.app/tools/pregnancy-due-date-calculator): Calculate estimated due date, gestational age, trimester, and milestones.
+- [Retirement Scenario Calculator](https://www.yuitility.app/tools/retirement-calculator): Compare retirement targets and contribution growth assumptions.
+- [Zodiac Age & Planetary Calculator](https://www.yuitility.app/tools/zodiac-age-calculator): Discover your Western Zodiac, Chinese Zodiac, birthstone, and age on other planets.
+- [School Age Eligibility Calculator](https://www.yuitility.app/tools/school-age-eligibility-calculator): Determine grade level placement (Pre-K to 12th) based on birth date & cutoff rules.
+- [Median Calculator](https://www.yuitility.app/tools/median-calculator): Calculate statistical median, sorted range, quartiles (Q1/Q3), and IQR.
+- [Mean Calculator](https://www.yuitility.app/tools/mean-calculator): Calculate Arithmetic, Geometric, and Harmonic Means along with standard deviation.
+- [Mod (Modulo & Mode) Calculator](https://www.yuitility.app/tools/mod-calculator): Calculate remainder (A mod B) or statistical mode frequency distribution.
+- [Calendar Zodiac Sign Explorer](https://www.yuitility.app/tools/zodiac-sun-moon-calculator): Explore traditional calendar Sun signs. Astronomical Moon and rising signs are not calculated.
+- [BMI Calculator](https://www.yuitility.app/tools/bmi-calculator): Calculate Body Mass Index (Metric & Imperial), healthy weight range, and Prime index.
+- [Life Horizon Illustration](https://www.yuitility.app/tools/death-calculator): Visualize time to a hypothetical planning age, not a predicted lifespan.
+- [Universal Loan Repayment Calculator](https://www.yuitility.app/tools/loan-calculator): Calculate monthly payments, total interest, and total outlay for any loan.
+- [Educational Loan EMI Calculator](https://www.yuitility.app/tools/education-loan-emi-calculator): Calculate student loan EMIs with moratorium/grace period & Section 80E tax benefits.
+- [Personal Loan EMI Calculator](https://www.yuitility.app/tools/personal-loan-emi-calculator): Calculate monthly personal loan EMIs, processing fees, and net borrowing costs.
+- [Bike & Two-Wheeler Loan EMI Calculator](https://www.yuitility.app/tools/bike-loan-emi-calculator): Calculate bike loan monthly EMI with ex-showroom price, down payment, and RTO fees.
+- [Car Loan EMI Calculator](https://www.yuitility.app/tools/car-loan-emi-calculator): Calculate auto loan monthly payments with down payment, trade-in, and interest.
+- [Home Loan EMI Calculator](https://www.yuitility.app/tools/home-loan-emi-calculator): Calculate home loan EMIs, down payment %, and tax benefits under Sec 24 & 80C.
+- [Mortgage Payment Calculator](https://www.yuitility.app/tools/mortgage-calculator): Estimate a fixed-rate mortgage with explicit fees and housing costs.
+- [Interest Calculator (Simple vs Compound)](https://www.yuitility.app/tools/interest-calculator): Compare simple vs compound interest growth across various compounding frequencies.
+- [FD Return Calculator](https://www.yuitility.app/tools/fd-calculator): Calculate Fixed Deposit maturity returns, quarterly interest, and senior citizen boost.
+- [RD Return Calculator](https://www.yuitility.app/tools/rd-calculator): Calculate Recurring Deposit maturity wealth with monthly contributions & compounding.
+- [Compound Interest Calculator](https://www.yuitility.app/tools/compound-interest-calculator): Calculate long-term compound growth with initial principal and monthly additions.
+- [Simple Interest Calculator](https://www.yuitility.app/tools/simple-interest-calculator): Calculate simple interest (I = P*R*T/100) with tenure in years, months, or days.
+- [PPF Calculator](https://www.yuitility.app/tools/ppf-calculator): Calculate Public Provident Fund maturity corpus, interest, and EEE tax savings.
+- [Daily Calorie Intake Calculator](https://www.yuitility.app/tools/daily-calorie-calculator): Determine maintenance, weight loss, or bulking calorie targets.
+- [TDEE Calculator](https://www.yuitility.app/tools/tdee-calculator): Calculate Total Daily Energy Expenditure and baseline metabolism.
+- [Sleep Cycle & Bedtime Planner](https://www.yuitility.app/tools/sleep-cycle-calculator): Find optimal sleep cycles and bedtime wake-up windows.
+- [Percentage Calculator](https://www.yuitility.app/tools/percentage-calculator): Calculate percentage changes, differences, and fractions.
+- [Date Difference Calculator](https://www.yuitility.app/tools/date-difference-calculator): Calculate exact days, weeks, months between two dates.
+- [Concrete Volume & Slab Estimator](https://www.yuitility.app/tools/concrete-volume-calculator): Calculate cubic yards/meters of concrete for slabs and footings.
+- [Room Square Footage Calculator](https://www.yuitility.app/tools/room-square-footage-calculator): Calculate room area in sq ft, sq meters, and perimeter.
+- [Lorem Ipsum Text Generator](https://www.yuitility.app/tools/lorem-ipsum-generator): Generate placeholder text, paragraphs, and words for design mockups.
+- [Open MD File & Markdown Viewer](https://www.yuitility.app/tools/markdown-viewer): Open and view MD files online with live split-screen Markdown preview, GitHub tables, checklists, and 1-click export to PDF, Word, and HTML.
+- [UUID v4 & GUID Generator](https://www.yuitility.app/tools/uuid-v4-generator): Generate cryptographically secure random UUID v4 strings in batch.
+- [Text Case Converter](https://www.yuitility.app/tools/case-converter): Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.
+- [URL Slug Generator](https://www.yuitility.app/tools/slug-generator): Convert titles and headlines into SEO-friendly clean URL slugs.
+- [Text Cleaner & Extra Space Remover](https://www.yuitility.app/tools/text-cleaner): Strip HTML tags, collapse extra whitespace, and join paragraphs.
+- [CSS Minifier & Formatter](https://www.yuitility.app/tools/css-minifier-beautifier): Minify or beautify CSS stylesheets with compression size metrics.
+- [JavaScript Minifier & Formatter](https://www.yuitility.app/tools/js-minifier-beautifier): Minify JS scripts or format JavaScript code cleanly.
+- [JSON to CSV Converter](https://www.yuitility.app/tools/json-to-csv-converter): Convert JSON array data into downloadable CSV spreadsheets.
+- [Color Format Converter (HEX, RGB, HSL)](https://www.yuitility.app/tools/color-format-converter): Convert color codes across HEX, RGB, HSL, CMYK, and CSS variables.
+- [Pomodoro Focus Timer](https://www.yuitility.app/tools/pomodoro-timer): Boost productivity with 25-minute focus cycles and break alarms.
+- [Event Countdown Timer](https://www.yuitility.app/tools/countdown-timer): Track days, hours, minutes, and seconds until your target event.
+- [World Clock & Time Zone Tracker](https://www.yuitility.app/tools/world-clock): Track live current times across global cities and time zones.
+- [Binary / Hex / Decimal Base Converter](https://www.yuitility.app/tools/number-base-converter): Convert numbers between Binary (2), Octal (8), Decimal (10), and Hex (16).
+- [JWT Token Decoder](https://www.yuitility.app/tools/jwt-decoder): Decode JSON Web Tokens (JWT) to inspect header and payload claims securely.
+- [SIP Step-Up Calculator](https://www.yuitility.app/tools/sip-step-up-calculator): Calculate mutual fund wealth accumulation with annual step-up increments.
+- [Sukanya Samriddhi Yojana (SSY) Calculator](https://www.yuitility.app/tools/ssy-calculator): Calculate SSY scheme interest returns and maturity corpus.
+- [Crypto Profit / Loss Calculator](https://www.yuitility.app/tools/crypto-profit-calculator): Calculate cryptocurrency buy/sell trade profits, ROI %, and fees.
+- [Calorie Deficit & Surplus Calculator](https://www.yuitility.app/tools/calorie-deficit-calculator): Determine daily calorie targets for weight loss or muscle gain.
+- [Ohm's Law Calculator (V = I × R)](https://www.yuitility.app/tools/ohms-law-calculator): Calculate voltage, current, resistance, and electrical power.
+- [Appliance Power & Electricity Bill Calculator](https://www.yuitility.app/tools/power-consumption-calculator): Calculate daily/monthly kWh power usage and electricity bill costs.
+- [Speed, Distance & Time Calculator](https://www.yuitility.app/tools/speed-distance-time-calculator): Solve physics equations for travel speed, distance, or ETA time.
+- [Image Eyedropper & Color Picker](https://www.yuitility.app/tools/image-color-picker): Upload any image to pick pixel color codes (HEX, RGB) instantly.
+- [SVG to PNG Converter](https://www.yuitility.app/tools/svg-to-png-converter): Convert SVG vector images into high-resolution PNG downloads.
+- [Password Pattern Checker](https://www.yuitility.app/tools/password-strength-checker): Check password length, character variety and common patterns locally.
+- [File SHA-256 Hash Verifier](https://www.yuitility.app/tools/file-hash-verifier): Compute and verify SHA-256 checksums for local files to check integrity.

@@ -1,3 +1,4 @@
+import { payment } from '@/src/lib/calculations';
 import React, { useState, useMemo } from 'react';
 import { Home, RefreshCw, Share2, Download, ChevronDown, ChevronUp, Info, ShieldCheck, Sparkles } from 'lucide-react';
 import CurrencySelector from '@/src/components/CurrencySelector';
@@ -75,7 +76,7 @@ export default function HomeLoanEmiCalculator({
     const r = interestRate / 12 / 100;
     const n = tenureYears * 12;
 
-    if (loanAmount <= 0 || interestRate <= 0 || tenureYears <= 0) {
+    if (loanAmount <= 0 || interestRate < 0 || tenureYears <= 0) {
       return {
         downPayment: 0,
         loanAmount: 0,
@@ -92,7 +93,7 @@ export default function HomeLoanEmiCalculator({
       };
     }
 
-    const emi = (loanAmount * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const emi = payment(loanAmount, r, n);
     const totalPayment = emi * n;
     const totalInterest = totalPayment - loanAmount;
 
@@ -185,8 +186,8 @@ export default function HomeLoanEmiCalculator({
       }
     }
 
-    const interestSaved = enablePrepayment ? Math.max(0, totalInterest - prepayTotalInterest) : 0;
-    const monthsSaved = enablePrepayment ? Math.max(0, n - prepayMonths) : 0;
+    const interestSaved = prepayMonths > 0 ? Math.max(0, totalInterest - prepayTotalInterest) : 0;
+    const monthsSaved = prepayMonths > 0 ? Math.max(0, n - prepayMonths) : 0;
 
     const avgYearlyInterest = Math.min(200000, totalInterest / tenureYears);
     const avgYearlyPrincipal = Math.min(150000, loanAmount / tenureYears);
@@ -200,8 +201,8 @@ export default function HomeLoanEmiCalculator({
       totalPayment,
       annualTaxSaving,
       schedule,
-      prepaidTotalInterest: prepayTotalInterest,
-      prepaidTotalPayment: prepayTotalPaid,
+      prepaidTotalInterest: prepayMonths > 0 ? prepayTotalInterest : totalInterest,
+      prepaidTotalPayment: prepayMonths > 0 ? prepayTotalPaid : totalPayment,
       interestSaved,
       monthsSaved,
       prepaidSchedule: prepaidSchedule.length > 0 ? prepaidSchedule : schedule,
@@ -312,7 +313,7 @@ export default function HomeLoanEmiCalculator({
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Property Cost</label>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs text-zinc-400 font-bold">{currObj.symbol}</span>
-                <input
+                <input aria-label="Property Cost"
                   type="number"
                   value={propertyPrice}
                   step="50000"
@@ -321,7 +322,7 @@ export default function HomeLoanEmiCalculator({
                 />
               </div>
             </div>
-            <input
+            <input aria-label="Property Cost (slider)"
               type="range"
               min="500000"
               max="50000000"
@@ -343,7 +344,7 @@ export default function HomeLoanEmiCalculator({
                 {fmt(downPayment)}
               </span>
             </div>
-            <input
+            <input aria-label="Down Payment (slider)"
               type="range"
               min="5"
               max="80"
@@ -362,7 +363,7 @@ export default function HomeLoanEmiCalculator({
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (% p.a.)</label>
-              <input
+              <input aria-label="Interest Rate (% p.a.)"
                 type="number"
                 step="0.05"
                 value={interestRate}
@@ -370,7 +371,7 @@ export default function HomeLoanEmiCalculator({
                 className="w-24 text-right px-2 py-1 text-sm font-semibold rounded border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 outline-none focus:border-blue-500 font-mono"
               />
             </div>
-            <input
+            <input aria-label="Interest Rate (% p.a.) (slider)"
               type="range"
               min="1"
               max="18"
@@ -412,7 +413,7 @@ export default function HomeLoanEmiCalculator({
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Loan Tenure</label>
               <div className="flex items-center gap-1">
-                <input
+                <input aria-label="Loan Tenure"
                   type="number"
                   value={tenureYears}
                   min="1"
@@ -423,7 +424,7 @@ export default function HomeLoanEmiCalculator({
                 <span className="text-xs text-zinc-500">Years</span>
               </div>
             </div>
-            <input
+            <input aria-label="Loan Tenure (slider)"
               type="range"
               min="1"
               max="30"
@@ -467,7 +468,7 @@ export default function HomeLoanEmiCalculator({
                   <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                     Monthly Prepayment ({currObj.symbol})
                   </label>
-                  <input
+                  <input aria-label="Monthly Prepayment ( )"
                     type="number"
                     value={monthlyPrepayment}
                     min="0"
@@ -481,7 +482,7 @@ export default function HomeLoanEmiCalculator({
                   <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                     Annual Lump Sum ({currObj.symbol})
                   </label>
-                  <input
+                  <input aria-label="Annual Lump Sum ( )"
                     type="number"
                     value={annualPrepayment}
                     min="0"
@@ -533,7 +534,7 @@ export default function HomeLoanEmiCalculator({
                   <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400" />
                   Tax Deductions (Sec 24b & 80C)
                 </span>
-                <select
+                <select aria-label="Tax Slab"
                   value={taxSlab}
                   onChange={(e) => setTaxSlab(parseInt(e.target.value))}
                   className="text-xs font-medium bg-white dark:bg-zinc-800 border border-emerald-300 dark:border-emerald-700 rounded px-1.5 py-0.5 text-emerald-900 dark:text-emerald-200 outline-none"

@@ -87,7 +87,7 @@ export default function GstCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Amount</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(amount, currency)}</span>
             </div>
-            <input
+            <input aria-label="Amount (slider)"
               type="range"
               min="100"
               max="500000"

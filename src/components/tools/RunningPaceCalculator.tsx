@@ -41,6 +41,7 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
 
   const results = (() => {
     const fmtTime = (totalSec: number) => {
+      totalSec = Math.round(totalSec);
       const h = Math.floor(totalSec / 3600);
       const m = Math.floor((totalSec % 3600) / 60);
       const s = Math.round(totalSec % 60);
@@ -186,12 +187,12 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Distance ({unit})</label>
-            <input
+            <input aria-label="Distance ( )"
               type="number"
               step="0.01"
               value={distance}
               onChange={(e) => setDistance(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-base"
             />
           </div>
 
@@ -199,26 +200,26 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Total Time (Hours : Mins : Secs)</label>
               <div className="grid grid-cols-3 gap-2 font-mono">
-                <input
+                <input aria-label="Total time hours"
                   type="number"
                   placeholder="H"
                   value={hours}
                   onChange={(e) => setHours(e.target.value)}
-                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-zinc-900 dark:text-white text-base"
                 />
-                <input
+                <input aria-label="Total time minutes"
                   type="number"
                   placeholder="M"
                   value={minutes}
                   onChange={(e) => setMinutes(e.target.value)}
-                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-zinc-900 dark:text-white text-base"
                 />
-                <input
+                <input aria-label="Total time seconds"
                   type="number"
                   placeholder="S"
                   value={seconds}
                   onChange={(e) => setSeconds(e.target.value)}
-                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-zinc-900 dark:text-white text-base"
                 />
               </div>
             </div>
@@ -226,19 +227,19 @@ export default function RunningPaceCalculator({ onCopy }: RunningPaceCalculatorP
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Pace (Mins : Secs per {unit})</label>
               <div className="grid grid-cols-2 gap-2 font-mono">
-                <input
+                <input aria-label={`Pace minutes per ${unit}`}
                   type="number"
                   placeholder="Mins"
                   value={paceMins}
                   onChange={(e) => setPaceMins(e.target.value)}
-                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-zinc-900 dark:text-white text-base"
                 />
-                <input
+                <input aria-label={`Pace seconds per ${unit}`}
                   type="number"
                   placeholder="Secs"
                   value={paceSecs}
                   onChange={(e) => setPaceSecs(e.target.value)}
-                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-white text-base"
+                  className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2 py-2 text-center text-zinc-900 dark:text-white text-base"
                 />
               </div>
             </div>

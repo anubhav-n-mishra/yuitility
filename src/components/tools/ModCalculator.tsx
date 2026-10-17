@@ -1,3 +1,4 @@
+import { numericDataset } from '@/src/lib/numeric';
 import React, { useState, useMemo } from 'react';
 import { Percent, Hash, Layers } from 'lucide-react';
 
@@ -21,7 +22,7 @@ export default function ModCalculator({ onCopy }: ModCalculatorProps) {
     if (divisor === 0) return null;
     // Mathematical modulo formula: ((a % n) + n) % n
     const rem = ((dividend % divisor) + Math.abs(divisor)) % Math.abs(divisor);
-    const quotient = Math.floor(dividend / divisor);
+    const quotient = (dividend - rem) / divisor;
 
     return {
       remainder: rem,
@@ -32,10 +33,7 @@ export default function ModCalculator({ onCopy }: ModCalculatorProps) {
 
   // Statistical Mode calculation
   const modeResult = useMemo(() => {
-    const numbers = modeInput
-      .split(/[\s,;\n]+/)
-      .map((v) => parseFloat(v.trim()))
-      .filter((v) => !isNaN(v));
+    const numbers = numericDataset(modeInput);
 
     if (numbers.length === 0) return null;
 
@@ -104,7 +102,7 @@ export default function ModCalculator({ onCopy }: ModCalculatorProps) {
 
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Dividend (A)</label>
-              <input
+              <input aria-label="Dividend (A)"
                 type="number"
                 value={dividend}
                 onChange={(e) => setDividend(Number(e.target.value))}
@@ -114,7 +112,7 @@ export default function ModCalculator({ onCopy }: ModCalculatorProps) {
 
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Divisor (B)</label>
-              <input
+              <input aria-label="Divisor (B)"
                 type="number"
                 value={divisor}
                 onChange={(e) => setDivisor(Number(e.target.value))}
@@ -162,7 +160,7 @@ export default function ModCalculator({ onCopy }: ModCalculatorProps) {
 
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Numbers</label>
-              <textarea
+              <textarea aria-label="Numbers"
                 rows={5}
                 value={modeInput}
                 onChange={(e) => setModeInput(e.target.value)}

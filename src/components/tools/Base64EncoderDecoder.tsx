@@ -184,7 +184,7 @@ export default function Base64EncoderDecoder({ onCopy, onShare }: Base64Props) {
             <span className="font-semibold uppercase tracking-wider">{mode === 'encode' ? 'Plain Text Input' : 'Base64 Input'}</span>
             <span>{input.length} characters</span>
           </div>
-          <textarea
+          <textarea aria-label="Input text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === 'encode' ? 'Type or paste text to encode...' : 'Paste Base64 string to decode...'}
@@ -211,7 +211,7 @@ export default function Base64EncoderDecoder({ onCopy, onShare }: Base64Props) {
           </div>
 
           <div className="relative h-72">
-            <textarea
+            <textarea aria-label="Base64 conversion output"
               readOnly
               value={error || output}
               placeholder="Output will appear here instantly..."

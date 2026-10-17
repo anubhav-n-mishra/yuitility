@@ -13,19 +13,19 @@ export default function OhmsLawCalculator({ onCopy }: OhmsLawCalculatorProps) {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   const calculateOhm = (field: 'V' | 'I' | 'R' | 'P', valStr: string) => {
-    const val = parseFloat(valStr) || 0;
+    const val = valStr.trim() ? Number(valStr) : NaN;
     if (field === 'V') {
       setVoltage(valStr);
-      const r = parseFloat(resistance) || 1;
-      const i = val / r;
-      setCurrent(i.toFixed(2));
-      setPower((val * i).toFixed(2));
+      const r = Number(resistance);
+      const i = r>0 && val>=0 ? val / r : NaN;
+      setCurrent(Number.isFinite(i) ? i.toFixed(2) : 'Undefined');
+      setPower(Number.isFinite(val*i) ? (val * i).toFixed(2) : 'Undefined');
     } else if (field === 'I') {
       setCurrent(valStr);
-      const v = parseFloat(voltage) || 12;
-      const r = val > 0 ? v / val : 0;
-      setResistance(r.toFixed(2));
-      setPower((v * val).toFixed(2));
+      const v = Number(voltage);
+      const r = val > 0 && v>=0 ? v / val : NaN;
+      setResistance(Number.isFinite(r) ? r.toFixed(2) : 'Undefined');
+      setPower(Number.isFinite(v*val) && v>=0 && val>=0 ? (v * val).toFixed(2) : 'Undefined');
     }
   };
 
@@ -54,21 +54,21 @@ export default function OhmsLawCalculator({ onCopy }: OhmsLawCalculatorProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Voltage (V - Volts)</label>
-            <input
+            <input aria-label="Voltage (V - Volts)"
               type="number"
               value={voltage}
               onChange={(e) => calculateOhm('V', e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Current (I - Amperes)</label>
-            <input
+            <input aria-label="Current (I - Amperes)"
               type="number"
               value={current}
               onChange={(e) => calculateOhm('I', e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

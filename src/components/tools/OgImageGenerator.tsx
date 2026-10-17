@@ -101,7 +101,7 @@ export default function OgImageGenerator({ onCopy, onShare }: OgImageGeneratorPr
             <div className="space-y-4">
               <div className="space-y-2">
                 <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Title</label>
-                <textarea
+                <textarea aria-label="Title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-medium resize-none h-24"
@@ -111,7 +111,7 @@ export default function OgImageGenerator({ onCopy, onShare }: OgImageGeneratorPr
               
               <div className="space-y-2">
                 <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Subtitle</label>
-                <textarea
+                <textarea aria-label="Subtitle"
                   value={subtitle}
                   onChange={(e) => setSubtitle(e.target.value)}
                   className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-medium resize-none h-20"
@@ -122,7 +122,7 @@ export default function OgImageGenerator({ onCopy, onShare }: OgImageGeneratorPr
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Author Name</label>
-                  <input
+                  <input aria-label="Author Name"
                     type="text"
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
@@ -131,7 +131,7 @@ export default function OgImageGenerator({ onCopy, onShare }: OgImageGeneratorPr
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Website / Brand</label>
-                  <input
+                  <input aria-label="Website / Brand"
                     type="text"
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}

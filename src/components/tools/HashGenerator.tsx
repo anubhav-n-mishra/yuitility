@@ -275,7 +275,7 @@ export default function HashGenerator({ onCopy, onShare }: HashProps) {
           </div>
         </div>
 
-        <textarea
+        <textarea aria-label="Input text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type or paste payload to calculate cryptographic hashes..."

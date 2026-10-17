@@ -106,11 +106,11 @@ export default function DailyCalorieCalculator({ onCopy }: DailyCalorieCalculato
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Age (years)</label>
-            <input
+            <input aria-label="Age (years)"
               type="number"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
             />
           </div>
 
@@ -119,32 +119,32 @@ export default function DailyCalorieCalculator({ onCopy }: DailyCalorieCalculato
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
-              <input
+              <input aria-label="Weight ( )"
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'in'})
               </label>
-              <input
+              <input aria-label="Height ( )"
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Physical Activity Level</label>
-            <select
+            <select aria-label="Physical Activity Level"
               value={activity}
               onChange={(e) => setActivity(parseFloat(e.target.value))}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-xs"
             >
               <option value="1.2">Sedentary (Little or no exercise)</option>
               <option value="1.375">Lightly Active (1-3 days/week)</option>

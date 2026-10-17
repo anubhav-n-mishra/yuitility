@@ -111,23 +111,23 @@ export default function OneRepMaxCalculator({ onCopy }: OneRepMaxCalculatorProps
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Weight Lifted ({unit})</label>
-              <input
+              <input aria-label="Weight Lifted ( )"
                 type="number"
                 value={liftWeight}
                 onChange={(e) => setLiftWeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
 
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Reps Performed (1-30)</label>
-              <input
+              <input aria-label="Reps Performed (1-30)"
                 type="number"
                 min="1"
                 max="30"
                 value={reps}
                 onChange={(e) => setReps(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
           </div>

@@ -54,7 +54,7 @@ export default function SipStepUpCalculator({ onCopy }: SipStepUpCalculatorProps
               <span>Initial Monthly SIP (₹)</span>
               <span className="font-mono font-bold">₹{monthlySip.toLocaleString()}</span>
             </div>
-            <input
+            <input aria-label="Monthly Sip (slider)"
               type="range"
               min={500}
               max={100000}
@@ -70,7 +70,7 @@ export default function SipStepUpCalculator({ onCopy }: SipStepUpCalculatorProps
               <span>Annual Step-Up Increment (%)</span>
               <span className="font-mono font-bold">{annualStepUp}%</span>
             </div>
-            <input
+            <input aria-label="Annual Step Up (slider)"
               type="range"
               min={0}
               max={30}
@@ -85,7 +85,7 @@ export default function SipStepUpCalculator({ onCopy }: SipStepUpCalculatorProps
               <span>Expected Annual Return Rate (%)</span>
               <span className="font-mono font-bold">{returnRate}%</span>
             </div>
-            <input
+            <input aria-label="Return Rate (slider)"
               type="range"
               min={1}
               max={30}
@@ -100,7 +100,7 @@ export default function SipStepUpCalculator({ onCopy }: SipStepUpCalculatorProps
               <span>Investment Duration (Years)</span>
               <span className="font-mono font-bold">{tenureYears} yrs</span>
             </div>
-            <input
+            <input aria-label="Tenure Years (slider)"
               type="range"
               min={1}
               max={40}

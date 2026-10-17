@@ -122,12 +122,12 @@ export default function MatrixCalculator({ onCopy }: MatrixCalculatorProps) {
       >
         {mat.map((row, r) =>
           row.map((val, c) => (
-            <input
+            <input aria-label={`Matrix ${matKey}, row ${r + 1}, column ${c + 1}`}
               key={`${r}-${c}`}
               type="number"
               value={val}
               onChange={(e) => updateCell(matKey, r, c, e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 text-center font-mono text-white text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5 text-center font-mono text-zinc-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500"
             />
           ))
         )}

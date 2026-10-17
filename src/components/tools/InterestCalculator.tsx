@@ -23,7 +23,7 @@ export default function InterestCalculator({ onCopy }: InterestCalculatorProps) 
     const t = timeYears;
     const n = compounding;
 
-    if (P <= 0 || rate <= 0 || timeYears <= 0) return null;
+    if (P <= 0 || rate < 0 || timeYears <= 0) return null;
 
     const simpleInterest = P * r * t;
     const simpleTotal = P + simpleInterest;
@@ -57,7 +57,7 @@ export default function InterestCalculator({ onCopy }: InterestCalculatorProps) 
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Principal Amount ({currObj.symbol})</label>
-            <input
+            <input aria-label="Principal Amount ( )"
               type="number"
               value={principal}
               step="10000"
@@ -69,7 +69,7 @@ export default function InterestCalculator({ onCopy }: InterestCalculatorProps) 
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Annual Interest Rate (%)</label>
-              <input
+              <input aria-label="Annual Interest Rate (%)"
                 type="number"
                 value={rate}
                 step="0.5"
@@ -79,7 +79,7 @@ export default function InterestCalculator({ onCopy }: InterestCalculatorProps) 
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Time Period (Years)</label>
-              <input
+              <input aria-label="Time Period (Years)"
                 type="number"
                 value={timeYears}
                 onChange={(e) => setTimeYears(Number(e.target.value))}
@@ -90,7 +90,7 @@ export default function InterestCalculator({ onCopy }: InterestCalculatorProps) 
 
           <div>
             <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Compounding Frequency</label>
-            <select
+            <select aria-label="Compounding Frequency"
               value={compounding}
               onChange={(e) => setCompounding(Number(e.target.value))}
               className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"

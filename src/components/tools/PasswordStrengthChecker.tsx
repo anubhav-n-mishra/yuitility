@@ -6,7 +6,7 @@ interface PasswordStrengthCheckerProps {
 }
 
 export default function PasswordStrengthChecker({ onCopy }: PasswordStrengthCheckerProps) {
-  const [password, setPassword] = useState('P@ssw0rd2026!');
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const evaluateStrength = () => {
@@ -22,13 +22,13 @@ export default function PasswordStrengthChecker({ onCopy }: PasswordStrengthChec
 
     if (score < 40) return { score, label: 'Weak', color: 'bg-rose-500', text: 'text-rose-600 dark:text-rose-400' };
     if (score < 75) return { score, label: 'Moderate', color: 'bg-amber-500', text: 'text-amber-400' };
-    return { score, label: 'Strong & Secure', color: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-400' };
+    return { score, label: 'High heuristic score', color: 'bg-emerald-500', text: 'text-emerald-600 dark:text-emerald-400' };
   };
 
   const res = evaluateStrength();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6"><p className="text-sm text-zinc-600 dark:text-zinc-400">Length and character-class heuristic only. No breach lookup, measured entropy or reliable crack-time prediction. A high score can still describe a predictable password.</p>
       <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
@@ -39,12 +39,12 @@ export default function PasswordStrengthChecker({ onCopy }: PasswordStrengthChec
         </div>
 
         <div className="relative">
-          <input
+          <input aria-label="Password to assess"
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Type or paste password..."
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500 pr-10"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500 pr-10"
           />
           <button
             onClick={() => setShowPassword(!showPassword)}

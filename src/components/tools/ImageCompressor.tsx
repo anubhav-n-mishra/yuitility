@@ -171,7 +171,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
               onClick={() => fileInputRef.current?.click()}
               className="flex flex-col items-center justify-center p-10 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-xl cursor-pointer bg-zinc-50/20 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/10 transition-colors relative group"
             >
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -216,7 +216,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
                   <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Compression Level (Quality)</label>
                   <span className="font-mono text-sm font-bold text-zinc-900 dark:text-zinc-50">{quality}%</span>
                 </div>
-                <input
+                <input aria-label="Compression Level (Quality) (slider)"
                   type="range"
                   min="10"
                   max="100"

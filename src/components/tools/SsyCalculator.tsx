@@ -8,7 +8,7 @@ interface SsyCalculatorProps {
 export default function SsyCalculator({ onCopy }: SsyCalculatorProps) {
   const [yearlyDeposit, setYearlyDeposit] = useState(150000);
   const [girlAge, setGirlAge] = useState(1);
-  const rate = 8.2; // SSY Govt Rate 2024-2026
+  const [rate,setRate] = useState(8.2); // Editable constant-rate scenario, not a live quote.
   const [copied, setCopied] = useState(false);
 
   const calculateSsy = () => {
@@ -41,6 +41,8 @@ export default function SsyCalculator({ onCopy }: SsyCalculatorProps) {
 
   return (
     <div className="space-y-6">
+      <p className="text-sm text-zinc-600 dark:text-zinc-400">Constant-rate illustration from account opening: annual deposits at the beginning of each year for 15 years, then growth through year 21. Actual rates can change quarterly and deposit dates affect interest. Eligibility and tax treatment are not determined.</p>
+      <label className="block text-sm">Assumed annual interest (%)<input aria-label="Assumed annual interest (%)" type="number" min="0" max="20" step="0.1" value={rate} onChange={e=>setRate(Math.max(0,Math.min(20,Number(e.target.value))))} className="block rounded border p-2 bg-white text-zinc-900 dark:bg-zinc-900 dark:text-white"/></label>
       <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <PiggyBank className="w-5 h-5" />
@@ -53,7 +55,7 @@ export default function SsyCalculator({ onCopy }: SsyCalculatorProps) {
               <span>Yearly Deposit Amount (₹)</span>
               <span className="font-mono font-bold">₹{yearlyDeposit.toLocaleString()}</span>
             </div>
-            <input
+            <input aria-label="Yearly Deposit (slider)"
               type="range"
               min={250}
               max={150000}
@@ -69,10 +71,10 @@ export default function SsyCalculator({ onCopy }: SsyCalculatorProps) {
               <span>Girl Child's Age (Years)</span>
               <span className="font-mono font-bold">{girlAge} yrs</span>
             </div>
-            <input
+            <input aria-label="Girl Age (slider)"
               type="range"
               min={0}
-              max={10}
+              max={9}
               value={girlAge}
               onChange={(e) => setGirlAge(parseInt(e.target.value))}
               className="w-full h-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-pink-500"
@@ -98,7 +100,7 @@ export default function SsyCalculator({ onCopy }: SsyCalculatorProps) {
             <span className="text-xl font-bold font-mono text-cyan-400">₹{res.totalInvested.toLocaleString()}</span>
           </div>
           <div className="bg-zinc-50 dark:bg-zinc-950 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <span className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Total Tax-Free Interest (8.2%)</span>
+            <span className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Illustrated interest ({rate}%)</span>
             <span className="text-xl font-bold font-mono text-emerald-600 dark:text-emerald-400">₹{Math.round(res.totalInterest).toLocaleString()}</span>
           </div>
           <div className="bg-zinc-50 dark:bg-zinc-950 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">

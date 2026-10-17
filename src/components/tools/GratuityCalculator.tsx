@@ -12,9 +12,10 @@ export default function GratuityCalculator() {
 
   const gratuity = useMemo(() => {
     const b = Math.max(0, lastDrawnBasic);
-    const y = Math.max(0, tenureYears);
+    const completed = Math.floor(Math.max(0,tenureYears));
+    const y = coveredByAct && tenureYears-completed>0.5 ? completed+1 : completed;
 
-    if (y < 5) return 0; // Minimum 5 years required
+    if (tenureYears < 5) return 0; // Minimum 5 years required
 
     if (coveredByAct) {
       // (15 * Basic Salary * Tenure) / 26
@@ -42,7 +43,7 @@ export default function GratuityCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Last Drawn Basic Salary + DA</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(lastDrawnBasic, currency)}</span>
             </div>
-            <input
+            <input aria-label="Last Drawn Basic Salary + DA (slider)"
               type="range"
               min="10000"
               max="500000"
@@ -58,7 +59,7 @@ export default function GratuityCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Continuous Service (Years)</label>
               <span className="text-blue-600 dark:text-cyan-300">{tenureYears} Years</span>
             </div>
-            <input
+            <input aria-label="Continuous Service (Years) (slider)"
               type="range"
               min="1"
               max="40"
@@ -94,11 +95,11 @@ export default function GratuityCalculator() {
           <div className="mt-6 border-t border-blue-200/60 dark:border-zinc-800 pt-6">
             {tenureYears < 5 ? (
               <p className="text-sm font-medium text-amber-600 dark:text-amber-400">
-                Minimum 5 years of continuous service required to qualify for gratuity payout.
+                Standard 5-year service scenario only; death, disability and other legal exceptions are not determined.
               </p>
             ) : (
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                Calculated based on {tenureYears} years of service at {formatCurrency(lastDrawnBasic, currency)} last drawn basic pay.
+                Calculated based on {tenureYears} years of service at {formatCurrency(lastDrawnBasic, currency)} last drawn basic plus DA. Completed years are used; covered-Act service over six additional months rounds up.
               </p>
             )}
           </div>

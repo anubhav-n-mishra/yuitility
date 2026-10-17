@@ -131,11 +131,11 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Body Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
-              <input
+              <input aria-label="Body Weight ( )"
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
 
@@ -143,11 +143,11 @@ export default function LeanBodyMassCalculator({ onCopy }: LeanBodyMassCalculato
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'inches'})
               </label>
-              <input
+              <input aria-label="Height ( )"
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
           </div>

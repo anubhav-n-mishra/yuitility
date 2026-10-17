@@ -44,7 +44,7 @@ export default function CagrCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Initial Portfolio Value</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(initialValue, currency)}</span>
             </div>
-            <input
+            <input aria-label="Initial Portfolio Value (slider)"
               type="range"
               min="1000"
               max="500000"
@@ -60,7 +60,7 @@ export default function CagrCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Final Portfolio Value</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(finalValue, currency)}</span>
             </div>
-            <input
+            <input aria-label="Final Portfolio Value (slider)"
               type="range"
               min="1000"
               max="1000000"
@@ -76,7 +76,7 @@ export default function CagrCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Duration (Years)</label>
               <span className="text-blue-600 dark:text-cyan-300">{years} Years</span>
             </div>
-            <input
+            <input aria-label="Duration (Years) (slider)"
               type="range"
               min="1"
               max="30"

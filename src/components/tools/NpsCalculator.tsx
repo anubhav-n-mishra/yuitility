@@ -11,7 +11,7 @@ export default function NpsCalculator() {
   const [expectedReturn, setExpectedReturn] = useState(10);
 
   const stats = useMemo(() => {
-    const years = Math.max(1, 60 - currentAge);
+    const years = Math.max(0, 60 - currentAge);
     const months = years * 12;
     const r = Math.max(0, expectedReturn) / 12 / 100;
     const p = Math.max(0, monthlyInvestment);
@@ -54,7 +54,7 @@ export default function NpsCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Monthly Contribution</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(monthlyInvestment, currency)}</span>
             </div>
-            <input
+            <input aria-label="Monthly Contribution (slider)"
               type="range"
               min="500"
               max="50000"
@@ -70,7 +70,7 @@ export default function NpsCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Current Age (Retires at 60)</label>
               <span className="text-blue-600 dark:text-cyan-300">{currentAge} Years</span>
             </div>
-            <input
+            <input aria-label="Current Age (Retires at 60) (slider)"
               type="range"
               min="18"
               max="55"
@@ -86,7 +86,7 @@ export default function NpsCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Expected Annual Return (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{expectedReturn}%</span>
             </div>
-            <input
+            <input aria-label="Expected Annual Return (%) (slider)"
               type="range"
               min="5"
               max="15"

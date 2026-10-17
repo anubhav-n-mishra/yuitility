@@ -224,7 +224,7 @@ export default function PdfPageNumberer({ onCopy, onShare }: PdfPageNumbererProp
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                 Processed 100% locally. Safe for academic papers & financial reports.
               </p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -315,7 +315,7 @@ export default function PdfPageNumberer({ onCopy, onShare }: PdfPageNumbererProp
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                   <div className="space-y-1.5">
                     <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Start Numbering At</label>
-                    <input
+                    <input aria-label="Start Numbering At"
                       type="number"
                       min="1"
                       value={startFrom}

@@ -16,9 +16,9 @@ export default function TextReverser({ onCopy }: TextReverserProps) {
     setTimeout(() => setCopiedKey(null), 1800);
   };
 
-  const reverseEntire = (str: string) => str.split('').reverse().join('');
+  const reverseEntire = (str: string) => Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(str),s=>s.segment).reverse().join('');
   const reverseWordsOrder = (str: string) => str.split(/\s+/).reverse().join(' ');
-  const reverseEachWord = (str: string) => str.split(/(\s+)/).map((w) => w.split('').reverse().join('')).join('');
+  const reverseEachWord = (str: string) => str.split(/(\s+)/).map((w) => Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(w),s=>s.segment).reverse().join('')).join('');
 
   // Upside down unicode mapping
   const flipMap: Record<string, string> = {
@@ -47,12 +47,12 @@ export default function TextReverser({ onCopy }: TextReverserProps) {
           <Repeat className="w-5 h-5" />
           <h3 className="font-semibold text-zinc-900 dark:text-white">Source Text</h3>
         </div>
-        <textarea
+        <textarea aria-label="Text"
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={4}
           placeholder="Enter text to flip or reverse..."
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
         />
       </div>
 

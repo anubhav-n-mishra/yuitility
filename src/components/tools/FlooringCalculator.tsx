@@ -65,20 +65,20 @@ export default function FlooringCalculator({ onCopy }: FlooringCalculatorProps) 
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Length (Feet)</label>
-              <input
+              <input aria-label="Room Length (Feet)"
                 type="number"
                 value={length}
                 onChange={(e) => setLength(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Width (Feet)</label>
-              <input
+              <input aria-label="Room Width (Feet)"
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
           </div>
@@ -112,22 +112,22 @@ export default function FlooringCalculator({ onCopy }: FlooringCalculatorProps) 
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coverage per Box (sq ft)</label>
-              <input
+              <input aria-label="Coverage per Box (sq ft)"
                 type="number"
                 step="0.1"
                 value={boxCoverage}
                 onChange={(e) => setBoxCoverage(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Price per sq ft ($)</label>
-              <input
+              <input aria-label="Price per sq ft ($)"
                 type="number"
                 step="0.1"
                 value={pricePerSqFt}
                 onChange={(e) => setPricePerSqFt(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>

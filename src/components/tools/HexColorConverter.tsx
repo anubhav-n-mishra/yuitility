@@ -18,7 +18,7 @@ export default function HexColorConverter({ onCopy, onShare }: HexColorProps) {
     if (clean.length === 3) {
       clean = clean.split('').map((c) => c + c).join('');
     }
-    if (clean.length !== 6) return null;
+    if (!/^[0-9a-f]{6}$/i.test(clean)) return null;
     const num = parseInt(clean, 16);
     if (isNaN(num)) return null;
     return {
@@ -131,7 +131,7 @@ export default function HexColorConverter({ onCopy, onShare }: HexColorProps) {
 
           <div className="p-4 bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <input
+              <input aria-label="Color picker"
                 type="color"
                 value={hex.startsWith('#') && hex.length === 7 ? hex : '#E11D48'}
                 onChange={(e) => updateFromHex(e.target.value)}
@@ -142,7 +142,7 @@ export default function HexColorConverter({ onCopy, onShare }: HexColorProps) {
 
             <div className="flex items-center gap-1.5">
               <span className="text-xs text-zinc-400 font-mono">#</span>
-              <input
+              <input aria-label="Hex color value"
                 type="text"
                 value={hex.replace('#', '')}
                 onChange={(e) => updateFromHex('#' + e.target.value)}

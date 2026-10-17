@@ -1,0 +1,6 @@
+SEO audit
+=========
+Tools declared: 167  live: 167  planned (noindexed): 0
+Categories: 8   Blog posts: 23
+
+All SEO checks passed.

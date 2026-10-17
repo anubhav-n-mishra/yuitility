@@ -41,7 +41,7 @@ export default function ProfitMarginCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Cost Price</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(costPrice, currency)}</span>
             </div>
-            <input
+            <input aria-label="Cost Price (slider)"
               type="range"
               min="1"
               max="1000"
@@ -57,7 +57,7 @@ export default function ProfitMarginCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Selling Price</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(sellingPrice, currency)}</span>
             </div>
-            <input
+            <input aria-label="Selling Price (slider)"
               type="range"
               min="1"
               max="2000"

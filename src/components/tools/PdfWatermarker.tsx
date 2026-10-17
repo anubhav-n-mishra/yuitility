@@ -191,7 +191,7 @@ export default function PdfWatermarker({ onCopy, onShare }: PdfWatermarkerProps)
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                 Processed 100% locally on your machine. Zero bytes uploaded.
               </p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -228,7 +228,7 @@ export default function PdfWatermarker({ onCopy, onShare }: PdfWatermarkerProps)
                 {/* Text input */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Watermark Text</label>
-                  <input
+                  <input aria-label="Watermark Text"
                     type="text"
                     value={watermarkText}
                     onChange={(e) => setWatermarkText(e.target.value)}
@@ -282,7 +282,7 @@ export default function PdfWatermarker({ onCopy, onShare }: PdfWatermarkerProps)
                       <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Opacity</label>
                       <span className="text-xs font-medium text-zinc-500">{Math.round(opacity * 100)}%</span>
                     </div>
-                    <input
+                    <input aria-label="Opacity (slider)"
                       type="range"
                       min="0.05"
                       max="1"
@@ -298,7 +298,7 @@ export default function PdfWatermarker({ onCopy, onShare }: PdfWatermarkerProps)
                       <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Font Size</label>
                       <span className="text-xs font-medium text-zinc-500">{fontSize}pt</span>
                     </div>
-                    <input
+                    <input aria-label="Font Size (slider)"
                       type="range"
                       min="16"
                       max="120"

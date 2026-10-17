@@ -1,4 +1,5 @@
 "use client";
+import { evaluateExpression } from "@/src/lib/expression";
 
 import React, { useState, useEffect, useCallback } from "react";
 import { RefreshCw, Copy, History, Share2 } from "lucide-react";
@@ -53,51 +54,10 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
   // Evaluate Expression
   const handleEquals = () => {
     try {
-      let evalExpr = display;
-
-      // Replace mathematical constants and symbols
-      evalExpr = evalExpr
-        .replace(/π/g, `${Math.PI}`)
-        .replace(/e/g, `${Math.E}`)
-        .replace(/φ/g, `${(1 + Math.sqrt(5)) / 2}`)
-        .replace(/×/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/(\d+)!/g, (_, n) => `${factorial(parseInt(n))}`);
-
-      // Evaluate trigonometric functions considering DEG/RAD mode
-      const toRad = (angle: number) => (isRad ? angle : (angle * Math.PI) / 180);
-      const fromRad = (val: number) => (isRad ? val : (val * 180) / Math.PI);
-
-      // Safe Math Context Scope
-      const mathScope = {
-        sin: (x: number) => Math.sin(toRad(x)),
-        cos: (x: number) => Math.cos(toRad(x)),
-        tan: (x: number) => Math.tan(toRad(x)),
-        asin: (x: number) => fromRad(Math.asin(x)),
-        acos: (x: number) => fromRad(Math.acos(x)),
-        atan: (x: number) => fromRad(Math.atan(x)),
-        sinh: Math.sinh,
-        cosh: Math.cosh,
-        tanh: Math.tanh,
-        log: Math.log10,
-        ln: Math.log,
-        sqrt: Math.sqrt,
-        cbrt: Math.cbrt,
-        abs: Math.abs,
-        pow: Math.pow,
-        exp: Math.exp,
-      };
-
-      // Safely evaluate using Function constructor with scope keys
-      const keys = Object.keys(mathScope);
-      const values = Object.values(mathScope);
-
-      // eslint-disable-next-line no-new-func
-      const evaluator = new Function(...keys, `"use strict"; return (${evalExpr})`);
-      const calcResult = evaluator(...values);
+      const calcResult = evaluateExpression(display,isRad);
 
       const formatted = Number.isFinite(calcResult)
-        ? String(Math.round(calcResult * 1e12) / 1e12)
+        ? String(Number(calcResult.toPrecision(13)))
         : "Error";
 
       setExpression(`${display} =`);
@@ -118,7 +78,7 @@ export default function ScientificCalculator({ onCopy, onShare, onTriggerShareTo
 
   // Helper Factorial
   const factorial = (n: number): number => {
-    if (n < 0) return NaN;
+    if (!Number.isInteger(n) || n < 0 || n > 170) return NaN;
     if (n === 0 || n === 1) return 1;
     let res = 1;
     for (let i = 2; i <= n; i++) res *= i;

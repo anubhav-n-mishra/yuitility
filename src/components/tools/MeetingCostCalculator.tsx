@@ -33,34 +33,34 @@ export default function MeetingCostCalculator({ onCopy }: MeetingCostCalculatorP
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Number of Attendees</label>
-            <input
+            <input aria-label="Number of Attendees"
               type="number"
               min={1}
               value={attendees}
               onChange={(e) => setAttendees(parseInt(e.target.value) || 1)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Avg Hourly Rate per Person ($)</label>
-            <input
+            <input aria-label="Avg Hourly Rate per Person ($)"
               type="number"
               min={1}
               value={hourlyRate}
               onChange={(e) => setHourlyRate(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Meeting Duration (Minutes)</label>
-            <input
+            <input aria-label="Meeting Duration (Minutes)"
               type="number"
               min={1}
               value={durationMins}
               onChange={(e) => setDurationMins(parseInt(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

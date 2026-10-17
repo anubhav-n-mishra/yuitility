@@ -1,0 +1,105 @@
+{
+  "auditDate": "2026-10-13",
+  "timezone": "Asia/Kolkata",
+  "note": "Human-readable observations recorded from tool-returned browser DOM and screenshots. These are not a raw browser trace or a field performance dataset.",
+  "observations": [
+    {
+      "url": "https://www.yuitility.app/",
+      "test": "Initial page view",
+      "observed": "Two cookie consent regions were present in the first accessibility snapshot. The initial screenshot showed the floating assistant overlapping the consent action area. Subsequent banner state differed; duplicate mounts confirmed in source."
+    },
+    {
+      "url": "https://www.yuitility.app/?q=json",
+      "test": "Advertised SearchAction target",
+      "observed": "Search input empty; Showing 1 - 24 of 167 tools; unfiltered catalog began with Standard Calculator, Scientific Calculator and EMI Calculator.",
+      "innerWidth": 390,
+      "documentScrollWidth": 390
+    },
+    {
+      "url": "https://www.yuitility.app/tools/cgpa-to-percentage-calculator/mumbai-university",
+      "test": "Set CGPA number input to 6",
+      "observed": "Equivalent percentage 54.60%; applied formula 7.1 × 6 + 12. FAQ states under 7.0 uses 7.4 × CGPA + 12, which evaluates to 56.40%. This establishes internal inconsistency, not independently verified academic applicability.",
+      "innerWidth": 390,
+      "documentScrollWidth": 390
+    },
+    {
+      "url": "https://www.yuitility.app/tools/mortgage-calculator/va-loan",
+      "test": "Read default result",
+      "observed": "Subtitle and FAQ say no PMI. $400,000 loan, zero down; result includes PMI (<20% Down) $250/month and total monthly payment $3,197.",
+      "innerWidth": 390,
+      "documentScrollWidth": 390
+    },
+    {
+      "url": "https://www.yuitility.app/tools/salary-calculator/10-lakhs-ctc",
+      "test": "Read default result",
+      "inputs": {"ctc":1000000,"basicPercent":50,"bonus":100000,"includeEpf":true,"customMonthlyDeduction":0},
+      "observed": "Monthly take-home ₹68,771; monthly tax ₹2,421; FY 2025-26 New Regime note says rebate only to ₹7 lakh.",
+      "innerWidth": 390,
+      "documentScrollWidth": 390
+    },
+    {
+      "url": "https://www.yuitility.app/tools/json-formatter",
+      "test": "Enter synthetic JSON and click Prettify Format",
+      "input": "{\"audit\":true,\"count\":2}",
+      "observed": "Correctly formatted with two-space indentation. Status: JSON OK; JSON parsed & formatted successfully. Interactive node tree displayed.",
+      "innerWidth": 390,
+      "documentScrollWidth": 390
+    }
+  ],
+  "lighthouse": [
+    {
+      "url": "https://www.yuitility.app/",
+      "report": "https://pagespeed.web.dev/analysis/https-www-yuitility-app/qp1svw4bau?form_factor=mobile",
+      "captureTimeLocal": "2026-10-13 07:20",
+      "mode": "mobile",
+      "lighthouseVersion": "13.5.0",
+      "performance": 100,
+      "accessibility": 97,
+      "bestPractices": 96,
+      "seo": 100,
+      "fcpSeconds": 1.0,
+      "lcpSeconds": 1.8,
+      "tbtMilliseconds": 20,
+      "cls": 0.001,
+      "speedIndexSeconds": 1.6,
+      "fieldData": "No Data"
+    },
+    {
+      "url": "https://www.yuitility.app/tools/standard-calculator",
+      "report": "https://pagespeed.web.dev/analysis/https-www-yuitility-app-tools-standard-calculator/06q61a9w8y?form_factor=mobile",
+      "captureTimeLocal": "2026-10-13 07:19",
+      "mode": "mobile",
+      "lighthouseVersion": "13.5.0",
+      "performance": 87,
+      "accessibility": 91,
+      "bestPractices": 96,
+      "seo": 100,
+      "fcpSeconds": 1.0,
+      "lcpSeconds": 2.7,
+      "tbtMilliseconds": 360,
+      "cls": 0.001,
+      "speedIndexSeconds": 2.8,
+      "unusedJavaScriptEstimatedKiB": 450.5,
+      "fieldData": "No Data",
+      "consoleError": "GET /fonts/inter-medium.woff returned 404",
+      "accessibilityFlags": ["Form elements do not have associated labels", "Insufficient text contrast"]
+    },
+    {
+      "url": "https://www.yuitility.app/tools/standard-calculator",
+      "report": "https://pagespeed.web.dev/analysis/https-www-yuitility-app-tools-standard-calculator/06q61a9w8y?form_factor=desktop",
+      "captureTimeLocal": "2026-10-13 07:19",
+      "mode": "desktop",
+      "lighthouseVersion": "13.5.0",
+      "performance": 81,
+      "accessibility": 91,
+      "bestPractices": 96,
+      "seo": 100,
+      "fcpSeconds": 0.3,
+      "lcpSeconds": 0.4,
+      "tbtMilliseconds": 410,
+      "cls": 0.001,
+      "speedIndexSeconds": 1.2,
+      "fieldData": "No Data"
+    }
+  ]
+}

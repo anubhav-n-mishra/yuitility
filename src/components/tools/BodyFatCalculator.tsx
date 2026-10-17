@@ -12,10 +12,11 @@ export default function BodyFatCalculator() {
 
   const stats = useMemo(() => {
     const w = Math.max(1, weightKg);
-    const h = Math.max(1, heightCm);
-    const waist = Math.max(1, waistCm);
-    const neck = Math.max(1, neckCm);
-    const hip = Math.max(1, hipCm);
+    // These regression coefficients require inches, not centimetres.
+    const h = heightCm / 2.54;
+    const waist = waistCm / 2.54;
+    const neck = neckCm / 2.54;
+    const hip = hipCm / 2.54;
 
     // US Navy Body Fat Formula
     let bodyFatPercent = 0;
@@ -33,7 +34,7 @@ export default function BodyFatCalculator() {
       }
     }
 
-    bodyFatPercent = Math.max(2, Math.min(60, bodyFatPercent));
+    const valid = [weightKg,heightCm,waistCm,neckCm,hipCm].every(Number.isFinite) && weightKg>0 && h>0 && neck>0 && waist>neck && (gender==='male'||hip>0) && bodyFatPercent>0 && bodyFatPercent<100;
 
     const fatMass = (w * bodyFatPercent) / 100;
     const leanMass = w - fatMass;
@@ -54,7 +55,8 @@ export default function BodyFatCalculator() {
     }
 
     return {
-      bodyFatPercent: isFinite(bodyFatPercent) ? bodyFatPercent : 0,
+      valid,
+      bodyFatPercent: valid ? bodyFatPercent : NaN,
       fatMass: isFinite(fatMass) ? fatMass : 0,
       leanMass: isFinite(leanMass) ? leanMass : 0,
       category,
@@ -101,7 +103,7 @@ export default function BodyFatCalculator() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Height (cm)</label>
-              <input
+              <input aria-label="Height (cm)"
                 type="number"
                 value={heightCm}
                 onChange={(e) => setHeightCm(Number(e.target.value))}
@@ -110,7 +112,7 @@ export default function BodyFatCalculator() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Weight (kg)</label>
-              <input
+              <input aria-label="Weight (kg)"
                 type="number"
                 value={weightKg}
                 onChange={(e) => setWeightKg(Number(e.target.value))}
@@ -122,7 +124,7 @@ export default function BodyFatCalculator() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Waist (cm)</label>
-              <input
+              <input aria-label="Waist (cm)"
                 type="number"
                 value={waistCm}
                 onChange={(e) => setWaistCm(Number(e.target.value))}
@@ -131,7 +133,7 @@ export default function BodyFatCalculator() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Neck (cm)</label>
-              <input
+              <input aria-label="Neck (cm)"
                 type="number"
                 value={neckCm}
                 onChange={(e) => setNeckCm(Number(e.target.value))}
@@ -143,7 +145,7 @@ export default function BodyFatCalculator() {
           {gender === "female" && (
             <div>
               <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Hip (cm)</label>
-              <input
+              <input aria-label="Hip (cm)"
                 type="number"
                 value={hipCm}
                 onChange={(e) => setHipCm(Number(e.target.value))}
@@ -157,19 +159,19 @@ export default function BodyFatCalculator() {
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-300">Body Fat Percentage</p>
             <p className="mt-2 text-4xl font-extrabold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
-              {stats.bodyFatPercent.toFixed(1)}%
+              {stats.valid ? `${stats.bodyFatPercent.toFixed(1)}%` : 'Invalid measurements'}
             </p>
-            <p className="mt-1 text-xs text-zinc-500 font-medium">Category: {stats.category}</p>
+            <p className="mt-1 text-xs text-zinc-500 font-medium">{stats.valid ? `Estimate category: ${stats.category}` : 'Enter positive measurements with waist greater than neck.'} Circumference-based adult estimate; not a clinical body-composition measurement.</p>
           </div>
 
           <div className="mt-6 space-y-4 border-t border-blue-200/60 dark:border-zinc-800 pt-6">
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Lean Body Mass</span>
-              <span className="font-semibold text-zinc-900 dark:text-white">{stats.leanMass.toFixed(1)} kg</span>
+              <span className="font-semibold text-zinc-900 dark:text-white">{stats.valid ? `${stats.leanMass.toFixed(1)} kg` : '—'}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-zinc-600 dark:text-zinc-400">Body Fat Mass</span>
-              <span className="font-semibold text-amber-600 dark:text-amber-400">{stats.fatMass.toFixed(1)} kg</span>
+              <span className="font-semibold text-amber-600 dark:text-amber-400">{stats.valid ? `${stats.fatMass.toFixed(1)} kg` : '—'}</span>
             </div>
           </div>
         </div>

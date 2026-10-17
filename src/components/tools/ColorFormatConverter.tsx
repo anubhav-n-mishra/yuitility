@@ -14,7 +14,7 @@ export default function ColorFormatConverter({ onCopy }: ColorFormatConverterPro
     if (clean.length === 3) {
       clean = clean.split('').map((c) => c + c).join('');
     }
-    if (clean.length !== 6) return null;
+    if (!/^[0-9a-f]{6}$/i.test(clean)) return null;
     const num = parseInt(clean, 16);
     return {
       r: (num >> 16) & 255,
@@ -90,13 +90,13 @@ export default function ColorFormatConverter({ onCopy }: ColorFormatConverterPro
 
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center gap-3 bg-zinc-50 dark:bg-zinc-950 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 w-full sm:w-auto">
-            <input
+            <input aria-label="Hex color"
               type="color"
               value={hex}
               onChange={(e) => setHex(e.target.value)}
               className="w-10 h-10 rounded-lg cursor-pointer bg-transparent border-0"
             />
-            <input
+            <input aria-label="Hex color"
               type="text"
               value={hex}
               onChange={(e) => setHex(e.target.value)}

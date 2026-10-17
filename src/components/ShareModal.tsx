@@ -1,5 +1,6 @@
 "use client";
 
+import Modal from "./Modal";
 import React, { useState, useEffect } from "react";
 import { X, Copy, Check, Share2, MessageCircle, Twitter, Facebook, Linkedin, Send, Mail, QrCode } from "lucide-react";
 import QRCode from "qrcode";
@@ -29,18 +30,7 @@ export default function ShareModal({ isOpen, onClose, title, url }: ShareModalPr
     }
   }, [url, isOpen]);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
+if (!isOpen) return null;
 
   const handleCopy = async () => {
     try {
@@ -104,7 +94,7 @@ export default function ShareModal({ isOpen, onClose, title, url }: ShareModalPr
   };
 
   return (
-    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+    <Modal label="Share this page" onClose={onClose} className="fixed inset-0 z-[150] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div
         className="w-full max-w-lg bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-50 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden animate-in zoom-in-95 duration-200 font-sans"
         role="dialog"
@@ -161,7 +151,7 @@ export default function ShareModal({ isOpen, onClose, title, url }: ShareModalPr
               Page Link
             </p>
             <div className="flex items-center gap-2 p-1.5 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-2xl">
-              <input
+              <input aria-label="Share Url"
                 type="text"
                 readOnly
                 value={shareUrl}
@@ -213,6 +203,6 @@ export default function ShareModal({ isOpen, onClose, title, url }: ShareModalPr
           )}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }

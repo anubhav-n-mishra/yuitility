@@ -87,7 +87,7 @@ export default function ZodiacAgeCalculator({ onCopy }: ZodiacAgeCalculatorProps
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Date of Birth</label>
-            <input
+            <input aria-label="Date of Birth"
               type="date"
               value={dob}
               onChange={(e) => setDob(e.target.value)}

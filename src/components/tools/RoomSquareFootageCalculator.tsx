@@ -117,32 +117,32 @@ export default function RoomSquareFootageCalculator({ onCopy }: RoomSquareFootag
                   className="flex items-center gap-3 p-3 bg-zinc-50 dark:bg-zinc-950/80 rounded-xl border border-zinc-200 dark:border-zinc-800/80"
                 >
                   <div className="w-36">
-                    <input
+                    <input aria-label="Room name"
                       type="text"
                       placeholder="Room name"
                       value={room.name}
                       onChange={(e) => updateRoom(room.id, 'name', e.target.value)}
-                      className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-white text-xs"
+                      className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-zinc-900 dark:text-white text-xs"
                     />
                   </div>
 
                   <div className="flex-1">
-                    <input
+                    <input aria-label="Room length"
                       type="number"
                       placeholder={`Length (${unit})`}
                       value={room.length}
                       onChange={(e) => updateRoom(room.id, 'length', e.target.value)}
-                      className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs"
+                      className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-zinc-900 dark:text-white font-mono text-xs"
                     />
                   </div>
 
                   <div className="flex-1">
-                    <input
+                    <input aria-label="Room width"
                       type="number"
                       placeholder={`Width (${unit})`}
                       value={room.width}
                       onChange={(e) => updateRoom(room.id, 'width', e.target.value)}
-                      className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs"
+                      className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-zinc-900 dark:text-white font-mono text-xs"
                     />
                   </div>
 
@@ -150,7 +150,7 @@ export default function RoomSquareFootageCalculator({ onCopy }: RoomSquareFootag
                     {rArea.toFixed(1)} {unit}²
                   </span>
 
-                  <button
+                  <button aria-label="Remove room"
                     type="button"
                     onClick={() => removeRoom(room.id)}
                     disabled={rooms.length <= 1}
@@ -166,12 +166,12 @@ export default function RoomSquareFootageCalculator({ onCopy }: RoomSquareFootag
           <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Estimated Cost per {unit === 'ft' ? 'sq ft' : 'sq m'}:</label>
             <div className="w-32">
-              <input
+              <input aria-label="Estimated Cost per :"
                 type="number"
                 step="0.5"
                 value={pricePerUnit}
                 onChange={(e) => setPricePerUnit(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-white font-mono text-xs text-right"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-zinc-900 dark:text-white font-mono text-xs text-right"
               />
             </div>
           </div>

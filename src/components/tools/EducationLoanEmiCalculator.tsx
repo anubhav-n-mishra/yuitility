@@ -1,3 +1,4 @@
+import { payment } from '@/src/lib/calculations';
 import React, { useState, useMemo } from 'react';
 import { GraduationCap, BookOpen, Percent, ShieldCheck } from 'lucide-react';
 import CurrencySelector from '@/src/components/CurrencySelector';
@@ -31,7 +32,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
     const r = interestRate / 12 / 100;
     const n = repaymentTenureYears * 12;
 
-    const emi = (effectivePrincipal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const emi = payment(effectivePrincipal, r, n);
     const totalRepayment = emi * n + (payInterestDuringStudy ? moratoriumInterest : 0);
     const totalInterest = totalRepayment - P;
 
@@ -63,7 +64,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Loan Amount (₹)</label>
-            <input
+            <input aria-label="Loan Amount (₹)"
               type="number"
               value={loanAmount}
               step="50000"
@@ -75,7 +76,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (%)</label>
-              <input
+              <input aria-label="Interest Rate (%)"
                 type="number"
                 value={interestRate}
                 step="0.25"
@@ -85,7 +86,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Repayment (Years)</label>
-              <input
+              <input aria-label="Repayment (Years)"
                 type="number"
                 value={repaymentTenureYears}
                 onChange={(e) => setRepaymentTenureYears(Number(e.target.value))}
@@ -97,7 +98,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Course Duration (Years)</label>
-              <input
+              <input aria-label="Course Duration (Years)"
                 type="number"
                 value={courseDurationYears}
                 onChange={(e) => setCourseDurationYears(Number(e.target.value))}
@@ -106,7 +107,7 @@ export default function EducationLoanEmiCalculator({ onCopy }: EducationLoanEmiC
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Grace Period (Months)</label>
-              <input
+              <input aria-label="Grace Period (Months)"
                 type="number"
                 value={moratoriumGraceMonths}
                 onChange={(e) => setMoratoriumGraceMonths(Number(e.target.value))}

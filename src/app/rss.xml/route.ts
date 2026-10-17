@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { BLOG_POSTS } from "@/src/lib/blogs";
 import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/src/lib/site";
 
+const xml = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+
 export async function GET() {
   const rssItems = BLOG_POSTS.map((post) => `
     <item>
@@ -17,9 +19,9 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>${SITE_NAME} Journal</title>
+  <title>${xml(SITE_NAME)} Journal</title>
   <link>${SITE_URL}/blog</link>
-  <description>${SITE_DESCRIPTION}</description>
+  <description>${xml(SITE_DESCRIPTION)}</description>
   <language>en-us</language>
   <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
   ${rssItems}

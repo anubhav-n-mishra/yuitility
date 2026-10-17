@@ -35,24 +35,9 @@ export default function ZodiacSunMoonCalculator({ onCopy }: ZodiacSunMoonCalcula
     else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) { sunSign = 'Aquarius ♒'; sunElement = 'Air'; }
     else { sunSign = 'Pisces ♓'; sunElement = 'Water'; }
 
-    // 2. Moon Sign Estimation (Moon takes ~2.5 days per sign = 27.3 day cycle)
-    const signs = [
-      'Aries ♈', 'Taurus ♉', 'Gemini ♊', 'Cancer ♋', 'Leo ♌', 'Virgo ♍',
-      'Libra ♎', 'Scorpio ♏', 'Sagittarius ♐', 'Capricorn ♑', 'Aquarius ♒', 'Pisces ♓'
-    ];
-
-    // Reference moon position (e.g. New Moon Jan 1 2000 was in Capricorn idx 9)
-    const refDate = new Date('2000-01-01T00:00:00');
-    const daysDiff = (d.getTime() - refDate.getTime()) / (1000 * 60 * 60 * 24);
-    const moonProgressDays = ((daysDiff % 27.32166) + 27.32166) % 27.32166;
-    const moonSignIdx = Math.floor((moonProgressDays / 27.32166) * 12);
-    const moonSign = signs[(moonSignIdx + 9) % 12];
-
-    // 3. Ascendant / Rising Sign Estimation (Based on birth hour relative to Sunrise ~6am)
-    const sunSignIdx = signs.findIndex((s) => s.startsWith(sunSign.split(' ')[0]));
-    const hoursFromSunrise = (hour - 6 + 24) % 24;
-    const risingSignOffset = Math.floor(hoursFromSunrise / 2);
-    const risingSign = signs[(sunSignIdx + risingSignOffset) % 12];
+    // A date/time-only approximation cannot establish astronomical moon or rising signs.
+    const moonSign = 'Not calculated';
+    const risingSign = 'Not calculated';
 
     return {
       sunSign,
@@ -73,7 +58,7 @@ export default function ZodiacSunMoonCalculator({ onCopy }: ZodiacSunMoonCalcula
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Date of Birth</label>
-            <input
+            <input aria-label="Date of Birth"
               type="date"
               value={dobDate}
               onChange={(e) => setDobDate(e.target.value)}
@@ -83,7 +68,7 @@ export default function ZodiacSunMoonCalculator({ onCopy }: ZodiacSunMoonCalcula
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Exact Time of Birth (Local Time)</label>
-            <input
+            <input aria-label="Exact Time of Birth (Local Time)"
               type="time"
               value={dobTime}
               onChange={(e) => setDobTime(e.target.value)}
@@ -97,7 +82,7 @@ export default function ZodiacSunMoonCalculator({ onCopy }: ZodiacSunMoonCalcula
           {astrol ? (
             <div className="space-y-5">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-400">The Big Three</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-400">Traditional calendar Sun sign</span>
                 <div className="mt-1 font-display text-3xl font-extrabold text-zinc-900 dark:text-white sm:text-4xl">
                   {astrol.sunSign}
                 </div>
@@ -110,7 +95,7 @@ export default function ZodiacSunMoonCalculator({ onCopy }: ZodiacSunMoonCalcula
                     <Moon className="h-3.5 w-3.5 text-indigo-500" /> Moon Sign
                   </div>
                   <div className="mt-1 font-bold text-zinc-900 dark:text-white">{astrol.moonSign}</div>
-                  <div className="mt-0.5 text-[10px] text-zinc-400">Emotions & Inner Self</div>
+                  <div className="mt-0.5 text-[10px] text-zinc-400">Requires astronomical ephemeris</div>
                 </div>
 
                 <div className="rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-sm dark:border-zinc-800 dark:bg-zinc-800/80">
@@ -118,16 +103,16 @@ export default function ZodiacSunMoonCalculator({ onCopy }: ZodiacSunMoonCalcula
                     <Sun className="h-3.5 w-3.5 text-amber-500" /> Rising / Ascendant
                   </div>
                   <div className="mt-1 font-bold text-zinc-900 dark:text-white">{astrol.risingSign}</div>
-                  <div className="mt-0.5 text-[10px] text-zinc-400">Outer Mask & Persona</div>
+                  <div className="mt-0.5 text-[10px] text-zinc-400">Requires birth location and ephemeris</div>
                 </div>
               </div>
 
               <button
                 type="button"
-                onClick={() => onCopy(`Big Three: Sun in ${astrol.sunSign}, Moon in ${astrol.moonSign}, Rising in ${astrol.risingSign}`)}
+                onClick={() => onCopy(`Calendar estimate: Sun in ${astrol.sunSign}, Moon in ${astrol.moonSign}, Rising in ${astrol.risingSign}`)}
                 className="w-full rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700 dark:bg-cyan-500 dark:text-zinc-950 dark:hover:bg-cyan-400"
               >
-                Copy Big Three Summary
+                Copy Calendar Summary
               </button>
             </div>
           ) : (

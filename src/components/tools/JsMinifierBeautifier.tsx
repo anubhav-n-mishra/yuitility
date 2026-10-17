@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { formatCode } from '@/src/lib/formatCode';
+import React, { useState, useEffect } from 'react';
 import { Code2, Copy, Check } from 'lucide-react';
 
 interface JsMinifierBeautifierProps {
@@ -16,37 +17,18 @@ console.log(calculateTotal(100, 15));`);
   const [mode, setMode] = useState<'minify' | 'beautify'>('minify');
   const [copied, setCopied] = useState(false);
 
-  const minifyJs = (code: string) => {
-    return code
-      .replace(/\/\*[\s\S]*?\*\//g, '') // block comments
-      .replace(/\/\/.*/g, '') // line comments
-      .replace(/\s+/g, ' ') // whitespace collapse
-      .replace(/\s*([{}:;=+\-*\/(),])\s*/g, '$1') // tokens
-      .trim();
+  const [resultJs, setResult] = useState('');
+  const [formatError, setFormatError] = useState('');
+  const transform = async () => {
+    try { const result = await formatCode(js, 'js', mode); setResult(result); setFormatError(''); }
+    catch(error) { setResult(''); setFormatError(error instanceof Error ? error.message : 'Invalid source'); }
   };
+  useEffect(() => {
+    let current = true;
+    formatCode(js, 'js', mode).then(result=>{if(current){setResult(result);setFormatError('');}}).catch(error=>{if(current){setResult('');setFormatError(String(error));}});
+    return ()=>{current=false;};
+  },[js,mode]);
 
-  const beautifyJs = (code: string) => {
-    let min = minifyJs(code);
-    let indent = 0;
-    let out = '';
-    for (let i = 0; i < min.length; i++) {
-      const char = min[i];
-      if (char === '{') {
-        indent += 2;
-        out += ' {\n' + ' '.repeat(indent);
-      } else if (char === '}') {
-        indent = Math.max(0, indent - 2);
-        out += '\n' + ' '.repeat(indent) + '}';
-      } else if (char === ';') {
-        out += ';\n' + ' '.repeat(indent);
-      } else {
-        out += char;
-      }
-    }
-    return out.trim();
-  };
-
-  const resultJs = mode === 'minify' ? minifyJs(js) : beautifyJs(js);
   const origSize = new Blob([js]).size;
   const newSize = new Blob([resultJs]).size;
   const savingsPct = origSize ? Math.round(((origSize - newSize) / origSize) * 100) : 0;
@@ -59,7 +41,7 @@ console.log(calculateTotal(100, 15));`);
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6">{formatError && <p role="alert" className="text-red-600 dark:text-red-400">{formatError}</p>}
       <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
         <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
           <Code2 className="w-5 h-5" />
@@ -85,11 +67,11 @@ console.log(calculateTotal(100, 15));`);
         <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Input Code ({origSize} bytes)</h4>
-            <textarea
+            <textarea aria-label="Js"
               value={js}
               onChange={(e) => setJs(e.target.value)}
               rows={12}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-xs focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-xs focus:outline-none focus:border-indigo-500 resize-none"
             />
           </div>
         </div>
@@ -107,7 +89,7 @@ console.log(calculateTotal(100, 15));`);
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />} Copy Output
               </button>
             </div>
-            <textarea
+            <textarea aria-label="Minified JavaScript"
               readOnly
               value={resultJs}
               rows={12}

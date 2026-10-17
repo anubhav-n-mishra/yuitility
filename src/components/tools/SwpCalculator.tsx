@@ -19,8 +19,10 @@ export default function SwpCalculator() {
 
     let totalWithdrawn = 0;
     for (let i = 0; i < months; i++) {
-      balance = balance * (1 + r) - w;
-      totalWithdrawn += w;
+      const available = balance * (1 + r);
+      const actualWithdrawal = Math.min(w, available);
+      balance = available - actualWithdrawal;
+      totalWithdrawn += actualWithdrawal;
       if (balance <= 0) {
         balance = 0;
         break;
@@ -53,7 +55,7 @@ export default function SwpCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Initial Corpus ({symbol})</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(initialInvestment, currency)}</span>
             </div>
-            <input
+            <input aria-label="Initial Corpus ( ) (slider)"
               type="range"
               min="10000"
               max="2000000"
@@ -69,7 +71,7 @@ export default function SwpCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Monthly Withdrawal ({symbol})</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(monthlyWithdrawal, currency)}</span>
             </div>
-            <input
+            <input aria-label="Monthly Withdrawal ( ) (slider)"
               type="range"
               min="100"
               max="20000"
@@ -85,7 +87,7 @@ export default function SwpCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Expected Annual Return (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{expectedReturn}%</span>
             </div>
-            <input
+            <input aria-label="Expected Annual Return (%) (slider)"
               type="range"
               min="1"
               max="20"
@@ -101,7 +103,7 @@ export default function SwpCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Withdrawal Period (Years)</label>
               <span className="text-blue-600 dark:text-cyan-300">{tenureYears} Years</span>
             </div>
-            <input
+            <input aria-label="Withdrawal Period (Years) (slider)"
               type="range"
               min="1"
               max="30"

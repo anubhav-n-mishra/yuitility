@@ -118,9 +118,9 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "salary-calculator",
-    title: "Salary In-Hand Calculator (India)",
-    description: "Calculate in-hand monthly salary from annual CTC with tax and EPF breakdowns.",
-    longDescription: "Estimate your monthly take-home salary from your Annual CTC based on the latest Indian tax regimes. Calculate EPF, Professional Tax, custom deductions, and compare tax structures visually.",
+    title: "India Salary Calculator",
+    description: "Estimate salary-only take-home pay in INR for FY 2025–26.",
+    longDescription: "Enter CTC, included bonus, basic-pay share and payroll deductions. Employer EPF is removed from CTC; the gross salary including bonus is taxed after the standard deduction. Regular monthly pay excludes the separately paid bonus.",
     category: "finance",
     icon: "Coins",
     popular: false,
@@ -262,8 +262,8 @@ export const TOOLS: Tool[] = [
   {
     id: "format-converter",
     title: "Image Format Converter",
-    description: "Convert images between JPG, PNG, WEBP, and GIF formats instantly.",
-    longDescription: "Convert high-quality images between all modern web formats. Export your photos to WebP for massive size reductions or to PNG for lossless transparency preservation.",
+    description: "Convert images to WebP, PNG or JPEG locally.",
+    longDescription: "Choose an image, select WebP, PNG or JPEG output and run the conversion. The canvas export creates a still image; it does not preserve animation or provide GIF/AVIF output.",
     category: "media",
     icon: "Repeat",
     popular: true,
@@ -272,9 +272,9 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "pdf-compressor",
-    title: "PDF Compressor",
-    description: "Reduce the file size of PDF documents securely in your browser.",
-    longDescription: "Optimize PDF structures by rebuilding them natively in your browser to shave off unnecessary metadata and unreferenced streams, lowering overall file size.",
+    title: "PDF Structure Optimizer",
+    description: "Optimize PDF structure and metadata without uploading.",
+    longDescription: "Choose a PDF and run the single optimization action. It removes metadata and rewrites PDF object streams; it does not recompress embedded images or offer quality presets. Compare the result size and inspect the downloaded document.",
     category: "pdf",
     icon: "ArrowDownToLine",
     popular: true,
@@ -404,9 +404,9 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "retirement-calculator",
-    title: "Retirement Age & Fund Calculator",
-    description: "Plan your retirement nest egg, required monthly savings, and inflation impact.",
-    longDescription: "Calculate how much money you need to retire comfortably based on current expenses, inflation rates, expected returns, and target retirement age.",
+    title: "Retirement Scenario Calculator",
+    description: "Compare retirement targets and contribution growth assumptions.",
+    longDescription: "Choose an inflation-adjusted target, FIRE target or contribution-growth scenario. Enter the assumptions shown in that mode. Projections assume constant returns; 2026 account contribution limits are held flat and do not determine eligibility.",
     category: "finance",
     icon: "PiggyBank",
     popular: true,
@@ -470,14 +470,14 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "zodiac-sun-moon-calculator",
-    title: "Zodiac Sun & Moon Sign Calculator",
-    description: "Find your Big Three astrological signs: Sun, Moon, and Rising/Ascendant.",
-    longDescription: "Discover your astrological Big Three (Sun, Moon, and Rising Sign) using your birth date and exact time of birth, with elemental balance and trait insights.",
+    title: "Calendar Zodiac Sign Explorer",
+    description: "Explore traditional calendar Sun signs. Astronomical Moon and rising signs are not calculated.",
+    longDescription: "Explore conventional calendar Sun-sign date ranges for entertainment. Moon and rising signs are not calculated; this is not an astronomical ephemeris.",
     category: "utility",
     icon: "Compass",
     popular: true,
     recentlyAdded: true,
-    cta: "Find Sun & Moon"
+    cta: "Explore Calendar Sign"
   },
   {
     id: "bmi-calculator",
@@ -492,9 +492,9 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "death-calculator",
-    title: "Life Expectancy & Longevity Calculator",
-    description: "Estimate statistical lifespan based on age, gender, habits, and lifestyle factors.",
-    longDescription: "Analyze statistical longevity and estimated life expectancy based on actuarial tables, diet, physical activity, stress levels, and personal health habits.",
+    title: "Life Horizon Illustration",
+    description: "Visualize time to a hypothetical planning age, not a predicted lifespan.",
+    longDescription: "Enter your current age and a later hypothetical planning age. The tool subtracts the two and converts the time span into approximate days using a 365.2425-day average year. It uses no medical data and predicts no health outcome.",
     category: "health",
     icon: "Activity",
     popular: true,
@@ -569,9 +569,9 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "mortgage-calculator",
-    title: "Mortgage Calculator",
-    description: "Calculate total monthly mortgage payment including PITI, PMI, and HOA fees.",
-    longDescription: "Comprehensive home mortgage calculator that breaks down Principal, Interest, Property Tax, Home Insurance, PMI, and monthly HOA fees into total PITI.",
+    title: "Mortgage Payment Calculator",
+    description: "Estimate a fixed-rate mortgage with explicit fees and housing costs.",
+    longDescription: "Select a loan model and enter a lender rate, down payment and repayment period. VA purchase loans use the stated funding-fee options and no PMI. For other models, enter quoted insurance or fees. The schedule shows principal and interest, not an eligibility decision.",
     category: "finance",
     icon: "Building",
     popular: true,
@@ -723,9 +723,9 @@ export const TOOLS: Tool[] = [
   },
   {
     id: "income-tax-calculator",
-    title: "Income Tax Calculator",
-    description: "Estimate annual income tax liability, tax slabs, and net take-home salary.",
-    longDescription: "Calculate progressive income tax liability, deduction savings, and net annual take-home pay.",
+    title: "India Salary Income Tax Calculator",
+    description: "Calculate FY 2025–26 new-regime salary tax in INR.",
+    longDescription: "Enter annual gross salary, including bonus, and resident rebate eligibility. The tool applies the ₹75,000 standard deduction and shows each new-regime slab, rebate, marginal relief and cess. Salary-only cases up to ₹50 lakh are supported.",
     category: "finance",
     icon: "Receipt",
     popular: false,
@@ -856,7 +856,7 @@ export const TOOLS: Tool[] = [
   {
     id: "currency-converter",
     title: "Global Currency Converter",
-    description: "Convert foreign exchange currencies instantly with live mid-market rate estimations.",
+    description: "Calculate currency cross-rates using fixed illustrative assumptions; not live market quotes.",
     longDescription: "Convert USD, EUR, GBP, INR, AUD, CAD, JPY, AED, and SGD exchange rates instantly in your browser.",
     category: "conversion",
     icon: "Coins",
@@ -941,7 +941,7 @@ export const TOOLS: Tool[] = [
   // Education & Mathematics
   { id: "percentage-calculator", title: "Percentage Calculator", description: "Calculate percentage changes, differences, and fractions.", longDescription: "Calculate percentage increases, decreases, discounts, and relative proportions.", category: "math", icon: "Calculator", popular: true, recentlyAdded: true, cta: "Calculate Percentage" },
   { id: "cgpa-calculator", title: "CGPA Calculator", description: "Calculate Cumulative Grade Point Average across semesters.", longDescription: "Calculate semester CGPA and overall academic grade point average.", category: "math", icon: "Calculator", popular: false, recentlyAdded: true, cta: "Calculate CGPA" },
-  { id: "cgpa-to-percentage-calculator", title: "CGPA to Percentage Converter", description: "Convert university CGPA scores to equivalent percentage marks.", longDescription: "Convert 10-point and 4-point CGPA scores into equivalent academic percentages.", category: "math", icon: "Repeat", popular: false, recentlyAdded: true, cta: "Convert Score" },
+  { id: "cgpa-to-percentage-calculator", title: "CGPA to Percentage Converter", description: "Apply a chosen formula; verify the rule for your course and cohort.", longDescription: "Choose the exact formula required by your regulation or enter a custom multiplier and offset. Check the score scale before calculating. Results outside 0–100% are rejected instead of clipped. No academic classification is inferred.", category: "math", icon: "Repeat", popular: false, recentlyAdded: true, cta: "Convert Score" },
   { id: "gpa-calculator", title: "GPA Calculator (4.0 Scale)", description: "Calculate high school and college GPA with weighted credit hours.", longDescription: "Calculate unweighted and weighted GPA based on course grades and credits.", category: "math", icon: "Calculator", popular: false, recentlyAdded: true, cta: "Calculate GPA" },
   { id: "date-difference-calculator", title: "Date Difference Calculator", description: "Calculate exact days, weeks, months between two dates.", longDescription: "Calculate total days, business days, and time intervals between any two dates.", category: "math", icon: "Calendar", popular: true, recentlyAdded: true, cta: "Calculate Days" },
   { id: "mode-frequency-calculator", title: "Mode & Frequency Calculator", description: "Find statistical mode and value frequencies in data sets.", longDescription: "Find statistical mode, frequency distribution, and modal values.", category: "math", icon: "BarChart3", popular: false, recentlyAdded: true, cta: "Find Mode" },
@@ -990,7 +990,7 @@ export const TOOLS: Tool[] = [
   { id: "text-cleaner", title: "Text Cleaner & Extra Space Remover", description: "Strip HTML tags, collapse extra whitespace, and join paragraphs.", longDescription: "Clean messy copied text by stripping tags, extra spaces, and empty lines.", category: "developer", icon: "Eraser", popular: true, recentlyAdded: true, cta: "Clean Text" },
   { id: "css-minifier-beautifier", title: "CSS Minifier & Formatter", description: "Minify or beautify CSS stylesheets with compression size metrics.", longDescription: "Compress CSS files or format dirty CSS with clean indentation.", category: "developer", icon: "Code", popular: true, recentlyAdded: true, cta: "Minify CSS" },
   { id: "js-minifier-beautifier", title: "JavaScript Minifier & Formatter", description: "Minify JS scripts or format JavaScript code cleanly.", longDescription: "Compress JavaScript files or beautify messy code structures.", category: "developer", icon: "Code2", popular: true, recentlyAdded: true, cta: "Minify JS" },
-  { id: "html-formatter", title: "HTML Formatter & Minifier", description: "Beautify dirty HTML markup or collapse HTML for fast page loads.", longDescription: "Format HTML document trees or minify HTML markup.", category: "developer", icon: "FileCode", popular: false, recentlyAdded: true, cta: "Format HTML" },
+  { id: "html-formatter", title: "HTML Formatter", description: "Format HTML while preserving significant whitespace.", longDescription: "Format HTML or preserve the original markup without collapsing visible spaces.", category: "developer", icon: "FileCode", popular: false, recentlyAdded: true, cta: "Format HTML" },
   { id: "json-to-csv-converter", title: "JSON to CSV Converter", description: "Convert JSON array data into downloadable CSV spreadsheets.", longDescription: "Transform JSON data arrays into formatted CSV files with custom delimiters.", category: "developer", icon: "ArrowRightLeft", popular: true, recentlyAdded: true, cta: "Convert to CSV" },
   { id: "color-format-converter", title: "Color Format Converter (HEX, RGB, HSL)", description: "Convert color codes across HEX, RGB, HSL, CMYK, and CSS variables.", longDescription: "Convert color values seamlessly across HEX, RGB, HSL, and CMYK formats.", category: "developer", icon: "Palette", popular: true, recentlyAdded: true, cta: "Convert Color" },
   { id: "pomodoro-timer", title: "Pomodoro Focus Timer", description: "Boost productivity with 25-minute focus cycles and break alarms.", longDescription: "Stay focused with Pomodoro work and break interval timers.", category: "utility", icon: "Clock", popular: true, recentlyAdded: true, cta: "Start Timer" },
@@ -1011,10 +1011,10 @@ export const TOOLS: Tool[] = [
   { id: "image-color-picker", title: "Image Eyedropper & Color Picker", description: "Upload any image to pick pixel color codes (HEX, RGB) instantly.", longDescription: "Extract exact pixel color hex codes from uploaded images locally.", category: "media", icon: "Pipette", popular: true, recentlyAdded: true, cta: "Pick Color" },
   { id: "image-flipper", title: "Image Flip & Rotate Tool", description: "Flip images horizontally, vertically, or rotate by 90-degree angles.", longDescription: "Mirror or rotate image orientation in-browser.", category: "media", icon: "RotateCw", popular: false, recentlyAdded: true, cta: "Flip Image" },
   { id: "svg-to-png-converter", title: "SVG to PNG Converter", description: "Convert SVG vector images into high-resolution PNG downloads.", longDescription: "Rasterize vector SVG files to high-definition PNG images.", category: "media", icon: "FileCode", popular: true, recentlyAdded: true, cta: "Convert SVG" },
-  { id: "password-strength-checker", title: "Password Strength & Audit Checker", description: "Evaluate password security score, entropy, and character rules.", longDescription: "Analyze password strength, entropy bits, and vulnerabilities 100% locally.", category: "developer", icon: "ShieldCheck", popular: true, recentlyAdded: true, cta: "Check Password" },
+  { id: "password-strength-checker", title: "Password Pattern Checker", description: "Check password length, character variety and common patterns locally.", longDescription: "A local password-pattern heuristic; not a breach lookup or proof of password strength.", category: "developer", icon: "ShieldCheck", popular: true, recentlyAdded: true, cta: "Check Password" },
   { id: "text-encryptor", title: "Text Encryptor & Decryptor (AES)", description: "Encrypt sensitive text with a secret key passphrase securely.", longDescription: "Encrypt and decrypt text strings using local secret key passphrases.", category: "developer", icon: "Lock", popular: false, recentlyAdded: true, cta: "Encrypt Text" },
   { id: "file-hash-verifier", title: "File SHA-256 Hash Verifier", description: "Compute and verify SHA-256 checksums for local files to check integrity.", longDescription: "Compute file SHA-256 checksums locally in browser using Web Crypto.", category: "developer", icon: "ShieldCheck", popular: true, recentlyAdded: true, cta: "Verify Hash" },
-  { id: "exif-data-viewer", title: "Photo EXIF Metadata Inspector", description: "View embedded camera EXIF data and metadata from image files.", longDescription: "Inspect hidden EXIF metadata fields from digital photographs.", category: "media", icon: "Eye", popular: false, recentlyAdded: true, cta: "View EXIF" }
+  { id: "exif-data-viewer", title: "Photo EXIF Metadata Inspector", description: "Inspect supported camera and GPS EXIF tags in local JPEG files.", longDescription: "Read supported EXIF tags from a JPEG; missing fields are not inferred. PNG, HEIC and metadata removal are not supported.", category: "media", icon: "Eye", popular: false, recentlyAdded: true, cta: "View EXIF" }
 ];
 
 export const CATEGORIES = [

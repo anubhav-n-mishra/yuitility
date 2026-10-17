@@ -53,21 +53,21 @@ export default function CountdownTimer({ onCopy }: CountdownTimerProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Event Title / Name</label>
-            <input
+            <input aria-label="Event Title / Name"
               type="text"
               value={eventName}
               onChange={(e) => setEventName(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Target Date & Time</label>
-            <input
+            <input aria-label="Target Date & Time"
               type="datetime-local"
               value={targetDate}
               onChange={(e) => setTargetDate(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

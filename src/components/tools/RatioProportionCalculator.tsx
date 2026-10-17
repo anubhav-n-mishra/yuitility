@@ -129,40 +129,40 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
 
         <div className="flex flex-wrap items-center gap-3 font-mono text-sm">
           <div className="flex items-center gap-2">
-            <input
+            <input aria-label="Proportion first numerator"
               type="number"
               placeholder="A"
               value={propA}
               onChange={(e) => setPropA(e.target.value)}
-              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
             <span className="text-zinc-500 dark:text-zinc-500 font-bold">:</span>
-            <input
+            <input aria-label="Proportion first denominator"
               type="number"
               placeholder="B"
               value={propB}
               onChange={(e) => setPropB(e.target.value)}
-              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <span className="text-indigo-600 dark:text-indigo-400 font-bold text-lg">=</span>
 
           <div className="flex items-center gap-2">
-            <input
+            <input aria-label="Proportion second numerator"
               type="number"
               placeholder="C"
               value={propC}
               onChange={(e) => setPropC(e.target.value)}
-              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-20 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
             <span className="text-zinc-500 dark:text-zinc-500 font-bold">:</span>
-            <input
+            <input aria-label="Proportion second denominator"
               type="number"
               placeholder="D (blank)"
               value={propD}
               onChange={(e) => setPropD(e.target.value)}
-              className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white focus:outline-none focus:border-indigo-500"
+              className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>
@@ -194,18 +194,18 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-4">Reduce a 2-part ratio to simplest integer terms.</p>
 
             <div className="flex items-center gap-3 font-mono mb-4">
-              <input
+              <input aria-label="Ratio first value"
                 type="number"
                 value={simpA}
                 onChange={(e) => setSimpA(e.target.value)}
-                className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white"
+                className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-zinc-900 dark:text-white"
               />
               <span className="text-zinc-500 dark:text-zinc-500 font-bold">:</span>
-              <input
+              <input aria-label="Ratio second value"
                 type="number"
                 value={simpB}
                 onChange={(e) => setSimpB(e.target.value)}
-                className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-white"
+                className="w-24 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center text-zinc-900 dark:text-white"
               />
             </div>
           </div>
@@ -236,20 +236,20 @@ export default function RatioProportionCalculator({ onCopy }: RatioProportionCal
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div>
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Total Amount</label>
-                <input
+                <input aria-label="Total Amount"
                   type="number"
                   value={totalSum}
                   onChange={(e) => setTotalSum(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Ratio (e.g. 2 : 3 : 5)</label>
-                <input
+                <input aria-label="Ratio (e.g. 2 : 3 : 5)"
                   type="text"
                   value={ratioParts}
                   onChange={(e) => setRatioParts(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
             </div>

@@ -71,7 +71,7 @@ export default function SipCalculator({
     const r = expectedReturn / 100 / 12;
     const totalMonths = duration * 12;
 
-    if (P <= 0 || expectedReturn <= 0 || duration <= 0) {
+    if (P <= 0 || expectedReturn < 0 || duration <= 0) {
       return {
         totalInvested: 0,
         estimatedReturns: 0,
@@ -244,7 +244,7 @@ export default function SipCalculator({
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Monthly Investment</label>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-zinc-400 font-bold">{getCurrency(currency).symbol}</span>
-                <input
+                <input aria-label="Monthly Investment"
                   type="number"
                   value={monthlyInvestment}
                   step="500"
@@ -253,7 +253,7 @@ export default function SipCalculator({
                 />
               </div>
             </div>
-            <input
+            <input aria-label="Monthly Investment (slider)"
               type="range"
               min="500"
               max="500000"
@@ -272,7 +272,7 @@ export default function SipCalculator({
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Expected Annual Return (% p.a.)</label>
-              <input
+              <input aria-label="Expected Annual Return (% p.a.)"
                 type="number"
                 step="0.1"
                 value={expectedReturn}
@@ -280,7 +280,7 @@ export default function SipCalculator({
                 className="w-24 text-right px-2 py-1 text-sm font-semibold rounded border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 outline-none focus:border-emerald-500 font-mono"
               />
             </div>
-            <input
+            <input aria-label="Expected Annual Return (% p.a.) (slider)"
               type="range"
               min="1"
               max="30"
@@ -321,14 +321,14 @@ export default function SipCalculator({
           <div className="space-y-2">
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Investment Duration (Years)</label>
-              <input
+              <input aria-label="Investment Duration (Years)"
                 type="number"
                 value={duration}
                 onChange={(e) => setDuration(Math.max(1, parseInt(e.target.value) || 1))}
                 className="w-20 text-right px-2 py-1 text-sm font-semibold rounded border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 outline-none focus:border-emerald-500 font-mono"
               />
             </div>
-            <input
+            <input aria-label="Investment Duration (Years) (slider)"
               type="range"
               min="1"
               max="40"
@@ -374,7 +374,7 @@ export default function SipCalculator({
                   </label>
                   <span className="text-xs font-bold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-mono">{stepUpPercent}%</span>
                 </div>
-                <input
+                <input aria-label="Annual Increment Rate (% each year) (slider)"
                   type="range"
                   min="5"
                   max="25"
@@ -429,7 +429,7 @@ export default function SipCalculator({
               <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
                 <label className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Assumed Inflation Rate</label>
                 <div className="flex items-center gap-1">
-                  <input
+                  <input aria-label="Assumed Inflation Rate"
                     type="number"
                     value={inflationRate}
                     min="1"

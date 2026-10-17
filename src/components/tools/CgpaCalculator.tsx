@@ -109,7 +109,7 @@ export default function CgpaCalculator({ onCopy }: CgpaCalculatorProps) {
                 </span>
 
                 <div className="flex-1">
-                  <input
+                  <input aria-label={`${sem.name} SGPA`}
                     type="number"
                     step="0.01"
                     min="0"
@@ -117,19 +117,19 @@ export default function CgpaCalculator({ onCopy }: CgpaCalculatorProps) {
                     placeholder="SGPA (e.g. 8.5)"
                     value={sem.sgpa}
                     onChange={(e) => updateSemester(sem.id, 'sgpa', e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 
                 <div className="w-28">
-                  <input
+                  <input aria-label={`${sem.name} credits`}
                     type="number"
                     step="1"
                     min="1"
                     placeholder="Credits"
                     value={sem.credits}
                     onChange={(e) => updateSemester(sem.id, 'credits', e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 
@@ -197,22 +197,22 @@ export default function CgpaCalculator({ onCopy }: CgpaCalculatorProps) {
             <div className="grid grid-cols-2 gap-3 mb-3">
               <div>
                 <label className="text-[11px] text-zinc-500 dark:text-zinc-400 block mb-1">Target CGPA</label>
-                <input
+                <input aria-label="Target CGPA"
                   type="number"
                   step="0.01"
                   value={targetCgpa}
                   onChange={(e) => setTargetCgpa(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-900 dark:text-white font-mono"
                 />
               </div>
               <div>
                 <label className="text-[11px] text-zinc-500 dark:text-zinc-400 block mb-1">Remaining Credits</label>
-                <input
+                <input aria-label="Remaining Credits"
                   type="number"
                   step="1"
                   value={remainingCredits}
                   onChange={(e) => setRemainingCredits(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-900 dark:text-white font-mono"
                 />
               </div>
             </div>

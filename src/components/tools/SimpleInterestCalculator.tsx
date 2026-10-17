@@ -54,7 +54,7 @@ export default function SimpleInterestCalculator({ onCopy }: SimpleInterestCalcu
 
           <div>
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Principal Amount ({currObj.symbol})</label>
-            <input
+            <input aria-label="Principal Amount ( )"
               type="number"
               value={principal}
               step="5000"
@@ -66,7 +66,7 @@ export default function SimpleInterestCalculator({ onCopy }: SimpleInterestCalcu
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Annual Interest Rate (%)</label>
-              <input
+              <input aria-label="Annual Interest Rate (%)"
                 type="number"
                 value={rate}
                 step="0.25"
@@ -77,13 +77,13 @@ export default function SimpleInterestCalculator({ onCopy }: SimpleInterestCalcu
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Tenure Duration</label>
               <div className="flex gap-1">
-                <input
+                <input aria-label="Tenure Duration"
                   type="number"
                   value={timeValue}
                   onChange={(e) => setTimeValue(Number(e.target.value))}
                   className="w-1/2 rounded-xl border border-zinc-300 bg-white px-2 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
                 />
-                <select
+                <select aria-label="Tenure Duration"
                   value={timeUnit}
                   onChange={(e) => setTimeUnit(e.target.value as TimeUnit)}
                   className="w-1/2 rounded-xl border border-zinc-300 bg-white px-1 py-2 text-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"

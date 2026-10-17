@@ -17,39 +17,34 @@ import { getAllToolPresets } from "@/src/lib/toolPresets";
  * both, and carrying them invites the fiction that they do something.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Calibrated release date instead of dynamically asserting every page was modified
-  // at the exact build instant (which causes search engines to ignore lastmod).
-  const baselineRelease = new Date("2026-09-06");
+  // Omit dates where no reliable per-page update history exists.
 
   const toolUrls = LIVE_TOOLS.map((tool) => ({
     url: absoluteUrl(toolPath(tool.id)),
-    lastModified: baselineRelease,
   }));
 
   const presetUrls = getAllToolPresets().map((preset) => ({
     url: absoluteUrl(`/tools/${preset.toolId}/${preset.presetSlug}`),
-    lastModified: baselineRelease,
   }));
 
   const categoryUrls = CATEGORIES.filter(
     (c) => c.id !== "all" && liveToolsInCategory(c.id).length > 0,
   ).map((category) => ({
     url: absoluteUrl(`/category/${category.id}`),
-    lastModified: baselineRelease,
   }));
 
   const blogPostUrls = BLOG_POSTS.map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.updated ?? post.date),
   }));
 
   return [
-    { url: absoluteUrl("/"), lastModified: baselineRelease },
-    { url: absoluteUrl("/tools"), lastModified: baselineRelease },
-    { url: absoluteUrl("/blog"), lastModified: baselineRelease },
-    { url: absoluteUrl("/about"), lastModified: baselineRelease },
-    { url: absoluteUrl("/contact"), lastModified: baselineRelease },
-    { url: absoluteUrl("/sitemap"), lastModified: baselineRelease },
+    { url: absoluteUrl("/") },
+    { url: absoluteUrl("/tools") },
+    { url: absoluteUrl("/blog") },
+    { url: absoluteUrl("/about") },
+    { url: absoluteUrl("/contact") },
+    { url: absoluteUrl("/sitemap") },
     ...categoryUrls,
     ...toolUrls,
     ...presetUrls,

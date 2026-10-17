@@ -73,29 +73,29 @@ export default function PaintVolumeCalculator({ onCopy }: PaintVolumeCalculatorP
           <div className="grid grid-cols-3 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Length</label>
-              <input
+              <input aria-label="Length"
                 type="number"
                 value={length}
                 onChange={(e) => setLength(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Width</label>
-              <input
+              <input aria-label="Width"
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Ceiling Height</label>
-              <input
+              <input aria-label="Ceiling Height"
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -103,22 +103,22 @@ export default function PaintVolumeCalculator({ onCopy }: PaintVolumeCalculatorP
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Doors (Deduct 21 sq ft)</label>
-              <input
+              <input aria-label="Doors (Deduct 21 sq ft)"
                 type="number"
                 min="0"
                 value={doors}
                 onChange={(e) => setDoors(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Windows (Deduct 15 sq ft)</label>
-              <input
+              <input aria-label="Windows (Deduct 15 sq ft)"
                 type="number"
                 min="0"
                 value={windows}
                 onChange={(e) => setWindows(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>

@@ -73,21 +73,21 @@ export default function CementMortarCalculator({ onCopy }: CementMortarCalculato
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Surface Area (sq ft)</label>
-              <input
+              <input aria-label="Surface Area (sq ft)"
                 type="number"
                 value={areaSqFt}
                 onChange={(e) => setAreaSqFt(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Thickness (Inches)</label>
-              <input
+              <input aria-label="Thickness (Inches)"
                 type="number"
                 step="0.125"
                 value={thicknessIn}
                 onChange={(e) => setThicknessIn(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>

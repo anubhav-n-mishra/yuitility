@@ -209,7 +209,7 @@ export default function JsonFormatter({ onCopy, onShare }: JsonFormatterProps) {
             <label className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Raw JSON payload</label>
             <div className="flex items-center gap-3">
               <span className="text-xs text-zinc-500">Indent:</span>
-              <select
+              <select aria-label="Raw JSON payload"
                 value={indentSpace}
                 onChange={(e) => setIndentSpace(parseInt(e.target.value))}
                 className="text-xs bg-zinc-50 border border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800 rounded px-2 py-0.5 outline-none"
@@ -221,7 +221,7 @@ export default function JsonFormatter({ onCopy, onShare }: JsonFormatterProps) {
             </div>
           </div>
 
-          <textarea
+          <textarea aria-label="Raw JSON payload"
             rows={15}
             value={inputJson}
             onChange={(e) => setInputJson(e.target.value)}

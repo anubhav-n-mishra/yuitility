@@ -85,7 +85,6 @@ import {
 import { CATEGORIES, Tool } from '../types';
 import { LIVE_TOOLS as TOOLS } from '@/src/lib/toolRegistry';
 import Header from '../components/Header';
-import CookieBanner from '../components/CookieBanner';
 import HoverFooter from '../components/ui/hover-footer';
 import DottedSurfaceHero from '../components/DottedSurfaceHero';
 // import CinematicHeroText from '../components/CinematicHeroText';
@@ -155,17 +154,11 @@ const IconMap: { [key: string]: React.ComponentType<any> } = {
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  useEffect(() => { const sync = () => { setSearchQuery(new URLSearchParams(window.location.search).get('q') ?? ''); setCurrentPage(1); }; sync(); window.addEventListener('popstate', sync); return () => window.removeEventListener('popstate', sync); }, []);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const ITEMS_PER_PAGE = 24;
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      return document.documentElement.classList.contains('dark');
-    }
-    return false;
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  useEffect(() => { setDarkMode(document.documentElement.classList.contains('dark')); }, []);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [isMac, setIsMac] = useState<boolean>(false);
   const [starredTools, setStarredTools] = useState<string[]>([]);
@@ -280,6 +273,8 @@ export default function Home() {
   // Filter main grid based on active category and sort order
   const filteredTools = useMemo(() => {
     let list = TOOLS.filter((t) => {
+      const query = searchQuery.trim().toLowerCase();
+      if (query && !`${t.title} ${t.description}`.toLowerCase().includes(query)) return false;
       if (activeCategory === 'starred') {
         return starredTools.includes(t.id);
       }
@@ -300,7 +295,7 @@ export default function Home() {
       list = [...list].sort((a, b) => a.title.localeCompare(b.title));
     }
     return list;
-  }, [activeCategory, sortBy, starredTools, recentlyUsedToolIds]);
+  }, [activeCategory, sortBy, starredTools, recentlyUsedToolIds, searchQuery]);
 
   const totalPages = Math.max(1, Math.ceil(filteredTools.length / ITEMS_PER_PAGE));
   const paginatedTools = useMemo(() => {
@@ -336,12 +331,12 @@ export default function Home() {
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black font-display text-zinc-900 dark:text-zinc-50 tracking-tight leading-[1.1]">
             Free Online Browser Tools &amp; Calculators<br />
             <span className="bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-hover)] bg-clip-text text-transparent">
-              100% Private, In Your Browser
+              Tools that work in your browser
             </span>
           </h1>
 
           <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 font-medium max-w-2xl mx-auto leading-relaxed">
-            Zero signups. Zero server uploads. Every single calculation, image transformation, and PDF operation executes entirely inside your browser memory for uncompromising privacy and speed.
+            Calculate, convert and work with files in your browser without signing up. File processing stays on your device. Optional AI chat and contact messages use servers.
           </p>
 
           {/* Hero CTAs */}
@@ -371,7 +366,7 @@ export default function Home() {
           <div className="pt-4 max-w-2xl mx-auto">
             <div className="py-3.5 px-6 rounded-2xl bg-zinc-50/80 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800/80 backdrop-blur-sm grid grid-cols-3 divide-x divide-zinc-200 dark:divide-zinc-800 text-center shadow-sm">
               <div className="px-2 space-y-0.5">
-                <div className="text-sm sm:text-base font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">100% Local Privacy</div>
+                <div className="text-sm sm:text-base font-extrabold text-zinc-900 dark:text-zinc-50 tracking-tight">Local file processing</div>
                 <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">Executes inside browser</div>
               </div>
               <div className="px-2 space-y-0.5">
@@ -380,7 +375,7 @@ export default function Home() {
               </div>
               <div className="px-2 space-y-0.5">
                 <div className="text-sm sm:text-base font-extrabold text-blue-600 dark:text-blue-400 tracking-tight">{TOOLS.length} Free Fast Tools</div>
-                <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">No signups or limits</div>
+                <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400">No signup required</div>
               </div>
             </div>
           </div>
@@ -391,7 +386,7 @@ export default function Home() {
           <div id="tools-directory" className="max-w-7xl mx-auto space-y-6 scroll-mt-24">
             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
               <div className="relative flex-1 group z-50" role="search">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-hover)] rounded-2xl blur opacity-15 group-hover:opacity-25 transition duration-300"></div>
+                <div className="pointer-events-none absolute -inset-0.5 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-hover)] rounded-2xl blur opacity-15 group-hover:opacity-25 transition duration-300"></div>
                 <div className="relative flex items-center bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-sm hover:shadow-md transition-all focus-within:ring-2 focus-within:ring-[var(--accent-primary)]">
                   <Search className="absolute left-4 w-5 h-5 text-zinc-400 group-focus-within:text-[var(--accent-primary)] transition-colors" aria-hidden="true" />
                   <label htmlFor="tool-search" className="sr-only">Search tools</label>
@@ -402,7 +397,7 @@ export default function Home() {
                     placeholder={`Search ${TOOLS.length}+ free tools, calculators...`}
                     className="w-full bg-transparent border-none py-3.5 pl-12 pr-20 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none rounded-2xl text-base"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); const url = new URL(window.location.href); if (e.target.value) url.searchParams.set('q', e.target.value); else url.searchParams.delete('q'); window.history.replaceState(null, '', url); }}
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
                     <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md">
@@ -411,69 +406,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Command-Palette Style Dropdown */}
-                {searchQuery.trim().length > 0 && (
-                  <div className="absolute left-0 right-0 top-full mt-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl overflow-hidden z-[100] text-left">
-                    <div className="max-h-[380px] overflow-y-auto p-2 space-y-1 custom-scrollbar">
-                      {searchResults.length === 0 ? (
-                        <div className="p-4 space-y-4 text-center">
-                          <div className="p-4 bg-[var(--accent-glow)] border border-[var(--accent-primary)]/10 rounded-2xl text-left space-y-2">
-                            <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                              Can&apos;t find &quot;{searchQuery}&quot;?
-                            </h4>
-                            <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                              Request this tool now and we will build and add it to Yuitility within 24 hours!
-                            </p>
-                            <button
-                              onClick={() => { setSearchQuery(''); openContactModal('request'); }}
-                              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm transition-all"
-                            >
-                              Request &quot;{searchQuery}&quot; (24h Add)
-                            </button>
-                          </div>
+                {searchQuery && <button type="button" aria-label="Clear search" onClick={() => {setSearchQuery('');setCurrentPage(1);const url=new URL(window.location.href);url.searchParams.delete('q');window.history.replaceState(null,'',url);}} className="mt-2 min-h-9 px-2 text-sm text-blue-700 dark:text-blue-300 underline">Clear search</button>}
 
-                          <div className="text-left pt-2">
-                            <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-2">Suggested Tools</p>
-                            <div className="space-y-1">
-                              {suggestedTools.map((t) => {
-                                const Icon = IconMap[t.icon] || Calculator;
-                                return (
-                                  <a
-                                    key={t.id}
-                                    href={`/tools/${t.id}`}
-                                    className="w-full flex items-center gap-3 p-2 hover:bg-zinc-50 dark:hover:bg-zinc-800/40 rounded-xl transition-colors text-left"
-                                  >
-                                    <Icon className="w-4 h-4 text-[var(--accent-primary)]" />
-                                    <span className="text-xs font-bold text-zinc-800 dark:text-zinc-200">{t.title}</span>
-                                  </a>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        searchResults.map((t) => {
-                          const Icon = IconMap[t.icon] || Calculator;
-                          return (
-                            <a
-                              key={t.id}
-                              href={`/tools/${t.id}`}
-                              className="w-full flex items-start gap-4 p-3 hover:bg-zinc-50 dark:hover:bg-zinc-800/40 rounded-xl transition-colors text-left group"
-                            >
-                              <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg text-[var(--accent-primary)] group-hover:scale-110 transition-transform">
-                                <Icon className="w-5 h-5" />
-                              </div>
-                              <div>
-                                <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">{t.title}</h4>
-                                <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-1 mt-0.5">{t.description}</p>
-                              </div>
-                            </a>
-                          );
-                        })
-                      )}
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Layout Toggler & Sort controls */}
@@ -598,12 +532,13 @@ export default function Home() {
             Free Browser Utilities Catalog
           </h2>
           <div className="flex items-center justify-between text-xs font-bold text-zinc-500 dark:text-zinc-400">
-            <span>
+            <span role="status" aria-live="polite">
               Showing {filteredTools.length > 0 ? (currentPage - 1) * ITEMS_PER_PAGE + 1 : 0} - {Math.min(currentPage * ITEMS_PER_PAGE, filteredTools.length)} of {filteredTools.length} tools
             </span>
             <span>Page {currentPage} of {totalPages}</span>
           </div>
 
+          {filteredTools.length === 0 && <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6 text-center"><h3 className="font-semibold">No matching tools</h3><p className="mt-2 text-sm">Try a shorter search or choose All Tools.</p><button onClick={() => openContactModal('request')} className="mt-4 min-h-11 px-4 rounded-xl bg-blue-700 text-white">Request a tool</button></div>}
           {/* MAIN LISTINGS - SWITCHABLE VIEW MODES */}
           {layoutMode === 'grid' && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -849,7 +784,7 @@ export default function Home() {
       {/* Interactive Hover Footer */}
       <HoverFooter />
 
-      <CookieBanner />
+
     </div>
   );
 }

@@ -37,42 +37,42 @@ export default function CryptoProfitCalculator({ onCopy }: CryptoProfitCalculato
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Initial Investment ($)</label>
-            <input
+            <input aria-label="Initial Investment ($)"
               type="number"
               value={investment}
               onChange={(e) => setInvestment(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Trading Fee (%)</label>
-            <input
+            <input aria-label="Trading Fee (%)"
               type="number"
               step="0.05"
               value={feePct}
               onChange={(e) => setFeePct(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Buy Price per Coin ($)</label>
-            <input
+            <input aria-label="Buy Price per Coin ($)"
               type="number"
               value={buyPrice}
               onChange={(e) => setBuyPrice(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Sell Price per Coin ($)</label>
-            <input
+            <input aria-label="Sell Price per Coin ($)"
               type="number"
               value={sellPrice}
               onChange={(e) => setSellPrice(parseFloat(e.target.value) || 0)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

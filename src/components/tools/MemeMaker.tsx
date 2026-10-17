@@ -186,7 +186,7 @@ export default function MemeMaker({ onCopy, onShare }: MemeMakerProps) {
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Click to upload a base image</p>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Processed entirely locally.</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -211,7 +211,7 @@ export default function MemeMaker({ onCopy, onShare }: MemeMakerProps) {
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Top Text</label>
                   <div className="relative">
                     <Type className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-                    <input
+                    <input aria-label="Top Text"
                       type="text"
                       value={topText}
                       onChange={(e) => setTopText(e.target.value.toUpperCase())}
@@ -225,7 +225,7 @@ export default function MemeMaker({ onCopy, onShare }: MemeMakerProps) {
                   <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Bottom Text</label>
                   <div className="relative">
                     <Type className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
-                    <input
+                    <input aria-label="Bottom Text"
                       type="text"
                       value={bottomText}
                       onChange={(e) => setBottomText(e.target.value.toUpperCase())}

@@ -65,7 +65,7 @@ export default function CompoundInterestCalculator({
     const t = years;
     const n = compoundFreq;
 
-    if (P < 0 || annualRate <= 0 || years <= 0) return null;
+    if (P < 0 || annualRate < 0 || years <= 0) return null;
 
     let currentBalance = P;
     let totalInvested = P;
@@ -160,7 +160,7 @@ export default function CompoundInterestCalculator({
             <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">
               Initial Principal ({currObj?.symbol || '$'})
             </label>
-            <input
+            <input aria-label="Initial Principal ( )"
               type="number"
               value={initialPrincipal}
               step="1000"
@@ -173,7 +173,7 @@ export default function CompoundInterestCalculator({
             <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">
               Monthly Contribution ({currObj?.symbol || '$'})
             </label>
-            <input
+            <input aria-label="Monthly Contribution ( )"
               type="number"
               value={monthlyContribution}
               step="100"
@@ -185,7 +185,7 @@ export default function CompoundInterestCalculator({
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Annual Return (%)</label>
-              <input
+              <input aria-label="Annual Return (%)"
                 type="number"
                 value={annualRate}
                 step="0.5"
@@ -195,7 +195,7 @@ export default function CompoundInterestCalculator({
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Time Horizon (Years)</label>
-              <input
+              <input aria-label="Time Horizon (Years)"
                 type="number"
                 value={years}
                 onChange={(e) => setYears(Number(e.target.value))}

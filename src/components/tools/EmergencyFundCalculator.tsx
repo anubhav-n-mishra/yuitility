@@ -43,7 +43,7 @@ export default function EmergencyFundCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Monthly Essential Expenses</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(monthlyExpenses, currency)}</span>
             </div>
-            <input
+            <input aria-label="Monthly Essential Expenses (slider)"
               type="range"
               min="500"
               max="30000"
@@ -59,7 +59,7 @@ export default function EmergencyFundCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Safety Buffer (Months)</label>
               <span className="text-blue-600 dark:text-cyan-300">{targetMonths} Months</span>
             </div>
-            <input
+            <input aria-label="Safety Buffer (Months) (slider)"
               type="range"
               min="3"
               max="12"
@@ -75,7 +75,7 @@ export default function EmergencyFundCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Current Liquid Savings</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(currentSavings, currency)}</span>
             </div>
-            <input
+            <input aria-label="Current Liquid Savings (slider)"
               type="range"
               min="0"
               max="200000"

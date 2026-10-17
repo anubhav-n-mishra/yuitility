@@ -1,4 +1,5 @@
 "use client";
+import { conventionalIrr } from '@/src/lib/numeric';
 
 import { useMemo, useState } from "react";
 import CurrencySelector from "@/src/components/CurrencySelector";
@@ -12,32 +13,7 @@ export default function IrrCalculator() {
   const [year3Cash, setYear3Cash] = useState(18000);
   const [year4Cash, setYear4Cash] = useState(22000);
 
-  const irr = useMemo(() => {
-    const cf0 = -Math.abs(initialOutflow);
-    const cfs = [cf0, year1Cash, year2Cash, year3Cash, year4Cash];
-
-    // Newton-Raphson approximation for IRR
-    let rate = 0.1; // initial guess 10%
-    for (let iter = 0; iter < 100; iter++) {
-      let npv = 0;
-      let dNpv = 0;
-      for (let t = 0; t < cfs.length; t++) {
-        npv += cfs[t] / Math.pow(1 + rate, t);
-        dNpv -= (t * cfs[t]) / Math.pow(1 + rate, t + 1);
-      }
-      if (Math.abs(npv) < 0.0001) break;
-      if (Math.abs(dNpv) < 1e-10) break;
-      const nextRate = rate - npv / dNpv;
-      if (Math.abs(nextRate - rate) < 0.00001) {
-        rate = nextRate;
-        break;
-      }
-      rate = nextRate;
-    }
-
-    const irrPercent = rate * 100;
-    return isFinite(irrPercent) && !isNaN(irrPercent) ? irrPercent : 0;
-  }, [initialOutflow, year1Cash, year2Cash, year3Cash, year4Cash]);
+  const irr = useMemo(() => conventionalIrr(initialOutflow,[year1Cash,year2Cash,year3Cash,year4Cash]), [initialOutflow,year1Cash,year2Cash,year3Cash,year4Cash]);
 
   const totalInflows = year1Cash + year2Cash + year3Cash + year4Cash;
   const netCashflow = totalInflows - initialOutflow;
@@ -47,7 +23,7 @@ export default function IrrCalculator() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-4">
         <div>
           <h2 className="text-xl font-bold text-zinc-900 dark:text-white">IRR Calculator (Internal Rate of Return)</h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400">Calculate annual internal rate of return for multi-year cash flow streams.</p>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">Equal annual periods, one positive initial outflow and nonnegative later inflows. Mixed-sign cash flows can have multiple IRRs and are not supported.</p>
         </div>
         <CurrencySelector value={currency} onChange={setCurrency} />
       </div>
@@ -56,7 +32,7 @@ export default function IrrCalculator() {
         <div className="space-y-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/50">
           <div>
             <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">Initial Outflow (Year 0)</label>
-            <input
+            <input aria-label="Initial Outflow (Year 0)"
               type="number"
               value={initialOutflow}
               onChange={(e) => setInitialOutflow(Number(e.target.value))}
@@ -67,7 +43,7 @@ export default function IrrCalculator() {
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">Year 1 Cashflow</label>
-              <input
+              <input aria-label="Year 1 Cashflow"
                 type="number"
                 value={year1Cash}
                 onChange={(e) => setYear1Cash(Number(e.target.value))}
@@ -76,7 +52,7 @@ export default function IrrCalculator() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">Year 2 Cashflow</label>
-              <input
+              <input aria-label="Year 2 Cashflow"
                 type="number"
                 value={year2Cash}
                 onChange={(e) => setYear2Cash(Number(e.target.value))}
@@ -85,7 +61,7 @@ export default function IrrCalculator() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">Year 3 Cashflow</label>
-              <input
+              <input aria-label="Year 3 Cashflow"
                 type="number"
                 value={year3Cash}
                 onChange={(e) => setYear3Cash(Number(e.target.value))}
@@ -94,7 +70,7 @@ export default function IrrCalculator() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1">Year 4 Cashflow</label>
-              <input
+              <input aria-label="Year 4 Cashflow"
                 type="number"
                 value={year4Cash}
                 onChange={(e) => setYear4Cash(Number(e.target.value))}
@@ -108,7 +84,7 @@ export default function IrrCalculator() {
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-300">Internal Rate of Return (IRR)</p>
             <p className="mt-2 text-4xl font-extrabold text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">
-              {irr.toFixed(2)}%
+              {irr === null ? 'No unique result in supported model' : `${irr.toFixed(2)}%`}
             </p>
           </div>
 

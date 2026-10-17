@@ -73,12 +73,12 @@ export default function TextToAsciiArt({ onCopy }: TextToAsciiArtProps) {
 
         <div className="space-y-2">
           <label className="text-xs text-zinc-500 dark:text-zinc-400">Text String (Max 12 Chars)</label>
-          <input
+          <input aria-label="Text String (Max 12 Chars)"
             type="text"
             maxLength={12}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
           />
         </div>
       </div>

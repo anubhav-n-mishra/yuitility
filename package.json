@@ -1,7 +1,7 @@
 {
   "name": "yuitility",
   "version": "1.0.0",
-  "description": "Client-side, privacy-first web utility toolkit featuring 132+ instant-use in-browser tools with zero server data uploads.",
+  "description": "Client-side, privacy-first web utility toolkit featuring 167+ instant-use in-browser tools with local file processing and optional server-backed AI chat.",
   "author": "Anubhav Mishra",
   "license": "SEE LICENSE IN LICENSE",
   "repository": {
@@ -37,13 +37,16 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "node scripts/lint.mjs",
-    "test": "npm run indexnow:test && npm run seo:audit",
+    "test": "npm run indexnow:test && npm run test:calculators && npm run test:validation && npm run seo:audit",
     "test:unit": "tsx scripts/indexnow.test.ts",
     "verify": "npm run typecheck && npm run lint && npm run test && npm run build",
     "seo:audit": "node scripts/seo-audit.mjs",
-    "prebuild": "node scripts/seo-audit.mjs",
+    "prebuild": "npm run generate:tool-index && node scripts/seo-audit.mjs",
     "indexnow:sync": "tsx scripts/indexnow-sync.ts",
-    "indexnow:test": "tsx scripts/indexnow.test.ts"
+    "indexnow:test": "tsx scripts/indexnow.test.ts",
+    "test:calculators": "tsx --test scripts/calculators.test.ts",
+    "test:validation": "node scripts/validate-tools.cjs",
+    "generate:tool-index": "tsx scripts/generate-tool-index.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^10.5.0",
@@ -52,6 +55,7 @@
     "@types/nodemailer": "^8.0.1",
     "@types/three": "^0.185.3",
     "clsx": "^2.1.1",
+    "css-tree": "^3.2.1",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "framer-motion": "^12.43.0",
@@ -61,16 +65,19 @@
     "motion": "^12.23.24",
     "next": "^16.2.10",
     "next-themes": "^0.4.6",
-    "nodemailer": "^9.0.3",
+    "nodemailer": "^10.1.2",
     "pdf-lib": "^1.17.1",
+    "prettier": "^3.9.10",
     "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.6.0",
+    "terser": "^5.51.2",
     "three": "^0.185.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
+    "@types/css-tree": "^3.2.0",
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "@types/qrcode": "^1.5.6",

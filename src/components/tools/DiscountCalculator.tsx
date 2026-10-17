@@ -39,7 +39,7 @@ export default function DiscountCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Original Price</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(originalPrice, currency)}</span>
             </div>
-            <input
+            <input aria-label="Original Price (slider)"
               type="range"
               min="5"
               max="5000"
@@ -55,7 +55,7 @@ export default function DiscountCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Discount Off (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{discountPercent}%</span>
             </div>
-            <input
+            <input aria-label="Discount Off (%) (slider)"
               type="range"
               min="1"
               max="95"

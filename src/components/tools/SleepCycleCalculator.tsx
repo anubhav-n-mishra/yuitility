@@ -98,11 +98,11 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
           {mode === 'wakeAt' ? (
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Target Wake Up Time</label>
-              <input
+              <input aria-label="Target Wake Up Time"
                 type="time"
                 value={wakeTime}
                 onChange={(e) => setWakeTime(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
               />
             </div>
           ) : (
@@ -115,7 +115,7 @@ export default function SleepCycleCalculator({ onCopy }: SleepCycleCalculatorPro
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Time to Fall Asleep ({latencyMins} minutes)
             </label>
-            <input
+            <input aria-label="Time to Fall Asleep ( minutes) (slider)"
               type="range"
               min="5"
               max="45"

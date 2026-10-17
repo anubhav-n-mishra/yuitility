@@ -87,11 +87,11 @@ export default function OvulationCalculator({ onCopy }: OvulationCalculatorProps
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               First Day of Last Menstrual Period (LMP)
             </label>
-            <input
+            <input aria-label="First Day of Last Menstrual Period (LMP)"
               type="date"
               value={lmpDate}
               onChange={(e) => setLmpDate(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-rose-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-rose-500"
             />
           </div>
 
@@ -100,7 +100,7 @@ export default function OvulationCalculator({ onCopy }: OvulationCalculatorProps
               Average Cycle Length ({cycleDays} days)
             </label>
             <div className="flex items-center gap-3">
-              <input
+              <input aria-label="Average Cycle Length ( days) (slider)"
                 type="range"
                 min="21"
                 max="40"

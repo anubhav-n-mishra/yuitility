@@ -18,8 +18,8 @@ export default function FactorialCalculator({ onCopy }: FactorialCalculatorProps
   const [nVal, setNVal] = useState<string>('20');
   const [copied, setCopied] = useState<boolean>(false);
 
-  const n = parseInt(nVal, 10);
-  const isValid = !isNaN(n) && n >= 0 && n <= 1000;
+  const n = nVal.trim() ? Number(nVal) : NaN;
+  const isValid = Number.isInteger(n) && n >= 0 && n <= 1000;
 
   const result = (() => {
     if (!isValid) return null;
@@ -85,13 +85,13 @@ export default function FactorialCalculator({ onCopy }: FactorialCalculatorProps
           </div>
         </div>
 
-        <input
+        <input aria-label="Enter Non-Negative Integer (n!)"
           type="number"
           min="0"
           max="1000"
           value={nVal}
           onChange={(e) => setNVal(e.target.value)}
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
         />
 
         {!isValid && (

@@ -69,15 +69,7 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
 
   const gpa = totalCredits > 0 ? totalPoints / totalCredits : null;
 
-  let honors = '';
-  if (gpa !== null) {
-    if (gpa >= 3.9) honors = 'Summa Cum Laude';
-    else if (gpa >= 3.7) honors = 'Magna Cum Laude';
-    else if (gpa >= 3.5) honors = 'Cum Laude / Dean\'s List';
-    else if (gpa >= 3.0) honors = 'Good Academic Standing';
-    else if (gpa >= 2.0) honors = 'Satisfactory Academic Progress';
-    else honors = 'Academic Warning / Probation';
-  }
+  const honors = 'Institution-specific standing is not determined';
 
   const handleCopy = () => {
     if (gpa === null) return;
@@ -113,20 +105,20 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
                 className="flex items-center gap-2.5 p-3 bg-zinc-50 dark:bg-zinc-950/80 rounded-xl border border-zinc-200 dark:border-zinc-800/80"
               >
                 <div className="flex-1">
-                  <input
+                  <input aria-label="Course name"
                     type="text"
                     placeholder="Course name"
                     value={course.name}
                     onChange={(e) => updateCourse(course.id, 'name', e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-zinc-900 dark:text-white text-xs focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 
                 <div className="w-24">
-                  <select
+                  <select aria-label="Course grade"
                     value={course.grade}
                     onChange={(e) => updateCourse(course.id, 'grade', e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-2 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-2 text-zinc-900 dark:text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
                   >
                     {Object.keys(GRADE_POINTS).map((g) => (
                       <option key={g} value={g}>
@@ -137,14 +129,14 @@ export default function GpaCalculator({ onCopy }: GpaCalculatorProps) {
                 </div>
 
                 <div className="w-24">
-                  <input
+                  <input aria-label="Course credits"
                     type="number"
                     min="1"
                     max="10"
                     placeholder="Credits"
                     value={course.credits}
                     onChange={(e) => updateCourse(course.id, 'credits', e.target.value)}
-                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg px-3 py-2 text-zinc-900 dark:text-white font-mono text-xs focus:outline-none focus:border-indigo-500"
                   />
                 </div>
 

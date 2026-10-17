@@ -51,7 +51,7 @@ export default function BusinessLoanEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Loan Amount ({symbol})</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(loanAmount, currency)}</span>
             </div>
-            <input
+            <input aria-label="Loan Amount ( ) (slider)"
               type="range"
               min="5000"
               max="2000000"
@@ -67,7 +67,7 @@ export default function BusinessLoanEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Interest Rate (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{interestRate}%</span>
             </div>
-            <input
+            <input aria-label="Interest Rate (%) (slider)"
               type="range"
               min="6"
               max="30"
@@ -83,7 +83,7 @@ export default function BusinessLoanEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Tenure (Years)</label>
               <span className="text-blue-600 dark:text-cyan-300">{tenureYears} Years</span>
             </div>
-            <input
+            <input aria-label="Tenure (Years) (slider)"
               type="range"
               min="1"
               max="15"

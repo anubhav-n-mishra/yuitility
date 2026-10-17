@@ -127,33 +127,33 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
             <div className="flex items-center gap-3">
               <div className="w-24">
                 <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Whole (optional)</label>
-                <input
+                <input aria-label="Whole (optional)"
                   type="number"
                   placeholder="e.g. 1"
                   value={whole}
                   onChange={(e) => setWhole(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-center font-mono text-white text-base"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-center font-mono text-zinc-900 dark:text-white text-base"
                 />
               </div>
 
               <div className="flex-1 space-y-2">
                 <div>
                   <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Numerator</label>
-                  <input
+                  <input aria-label="Numerator"
                     type="number"
                     value={numerator}
                     onChange={(e) => setNumerator(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center font-mono text-white text-base"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center font-mono text-zinc-900 dark:text-white text-base"
                   />
                 </div>
                 <div className="h-0.5 bg-zinc-200 dark:bg-zinc-700 rounded-full" />
                 <div>
                   <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Denominator</label>
-                  <input
+                  <input aria-label="Denominator"
                     type="number"
                     value={denominator}
                     onChange={(e) => setDenominator(e.target.value)}
-                    className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center font-mono text-white text-base"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-center font-mono text-zinc-900 dark:text-white text-base"
                   />
                 </div>
               </div>
@@ -201,12 +201,12 @@ export default function FractionToDecimal({ onCopy }: FractionToDecimalProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Enter Decimal Number</h3>
-            <input
+            <input aria-label="Decimal Input"
               type="number"
               step="any"
               value={decimalInput}
               onChange={(e) => setDecimalInput(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
 

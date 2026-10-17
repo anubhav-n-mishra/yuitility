@@ -41,10 +41,10 @@ export default function SpeedDistanceTimeCalculator({ onCopy }: SpeedDistanceTim
             <Gauge className="w-5 h-5" />
             <h3 className="font-semibold text-zinc-900 dark:text-white">Speed, Distance & Time Solver</h3>
           </div>
-          <select
+          <select aria-label="Value to calculate"
             value={solveFor}
             onChange={(e) => setSolveFor(e.target.value as any)}
-            className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-1.5 text-white text-xs font-semibold focus:outline-none"
+            className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-1.5 text-zinc-900 dark:text-white text-xs font-semibold focus:outline-none"
           >
             <option value="speed">Solve for Speed (S = D / T)</option>
             <option value="distance">Solve for Distance (D = S × T)</option>
@@ -56,11 +56,11 @@ export default function SpeedDistanceTimeCalculator({ onCopy }: SpeedDistanceTim
           {solveFor !== 'speed' && (
             <div className="space-y-1">
               <label className="text-xs text-zinc-500 dark:text-zinc-400">Speed (km/h or mph)</label>
-              <input
+              <input aria-label="Speed (km/h or mph)"
                 type="number"
                 value={speed}
                 onChange={(e) => setSpeed(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}
@@ -68,11 +68,11 @@ export default function SpeedDistanceTimeCalculator({ onCopy }: SpeedDistanceTim
           {solveFor !== 'distance' && (
             <div className="space-y-1">
               <label className="text-xs text-zinc-500 dark:text-zinc-400">Distance (km or miles)</label>
-              <input
+              <input aria-label="Distance (km or miles)"
                 type="number"
                 value={distance}
                 onChange={(e) => setDistance(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}
@@ -80,11 +80,11 @@ export default function SpeedDistanceTimeCalculator({ onCopy }: SpeedDistanceTim
           {solveFor !== 'time' && (
             <div className="space-y-1">
               <label className="text-xs text-zinc-500 dark:text-zinc-400">Time (Hours)</label>
-              <input
+              <input aria-label="Time (Hours)"
                 type="number"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
           )}

@@ -95,20 +95,20 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Area (sq ft)</label>
-              <input
+              <input aria-label="Room Area (sq ft)"
                 type="number"
                 value={areaSqFt}
                 onChange={(e) => setAreaSqFt(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-base focus:outline-none focus:border-indigo-500"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Ceiling Height (ft)</label>
-              <input
+              <input aria-label="Ceiling Height (ft)"
                 type="number"
                 value={ceilingHeight}
                 onChange={(e) => setCeilingHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-base focus:outline-none focus:border-indigo-500"
               />
             </div>
           </div>
@@ -155,12 +155,12 @@ export default function AcBtuCalculator({ onCopy }: AcBtuCalculatorProps) {
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Room Occupants</label>
-              <input
+              <input aria-label="Room Occupants"
                 type="number"
                 min="1"
                 value={occupants}
                 onChange={(e) => setOccupants(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div className="flex items-center pt-5">

@@ -2,8 +2,8 @@
 
 # Yuitility
 
-**132+ client-side developer and utility tools running 100% in-browser with zero server uploads and complete privacy.**  
-*Everything runs 100% locally in your browser. No server uploads. No telemetry. No sign-ups.*
+**167 browser tools for calculations, text, images and PDFs.**
+*File processing happens on your device. Optional AI chat and contact messages use servers. No sign-up required.*
 
 [![Yuitility CI](https://github.com/anubhav-n-mishra/yuitility/actions/workflows/ci.yml/badge.svg)](https://github.com/anubhav-n-mishra/yuitility/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/anubhav-n-mishra/yuitility/actions/workflows/codeql.yml/badge.svg)](https://github.com/anubhav-n-mishra/yuitility/actions/workflows/codeql.yml)
@@ -24,23 +24,23 @@ Most web calculators, image converters, and PDF tools suffer from two major flaw
 1. **Privacy Exposure**: They force you to upload sensitive files (tax forms, salary slips, private contracts, client images) to unknown cloud servers just to merge a page or resize a photo.
 2. **Friction and Bloat**: They clutter the screen with aggressive ads, paywalls, slow round-trips, and artificial rate limits.
 
-**Yuitility solves this fundamentally through browser engineering.**  
-By leveraging modern Web standards (HTML5 Canvas, Web Workers, WebAssembly, Web Crypto, and in-memory streams), all operations execute **entirely inside your browser thread**. When you manipulate a 50MB PDF or compute an amortization schedule, **not a single byte of your data ever leaves your computer.**
+**Yuitility solves this fundamentally through browser engineering.**
+File tools use Canvas, Web Workers, WebAssembly, Web Crypto and in-memory streams to process files locally. Optional AI chat sends messages through the server to the selected provider; contact forms also use the server. Hosting requests and external resource downloads remain network activity.
 
 ---
 
 ## Features and Capabilities
 
-* **Zero Data Ingestion**: True client-side execution. Files exist strictly in volatile browser RAM and are purged when the tab is closed.
-* **Zero Network Latency**: Instant transformations and calculations with zero server round-trips.
-* **132+ Interactive Tools**:
+* **Local file processing**: Uploaded tool files are processed in browser memory. Downloads are saved by the browser; preferences may persist locally.
+* **Browser calculations**: Calculators run locally after their code loads. Some tools need additional libraries, models or external data.
+* **167+ Interactive Tools**:
   * **Developer Utilities**: JSON Formatter & Validator, Base64 En/Decoder, JWT Inspector, Regex Tester, Hash Generator, QR Code Engine, Fake Data Generator.
   * **PDF Suite**: Merge, Split, Compress, Rotate, Watermark, Image to PDF, Metadata Editor (powered by in-memory `pdf-lib`).
   * **Media & Image Tools**: In-browser AI Background Remover, Image Compressor, Resizer, Format Converter (PNG/JPEG/WebP), Meme Maker, Photo Collage Grid.
   * **Financial Engines**: Home Loan EMI with Prepayment & Tax Savings, SIP Compound Forecaster with Step-Up inflation models, Salary / Take-Home Estimator.
-  * **Academic Conversions**: University-specific CGPA-to-Percentage engines calibrated to official circulars (Anna University, VTU, Mumbai University, KTU, CBSE, AICTE).
+  * **Academic Conversions**: CGPA formula scenarios and custom scales. Institutional applicability must be checked against the user's actual course and regulations.
   * **Math, Lifestyle & Converters**: Scientific Calculator, Unit Converter, Unix Timestamp Engine, Time Zone Calculator, BMI / Body Metric Analyzers.
-* **PWA and Offline Ready**: Service worker caching allows tools to work offline on planes, trains, and unstable connections.
+* **PWA caching**: Previously loaded tools may work offline. Uncached code, models, external data and AI chat require a connection.
 * **Embeddable Widgets**: Distraction-free, responsive iframe widgets (`/embed/[slug]`) for documentation and developer blogs.
 
 ---
@@ -53,12 +53,12 @@ User Input ──> In-Memory File Buffer ──> WebAssembly / Web Workers ─�
                                      (Zero Server Hops)
 ```
 
-* **Framework**: [Next.js 16 (App Router)](https://nextjs.org/) with Full Static Site Generation (SSG).
+* **Framework**: [Next.js 16 (App Router)](https://nextjs.org/) with statically generated content pages and server API routes.
 * **Language**: [TypeScript 5.8](https://www.typescriptlang.org/) configured with strict type-safety.
 * **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) with high-contrast Dark Mode support.
 * **Core Libraries**: `pdf-lib`, `@imgly/background-removal`, `framer-motion`, `lucide-react`.
 * **CI/CD & Security**: GitHub Actions (Node 20 & 22 matrix), GitHub CodeQL SAST, Dependabot.
-* **SEO & Guardrails**: Custom static AST validation (`scripts/seo-audit.mjs`) ensuring 100% compliant schema, metadata, and zero broken links across 350+ generated pages.
+* **SEO checks**: Registry integrity, metadata and internal-link checks, plus a production-preview HTTP crawl. These checks do not establish rankings, accessibility certification or the correctness of every tool.
 
 For full architectural blueprints, see [docs/architecture.md](docs/architecture.md).
 

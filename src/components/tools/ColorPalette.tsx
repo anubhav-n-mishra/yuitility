@@ -230,13 +230,13 @@ export default function ColorPalette({ onCopy, onShare }: ColorPaletteProps) {
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Pick Base Color</label>
                 <div className="flex gap-2 items-center">
-                  <input
+                  <input aria-label="Pick Base Color"
                     type="color"
                     value={baseColor}
                     onChange={(e) => setBaseColor(e.target.value)}
                     className="w-9 h-9 rounded border overflow-hidden cursor-pointer bg-transparent"
                   />
-                  <input
+                  <input aria-label="Pick Base Color"
                     type="text"
                     value={baseColor}
                     onChange={(e) => setBaseColor(e.target.value)}
@@ -247,7 +247,7 @@ export default function ColorPalette({ onCopy, onShare }: ColorPaletteProps) {
 
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500">Harmony Model</label>
-                <select
+                <select aria-label="Harmony Model"
                   value={harmonyMode}
                   onChange={(e) => setHarmonyMode(e.target.value as any)}
                   className="w-full px-3 py-2 text-xs bg-white dark:bg-zinc-950 rounded border border-zinc-200 dark:border-zinc-800 outline-none text-zinc-950 dark:text-zinc-50"
@@ -297,13 +297,13 @@ export default function ColorPalette({ onCopy, onShare }: ColorPaletteProps) {
               <div className="space-y-1">
                 <label className="text-[10px] font-semibold text-zinc-500">Text Hex</label>
                 <div className="flex gap-1.5 items-center">
-                  <input
+                  <input aria-label="Text Hex"
                     type="color"
                     value={textColor}
                     onChange={(e) => setTextColor(e.target.value)}
                     className="w-7 h-7 rounded border overflow-hidden cursor-pointer bg-transparent"
                   />
-                  <input
+                  <input aria-label="Text Hex"
                     type="text"
                     value={textColor}
                     onChange={(e) => setTextColor(e.target.value)}
@@ -315,13 +315,13 @@ export default function ColorPalette({ onCopy, onShare }: ColorPaletteProps) {
               <div className="space-y-1">
                 <label className="text-[10px] font-semibold text-zinc-500">Background Hex</label>
                 <div className="flex gap-1.5 items-center">
-                  <input
+                  <input aria-label="Background Hex"
                     type="color"
                     value={contrastBgColor}
                     onChange={(e) => setContrastBgColor(e.target.value)}
                     className="w-7 h-7 rounded border overflow-hidden cursor-pointer bg-transparent"
                   />
-                  <input
+                  <input aria-label="Background Hex"
                     type="text"
                     value={contrastBgColor}
                     onChange={(e) => setContrastBgColor(e.target.value)}

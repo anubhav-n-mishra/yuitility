@@ -184,7 +184,7 @@ export default function LoremIpsumGenerator({ onCopy, onShare }: LoremProps) {
                   {count} {type}
                 </span>
               </div>
-              <input
+              <input aria-label="Amount to generate (slider)"
                 type="range"
                 min={type === 'words' ? 10 : 1}
                 max={type === 'words' ? 250 : type === 'sentences' ? 30 : 15}
@@ -248,7 +248,7 @@ export default function LoremIpsumGenerator({ onCopy, onShare }: LoremProps) {
           </div>
 
           <div className="relative">
-            <textarea
+            <textarea aria-label="Text"
               readOnly
               value={text}
               className="w-full h-96 p-5 font-serif text-sm leading-relaxed rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-800 dark:text-zinc-200 outline-none resize-none shadow-sm focus:ring-2 focus:ring-rose-500/20"

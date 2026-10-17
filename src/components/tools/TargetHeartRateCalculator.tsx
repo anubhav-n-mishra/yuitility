@@ -130,13 +130,13 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Age (Years)</label>
-            <input
+            <input aria-label="Age (Years)"
               type="number"
               min="10"
               max="100"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-base"
             />
           </div>
 
@@ -144,13 +144,13 @@ export default function TargetHeartRateCalculator({ onCopy }: TargetHeartRateCal
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
               Resting Heart Rate (BPM upon waking)
             </label>
-            <input
+            <input aria-label="Resting Heart Rate (BPM upon waking)"
               type="number"
               min="30"
               max="120"
               value={restingHr}
               onChange={(e) => setRestingHr(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-base"
             />
           </div>
         </div>

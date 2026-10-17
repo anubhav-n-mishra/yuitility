@@ -1,4 +1,5 @@
 "use client";
+import { evaluateExpression } from "@/src/lib/expression";
 
 import React, { useState, useEffect, useCallback } from "react";
 import { RefreshCw, Copy, History, Share2 } from "lucide-react";
@@ -20,7 +21,7 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
 
   const handleDigit = useCallback((digit: string) => {
     setDisplay((prev) => {
-      if (prev === "0" || shouldResetDisplay) {
+      if (prev === "0" || prev === "Error" || shouldResetDisplay) {
         setShouldResetDisplay(false);
         return digit;
       }
@@ -67,26 +68,20 @@ export default function StandardCalculator({ onCopy, onShare, onTriggerShareToas
       if (shouldResetDisplay && prev.endsWith("=")) {
         return `${display} ${op} `;
       }
+      if (shouldResetDisplay && expression && !expression.endsWith("=")) return expression.replace(/[+×÷-]\s*$/, `${op} `);
       return `${expression}${display} ${op} `;
     });
     setShouldResetDisplay(true);
   }, [display, expression, shouldResetDisplay]);
 
   const handleEquals = useCallback(() => {
-    if (!expression && !shouldResetDisplay) return;
+    if (!expression || expression.endsWith("=")) return;
     
     const fullExpr = expression + display;
     try {
-      // Safe mathematical evaluation
-      const sanitized = fullExpr
-        .replace(/×/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/--/g, "+");
-      
-      // eslint-disable-next-line no-eval
-      const calcResult = Function(`"use strict"; return (${sanitized})`)();
+      const calcResult = evaluateExpression(fullExpr);
       const formatted = Number.isFinite(calcResult)
-        ? String(Math.round(calcResult * 1e10) / 1e10)
+        ? String(Number(calcResult.toPrecision(13)))
         : "Error";
 
       setDisplay(formatted);

@@ -44,10 +44,10 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
   const [rVal, setRVal] = useState<string>('3');
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const n = parseInt(nVal, 10);
-  const r = parseInt(rVal, 10);
+  const n = nVal.trim() ? Number(nVal) : NaN;
+  const r = rVal.trim() ? Number(rVal) : NaN;
 
-  const isValid = !isNaN(n) && !isNaN(r) && n >= 0 && r >= 0 && r <= n && n <= 500;
+  const isValid = Number.isInteger(n) && Number.isInteger(r) && n >= 0 && r >= 0 && r <= n && n <= 500;
 
   const results = (() => {
     if (!isValid) return null;
@@ -76,8 +76,8 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
     return {
       nPr: nPr.toString(),
       nCr: nCr.toString(),
-      nPowR: nPowR ? nPowR.toString() : '—',
-      nCrRep: nCrRep ? nCrRep.toString() : '—',
+      nPowR: nPowR !== null ? nPowR.toString() : '—',
+      nCrRep: nCrRep !== null ? nCrRep.toString() : '—',
     };
   })();
 
@@ -97,24 +97,24 @@ export default function PermutationCombinationCalculator({ onCopy }: Permutation
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Total Items in Set (n)</label>
-            <input
+            <input aria-label="Total Items in Set (n)"
               type="number"
               min="0"
               max="500"
               value={nVal}
               onChange={(e) => setNVal(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Items to Choose (r)</label>
-            <input
+            <input aria-label="Items to Choose (r)"
               type="number"
               min="0"
               max={nVal}
               value={rVal}
               onChange={(e) => setRVal(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

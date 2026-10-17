@@ -61,15 +61,8 @@ function ScrollReveal({ children, delay = 0 }: { children: React.ReactNode; dela
 }
 
 export default function AboutPageClient() {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      return document.documentElement.classList.contains('dark');
-    }
-    return false;
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  useEffect(() => { setDarkMode(document.documentElement.classList.contains('dark')); }, []);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [accentColor, setAccentColor] = useState<'blue' | 'emerald' | 'indigo' | 'rose' | 'amber'>('blue');
 
@@ -125,7 +118,7 @@ export default function AboutPageClient() {
       {/* Main Navigation (Sticky Dock) */}
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1"><section className="mx-auto max-w-5xl px-5 py-6 text-sm text-zinc-700 dark:text-zinc-300"><h2 className="font-semibold text-lg mb-2">Verification and maintenance</h2><p>Yuitility is maintained by Anubhav Mishra; the source repository is linked below. Financial and academic tools are estimates with stated assumptions, not certified advice. We publish model scope and sources where available and test calculation boundaries. We do not claim that every tool has been reviewed by a subject-matter professional. To report an incorrect result, include the tool URL, inputs, expected output and source through Contact.</p><p className="mt-2">Local tools process their inputs in your browser. Optional AI chat sends messages to a server and provider. Read the <a href="/privacy" className="underline">privacy details</a> before using chat.</p></section>
         {/* EDITORIAL HERO SECTION */}
         <section className="relative pt-40 pb-20 px-6 sm:px-8 border-b border-zinc-200/30 dark:border-zinc-900">
           <DottedSurfaceHero isDark={darkMode} />
@@ -168,7 +161,7 @@ export default function AboutPageClient() {
                       We believe web tools should not trade functionality for your personal information.
                     </p>
                     <p>
-                      Yuitility is a local-first platform designed to run completely inside your browser's sandboxed memory. File compression, syntax conversions, and PDF formatting execute locally on your CPU - meaning zero network uploads, zero latency, and absolute file safety.
+                      Yuitility is a local-first platform designed to run completely inside your browser's sandboxed memory. File compression, syntax conversions, and PDF formatting execute locally on your CPU - keeping input files in the browser. The optional AI assistant and contact form use servers; local processing is not a guarantee of absolute security.
                     </p>
                   </div>
                 </ScrollReveal>
@@ -214,7 +207,7 @@ export default function AboutPageClient() {
                 </div>
                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">Zero Transmission</h3>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                  We believe that the safest place for your private files, salary charts, and API tokens is on your own hard drive. Yuitility guarantees zero file uploads.
+                  We believe that the safest place for your private files, salary charts, and API tokens is on your own hard drive. File tools process their inputs locally. AI chat and contact messages use servers, as explained in our Privacy Policy.
                 </p>
               </div>
             </ScrollReveal>
@@ -416,20 +409,20 @@ export default function AboutPageClient() {
           <div className="space-y-4 max-w-3xl mx-auto">
             {[
               {
-                q: "How does Yuitility run 100% inside the browser?",
-                a: "Yuitility is engineered with WebAssembly (WASM) compiler modules and client-side JavaScript subroutines. When you open a PDF, optimize an image, or evaluate loan calculations, the computations run directly in your browser tab's sandbox memory without any remote calls."
+                q: "Which features run inside the browser?",
+                a: "File processing and calculator logic run locally with JavaScript and, for some tools, WebAssembly. Loading the site or model assets uses a network connection. The optional AI assistant and contact form use servers."
               },
               {
                 q: "Are my files or sensitive records sent to a server?",
-                a: "No. Because Yuitility runs locally, there is no file upload server. Your confidential documents, financial figures, and passcodes remain strictly offline inside your device cache, immune to remote database leaks."
+                a: "File tools do not upload your selected documents for processing. Text you send to the assistant travels through our server to the selected AI provider; contact messages are also submitted to our server. Avoid putting sensitive information into those messages."
               },
               {
                 q: "Why is Yuitility faster than traditional converter tools?",
-                a: "Traditional tools force you to upload files over network pipelines, wait in remote processing queues, and download the output. Yuitility compiles the logic locally, delivering instant file conversions with zero latency."
+                a: "Traditional tools force you to upload files over network pipelines, wait in remote processing queues, and download the output. Yuitility compiles the logic locally, avoiding a file-upload step for local tools; processing time depends on your device and file."
               },
               {
                 q: "Is Yuitility completely free to use?",
-                a: `Yes. All ${LIVE_TOOLS.length} tools are free with no registrations, limits, or paywalls.`
+                a: `Yes. All ${LIVE_TOOLS.length} tools are free without registration. Tool-specific file limits and browser memory constraints apply; optional AI providers have their own charges and limits.`
               }
             ].map((faq, index) => {
               const isOpen = activeFaq === index;
@@ -437,7 +430,7 @@ export default function AboutPageClient() {
                 <ScrollReveal key={index} delay={index * 50}>
                   <div className="border-b border-zinc-200/60 dark:border-zinc-800/80 pb-3">
                     <button
-                      onClick={() => setActiveFaq(isOpen ? null : index)}
+                      aria-expanded={isOpen} onClick={() => setActiveFaq(isOpen ? null : index)}
                       className="w-full flex items-center justify-between py-4 text-left font-bold text-sm sm:text-base text-zinc-800 dark:text-zinc-250 hover:text-[var(--accent-primary)] dark:hover:text-[var(--accent-primary)] transition-colors group"
                     >
                       <span>{faq.q}</span>

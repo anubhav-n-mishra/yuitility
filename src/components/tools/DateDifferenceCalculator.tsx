@@ -1,3 +1,4 @@
+import { calendarDate, calendarDifference, addCalendarMonths } from '@/src/lib/calendar';
 import React, { useState } from 'react';
 import { Calendar, Clock, Copy, Check, ArrowRight, Briefcase } from 'lucide-react';
 
@@ -29,8 +30,8 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
   // Compute Difference
   const diffResult = (() => {
     if (!startDate || !endDate) return null;
-    let d1 = new Date(startDate);
-    let d2 = new Date(endDate);
+    let d1 = calendarDate(startDate);
+    let d2 = calendarDate(endDate);
     if (isNaN(d1.getTime()) || isNaN(d2.getTime())) return null;
 
     let isReversed = false;
@@ -48,36 +49,8 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
       totalDays += 1;
     }
 
-    // Calendar Y, M, D breakdown
-    let y1 = d1.getFullYear(), m1 = d1.getMonth(), day1 = d1.getDate();
-    let y2 = d2.getFullYear(), m2 = d2.getMonth(), day2 = d2.getDate();
-
-    let years = y2 - y1;
-    let months = m2 - m1;
-    let days = day2 - day1;
-
-    if (days < 0) {
-      months--;
-      // Days in previous month
-      const prevMonthLastDay = new Date(y2, m2, 0).getDate();
-      days += prevMonthLastDay;
-    }
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-    if (includeEndDay) {
-      days += 1;
-      const daysInTargetMonth = new Date(y2, m2 + 1, 0).getDate();
-      if (days >= daysInTargetMonth) {
-        days = 0;
-        months++;
-        if (months >= 12) {
-          months = 0;
-          years++;
-        }
-      }
-    }
+    const calendarEnd = new Date(+d2+(includeEndDay ? 86400000 : 0));
+    const {years,months,days} = calendarDifference(d1,calendarEnd);
 
     // Business days vs Weekends
     let workingDays = 0;
@@ -85,16 +58,16 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
     const cur = new Date(d1);
     const limit = new Date(d2);
     if (includeEndDay) {
-      limit.setDate(limit.getDate() + 1);
+      limit.setUTCDate(limit.getUTCDate() + 1);
     }
     while (cur < limit) {
-      const dayOfWeek = cur.getDay();
+      const dayOfWeek = cur.getUTCDay();
       if (dayOfWeek === 0 || dayOfWeek === 6) {
         weekendDays++;
       } else {
         workingDays++;
       }
-      cur.setDate(cur.getDate() + 1);
+      cur.setUTCDate(cur.getUTCDate() + 1);
     }
 
     const weeks = Math.floor(totalDays / 7);
@@ -120,27 +93,28 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
   // Compute Add/Subtract date
   const addedDateResult = (() => {
     if (!baseDate) return null;
-    const d = new Date(baseDate);
+    const d = calendarDate(baseDate);
     if (isNaN(d.getTime())) return null;
 
-    const val = parseInt(addAmount, 10);
-    if (isNaN(val)) return null;
+    const val = addAmount.trim() ? Number(addAmount) : NaN;
+    if (!Number.isInteger(val)) return null;
 
     const factor = addOp === 'add' ? 1 : -1;
-    const target = new Date(d);
+    let target = new Date(d);
 
     if (addUnit === 'days') {
-      target.setDate(target.getDate() + val * factor);
+      target.setUTCDate(target.getUTCDate() + val * factor);
     } else if (addUnit === 'weeks') {
-      target.setDate(target.getDate() + val * 7 * factor);
+      target.setUTCDate(target.getUTCDate() + val * 7 * factor);
     } else if (addUnit === 'months') {
-      target.setMonth(target.getMonth() + val * factor);
+      target = addCalendarMonths(target,val * factor);
     } else if (addUnit === 'years') {
-      target.setFullYear(target.getFullYear() + val * factor);
+      target = addCalendarMonths(target,val * 12 * factor);
     }
 
     return {
       formatted: target.toLocaleDateString(undefined, {
+        timeZone: 'UTC',
         weekday: 'long',
         year: 'numeric',
         month: 'long',
@@ -189,21 +163,21 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
           <div className="lg:col-span-1 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Start Date</label>
-              <input
+              <input aria-label="Start Date"
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">End Date</label>
-              <input
+              <input aria-label="End Date"
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
               />
             </div>
 
@@ -346,21 +320,21 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
         <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 max-w-xl space-y-4">
           <div>
             <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Starting Date</label>
-            <input
+            <input aria-label="Starting Date"
               type="date"
               value={baseDate}
               onChange={(e) => setBaseDate(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
             />
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Action</label>
-              <select
+              <select aria-label="Action"
                 value={addOp}
                 onChange={(e) => setAddOp(e.target.value as 'add' | 'subtract')}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-sm"
               >
                 <option value="add">+ Add</option>
                 <option value="subtract">- Subtract</option>
@@ -369,21 +343,21 @@ export default function DateDifferenceCalculator({ onCopy }: DateDifferenceCalcu
 
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Quantity</label>
-              <input
+              <input aria-label="Quantity"
                 type="number"
                 min="1"
                 value={addAmount}
                 onChange={(e) => setAddAmount(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
 
             <div>
               <label className="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 mb-1.5">Unit</label>
-              <select
+              <select aria-label="Unit"
                 value={addUnit}
                 onChange={(e) => setAddUnit(e.target.value as any)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-sm"
               >
                 <option value="days">Days</option>
                 <option value="weeks">Weeks</option>

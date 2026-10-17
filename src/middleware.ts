@@ -24,7 +24,7 @@ export function middleware(request: NextRequest) {
 
   // 3. Lowercase path normalization
   let normalizedPath = pathname;
-  if (pathname !== pathname.toLowerCase()) {
+  if (!/\.[^/]+$/.test(pathname) && pathname !== pathname.toLowerCase()) {
     normalizedPath = pathname.toLowerCase();
     shouldRedirect = true;
   }
@@ -52,6 +52,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - static files with extensions (svg, png, jpg, jpeg, gif, webp, ico, txt, xml, webmanifest, json, wasm)
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|webmanifest|json|wasm)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|webmanifest|json|wasm|woff|woff2|ttf|otf|css|js|pdf|avif)$).*)",
   ],
 };

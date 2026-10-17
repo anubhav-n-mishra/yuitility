@@ -120,7 +120,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
             <div className="space-y-3">
               <div>
                 <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Height (cm)</label>
-                <input
+                <input aria-label="Height (cm)"
                   type="number"
                   value={heightCm}
                   onChange={(e) => setHeightCm(Number(e.target.value))}
@@ -129,7 +129,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
               </div>
               <div>
                 <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Weight (kg)</label>
-                <input
+                <input aria-label="Weight (kg)"
                   type="number"
                   value={weightKg}
                   onChange={(e) => setWeightKg(Number(e.target.value))}
@@ -142,7 +142,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Height (Feet)</label>
-                  <input
+                  <input aria-label="Height (Feet)"
                     type="number"
                     value={heightFeet}
                     onChange={(e) => setHeightFeet(Number(e.target.value))}
@@ -151,7 +151,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
                 </div>
                 <div>
                   <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Inches</label>
-                  <input
+                  <input aria-label="Inches"
                     type="number"
                     value={heightInches}
                     onChange={(e) => setHeightInches(Number(e.target.value))}
@@ -161,7 +161,7 @@ export default function BmiCalculator({ onCopy }: BmiCalculatorProps) {
               </div>
               <div>
                 <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Weight (lbs)</label>
-                <input
+                <input aria-label="Weight (lbs)"
                   type="number"
                   value={weightLbs}
                   onChange={(e) => setWeightLbs(Number(e.target.value))}

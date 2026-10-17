@@ -20,1079 +20,958 @@ export interface ToolPreset {
 }
 
 export const TOOL_PRESETS: ToolPreset[] = [
-  // =========================================================================
-  // 1. UNIVERSITY CGPA CONVERSION PRESETS (cgpa-to-percentage-calculator)
-  // =========================================================================
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "vtu",
-    category: "math",
-    seoTitle: "VTU CGPA to Percentage Calculator: (CGPA−0.75)×10", // 49 chars
-    seoDescription:
-      "Convert VTU CGPA to percentage using the official Visvesvaraya Technological University formula (CGPA - 0.75) * 10 with circular citations and instant division calculation.", // 173 chars
-    h1: "VTU CGPA to Percentage Calculator",
-    subtitle: "Official Visvesvaraya Technological University (VTU Belagavi) Conversion Formula: (CGPA − 0.75) × 10",
-    badge: "VTU Official Circular (2016-17/10006)",
-    presetParams: {
-      initialUniversity: "vtu",
-      initialCgpa: 8.0,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "vtu",
+    "category": "math",
+    "seoTitle": "VTU CGPA to Percentage Calculator: (CGPA−0.75)×10",
+    "seoDescription": "VTU formula scenario: Applies (CGPA − 0.75) × 10. Check your course regulation; this tool does not certify marks.",
+    "h1": "VTU CGPA to Percentage Calculator",
+    "subtitle": "Applies (CGPA − 0.75) × 10. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "vtu",
+      "initialCgpa": 8
     },
-    officialReference: {
-      title: "VTU CGPA to Percentage Conversion Notification",
-      authority: "Visvesvaraya Technological University, Belagavi",
-      citation: "Circular VTU/BGM/Aca-OS/Cirs/2016-17/10006 & CBCS Regulations",
-      url: "https://vtu.ac.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the official VTU formula to convert CGPA to percentage?",
-        answer: "The official VTU formula is Percentage = (CGPA - 0.75) * 10. For example, if your VTU CGPA is 8.20, your percentage is (8.20 - 0.75) * 10 = 74.50%.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses (CGPA − 0.75) × 10. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
       {
-        question: "Which VTU schemes use the (CGPA - 0.75) * 10 formula?",
-        answer: "This formula applies to VTU 2015, 2017, 2018, and CBCS schemes across B.E, B.Tech, M.Tech, and MCA programs under Visvesvaraya Technological University.",
-      },
-      {
-        question: "What is First Class with Distinction in VTU?",
-        answer: "Under VTU regulations, a CGPA of 7.75 and above (70.0% or higher) earned in the first attempt qualifies for First Class with Distinction.",
-      },
-    ],
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "anna-university",
-    category: "math",
-    seoTitle: "Anna University CGPA to Percentage Calculator: ×10", // 52 chars
-    seoDescription:
-      "Calculate Anna University CGPA to percentage using the official Regulation 2021 Clause 16.2 formula Percentage = CGPA * 10. Instant, accurate, and 100% private.", // 163 chars
-    h1: "Anna University CGPA to Percentage Calculator",
-    subtitle: "Official Anna University Chennai Conversion Formula: Percentage = CGPA × 10 (Regulation 2021 & 2017)",
-    badge: "Anna University Reg 2021 Clause 16.2",
-    presetParams: {
-      initialUniversity: "anna",
-      initialCgpa: 8.0,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "anna-university",
+    "category": "math",
+    "seoTitle": "Anna University CGPA to Percentage Calculator: ×10",
+    "seoDescription": "Anna University formula scenario: Applies CGPA × 10. Check your course regulation; this tool does not certify marks.",
+    "h1": "Anna University CGPA to Percentage Calculator",
+    "subtitle": "Applies CGPA × 10. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "anna",
+      "initialCgpa": 8
     },
-    officialReference: {
-      title: "Anna University Regulations for B.E. / B.Tech",
-      authority: "Anna University, Chennai (Centre for Academic Courses)",
-      citation: "Clause 16.2 - Classification of the Degree Awarded",
-      url: "https://www.annauniv.edu",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is Anna University's formula to convert CGPA to percentage?",
-        answer: "Anna University explicitly uses the linear conversion formula: Percentage = CGPA * 10. A CGPA of 8.4 converts to exactly 84.0%.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses CGPA × 10. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
       {
-        question: "Does Anna University use a 9.5 multiplier?",
-        answer: "No. While CBSE and AICTE suggest 9.5, Anna University officially mandates the multiplier of 10 for all engineering degree classifications.",
-      },
-      {
-        question: "What CGPA is required for First Class with Distinction at Anna University?",
-        answer: "A CGPA of 8.50 and above with no history of arrears qualifies for First Class with Distinction under Anna University regulations.",
-      },
-    ],
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "mumbai-university",
-    category: "math",
-    seoTitle: "Mumbai University CGPA to Percentage: 7.1×CGPA+12", // 50 chars
-    seoDescription:
-      "Convert Mumbai University (MU) 10-point CGPA to equivalent percentage for engineering (7.1 * CGPA + 12) and arts/commerce faculties with official circular citations.", // 170 chars
-    h1: "Mumbai University CGPA to Percentage Calculator",
-    subtitle: "Official University of Mumbai Conversion Formula for Engineering: 7.1 × CGPA + 12 (CGPA ≥ 7.0)",
-    badge: "University of Mumbai Circular VCD No. Exam/423",
-    presetParams: {
-      initialUniversity: "mumbai",
-      initialCgpa: 8.0,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "mumbai-university",
+    "category": "math",
+    "seoTitle": "Mumbai University CGPA to Percentage: 7.1×CGPA+12",
+    "seoDescription": "Mumbai University formula scenario: Applies 7.1 × CGPA + 12. Check your course regulation; this tool does not certify marks.",
+    "h1": "Mumbai University CGPA to Percentage Calculator",
+    "subtitle": "Applies 7.1 × CGPA + 12. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "mumbai",
+      "initialCgpa": 8
     },
-    officialReference: {
-      title: "Mumbai University CGPA to Percentage Conversion Circular",
-      authority: "University of Mumbai Examination House",
-      citation: "Circular No. UG/Exam/VCD/02 of 2018-19 & 7.1*CGPA+12 Formula",
-      url: "https://mu.ac.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the Mumbai University engineering CGPA to percentage formula?",
-        answer: "For CGPA between 7.0 and 10.0 in engineering, Mumbai University uses Percentage = 7.1 * CGPA + 12. For CGPA under 7.0, it is Percentage = 7.4 * CGPA + 12.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses 7.1 × CGPA + 12. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
       {
-        question: "Does Mumbai University use different formulas for Arts and Commerce?",
-        answer: "Yes, non-engineering faculties at Mumbai University use Percentage = 7.25 * CGPA + 11 for 10-point credit grading.",
-      },
-    ],
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "ktu",
-    category: "math",
-    seoTitle: "KTU CGPA to Percentage Calculator: (CGPA−0.5)×10", // 48 chars
-    seoDescription:
-      "Calculate APJ Abdul Kalam Technological University (KTU Kerala) CGPA to percentage using the official formula (CGPA - 0.5) * 10 with verified academic circular citations.", // 173 chars
-    h1: "KTU Kerala CGPA to Percentage Calculator",
-    subtitle: "Official APJ Abdul Kalam Technological University Formula: Percentage = (CGPA − 0.5) × 10",
-    badge: "KTU Academic Regulations Ordinance",
-    presetParams: {
-      initialUniversity: "ktu",
-      initialCgpa: 8.0,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "ktu",
+    "category": "math",
+    "seoTitle": "KTU CGPA to Percentage Calculator: (CGPA−0.5)×10",
+    "seoDescription": "KTU Kerala formula scenario: Applies (CGPA − 0.5) × 10. Check your course regulation; this tool does not certify marks.",
+    "h1": "KTU Kerala CGPA to Percentage Calculator",
+    "subtitle": "Applies (CGPA − 0.5) × 10. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "ktu",
+      "initialCgpa": 8
     },
-    officialReference: {
-      title: "KTU B.Tech Degree Regulations",
-      authority: "APJ Abdul Kalam Technological University (Kerala)",
-      citation: "KTU Academic Regulations Ordinance Section U.11",
-      url: "https://ktu.edu.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "How do I convert KTU CGPA to percentage?",
-        answer: "KTU specifies Percentage = (CGPA - 0.5) * 10. For example, a CGPA of 8.00 in KTU equals (8.00 - 0.5) * 10 = 75.00%.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses (CGPA − 0.5) × 10. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
       {
-        question: "Is the KTU conversion formula valid for job applications?",
-        answer: "Yes, the formula (CGPA - 0.5) * 10 is officially printed on KTU grade sheets and accepted by UPSC, PSC, TCS, Infosys, and international universities.",
-      },
-    ],
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "cbse",
-    category: "math",
-    seoTitle: "CBSE CGPA to Percentage Calculator: Official ×9.5", // 50 chars
-    seoDescription:
-      "Convert CBSE Class 10 & 12 CGPA to equivalent percentage using the official CBSE Board formula: Percentage = CGPA * 9.5. Fast, accurate, and ad-free.", // 152 chars
-    h1: "CBSE & Delhi University CGPA to Percentage Calculator",
-    subtitle: "Official Central Board of Secondary Education & AICTE Standard: Percentage = CGPA × 9.5",
-    badge: "CBSE Examination Bylaws Rule 42.1",
-    presetParams: {
-      initialUniversity: "cbse",
-      initialCgpa: 8.4,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "cbse",
+    "category": "math",
+    "seoTitle": "CBSE CGPA to Percentage Calculator: Official ×9.5",
+    "seoDescription": "CBSE & Delhi University formula scenario: Applies CGPA × 9.5. Check your course regulation; this tool does not certify marks.",
+    "h1": "CBSE & Delhi University CGPA to Percentage Calculator",
+    "subtitle": "Applies CGPA × 9.5. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "cbse",
+      "initialCgpa": 8.4
     },
-    officialReference: {
-      title: "CBSE Scheme of Examination and Grading Norms",
-      authority: "Central Board of Secondary Education, New Delhi",
-      citation: "CBSE Circular No. 40/2010 & AICTE Model Exam Guidelines",
-      url: "https://cbse.gov.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "Why does CBSE multiply CGPA by 9.5?",
-        answer: "CBSE analyzed marks scored by candidates over several years and determined that multiplying CGPA by 9.5 yields an accurate statistical approximation of percentage marks.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses CGPA × 9.5. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
       {
-        question: "How do I convert individual subject GPA in CBSE?",
-        answer: "Multiply the subject Grade Point (GP) by 9.5. For instance, a Grade Point of 9 in Mathematics equals 9 * 9.5 = 85.5%.",
-      },
-    ],
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "sppu",
-    category: "math",
-    seoTitle: "SPPU Pune CGPA to Percentage Calculator: (CGPA−0.75)×10", // 55 chars
-    seoDescription:
-      "Convert Savitribai Phule Pune University (SPPU / Unipune) CGPA to percentage for engineering and science with official circular formula (CGPA - 0.75) * 10.", // 157 chars
-    h1: "SPPU Pune CGPA to Percentage Calculator",
-    subtitle: "Official Savitribai Phule Pune University (Unipune) Formula: Percentage = (CGPA − 0.75) × 10",
-    badge: "SPPU Circular No. 216/2020",
-    presetParams: {
-      initialUniversity: "sppu",
-      initialCgpa: 8.0,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "sppu",
+    "category": "math",
+    "seoTitle": "SPPU Pune CGPA to Percentage Calculator: (CGPA−0.75)×10",
+    "seoDescription": "SPPU Pune formula scenario: Applies (CGPA − 0.75) × 10. Check your course regulation; this tool does not certify marks.",
+    "h1": "SPPU Pune CGPA to Percentage Calculator",
+    "subtitle": "Applies (CGPA − 0.75) × 10. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "sppu",
+      "initialCgpa": 8
     },
-    officialReference: {
-      title: "SPPU Guidelines on Equivalence of CGPA to Percentage",
-      authority: "Savitribai Phule Pune University (Unipune)",
-      citation: "Circular No. 216/2020 on Credit System Degree Conversion",
-      url: "http://unipune.ac.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the SPPU Pune University CGPA formula?",
-        answer: "SPPU uses Percentage = (CGPA - 0.75) * 10 for engineering and science degree courses following the credit-based grading system.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses (CGPA − 0.75) × 10. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
-    ],
+      {
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "gtu",
-    category: "math",
-    seoTitle: "GTU CGPA to Percentage Calculator: (CGPA−0.5)×10", // 48 chars
-    seoDescription:
-      "Convert Gujarat Technological University (GTU) CGPA and CPI to percentage using official GTU Circular formula Percentage = (CGPA - 0.5) * 10.", // 142 chars
-    h1: "GTU CGPA & CPI to Percentage Calculator",
-    subtitle: "Official Gujarat Technological University Formula: Percentage = (CGPA / CPI − 0.5) × 10",
-    badge: "GTU Circular No. GTU/Circular/2012/10411",
-    presetParams: {
-      initialUniversity: "gtu",
-      initialCgpa: 7.8,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "gtu",
+    "category": "math",
+    "seoTitle": "GTU CGPA to Percentage Calculator: (CGPA−0.5)×10",
+    "seoDescription": "GTU CGPA & CPI to Percentage Calculator formula scenario: Applies (CGPA − 0.5) × 10. Check your course regulation; this tool does not certify marks.",
+    "h1": "GTU CGPA & CPI to Percentage Calculator",
+    "subtitle": "Applies (CGPA − 0.5) × 10. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "gtu",
+      "initialCgpa": 7.8
     },
-    officialReference: {
-      title: "GTU Conversion Rule from CPI/CGPA to Percentage",
-      authority: "Gujarat Technological University, Ahmedabad",
-      citation: "Circular GTU/Conv_Formula/2012/10411",
-      url: "https://www.gtu.ac.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "How is CPI converted to percentage in GTU?",
-        answer: "GTU applies the exact same formula to both CPI and CGPA: Percentage = (CPI - 0.5) * 10.",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses (CGPA − 0.5) × 10. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
-    ],
+      {
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "cgpa-to-percentage-calculator",
-    presetSlug: "aktu",
-    category: "math",
-    seoTitle: "AKTU CGPA to Percentage Calculator: Official ×10", // 49 chars
-    seoDescription:
-      "Calculate Dr. A.P.J. Abdul Kalam Technical University (AKTU / UPTU Lucknow) CGPA to percentage using the official formula: Percentage = CGPA * 10.", // 149 chars
-    h1: "AKTU / UPTU CGPA to Percentage Calculator",
-    subtitle: "Official Dr. A.P.J. Abdul Kalam Technical University Formula: Percentage = CGPA × 10",
-    badge: "AKTU Ordinance on Grading System",
-    presetParams: {
-      initialUniversity: "aktu",
-      initialCgpa: 8.2,
+    "toolId": "cgpa-to-percentage-calculator",
+    "presetSlug": "aktu",
+    "category": "math",
+    "seoTitle": "AKTU CGPA to Percentage Calculator: Official ×10",
+    "seoDescription": "AKTU / UPTU formula scenario: Applies CGPA × 10. Check your course regulation; this tool does not certify marks.",
+    "h1": "AKTU / UPTU CGPA to Percentage Calculator",
+    "subtitle": "Applies CGPA × 10. Confirm your course, cohort and regulation before using the conversion.",
+    "badge": "Formula scenario — verify your regulation",
+    "presetParams": {
+      "initialUniversity": "aktu",
+      "initialCgpa": 8.2
     },
-    officialReference: {
-      title: "AKTU Grading System and Conversion Regulations",
-      authority: "Dr. A.P.J. Abdul Kalam Technical University, Lucknow",
-      citation: "AKTU Ordinance Clause on Division and Percentage Equivalence",
-      url: "https://aktu.ac.in",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the official AKTU formula for converting CGPA?",
-        answer: "AKTU specifies Percentage = CGPA * 10 for all undergraduate engineering (B.Tech) and postgraduate degrees.",
-      },
-    ],
-  },
-
-  // =========================================================================
-  // 2. BANK-SPECIFIC HOME LOAN PRESETS (home-loan-emi-calculator)
-  // =========================================================================
-  {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "sbi-bank",
-    category: "finance",
-    seoTitle: "SBI Home Loan EMI Calculator: Compare Rates & Slabs", // 53 chars
-    seoDescription:
-      "Calculate State Bank of India (SBI) home loan monthly EMI, current interest rates (8.50% p.a.), tax savings under Sec 24b, and partial prepayment payoff schedules.", // 167 chars
-    h1: "SBI Home Loan EMI Calculator",
-    subtitle: "State Bank of India (SBI) Benchmark: 8.50% p.a. External Benchmark Lending Rate (EBLR)",
-    badge: "SBI EBLR Benchmark (Sep 2026)",
-    presetParams: {
-      initialInterestRate: 8.5,
-      initialPropertyPrice: 6000000,
-      lenderName: "SBI Home Loan",
-      initialCurrency: "INR",
-    },
-    officialReference: {
-      title: "SBI Retail Lending Floating Interest Rates",
-      authority: "State Bank of India",
-      citation: "SBI External Benchmark Linked Lending Rate (EBLR) Guidelines",
-      url: "https://sbi.co.in",
-    },
-    faqs: [
-      {
-        question: "What is the current SBI home loan interest rate in 2026?",
-        answer: "SBI home loan interest rates start from 8.50% p.a. for borrowers with a CIBIL score of 750 and above, linked to the RBI Repo Rate (EBLR).",
+        "question": "Which formula does this scenario apply?",
+        "answer": "This scenario uses CGPA × 10. It is an arithmetic example, not confirmation that the formula applies to every course or cohort at this institution."
       },
       {
-        question: "Can I prepay my SBI home loan without penalties?",
-        answer: "Yes, under RBI guidelines, SBI charges zero prepayment or foreclosure penalties on floating-rate individual home loans.",
-      },
-    ],
+        "question": "Can I use this result for an application?",
+        "answer": "Use the rule required by your transcript, examination office or application. This tool cannot certify marks or determine pass, distinction or admission eligibility. If your regulation gives a different rule, select Custom formula."
+      }
+    ]
   },
   {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "hdfc-bank",
-    category: "finance",
-    seoTitle: "HDFC Home Loan EMI Calculator: Rates, EMI & Tax", // 49 chars
-    seoDescription:
-      "Calculate HDFC Bank home loan EMIs, 8.70% benchmark rate schedules, processing fees, and Section 24b tax deductions with full year-by-year amortization schedules.", // 164 chars
-    h1: "HDFC Bank Home Loan EMI Calculator",
-    subtitle: "HDFC Bank Benchmark Rate: 8.70% p.a. Retail Prime Lending Rate (RPLR)",
-    badge: "HDFC Bank Benchmark (Sep 2026)",
-    presetParams: {
-      initialInterestRate: 8.7,
-      initialPropertyPrice: 6000000,
-      lenderName: "HDFC Bank",
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "sbi-bank",
+    "category": "finance",
+    "seoTitle": "SBI Home Loan EMI Calculator: Compare Rates & Slabs",
+    "seoDescription": "Calculate State Bank of India (SBI) home loan monthly EMI, illustrative interest rates (8.50% p.a.), tax savings under Sec 24b, and partial prepayment payoff schedules.",
+    "h1": "SBI Home Loan EMI Calculator",
+    "subtitle": "State Bank of India (SBI) Benchmark: 8.50% p.a. External Benchmark Lending Rate (EBLR)",
+    "badge": "SBI EBLR Benchmark (Scenario)",
+    "presetParams": {
+      "initialInterestRate": 8.5,
+      "initialPropertyPrice": 6000000,
+      "lenderName": "SBI Home Loan",
+      "initialCurrency": "INR"
     },
-    officialReference: {
-      title: "HDFC Bank Housing Loan Rate Card",
-      authority: "HDFC Bank Ltd",
-      citation: "HDFC Retail Prime Lending Rate Structure and Spreads",
-      url: "https://www.hdfcbank.com",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the minimum down payment required by HDFC Bank?",
-        answer: "HDFC Bank finances up to 80% of property cost for loans between ₹30 Lakhs and ₹75 Lakhs, meaning a minimum 20% down payment is required.",
+        "question": "What is the current SBI home loan interest rate in 2026?",
+        "answer": "SBI home loan interest rates start from 8.50% p.a. for borrowers with a CIBIL score of 750 and above, linked to the RBI Repo Rate (EBLR)."
       },
-    ],
+      {
+        "question": "Can I prepay my SBI home loan without penalties?",
+        "answer": "Yes, under RBI guidelines, SBI charges zero prepayment or foreclosure penalties on floating-rate individual home loans."
+      }
+    ]
   },
   {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "icici-bank",
-    category: "finance",
-    seoTitle: "ICICI Home Loan EMI Calculator: 8.75% Rate & EMI", // 50 chars
-    seoDescription:
-      "Calculate ICICI Bank home loan EMI at 8.75% interest. View monthly installment breakdowns, prepayment interest cuts, and Section 24 tax relief.", // 146 chars
-    h1: "ICICI Bank Home Loan EMI Calculator",
-    subtitle: "ICICI Bank Benchmark Rate: 8.75% p.a. I-EBLR Lending Rate",
-    badge: "ICICI Bank Benchmark (Sep 2026)",
-    presetParams: {
-      initialInterestRate: 8.75,
-      initialPropertyPrice: 6000000,
-      lenderName: "ICICI Bank",
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "hdfc-bank",
+    "category": "finance",
+    "seoTitle": "HDFC Home Loan EMI Calculator: Rates, EMI & Tax",
+    "seoDescription": "Calculate HDFC Bank home loan EMIs, 8.70% benchmark rate schedules, processing fees, and Section 24b tax deductions with full year-by-year amortization schedules.",
+    "h1": "HDFC Bank Home Loan EMI Calculator",
+    "subtitle": "HDFC Bank Benchmark Rate: 8.70% p.a. Retail Prime Lending Rate (RPLR)",
+    "badge": "HDFC Bank Benchmark (Scenario)",
+    "presetParams": {
+      "initialInterestRate": 8.7,
+      "initialPropertyPrice": 6000000,
+      "lenderName": "HDFC Bank",
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "What is ICICI Bank I-EBLR rate?",
-        answer: "I-EBLR is ICICI Bank's External Benchmark Lending Rate pegged directly to the RBI repo rate. Home loan rates adjust automatically when repo rate changes.",
-      },
-    ],
+        "question": "What is the minimum down payment required by HDFC Bank?",
+        "answer": "HDFC Bank finances up to 80% of property cost for loans between ₹30 Lakhs and ₹75 Lakhs, meaning a minimum 20% down payment is required."
+      }
+    ]
   },
   {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "bank-of-baroda",
-    category: "finance",
-    seoTitle: "Bank of Baroda Home Loan EMI Calculator: 8.40%", // 48 chars
-    seoDescription:
-      "Calculate Bank of Baroda (BoB) home loan EMIs at competitive 8.40% interest rates. Model 20-year and 30-year repayments with zero prepayment penalty.", // 152 chars
-    h1: "Bank of Baroda Home Loan EMI Calculator",
-    subtitle: "Bank of Baroda Baroda Home Loan Benchmark: 8.40% p.a. BRLLR",
-    badge: "Bank of Baroda Benchmark (Sep 2026)",
-    presetParams: {
-      initialInterestRate: 8.4,
-      initialPropertyPrice: 6000000,
-      lenderName: "Bank of Baroda",
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "icici-bank",
+    "category": "finance",
+    "seoTitle": "ICICI Home Loan EMI Calculator: 8.75% Rate & EMI",
+    "seoDescription": "Calculate ICICI Bank home loan EMI at 8.75% interest. View monthly installment breakdowns, prepayment interest cuts, and Section 24 tax relief.",
+    "h1": "ICICI Bank Home Loan EMI Calculator",
+    "subtitle": "ICICI Bank Benchmark Rate: 8.75% p.a. I-EBLR Lending Rate",
+    "badge": "ICICI Bank Benchmark (Scenario)",
+    "presetParams": {
+      "initialInterestRate": 8.75,
+      "initialPropertyPrice": 6000000,
+      "lenderName": "ICICI Bank",
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "Why is Bank of Baroda home loan interest rate among the lowest?",
-        answer: "Public sector banks like Bank of Baroda offer lower markups over the RBI repo rate (BRLLR) for high CIBIL score borrowers.",
-      },
-    ],
-  },
-
-  // =========================================================================
-  // 3. LOAN AMOUNT PRESETS (home-loan-emi-calculator)
-  // =========================================================================
-  {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "30-lakhs",
-    category: "finance",
-    seoTitle: "30 Lakh Home Loan EMI: Monthly Payment & Schedule", // 51 chars
-    seoDescription:
-      "Calculate 30 Lakh home loan monthly EMI at 8.5% interest across 10, 20, and 30 years. Compare total interest, tax savings, and prepayment payoff dates.", // 154 chars
-    h1: "₹30 Lakh Home Loan EMI Calculator",
-    subtitle: "Complete repayment schedule, interest cost, and tax deductions for a ₹30,00,000 housing loan",
-    badge: "₹30 Lakh Principal Preset",
-    presetParams: {
-      initialPropertyPrice: 3750000, // 80% LTV = 30 Lakhs loan
-      initialInterestRate: 8.5,
-      initialCurrency: "INR",
-    },
-    faqs: [
-      {
-        question: "What is the monthly EMI for a 30 Lakh home loan for 20 years?",
-        answer: "At 8.5% interest, the monthly EMI for a ₹30 Lakh home loan for 20 years is ₹26,035. Total interest paid over 20 years is ₹32,48,328.",
-      },
-    ],
+        "question": "What is ICICI Bank I-EBLR rate?",
+        "answer": "I-EBLR is ICICI Bank's External Benchmark Lending Rate pegged directly to the RBI repo rate. Home loan rates adjust automatically when repo rate changes."
+      }
+    ]
   },
   {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "50-lakhs",
-    category: "finance",
-    seoTitle: "50 Lakh Home Loan EMI: Monthly Cost & Interest", // 49 chars
-    seoDescription:
-      "Calculate monthly EMI for a 50 Lakh home loan at 8.5% p.a. for 20 years (₹43,391/mo). View total interest cost, amortization schedule, and prepayment impact.", // 160 chars
-    h1: "₹50 Lakh Home Loan EMI Calculator",
-    subtitle: "Complete repayment schedule, interest cost, and tax deductions for a ₹50,00,000 housing loan",
-    badge: "₹50 Lakh Principal Preset",
-    presetParams: {
-      initialPropertyPrice: 6250000, // 80% LTV = 50 Lakhs loan
-      initialInterestRate: 8.5,
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "bank-of-baroda",
+    "category": "finance",
+    "seoTitle": "Bank of Baroda Home Loan EMI Calculator: 8.40%",
+    "seoDescription": "Calculate Bank of Baroda (BoB) home loan EMIs at competitive 8.40% interest rates. Model 20-year and 30-year repayments with zero prepayment penalty.",
+    "h1": "Bank of Baroda Home Loan EMI Calculator",
+    "subtitle": "Bank of Baroda Baroda Home Loan Benchmark: 8.40% p.a. BRLLR",
+    "badge": "Bank of Baroda Benchmark (Scenario)",
+    "presetParams": {
+      "initialInterestRate": 8.4,
+      "initialPropertyPrice": 6000000,
+      "lenderName": "Bank of Baroda",
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the EMI for 50 Lakh home loan for 20 years?",
-        answer: "At 8.5% interest, your monthly EMI for ₹50 Lakhs for 20 years is ₹43,391. Total amount payable is ₹1,04,13,879, of which ₹54,13,879 is interest.",
-      },
-    ],
+        "question": "Why is Bank of Baroda home loan interest rate among the lowest?",
+        "answer": "Public sector banks like Bank of Baroda offer lower markups over the RBI repo rate (BRLLR) for high CIBIL score borrowers."
+      }
+    ]
   },
   {
-    toolId: "home-loan-emi-calculator",
-    presetSlug: "1-crore",
-    category: "finance",
-    seoTitle: "1 Crore Home Loan EMI: Monthly Cost & Schedule", // 49 chars
-    seoDescription:
-      "Calculate 1 Crore home loan monthly EMI at 8.5% (₹86,782/mo for 20 yrs). Analyze tax deduction limits under Section 24b and partial prepayment savings.", // 153 chars
-    h1: "₹1 Crore Home Loan EMI Calculator",
-    subtitle: "Complete repayment schedule, interest cost, and tax deductions for a ₹1,00,00,000 luxury home loan",
-    badge: "₹1 Crore Principal Preset",
-    presetParams: {
-      initialPropertyPrice: 12500000, // 80% LTV = 1 Crore loan
-      initialInterestRate: 8.5,
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "30-lakhs",
+    "category": "finance",
+    "seoTitle": "30 Lakh Home Loan EMI: Monthly Payment & Schedule",
+    "seoDescription": "Calculate 30 Lakh home loan monthly EMI at 8.5% interest across 10, 20, and 30 years. Compare total interest, tax savings, and prepayment payoff dates.",
+    "h1": "₹30 Lakh Home Loan EMI Calculator",
+    "subtitle": "Complete repayment schedule, interest cost, and tax deductions for a ₹30,00,000 housing loan",
+    "badge": "₹30 Lakh Principal Preset",
+    "presetParams": {
+      "initialPropertyPrice": 3750000,
+      "initialInterestRate": 8.5,
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the monthly EMI for a 1 Crore home loan for 20 years?",
-        answer: "At 8.5% interest, the EMI for ₹1 Crore for 20 years is ₹86,782/month. Total interest payable is ₹1.08 Crore.",
-      },
-    ],
-  },
-
-  // =========================================================================
-  // 4. SIP CONTRIBUTION & WEALTH PRESETS (sip-calculator)
-  // =========================================================================
-  {
-    toolId: "sip-calculator",
-    presetSlug: "5000-per-month",
-    category: "finance",
-    seoTitle: "5000 Per Month SIP: 10, 15 & 20 Year Wealth Returns", // 53 chars
-    seoDescription:
-      "Forecast ₹5,000 monthly SIP returns at 12% annual CAGR over 10, 15, and 20 years. Model inflation purchasing power and annual step-up contribution growth.", // 156 chars
-    h1: "₹5,000 Monthly SIP Calculator",
-    subtitle: "Discover how a disciplined ₹5,000/month mutual fund investment compounds into wealth over 15 to 20 years",
-    badge: "₹5,000/Month Preset",
-    presetParams: {
-      initialMonthlyInvestment: 5000,
-      initialDuration: 15,
-      initialExpectedReturn: 12,
-      initialCurrency: "INR",
-    },
-    faqs: [
-      {
-        question: "How much will ₹5,000 monthly SIP grow to in 15 years?",
-        answer: "At an expected 12% annual return, investing ₹5,000 per month for 15 years (total investment ₹9 Lakhs) grows to approximately ₹25,22,880.",
-      },
-    ],
+        "question": "What is the monthly EMI for a 30 Lakh home loan for 20 years?",
+        "answer": "At 8.5% interest, the monthly EMI for a ₹30 Lakh home loan for 20 years is ₹26,035. Total interest paid over 20 years is ₹32,48,328."
+      }
+    ]
   },
   {
-    toolId: "sip-calculator",
-    presetSlug: "10000-per-month",
-    category: "finance",
-    seoTitle: "10000 Per Month SIP: 15 & 20 Year Wealth Forecast", // 51 chars
-    seoDescription:
-      "Calculate maturity wealth for a ₹10,000 monthly SIP at 12% return. See how a 10% annual step-up turns your investment into over ₹1.5 Crore.", // 142 chars
-    h1: "₹10,000 Monthly SIP Calculator",
-    subtitle: "Forecast compound wealth and inflation purchasing power for ₹10,000 monthly mutual fund investments",
-    badge: "₹10,000/Month Preset",
-    presetParams: {
-      initialMonthlyInvestment: 10000,
-      initialDuration: 15,
-      initialExpectedReturn: 12,
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "50-lakhs",
+    "category": "finance",
+    "seoTitle": "50 Lakh Home Loan EMI: Monthly Cost & Interest",
+    "seoDescription": "Calculate monthly EMI for a 50 Lakh home loan at 8.5% p.a. for 20 years (₹43,391/mo). View total interest cost, amortization schedule, and prepayment impact.",
+    "h1": "₹50 Lakh Home Loan EMI Calculator",
+    "subtitle": "Complete repayment schedule, interest cost, and tax deductions for a ₹50,00,000 housing loan",
+    "badge": "₹50 Lakh Principal Preset",
+    "presetParams": {
+      "initialPropertyPrice": 6250000,
+      "initialInterestRate": 8.5,
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "How much wealth does ₹10,000 monthly SIP create in 20 years?",
-        answer: "At 12% CAGR, ₹10,000 per month for 20 years yields approximately ₹99,91,479 (~₹1 Crore) on an invested capital of ₹24 Lakhs.",
-      },
-    ],
+        "question": "What is the EMI for 50 Lakh home loan for 20 years?",
+        "answer": "At 8.5% interest, your monthly EMI for ₹50 Lakhs for 20 years is ₹43,391. Total amount payable is ₹1,04,13,879, of which ₹54,13,879 is interest."
+      }
+    ]
   },
   {
-    toolId: "sip-calculator",
-    presetSlug: "1-crore-target",
-    category: "finance",
-    seoTitle: "1 Crore SIP Calculator: Monthly Target & Tenure", // 49 chars
-    seoDescription:
-      "Calculate exact monthly SIP investment required to reach ₹1 Crore corpus in 10, 15, or 20 years at 12% expected mutual fund returns with inflation metrics.", // 156 chars
-    h1: "₹1 Crore Target SIP Calculator",
-    subtitle: "Find the exact monthly SIP contribution needed to achieve your ₹1,00,00,000 financial freedom goal",
-    badge: "₹1 Crore Goal Preset",
-    presetParams: {
-      initialMonthlyInvestment: 20000,
-      initialDuration: 15,
-      initialExpectedReturn: 12,
-      initialCurrency: "INR",
+    "toolId": "home-loan-emi-calculator",
+    "presetSlug": "1-crore",
+    "category": "finance",
+    "seoTitle": "1 Crore Home Loan EMI: Monthly Cost & Schedule",
+    "seoDescription": "Calculate 1 Crore home loan monthly EMI at 8.5% (₹86,782/mo for 20 yrs). Analyze tax deduction limits under Section 24b and partial prepayment savings.",
+    "h1": "₹1 Crore Home Loan EMI Calculator",
+    "subtitle": "Complete repayment schedule, interest cost, and tax deductions for a ₹1,00,00,000 luxury home loan",
+    "badge": "₹1 Crore Principal Preset",
+    "presetParams": {
+      "initialPropertyPrice": 12500000,
+      "initialInterestRate": 8.5,
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "How much should I invest monthly to get 1 Crore in 15 years?",
-        answer: "At a 12% annual CAGR, you need to invest approximately ₹19,820 per month to accumulate a ₹1 Crore corpus in 15 years.",
-      },
-    ],
-  },
-
-  // =========================================================================
-  // 5. SALARY CTC IN-HAND PRESETS (salary-calculator)
-  // =========================================================================
-  {
-    toolId: "salary-calculator",
-    presetSlug: "6-lakhs-ctc",
-    category: "finance",
-    seoTitle: "6 LPA In-Hand Salary: Monthly Take Home & EPF", // 47 chars
-    seoDescription:
-      "Calculate in-hand take-home monthly salary for ₹6 Lakhs CTC under New Tax Regime FY 2025-26. See employee EPF, professional tax, and zero income tax benefit.", // 159 chars
-    h1: "₹6 LPA In-Hand Salary Calculator",
-    subtitle: "Detailed monthly gross, EPF deductions, and take-home pay for an annual CTC of ₹6,00,000",
-    badge: "₹6 LPA CTC Preset",
-    presetParams: {
-      initialCtc: 600000,
-      initialCurrency: "INR",
-    },
-    faqs: [
-      {
-        question: "Is income tax deducted on a 6 LPA salary in India?",
-        answer: "No. Under the New Tax Regime (Section 115BAC), taxable income up to ₹7 Lakhs is eligible for full tax rebate under Section 87A, resulting in ₹0 income tax.",
-      },
-    ],
+        "question": "What is the monthly EMI for a 1 Crore home loan for 20 years?",
+        "answer": "At 8.5% interest, the EMI for ₹1 Crore for 20 years is ₹86,782/month. Total interest payable is ₹1.08 Crore."
+      }
+    ]
   },
   {
-    toolId: "salary-calculator",
-    presetSlug: "10-lakhs-ctc",
-    category: "finance",
-    seoTitle: "10 LPA In-Hand Salary: Monthly Pay & Tax Breakdown", // 52 chars
-    seoDescription:
-      "Calculate monthly in-hand take home salary for 10 Lakhs CTC under New Tax Regime. Breaks down basic pay, EPF, professional tax, and net bank credit.", // 150 chars
-    h1: "₹10 LPA In-Hand Salary Calculator",
-    subtitle: "Detailed monthly gross, EPF deductions, and tax liability for an annual CTC of ₹10,00,000",
-    badge: "₹10 LPA CTC Preset",
-    presetParams: {
-      initialCtc: 1000000,
-      initialCurrency: "INR",
+    "toolId": "sip-calculator",
+    "presetSlug": "5000-per-month",
+    "category": "finance",
+    "seoTitle": "5000 Per Month SIP: 10, 15 & 20 Year Wealth Returns",
+    "seoDescription": "Forecast ₹5,000 monthly SIP returns at 12% annual CAGR over 10, 15, and 20 years. Model inflation purchasing power and annual step-up contribution growth.",
+    "h1": "₹5,000 Monthly SIP Calculator",
+    "subtitle": "Discover how a disciplined ₹5,000/month mutual fund investment compounds into wealth over 15 to 20 years",
+    "badge": "₹5,000/Month Preset",
+    "presetParams": {
+      "initialMonthlyInvestment": 5000,
+      "initialDuration": 15,
+      "initialExpectedReturn": 12,
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the monthly in-hand salary for 10 LPA CTC?",
-        answer: "For a 10 LPA CTC, assuming standard 50% basic and capped EPF, the monthly in-hand salary is approximately ₹72,000 to ₹75,000 after EPF and New Regime tax.",
-      },
-    ],
+        "question": "How much will ₹5,000 monthly SIP grow to in 15 years?",
+        "answer": "At an expected 12% annual return, investing ₹5,000 per month for 15 years (total investment ₹9 Lakhs) grows to approximately ₹25,22,880."
+      }
+    ]
   },
   {
-    toolId: "salary-calculator",
-    presetSlug: "15-lakhs-ctc",
-    category: "finance",
-    seoTitle: "15 LPA In-Hand Salary: Monthly Take-Home & Taxes", // 50 chars
-    seoDescription:
-      "Calculate in-hand monthly salary for 15 Lakhs CTC in India. Detailed breakdown of ₹75,000 standard deduction, slab taxes under New Regime, and EPF.", // 148 chars
-    h1: "₹15 LPA In-Hand Salary Calculator",
-    subtitle: "Detailed monthly gross, EPF deductions, and tax liability for an annual CTC of ₹15,00,000",
-    badge: "₹15 LPA CTC Preset",
-    presetParams: {
-      initialCtc: 1500000,
-      initialCurrency: "INR",
+    "toolId": "sip-calculator",
+    "presetSlug": "10000-per-month",
+    "category": "finance",
+    "seoTitle": "10000 Per Month SIP: 15 & 20 Year Wealth Forecast",
+    "seoDescription": "Calculate maturity wealth for a ₹10,000 monthly SIP at 12% return. See how a 10% annual step-up turns your investment into over ₹1.5 Crore.",
+    "h1": "₹10,000 Monthly SIP Calculator",
+    "subtitle": "Forecast compound wealth and inflation purchasing power for ₹10,000 monthly mutual fund investments",
+    "badge": "₹10,000/Month Preset",
+    "presetParams": {
+      "initialMonthlyInvestment": 10000,
+      "initialDuration": 15,
+      "initialExpectedReturn": 12,
+      "initialCurrency": "INR"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the monthly in-hand pay for a 15 LPA salary?",
-        answer: "For 15 LPA CTC under the New Tax Regime, net monthly take-home is roughly ₹1,03,000 to ₹1,07,000 after accounting for EPF and ~₹1.05 Lakh annual tax.",
-      },
-    ],
-  },
-
-  // =========================================================================
-  // 6. US & TIER 1 MORTGAGE PRESETS (mortgage-calculator)
-  // =========================================================================
-  {
-    toolId: "mortgage-calculator",
-    presetSlug: "30-year-fixed",
-    category: "finance",
-    seoTitle: "30-Year Fixed Mortgage Calculator: Current US Rates", // 53 chars
-    seoDescription:
-      "Calculate 30-year fixed rate mortgage monthly payments, amortization schedule, property taxes, and PMI with current benchmark interest rates.", // 143 chars
-    h1: "30-Year Fixed Mortgage Calculator",
-    subtitle: "US Conventional 30-Year Benchmark: Model monthly principal, interest, taxes, and insurance (PITI)",
-    badge: "US 30-Yr Benchmark (6.85%)",
-    presetParams: {
-      initialHomePrice: 425000,
-      initialDownPaymentPercent: 20,
-      initialInterestRate: 6.85,
-      initialLoanTermYears: 30,
-      initialPropertyTaxAnnual: 4800,
-      initialHomeInsuranceAnnual: 1400,
-      initialHoaFeesMonthly: 100,
-      initialCurrency: "USD",
-    },
-    officialReference: {
-      title: "Freddie Mac Primary Mortgage Market Survey (PMMS)",
-      authority: "Federal Home Loan Mortgage Corp (Freddie Mac)",
-      citation: "30-Year Fixed-Rate Mortgage Conforming Loan Average",
-      url: "https://www.freddiemac.com/pmms",
-    },
-    faqs: [
-      {
-        question: "What is the monthly payment on a $400,000 30-year fixed mortgage?",
-        answer: "At a 6.85% interest rate with 20% down ($80,000 down payment, $320,000 loan balance), the monthly principal and interest payment is approximately $2,097. Adding estimated taxes and insurance brings the total payment to around $2,613/month.",
-      },
-      {
-        question: "How does 20% down payment avoid PMI in the US?",
-        answer: "Under Fannie Mae and Freddie Mac underwriting rules, putting down 20% or more creates an 80% Loan-to-Value (LTV) ratio, legally exempting conventional borrowers from Private Mortgage Insurance (PMI).",
-      },
-    ],
+        "question": "How much wealth does ₹10,000 monthly SIP create in 20 years?",
+        "answer": "At 12% CAGR, ₹10,000 per month for 20 years yields approximately ₹99,91,479 (~₹1 Crore) on an invested capital of ₹24 Lakhs."
+      }
+    ]
   },
   {
-    toolId: "mortgage-calculator",
-    presetSlug: "15-year-fixed",
-    category: "finance",
-    seoTitle: "15-Year Fixed Mortgage Calculator: Rates & Payoff", // 49 chars
-    seoDescription:
-      "Calculate 15-year fixed mortgage monthly payments and compare interest savings versus 30-year loans using current US conforming interest rates.", // 143 chars
-    h1: "15-Year Fixed Mortgage Calculator",
-    subtitle: "Accelerate home equity and save tens of thousands in interest with a 15-year fixed repayment plan",
-    badge: "US 15-Yr Benchmark (6.15%)",
-    presetParams: {
-      initialHomePrice: 425000,
-      initialDownPaymentPercent: 20,
-      initialInterestRate: 6.15,
-      initialLoanTermYears: 15,
-      initialPropertyTaxAnnual: 4800,
-      initialHomeInsuranceAnnual: 1400,
-      initialHoaFeesMonthly: 100,
-      initialCurrency: "USD",
+    "toolId": "sip-calculator",
+    "presetSlug": "1-crore-target",
+    "category": "finance",
+    "seoTitle": "1 Crore SIP Calculator: Monthly Target & Tenure",
+    "seoDescription": "Calculate estimated monthly SIP investment required to reach ₹1 Crore corpus in 10, 15, or 20 years at 12% expected mutual fund returns with inflation metrics.",
+    "h1": "₹1 Crore Target SIP Calculator",
+    "subtitle": "Find the estimated monthly SIP contribution needed to achieve your ₹1,00,00,000 financial freedom goal",
+    "badge": "₹1 Crore Goal Preset",
+    "presetParams": {
+      "initialMonthlyInvestment": 20000,
+      "initialDuration": 15,
+      "initialExpectedReturn": 12,
+      "initialCurrency": "INR"
     },
-    officialReference: {
-      title: "Freddie Mac 15-Year Conforming Fixed Benchmark",
-      authority: "Freddie Mac PMMS",
-      citation: "15-Year Fixed-Rate Loan Series",
-      url: "https://www.freddiemac.com/pmms",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "How much interest do you save with a 15-year vs 30-year mortgage?",
-        answer: "On a $320,000 mortgage, choosing a 15-year loan at 6.15% over a 30-year loan at 6.85% saves over $265,000 in total lifetime interest while paying the home off 15 years sooner.",
-      },
-    ],
+        "question": "How much should I invest monthly to get 1 Crore in 15 years?",
+        "answer": "At a 12% annual CAGR, you need to invest approximately ₹19,820 per month to accumulate a ₹1 Crore corpus in 15 years."
+      }
+    ]
   },
   {
-    toolId: "mortgage-calculator",
-    presetSlug: "fha-loan",
-    category: "finance",
-    seoTitle: "FHA Loan Calculator: 3.5% Down Payment & Monthly MIP", // 52 chars
-    seoDescription:
-      "Calculate Federal Housing Administration (FHA) mortgage payments with 3.5% minimum down payment, upfront MIP, and annual mortgage insurance premiums.", // 151 chars
-    h1: "FHA Mortgage Loan Calculator",
-    subtitle: "Model FHA loan eligibility with 3.5% down payment and mandatory mortgage insurance premium (MIP)",
-    badge: "HUD FHA 3.5% Down Guidelines",
-    presetParams: {
-      initialHomePrice: 350000,
-      initialDownPaymentPercent: 3.5,
-      initialInterestRate: 6.5,
-      initialLoanTermYears: 30,
-      initialPropertyTaxAnnual: 3800,
-      initialHomeInsuranceAnnual: 1200,
-      initialHoaFeesMonthly: 0,
-      initialCurrency: "USD",
+    "toolId": "salary-calculator",
+    "presetSlug": "6-lakhs-ctc",
+    "category": "finance",
+    "seoTitle": "6 LPA In-Hand Salary: Monthly Take Home & EPF",
+    "seoDescription": "Calculate in-hand take-home monthly salary for ₹6 Lakhs CTC under New Tax Regime FY 2025-26. See employee EPF, professional tax, and zero income tax benefit.",
+    "h1": "₹6 LPA In-Hand Salary Calculator",
+    "subtitle": "Detailed monthly gross, EPF deductions, and take-home pay for an annual CTC of ₹6,00,000 · India new regime, FY 2025–26 / AY 2026–27",
+    "badge": "₹6 LPA CTC Preset",
+    "presetParams": {
+      "initialCtc": 600000,
+      "initialCurrency": "INR"
     },
-    officialReference: {
-      title: "HUD Single Family Housing Policy Handbook 4000.1",
-      authority: "U.S. Department of Housing and Urban Development (HUD)",
-      citation: "FHA Forward Mortgage Maximum LTV & MIP Guidelines",
-      url: "https://www.hud.gov",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What credit score is required for 3.5% down on an FHA loan?",
-        answer: "HUD requires a minimum FICO credit score of 580 to qualify for the 3.5% down payment option. Credit scores between 500 and 579 require 10% down.",
+        "question": "How is tax calculated in this salary scenario?",
+        "answer": "The model uses FY 2025–26 new-regime salary slabs, the ₹75,000 standard deduction, eligible resident rebate up to ₹12 lakh taxable income, marginal relief and 4% cess. Bonus remains taxable; employee EPF and professional tax reduce pay but not this taxable base."
       },
       {
-        question: "How much is FHA monthly MIP?",
-        answer: "For a 30-year FHA loan with 3.5% down, the annual Mortgage Insurance Premium (MIP) is 0.55% of the base loan amount, divided across 12 monthly payments.",
-      },
+        "question": "Does monthly take-home include the annual bonus?",
+        "answer": "No. Regular monthly take-home excludes the bonus, which is assumed to be paid separately. Annual take-home includes it. Annual tax is spread across 12 months; actual payroll timing and CTC benefits can differ."
+      }
     ],
+    "officialReference": {
+      "title": "Salaried individuals: AY 2026–27",
+      "authority": "Income Tax Department",
+      "citation": "New-regime slabs and Section 87A",
+      "url": "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1"
+    }
   },
   {
-    toolId: "mortgage-calculator",
-    presetSlug: "va-loan",
-    category: "finance",
-    seoTitle: "VA Loan Calculator: 0% Down Military Mortgage & Fees", // 53 chars
-    seoDescription:
-      "Calculate monthly payments on a 0% down VA home loan for US veterans and active military personnel. Account for VA funding fees and zero PMI.", // 142 chars
-    h1: "VA Home Loan Mortgage Calculator",
-    subtitle: "Zero down payment, competitive interest rates, and no monthly private mortgage insurance (PMI) for US Veterans",
-    badge: "VA Zero-Down Benefit (Sep 2026)",
-    presetParams: {
-      initialHomePrice: 400000,
-      initialDownPaymentPercent: 0,
-      initialInterestRate: 6.35,
-      initialLoanTermYears: 30,
-      initialPropertyTaxAnnual: 4200,
-      initialHomeInsuranceAnnual: 1300,
-      initialHoaFeesMonthly: 0,
-      initialCurrency: "USD",
+    "toolId": "salary-calculator",
+    "presetSlug": "10-lakhs-ctc",
+    "category": "finance",
+    "seoTitle": "10 LPA In-Hand Salary: Monthly Pay & Tax Breakdown",
+    "seoDescription": "Calculate monthly in-hand take home salary for 10 Lakhs CTC under New Tax Regime. Breaks down basic pay, EPF, professional tax, and net bank credit.",
+    "h1": "₹10 LPA In-Hand Salary Calculator",
+    "subtitle": "Detailed monthly gross, EPF deductions, and tax liability for an annual CTC of ₹10,00,000 · India new regime, FY 2025–26 / AY 2026–27",
+    "badge": "₹10 LPA CTC Preset",
+    "presetParams": {
+      "initialCtc": 1000000,
+      "initialCurrency": "INR"
     },
-    officialReference: {
-      title: "VA Home Loan Guaranty Buyer Guide",
-      authority: "U.S. Department of Veterans Affairs (VA)",
-      citation: "Title 38 U.S. Code Chapter 37 Housing Loans",
-      url: "https://www.va.gov/housing-assistance/home-loans/",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "Do VA home loans require monthly mortgage insurance?",
-        answer: "No. Unlike conventional loans with <20% down or FHA loans, VA loans never require monthly Private Mortgage Insurance (PMI), significantly lowering your monthly payment.",
+        "question": "How is tax calculated in this salary scenario?",
+        "answer": "The model uses FY 2025–26 new-regime salary slabs, the ₹75,000 standard deduction, eligible resident rebate up to ₹12 lakh taxable income, marginal relief and 4% cess. Bonus remains taxable; employee EPF and professional tax reduce pay but not this taxable base."
       },
+      {
+        "question": "Does monthly take-home include the annual bonus?",
+        "answer": "No. Regular monthly take-home excludes the bonus, which is assumed to be paid separately. Annual take-home includes it. Annual tax is spread across 12 months; actual payroll timing and CTC benefits can differ."
+      }
     ],
+    "officialReference": {
+      "title": "Salaried individuals: AY 2026–27",
+      "authority": "Income Tax Department",
+      "citation": "New-regime slabs and Section 87A",
+      "url": "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1"
+    }
   },
   {
-    toolId: "mortgage-calculator",
-    presetSlug: "canada-cmhc",
-    category: "finance",
-    seoTitle: "Canada Mortgage Calculator: CMHC Insurance & Rates", // 50 chars
-    seoDescription:
-      "Calculate Canadian residential mortgage payments, CMHC insurance premiums for under 20% down, and qualifying stress test amortization schedules.", // 144 chars
-    h1: "Canada Mortgage Calculator (CMHC Insurance)",
-    subtitle: "Model Canadian home purchases with 5-year fixed rates, CMHC default insurance tiers, and property taxes",
-    badge: "CMHC Insurance Rules (CAD)",
-    presetParams: {
-      initialHomePrice: 650000,
-      initialDownPaymentPercent: 10,
-      initialInterestRate: 4.85,
-      initialLoanTermYears: 25,
-      initialPropertyTaxAnnual: 5200,
-      initialHomeInsuranceAnnual: 1500,
-      initialHoaFeesMonthly: 0,
-      initialCurrency: "CAD",
+    "toolId": "salary-calculator",
+    "presetSlug": "15-lakhs-ctc",
+    "category": "finance",
+    "seoTitle": "15 LPA In-Hand Salary: Monthly Take-Home & Taxes",
+    "seoDescription": "Calculate in-hand monthly salary for 15 Lakhs CTC in India. Detailed breakdown of ₹75,000 standard deduction, slab taxes under New Regime, and EPF.",
+    "h1": "₹15 LPA In-Hand Salary Calculator",
+    "subtitle": "Detailed monthly gross, EPF deductions, and tax liability for an annual CTC of ₹15,00,000 · India new regime, FY 2025–26 / AY 2026–27",
+    "badge": "₹15 LPA CTC Preset",
+    "presetParams": {
+      "initialCtc": 1500000,
+      "initialCurrency": "INR"
     },
-    officialReference: {
-      title: "CMHC Mortgage Loan Insurance Rules",
-      authority: "Canada Mortgage and Housing Corporation (CMHC)",
-      citation: "B-20 Residential Mortgage Underwriting Practices",
-      url: "https://www.cmhc-schl.gc.ca",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is CMHC mortgage insurance premium in Canada?",
-        answer: "When putting down 10% on a Canadian property, CMHC charges a 3.10% insurance premium on the loan amount, which is rolled directly into the principal mortgage balance.",
+        "question": "How is tax calculated in this salary scenario?",
+        "answer": "The model uses FY 2025–26 new-regime salary slabs, the ₹75,000 standard deduction, eligible resident rebate up to ₹12 lakh taxable income, marginal relief and 4% cess. Bonus remains taxable; employee EPF and professional tax reduce pay but not this taxable base."
       },
+      {
+        "question": "Does monthly take-home include the annual bonus?",
+        "answer": "No. Regular monthly take-home excludes the bonus, which is assumed to be paid separately. Annual take-home includes it. Annual tax is spread across 12 months; actual payroll timing and CTC benefits can differ."
+      }
     ],
+    "officialReference": {
+      "title": "Salaried individuals: AY 2026–27",
+      "authority": "Income Tax Department",
+      "citation": "New-regime slabs and Section 87A",
+      "url": "https://www.incometax.gov.in/iec/foportal/help/individual/return-applicable-1"
+    }
   },
   {
-    toolId: "mortgage-calculator",
-    presetSlug: "uk-repayment",
-    category: "finance",
-    seoTitle: "UK Mortgage Calculator: BoE Base Rate & Repayment", // 49 chars
-    seoDescription:
-      "Calculate UK monthly mortgage repayments, interest totals, and Loan-to-Value (LTV) ratios based on current Bank of England base rates in Pounds Sterling.", // 153 chars
-    h1: "UK Mortgage Repayment Calculator",
-    subtitle: "Calculate monthly repayments and interest breakdown for England, Scotland, and Wales residential properties",
-    badge: "UK BoE Benchmark (GBP)",
-    presetParams: {
-      initialHomePrice: 320000,
-      initialDownPaymentPercent: 15,
-      initialInterestRate: 4.75,
-      initialLoanTermYears: 25,
-      initialPropertyTaxAnnual: 1800,
-      initialHomeInsuranceAnnual: 400,
-      initialHoaFeesMonthly: 0,
-      initialCurrency: "GBP",
+    "toolId": "mortgage-calculator",
+    "presetSlug": "30-year-fixed",
+    "category": "finance",
+    "seoTitle": "30-Year Fixed Mortgage Payment Calculator",
+    "seoDescription": "30-Year Fixed Mortgage Calculator: estimate payments with editable rates and lender-quoted premiums. Review costs and a repayment schedule; eligibility is not assessed.",
+    "h1": "30-Year Fixed Mortgage Calculator",
+    "subtitle": "Estimate fixed-rate payments using your lender rate and quoted costs. Defaults are illustrative, not current rates or an approval.",
+    "badge": "Editable fixed-rate scenario",
+    "presetParams": {
+      "initialHomePrice": 425000,
+      "initialDownPaymentPercent": 20,
+      "initialInterestRate": 6.85,
+      "initialLoanTermYears": 30,
+      "initialPropertyTaxAnnual": 4800,
+      "initialHomeInsuranceAnnual": 1400,
+      "initialHoaFeesMonthly": 100,
+      "initialCurrency": "USD",
+      "initialProgram": "conventional"
     },
-    officialReference: {
-      title: "Bank of England Official Bank Rate",
-      authority: "Bank of England (BoE)",
-      citation: "Monetary Policy Committee Benchmark Rate Decisions",
-      url: "https://www.bankofengland.co.uk",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What is the monthly repayment on a £250,000 UK mortgage at 4.75%?",
-        answer: "For a 25-year capital and interest repayment mortgage of £250,000 at 4.75%, your monthly repayment is approximately £1,425.",
+        "question": "Are the default rates current lender offers?",
+        "answer": "No. They are editable examples. Enter a dated lender quote and its fees. The schedule assumes an unchanged rate for the full repayment period and is not a loan approval."
       },
-    ],
-  },
-
-  // =========================================================================
-  // 7. US RETIREMENT & WEALTH PRESETS (retirement-calculator)
-  // =========================================================================
-  {
-    toolId: "retirement-calculator",
-    presetSlug: "401k-growth",
-    category: "finance",
-    seoTitle: "401(k) Calculator: Employer Match & Retirement Growth", // 53 chars
-    seoDescription:
-      "Forecast 401(k) retirement balance with company match, annual salary raises, and compound market growth up to the 2026 IRS $23,500 contribution limit.", // 150 chars
-    h1: "401(k) Retirement Growth Calculator",
-    subtitle: "Compound growth simulator with employer matching contributions and historical index returns",
-    badge: "IRS 2026 401(k) Limit ($23,500)",
-    presetParams: {
-      initialCurrentAge: 28,
-      initialRetirementAge: 65,
-      initialCurrentSavings: 45000,
-      initialMonthlyExpenses: 4500,
-      initialExpectedReturn: 9.0,
-      initialInflationRate: 3.0,
-      initialCurrency: "USD",
-    },
-    officialReference: {
-      title: "IRS Notice: Retirement Plan Contribution Limits",
-      authority: "Internal Revenue Service (IRS)",
-      citation: "IRC Section 402(g) Elective Deferrals",
-      url: "https://www.irs.gov",
-    },
-    faqs: [
       {
-        question: "What is the maximum 401(k) contribution limit for 2026?",
-        answer: "The IRS employee contribution limit for 401(k) plans is $23,500 per year (plus an additional $7,500 catch-up contribution for workers aged 50 and older).",
-      },
-    ],
+        "question": "How is mortgage insurance handled?",
+        "answer": "For a conventional loan, enter a lender-quoted monthly PMI amount if applicable. The UK model does not add US-style PMI. The initial monthly total includes entered housing costs; the schedule shows principal and interest only."
+      }
+    ]
   },
   {
-    toolId: "retirement-calculator",
-    presetSlug: "roth-ira",
-    category: "finance",
-    seoTitle: "Roth IRA Calculator: Tax-Free Compound Growth to 65", // 51 chars
-    seoDescription:
-      "Calculate tax-free wealth accumulation in a Roth IRA with annual $7,000 contributions, compound dividend reinvestment, and early retirement benchmarks.", // 152 chars
-    h1: "Roth IRA Compound Growth Calculator",
-    subtitle: "Model 100% tax-free retirement compounding with annual contributions and S&P 500 benchmark returns",
-    badge: "IRS 2026 Roth IRA Limit ($7,000)",
-    presetParams: {
-      initialCurrentAge: 25,
-      initialRetirementAge: 65,
-      initialCurrentSavings: 15000,
-      initialMonthlyExpenses: 4000,
-      initialExpectedReturn: 10.0,
-      initialInflationRate: 2.8,
-      initialCurrency: "USD",
+    "toolId": "mortgage-calculator",
+    "presetSlug": "15-year-fixed",
+    "category": "finance",
+    "seoTitle": "15-Year Fixed Mortgage Calculator: Rates & Payoff",
+    "seoDescription": "15-Year Fixed Mortgage Calculator: estimate payments with editable rates and lender-quoted premiums. Review costs and a repayment schedule; eligibility is not assessed.",
+    "h1": "15-Year Fixed Mortgage Calculator",
+    "subtitle": "Estimate fixed-rate payments using your lender rate and quoted costs. Defaults are illustrative, not current rates or an approval.",
+    "badge": "Editable fixed-rate scenario",
+    "presetParams": {
+      "initialHomePrice": 425000,
+      "initialDownPaymentPercent": 20,
+      "initialInterestRate": 6.15,
+      "initialLoanTermYears": 15,
+      "initialPropertyTaxAnnual": 4800,
+      "initialHomeInsuranceAnnual": 1400,
+      "initialHoaFeesMonthly": 100,
+      "initialCurrency": "USD",
+      "initialProgram": "conventional"
     },
-    officialReference: {
-      title: "IRS Publication 590-A: Contributions to IRAs",
-      authority: "Internal Revenue Service (IRS)",
-      citation: "IRC Section 408A Roth IRAs",
-      url: "https://www.irs.gov",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "How much will maxing out a Roth IRA every year grow to?",
-        answer: "Maxing out a Roth IRA at $7,000/year from age 25 to 65 at an average 10% annual return grows to approximately $3,375,000—completely exempt from federal and state income taxes upon qualified withdrawal.",
+        "question": "Are the default rates current lender offers?",
+        "answer": "No. They are editable examples. Enter a dated lender quote and its fees. The schedule assumes an unchanged rate for the full repayment period and is not a loan approval."
       },
-    ],
+      {
+        "question": "How is mortgage insurance handled?",
+        "answer": "For a conventional loan, enter a lender-quoted monthly PMI amount if applicable. The UK model does not add US-style PMI. The initial monthly total includes entered housing costs; the schedule shows principal and interest only."
+      }
+    ]
   },
   {
-    toolId: "retirement-calculator",
-    presetSlug: "fire-movement",
-    category: "finance",
-    seoTitle: "FIRE Calculator: Financial Independence & 4% Rule", // 50 chars
-    seoDescription:
-      "Calculate your exact Financial Independence, Retire Early (FIRE) number using the Trinity Study 4% safe withdrawal rate rule and annual living expenses.", // 154 chars
-    h1: "FIRE Movement Retirement Calculator",
-    subtitle: "Find your 25x annual expenditure target to retire decades early with the 4% safe withdrawal rule",
-    badge: "Trinity Study 4% Rule",
-    presetParams: {
-      initialCurrentAge: 30,
-      initialRetirementAge: 45,
-      initialCurrentSavings: 120000,
-      initialMonthlyExpenses: 5000,
-      initialExpectedReturn: 9.0,
-      initialInflationRate: 3.0,
-      initialCurrency: "USD",
+    "toolId": "mortgage-calculator",
+    "presetSlug": "fha-loan",
+    "category": "finance",
+    "seoTitle": "FHA Payment Scenario with Quoted Insurance",
+    "seoDescription": "FHA Mortgage Payment Scenario: estimate payments with editable rates and lender-quoted premiums. Review costs and a repayment schedule; eligibility is not assessed.",
+    "h1": "FHA Mortgage Payment Scenario",
+    "subtitle": "Estimate fixed-rate payments using your lender rate and quoted costs. Defaults are illustrative, not current rates or an approval.",
+    "badge": "Editable fixed-rate scenario",
+    "presetParams": {
+      "initialHomePrice": 350000,
+      "initialDownPaymentPercent": 3.5,
+      "initialInterestRate": 6.5,
+      "initialLoanTermYears": 30,
+      "initialPropertyTaxAnnual": 3800,
+      "initialHomeInsuranceAnnual": 1200,
+      "initialHoaFeesMonthly": 0,
+      "initialCurrency": "USD",
+      "initialProgram": "fha"
     },
-    officialReference: {
-      title: "Retirement Savings: Choosing a Withdrawal Rate That Is Sustainable",
-      authority: "Trinity University Study (Cooley, Hubbard, Walz)",
-      citation: "Journal of the American Association of Individual Investors (4% Rule)",
-      url: "https://www.aaii.com",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "How do you calculate your FIRE number?",
-        answer: "Your FIRE number equals 25 times your annual living expenses. For example, if you spend $60,000 per year, your target nest egg is $60,000 * 25 = $1,500,000 based on the 4% safe withdrawal rate.",
+        "question": "Are the default rates current lender offers?",
+        "answer": "No. They are editable examples. Enter a dated lender quote and its fees. The schedule assumes an unchanged rate for the full repayment period and is not a loan approval."
       },
-    ],
-  },
-
-  // =========================================================================
-  // 8. TIER 1 COMPOUND WEALTH PRESETS (compound-interest-calculator)
-  // =========================================================================
-  {
-    toolId: "compound-interest-calculator",
-    presetSlug: "sp500-index",
-    category: "finance",
-    seoTitle: "S&P 500 Return Calculator: 10% Historical CAGR Return", // 53 chars
-    seoDescription:
-      "Calculate long-term wealth growth investing in the S&P 500 index at its historical 10% annualized return with monthly dollar-cost averaging.", // 141 chars
-    h1: "S&P 500 Index Compound Return Calculator",
-    subtitle: "Simulate dollar-cost averaging into low-cost index funds (VOO / SPY) with reinvested dividends",
-    badge: "S&P 500 10% Historical CAGR",
-    presetParams: {
-      initialPrincipal: 10000,
-      initialMonthlyContribution: 500,
-      initialAnnualRate: 10.0,
-      initialYears: 20,
-      initialCurrency: "USD",
-    },
-    officialReference: {
-      title: "S&P 500 Historical Total Return Series",
-      authority: "S&P Dow Jones Indices",
-      citation: "S&P 500 Total Return Index 1926-2026",
-      url: "https://www.spglobal.com",
-    },
-    faqs: [
       {
-        question: "What is the historical average return of the S&P 500?",
-        answer: "Over the last 90+ years, the S&P 500 index has generated an annualized nominal compound return of approximately 10.2% with dividends reinvested (roughly 7% adjusted for inflation).",
-      },
-    ],
+        "question": "How are FHA premiums entered?",
+        "answer": "Enter the upfront fee and the initial monthly MIP quoted by your lender. They default to zero until entered. This calculator does not determine FHA eligibility, premium tiers or changing MIP over the loan term."
+      }
+    ]
   },
   {
-    toolId: "compound-interest-calculator",
-    presetSlug: "500-a-month",
-    category: "finance",
-    seoTitle: "$500 a Month Investment Calculator: 10, 20 & 30 Years", // 52 chars
-    seoDescription:
-      "Calculate how much $500 invested monthly grows to in 10, 20, and 30 years at 8%, 10%, and 12% compound returns. Real wealth breakdown with charts.", // 148 chars
-    h1: "$500 a Month Investment Calculator",
-    subtitle: "Discover how a consistent $500 monthly investment compounds into over $1,000,000 in index funds",
-    badge: "$500/Month DCA Strategy",
-    presetParams: {
-      initialPrincipal: 1000,
-      initialMonthlyContribution: 500,
-      initialAnnualRate: 10.0,
-      initialYears: 25,
-      initialCurrency: "USD",
+    "toolId": "mortgage-calculator",
+    "presetSlug": "va-loan",
+    "category": "finance",
+    "seoTitle": "VA Loan Calculator: 0% Down Military Mortgage & Fees",
+    "seoDescription": "VA Home Loan Mortgage Calculator: estimate payments with editable rates and lender-quoted premiums. Review costs and a repayment schedule; eligibility is not assessed.",
+    "h1": "VA Home Loan Mortgage Calculator",
+    "subtitle": "Estimate fixed-rate payments using your lender rate and quoted costs. Defaults are illustrative, not current rates or an approval.",
+    "badge": "Editable fixed-rate scenario",
+    "presetParams": {
+      "initialHomePrice": 400000,
+      "initialDownPaymentPercent": 0,
+      "initialInterestRate": 6.35,
+      "initialLoanTermYears": 30,
+      "initialPropertyTaxAnnual": 4200,
+      "initialHomeInsuranceAnnual": 1300,
+      "initialHoaFeesMonthly": 0,
+      "initialCurrency": "USD",
+      "initialProgram": "va"
     },
-    faqs: [
+    "faqs": [
       {
-        question: "How much will $500 a month be in 25 years at 10% interest?",
-        answer: "Investing $500 per month for 25 years at 10% annual return yields approximately $669,450 on a total out-of-pocket investment of just $151,000. In 30 years, it crosses $1,130,000.",
+        "question": "Are the default rates current lender offers?",
+        "answer": "No. They are editable examples. Enter a dated lender quote and its fees. The schedule assumes an unchanged rate for the full repayment period and is not a loan approval."
       },
+      {
+        "question": "Does this VA estimate charge PMI?",
+        "answer": "No. Monthly mortgage insurance is zero. The funding fee depends on down payment, first or subsequent use, and exemption status. You can finance the fee or pay it upfront. Confirm exemption and eligibility with your lender."
+      }
     ],
-  },
-
-  // =========================================================================
-  // 9. US AUTO LOANS (car-loan-emi-calculator)
-  // =========================================================================
-  {
-    toolId: "car-loan-emi-calculator",
-    presetSlug: "60-month-auto-loan",
-    category: "finance",
-    seoTitle: "60-Month Car Loan Calculator: Payment & 6.8% APR", // 48 chars
-    seoDescription:
-      "Calculate 60-month (5-year) new and used car monthly loan payments with trade-in value, down payment, and current US average 6.8% auto loan interest rates.", // 156 chars
-    h1: "60-Month Auto Loan Payment Calculator",
-    subtitle: "Model the most common US auto financing term with trade-in deduction and current bank APRs",
-    badge: "US 60-Month Benchmark (6.8% APR)",
-    presetParams: {
-      initialCarPrice: 35000,
-      initialDownPayment: 5000,
-      initialTradeInValue: 3000,
-      initialInterestRate: 6.8,
-      initialTenureYears: 5,
-      initialCurrency: "USD",
-    },
-    officialReference: {
-      title: "Federal Reserve Consumer Credit Report (G.19)",
-      authority: "Federal Reserve Board",
-      citation: "Commercial Bank Interest Rates on 60-Month Auto Loans",
-      url: "https://www.federalreserve.gov/releases/g19/",
-    },
-    faqs: [
-      {
-        question: "What is the average monthly payment for a $35,000 car for 60 months?",
-        answer: "With $5,000 down payment and $3,000 trade-in ($27,000 loan amount) at 6.8% APR, the monthly payment is approximately $532. Total interest paid over 5 years is roughly $4,923.",
-      },
-    ],
-  },
-
-  // =========================================================================
-  // 6. MARKDOWN DOCUMENT & DEVELOPER PRESETS (markdown-viewer)
-  // =========================================================================
-  {
-    toolId: "markdown-viewer",
-    presetSlug: "github-readme",
-    category: "developer",
-    seoTitle: "GitHub README.md Viewer & Editor (Free Online)", // 48 chars
-    seoDescription:
-      "Preview and edit your GitHub README.md online with live split-screen preview, badge rendering, tables, code blocks, and instant copy. 100% private in-browser.", // 160 chars
-    h1: "GitHub README.md Viewer & Editor",
-    subtitle: "Real-time GitHub Flavored Markdown (GFM) preview, shields.io badges, installation blocks, and contributing guidelines",
-    badge: "GitHub README Specification",
-    presetParams: {
-      templateKey: "readme",
-      initialFileName: "README.md",
-    },
-    officialReference: {
-      title: "GitHub Docs - About READMEs",
-      authority: "GitHub Documentation",
-      citation: "GitHub Standard Repository Documentation Guide",
-      url: "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
-    },
-    faqs: [
-      {
-        question: "How do I preview a GitHub README.md before pushing to GitHub?",
-        answer: "Paste your README markdown into the editor or upload your README.md file. This viewer uses the exact GitHub Flavored Markdown (GFM) specification to render headings, badges, tables, checklists, and code fences identically to GitHub's web interface.",
-      },
-      {
-        question: "Can I export my GitHub README as a PDF or Word document?",
-        answer: "Yes. Click 'MD to PDF' or 'MD to Word' in the top action ribbon to compile a clean, formatted document for executive reports, grant proposals, or client documentation.",
-      },
-      {
-        question: "Does this preview tool upload my proprietary code or README to any server?",
-        answer: "No. Everything runs strictly in your local browser memory via JavaScript. No repository code, documentation, or metadata is ever transmitted over the network.",
-      },
-    ],
+    "officialReference": {
+      "title": "VA funding fee and closing costs",
+      "authority": "US Department of Veterans Affairs",
+      "citation": "Purchase-loan funding-fee table",
+      "url": "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/"
+    }
   },
   {
-    toolId: "markdown-viewer",
-    presetSlug: "changelog",
-    category: "developer",
-    seoTitle: "Keep a Changelog Viewer & Editor (CHANGELOG.md)", // 47 chars
-    seoDescription:
-      "Preview and edit CHANGELOG.md files adhering to Keep a Changelog standards. Live GFM preview with version release tags, checklists, and instant PDF/Word export.", // 162 chars
-    h1: "Keep a Changelog Viewer & Editor",
-    subtitle: "Standardized release notes viewer adhering to KeepAChangelog.com and SemVer 2.0.0 guidelines with instant export",
-    badge: "KeepAChangelog Spec v1.1.0",
-    presetParams: {
-      templateKey: "changelog",
-      initialFileName: "CHANGELOG.md",
+    "toolId": "mortgage-calculator",
+    "presetSlug": "canada-cmhc",
+    "category": "finance",
+    "seoTitle": "Canada Mortgage Payment Scenario",
+    "seoDescription": "Canada Mortgage Payment Scenario: estimate payments with editable rates and lender-quoted premiums. Review costs and a repayment schedule; eligibility is not assessed.",
+    "h1": "Canada Mortgage Payment Scenario",
+    "subtitle": "Estimate fixed-rate payments using your lender rate and quoted costs. Defaults are illustrative, not current rates or an approval.",
+    "badge": "Editable fixed-rate scenario",
+    "presetParams": {
+      "initialHomePrice": 650000,
+      "initialDownPaymentPercent": 10,
+      "initialInterestRate": 4.85,
+      "initialLoanTermYears": 25,
+      "initialPropertyTaxAnnual": 5200,
+      "initialHomeInsuranceAnnual": 1500,
+      "initialHoaFeesMonthly": 0,
+      "initialCurrency": "CAD",
+      "initialProgram": "canada"
     },
-    officialReference: {
-      title: "Keep a Changelog Standard (v1.1.0)",
-      authority: "Keep a Changelog Initiative",
-      citation: "Standardized Release History Conventions for Software Projects",
-      url: "https://keepachangelog.com/en/1.1.0/",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "What categories should a CHANGELOG.md include?",
-        answer: "According to Keep a Changelog standards, each release should organize changes under: Added (new features), Changed (modifications), Deprecated (soon-to-be removed), Removed (eliminated features), Fixed (bug resolutions), and Security (vulnerability patches).",
+        "question": "Are the default rates current lender offers?",
+        "answer": "No. They are editable examples. Enter a dated lender quote and its fees. The schedule assumes an unchanged rate for the full repayment period and is not a loan approval."
       },
       {
-        question: "How do I format version headers in Markdown?",
-        answer: "Use level-2 headings with square brackets for version numbers and release dates: ## [1.2.0] - 2026-09-06. The top section should always remain ## [Unreleased] for upcoming changes.",
-      },
-    ],
+        "question": "Are CMHC insurance and the stress test calculated automatically?",
+        "answer": "No. Enter the upfront premium quoted by your lender. Fixed-rate interest uses semi-annual compounding converted to a monthly rate. Eligibility, provincial premium taxes, stress testing and renewal rates are outside this scenario."
+      }
+    ]
   },
   {
-    toolId: "markdown-viewer",
-    presetSlug: "documentation",
-    category: "developer",
-    seoTitle: "Markdown Documentation Viewer & Editor (DOCS.md)", // 48 chars
-    seoDescription:
-      "Preview technical documentation and API docs in Markdown. Features live split-screen view, parameter tables, GFM alert callouts, and instant PDF export.", // 154 chars
-    h1: "Technical Markdown Documentation Viewer",
-    subtitle: "Interactive developer documentation viewer with API endpoint grids, request/response syntax blocks, and alert callouts",
-    badge: "Technical Docs & API Spec",
-    presetParams: {
-      templateKey: "docs",
-      initialFileName: "DOCS.md",
+    "toolId": "mortgage-calculator",
+    "presetSlug": "uk-repayment",
+    "category": "finance",
+    "seoTitle": "UK Mortgage Repayment Calculator",
+    "seoDescription": "UK Mortgage Repayment Calculator: estimate payments with editable rates and lender-quoted premiums. Review costs and a repayment schedule; eligibility is not assessed.",
+    "h1": "UK Mortgage Repayment Calculator",
+    "subtitle": "Estimate fixed-rate payments using your lender rate and quoted costs. Defaults are illustrative, not current rates or an approval.",
+    "badge": "Editable fixed-rate scenario",
+    "presetParams": {
+      "initialHomePrice": 320000,
+      "initialDownPaymentPercent": 15,
+      "initialInterestRate": 4.75,
+      "initialLoanTermYears": 25,
+      "initialPropertyTaxAnnual": 1800,
+      "initialHomeInsuranceAnnual": 400,
+      "initialHoaFeesMonthly": 0,
+      "initialCurrency": "GBP",
+      "initialProgram": "uk"
     },
-    officialReference: {
-      title: "CommonMark Standard Specification (v0.31.2)",
-      authority: "CommonMark Workgroup",
-      citation: "Standardized Syntax for Technical & Computational Documentation",
-      url: "https://commonmark.org",
-    },
-    faqs: [
+    "faqs": [
       {
-        question: "How can I share technical documentation written in Markdown with non-technical stakeholders?",
-        answer: "Use the 'MD to PDF' or 'MD to Word' export buttons. This compiles your Markdown documentation, tables, and code snippets into standard .pdf and .doc files that clients, managers, and non-developers can read without any Markdown reader.",
+        "question": "Are the default rates current lender offers?",
+        "answer": "No. They are editable examples. Enter a dated lender quote and its fees. The schedule assumes an unchanged rate for the full repayment period and is not a loan approval."
       },
       {
-        question: "How do I write callout boxes for warnings or tips in Markdown?",
-        answer: "Use GitHub-style alert callouts: > [!NOTE], > [!TIP], > [!IMPORTANT], > [!WARNING], or > [!CAUTION]. The viewer styles each with thematic colors, borders, and icons.",
-      },
-    ],
+        "question": "How is mortgage insurance handled?",
+        "answer": "For a conventional loan, enter a lender-quoted monthly PMI amount if applicable. The UK model does not add US-style PMI. The initial monthly total includes entered housing costs; the schedule shows principal and interest only."
+      }
+    ]
   },
+  {
+    "toolId": "retirement-calculator",
+    "presetSlug": "401k-growth",
+    "category": "finance",
+    "seoTitle": "401(k) Calculator: Employer Match & Retirement Growth",
+    "seoDescription": "Project 401(k) savings with annual contributions, employer matching and salary growth. Uses 2026 age-based contribution limits held flat for future scenarios.",
+    "h1": "401(k) Retirement Growth Calculator",
+    "subtitle": "Model annual contributions and employer matching at an assumed return; future limits and returns are not guaranteed.",
+    "badge": "2026 contribution scenario",
+    "presetParams": {
+      "initialCurrentAge": 28,
+      "initialRetirementAge": 65,
+      "initialCurrentSavings": 45000,
+      "initialMonthlyExpenses": 4500,
+      "initialExpectedReturn": 9,
+      "initialInflationRate": 3,
+      "initialCurrency": "USD",
+      "initialMode": "401k"
+    },
+    "faqs": [
+      {
+        "question": "Which contribution limits are used?",
+        "answer": "The 2026 employee limit is $24,500. The general age-50 catch-up is $8,000; ages 60–63 may use $11,250. This scenario holds these limits flat in future years and does not determine plan eligibility or tax treatment."
+      }
+    ],
+    "officialReference": {
+      "title": "2026 retirement contribution limits",
+      "authority": "Internal Revenue Service",
+      "citation": "2026 cost-of-living adjustments",
+      "url": "https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500"
+    }
+  },
+  {
+    "toolId": "retirement-calculator",
+    "presetSlug": "roth-ira",
+    "category": "finance",
+    "seoTitle": "Roth IRA Contribution Growth Scenario",
+    "seoDescription": "Project Roth IRA contribution growth with an editable annual return. Uses the 2026 $7,500 base limit; eligibility and withdrawal tax treatment are not determined.",
+    "h1": "Roth IRA Compound Growth Calculator",
+    "subtitle": "Annual contribution growth in nominal dollars. Confirm income eligibility, compensation and qualified withdrawal rules separately.",
+    "badge": "2026 IRA contribution scenario",
+    "presetParams": {
+      "initialCurrentAge": 25,
+      "initialRetirementAge": 65,
+      "initialCurrentSavings": 15000,
+      "initialMonthlyExpenses": 4000,
+      "initialExpectedReturn": 10,
+      "initialInflationRate": 2.8,
+      "initialCurrency": "USD",
+      "initialMode": "roth"
+    },
+    "faqs": [
+      {
+        "question": "Which IRA limit is used?",
+        "answer": "The 2026 base contribution limit is $7,500, with a $1,100 age-50 catch-up. The limit covers contributions across traditional and Roth IRAs. This model assumes eligibility and holds limits flat for future years."
+      }
+    ],
+    "officialReference": {
+      "title": "2026 retirement contribution limits",
+      "authority": "Internal Revenue Service",
+      "citation": "2026 cost-of-living adjustments",
+      "url": "https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500"
+    }
+  },
+  {
+    "toolId": "retirement-calculator",
+    "presetSlug": "fire-movement",
+    "category": "finance",
+    "seoTitle": "FIRE Calculator: Financial Independence & 4% Rule",
+    "seoDescription": "Calculate a FIRE target from annual spending and an adjustable withdrawal rate. At 4% the target is 25 times expenses; portfolio survival is not guaranteed.",
+    "h1": "FIRE Movement Retirement Calculator",
+    "subtitle": "Divide annual spending by an assumed withdrawal rate. At 4%, the target is 25 times spending in today’s money.",
+    "badge": "Withdrawal-rate scenario",
+    "presetParams": {
+      "initialCurrentAge": 30,
+      "initialRetirementAge": 45,
+      "initialCurrentSavings": 120000,
+      "initialMonthlyExpenses": 5000,
+      "initialExpectedReturn": 9,
+      "initialInflationRate": 3,
+      "initialCurrency": "USD",
+      "initialMode": "fire"
+    },
+    "faqs": [
+      {
+        "question": "What does a 4% FIRE target mean?",
+        "answer": "Annual spending divided by 0.04 equals 25 times annual spending. For $60,000 per year, that is $1,500,000 in today’s money. This arithmetic is not a guarantee of safe withdrawals, investment returns or portfolio survival."
+      }
+    ]
+  },
+  {
+    "toolId": "compound-interest-calculator",
+    "presetSlug": "sp500-index",
+    "category": "finance",
+    "seoTitle": "S&P 500 Return Calculator: 10% Historical CAGR Return",
+    "seoDescription": "Calculate long-term wealth growth investing in the S&P 500 index at its historical 10% annualized return with monthly dollar-cost averaging.",
+    "h1": "S&P 500 Index Compound Return Calculator",
+    "subtitle": "Simulate dollar-cost averaging into low-cost index funds (VOO / SPY) with reinvested dividends",
+    "badge": "S&P 500 10% Historical CAGR",
+    "presetParams": {
+      "initialPrincipal": 10000,
+      "initialMonthlyContribution": 500,
+      "initialAnnualRate": 10,
+      "initialYears": 20,
+      "initialCurrency": "USD"
+    },
+    "faqs": [
+      {
+        "question": "What is the historical average return of the S&P 500?",
+        "answer": "Over the last 90+ years, the S&P 500 index has generated an annualized nominal compound return of approximately 10.2% with dividends reinvested (roughly 7% adjusted for inflation)."
+      }
+    ]
+  },
+  {
+    "toolId": "compound-interest-calculator",
+    "presetSlug": "500-a-month",
+    "category": "finance",
+    "seoTitle": "$500 a Month Investment Calculator: 10, 20 & 30 Years",
+    "seoDescription": "Calculate how much $500 invested monthly grows to in 10, 20, and 30 years at 8%, 10%, and 12% compound returns. Real wealth breakdown with charts.",
+    "h1": "$500 a Month Investment Calculator",
+    "subtitle": "Discover how a consistent $500 monthly investment compounds into over $1,000,000 in index funds",
+    "badge": "$500/Month DCA Strategy",
+    "presetParams": {
+      "initialPrincipal": 1000,
+      "initialMonthlyContribution": 500,
+      "initialAnnualRate": 10,
+      "initialYears": 25,
+      "initialCurrency": "USD"
+    },
+    "faqs": [
+      {
+        "question": "How much will $500 a month be in 25 years at 10% interest?",
+        "answer": "Investing $500 per month for 25 years at 10% annual return yields approximately $669,450 on a total out-of-pocket investment of just $151,000. In 30 years, it crosses $1,130,000."
+      }
+    ]
+  },
+  {
+    "toolId": "car-loan-emi-calculator",
+    "presetSlug": "60-month-auto-loan",
+    "category": "finance",
+    "seoTitle": "60-Month Car Loan Calculator: Payment & 6.8% APR",
+    "seoDescription": "Calculate 60-month (5-year) new and used car monthly loan payments with trade-in value, down payment, and illustrative US average 6.8% auto loan interest rates.",
+    "h1": "60-Month Auto Loan Payment Calculator",
+    "subtitle": "Model the most common US auto financing term with trade-in deduction and illustrative bank APRs",
+    "badge": "US 60-Month Benchmark (6.8% APR)",
+    "presetParams": {
+      "initialCarPrice": 35000,
+      "initialDownPayment": 5000,
+      "initialTradeInValue": 3000,
+      "initialInterestRate": 6.8,
+      "initialTenureYears": 5,
+      "initialCurrency": "USD"
+    },
+    "officialReference": {
+      "title": "Federal Reserve Consumer Credit Report (G.19)",
+      "authority": "Federal Reserve Board",
+      "citation": "Commercial Bank Interest Rates on 60-Month Auto Loans",
+      "url": "https://www.federalreserve.gov/releases/g19/"
+    },
+    "faqs": [
+      {
+        "question": "What is the average monthly payment for a $35,000 car for 60 months?",
+        "answer": "With $5,000 down payment and $3,000 trade-in ($27,000 loan amount) at 6.8% APR, the monthly payment is approximately $532. Total interest paid over 5 years is roughly $4,923."
+      }
+    ]
+  },
+  {
+    "toolId": "markdown-viewer",
+    "presetSlug": "github-readme",
+    "category": "developer",
+    "seoTitle": "GitHub README.md Viewer & Editor (Free Online)",
+    "seoDescription": "Preview and edit your GitHub README.md online with live split-screen preview, badge rendering, tables, code blocks, and instant copy. 100% private in-browser.",
+    "h1": "GitHub README.md Viewer & Editor",
+    "subtitle": "Real-time GitHub Flavored Markdown (GFM) preview, shields.io badges, installation blocks, and contributing guidelines",
+    "badge": "GitHub README Specification",
+    "presetParams": {
+      "templateKey": "readme",
+      "initialFileName": "README.md",
+      "initialMarkdown": "# 🚀 Project Title\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()\n[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)]()\n\nA modern, fast, and privacy-first web application built with TypeScript and React.\n\n---\n\n## ✨ Features\n- ⚡ **Zero Latency**: Executes entirely client-side inside the browser.\n- 🔒 **Privacy-First**: No remote server uploads, tracking, or external database queries.\n- 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile screens.\n- 🛠️ **Export Capabilities**: 1-click download to Markdown (.md), PDF, Word (.doc), and HTML.\n\n---\n\n## 📦 Installation\n\nClone the repository and install dependencies using your favorite package manager:\n\n```bash\ngit clone https://github.com/username/project-name.git\ncd project-name\nnpm install\n```\n\n---\n\n## 🚀 Quick Start\n\nStart the local development server:\n\n```bash\nnpm run dev\n```\n\nOpen [http://localhost:3000](http://localhost:3000) in your browser to view the application.\n\n---\n\n## 📑 API Reference\n\n| Endpoint | Method | Description | Auth Required |\n| :--- | :--- | :--- | :---: |\n| `/api/status` | `GET` | Returns service health status | ❌ No |\n| `/api/convert` | `POST` | Client-side format processing | ❌ No |\n\n---\n\n## 🤝 Contributing\n\nContributions, issues, and feature requests are welcome! Feel free to check the [issues page]().\n\n1. Fork the Project\n2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)\n3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)\n4. Push to the Branch (`git push origin feature/AmazingFeature`)\n5. Open a Pull Request\n\n---\n\n## 📝 License\n\nDistributed under the MIT License. See `LICENSE` for more information.\n"
+    },
+    "officialReference": {
+      "title": "GitHub Docs - About READMEs",
+      "authority": "GitHub Documentation",
+      "citation": "GitHub Standard Repository Documentation Guide",
+      "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"
+    },
+    "faqs": [
+      {
+        "question": "How do I preview a GitHub README.md before pushing to GitHub?",
+        "answer": "Paste your README markdown into the editor or upload your README.md file. This viewer provides a local Markdown preview for headings, tables, checklists and code fences. Rendering can differ from GitHub; verify the final document on its destination platform."
+      },
+      {
+        "question": "Can I export my GitHub README as a PDF or Word document?",
+        "answer": "Yes. Click 'MD to PDF' or 'MD to Word' in the top action ribbon to compile a clean, formatted document for executive reports, grant proposals, or client documentation."
+      },
+      {
+        "question": "Does this preview tool upload my proprietary code or README to any server?",
+        "answer": "No. Everything runs strictly in your local browser memory via JavaScript. No repository code, documentation, or metadata is ever transmitted over the network."
+      }
+    ]
+  },
+  {
+    "toolId": "markdown-viewer",
+    "presetSlug": "changelog",
+    "category": "developer",
+    "seoTitle": "Keep a Changelog Viewer & Editor (CHANGELOG.md)",
+    "seoDescription": "Preview and edit CHANGELOG.md files adhering to Keep a Changelog standards. Live GFM preview with version release tags, checklists, and instant PDF/Word export.",
+    "h1": "Keep a Changelog Viewer & Editor",
+    "subtitle": "Standardized release notes viewer adhering to KeepAChangelog.com and SemVer 2.0.0 guidelines with instant export",
+    "badge": "KeepAChangelog Spec v1.1.0",
+    "presetParams": {
+      "templateKey": "changelog",
+      "initialFileName": "CHANGELOG.md",
+      "initialMarkdown": "# 📋 Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n---\n\n## [Unreleased]\n### Added\n- Real-time client-side split-screen markdown preview.\n- 1-click export to Word (.doc) and PDF formats.\n\n---\n\n## [1.2.0] - 2026-09-06\n### Added\n- Support for GitHub Flavored Markdown (GFM) callout alerts: `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`.\n- Full table alignments support (left, center, right).\n- Task checklists with interactive checkboxes.\n\n### Changed\n- Improved memory efficiency when parsing large files (>5MB).\n- Optimized typography contrast for dark mode viewing.\n\n### Fixed\n- Fixed unclosed code fence indentation issue on Windows line endings (`\\r\\n`).\n- Resolved table border overflow on mobile viewport widths.\n\n---\n\n## [1.0.0] - 2026-08-01\n### Added\n- Initial public release of Yuitility Markdown File Viewer.\n- Drag-and-drop local file reader supporting `.md`, `.markdown`, and `.txt`.\n- Real-time word count, character metrics, and estimated reading time.\n"
+    },
+    "officialReference": {
+      "title": "Keep a Changelog Standard (v1.1.0)",
+      "authority": "Keep a Changelog Initiative",
+      "citation": "Standardized Release History Conventions for Software Projects",
+      "url": "https://keepachangelog.com/en/1.1.0/"
+    },
+    "faqs": [
+      {
+        "question": "What categories should a CHANGELOG.md include?",
+        "answer": "According to Keep a Changelog standards, each release should organize changes under: Added (new features), Changed (modifications), Deprecated (soon-to-be removed), Removed (eliminated features), Fixed (bug resolutions), and Security (vulnerability patches)."
+      },
+      {
+        "question": "How do I format version headers in Markdown?",
+        "answer": "Use level-2 headings with square brackets for version numbers and release dates: ## [1.2.0] - 2026-09-06. The top section should always remain ## [Unreleased] for upcoming changes."
+      }
+    ]
+  },
+  {
+    "toolId": "markdown-viewer",
+    "presetSlug": "documentation",
+    "category": "developer",
+    "seoTitle": "Markdown Documentation Viewer & Editor (DOCS.md)",
+    "seoDescription": "Preview technical documentation and API docs in Markdown. Features live split-screen view, parameter tables, GFM alert callouts, and instant PDF export.",
+    "h1": "Technical Markdown Documentation Viewer",
+    "subtitle": "Interactive developer documentation viewer with API endpoint grids, request/response syntax blocks, and alert callouts",
+    "badge": "Technical Docs & API Spec",
+    "presetParams": {
+      "templateKey": "docs",
+      "initialFileName": "DOCS.md",
+      "initialMarkdown": "# 📘 Architecture & Technical Specification\n\nThis document details the system design, algorithmic data flow, and runtime security model of the client-side Markdown engine.\n\n> [!IMPORTANT]\n> All document transformations execute strictly inside the browser thread using web standards (HTML5 FileReader, Web Crypto, and DOM APIs). No user data is ever transmitted across the network.\n\n---\n\n## 🏗️ Architecture Pipeline\n\n1. **File Input / Clipboard Intake**: Reads binary blob or string via `FileReader.readAsText()`.\n2. **Tokenizer & Block Parser**: Deconstructs lines into block-level elements (Headings, Code Fences, Blockquotes, Tables, Lists).\n3. **Inline Formatter**: Applies regex passes for bold, italic, inline code, links, images, and strikethroughs.\n4. **HTML Sanitization & Rendering**: Converts AST tokens into clean, styled HTML5 elements.\n5. **DOM Injection**: Updates the split-pane live preview container synchronously.\n\n---\n\n## ⚙️ Supported Block Elements\n\n| Syntax Token | HTML Output | Description |\n| :--- | :--- | :--- |\n| `# Heading 1` | `<h1>` | Top-level document header |\n| `| col | col |` | `<table>` | GFM formatted data grid |\n| `- [x] task` | `<input type=\"checkbox\">` | Interactive task status |\n| ```lang` | `<pre><code>` | Syntax-highlighted code block |\n| `> [!TIP]` | `<blockquote class=\"tip\">` | Callout notification alert |\n\n---\n\n## 🔒 Security & Privacy Guarantees\n- **No Cookies / Local Storage of Document Content**: Uploaded files exist only in volatile browser RAM.\n- **Zero Third-Party Telemetry**: Document text is never inspected, tokenized, or logged.\n"
+    },
+    "faqs": [
+      {
+        "question": "How can I share technical documentation written in Markdown with non-technical stakeholders?",
+        "answer": "Use the 'MD to PDF' or 'MD to Word' export buttons. This compiles your Markdown documentation, tables, and code snippets into standard .pdf and .doc files that clients, managers, and non-developers can read without any Markdown reader."
+      },
+      {
+        "question": "How do I write callout boxes for warnings or tips in Markdown?",
+        "answer": "Use GitHub-style alert callouts: > [!NOTE], > [!TIP], > [!IMPORTANT], > [!WARNING], or > [!CAUTION]. The viewer styles each with thematic colors, borders, and icons."
+      }
+    ]
+  }
 ];
 
 export function getAllToolPresets(): ToolPreset[] {

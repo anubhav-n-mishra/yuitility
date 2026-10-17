@@ -158,7 +158,7 @@ export default function WordCounter({ onCopy, onShare }: WordCounterProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Inputs Pane */}
         <div className="lg:col-span-8 space-y-4">
-          <textarea
+          <textarea aria-label="Text"
             rows={10}
             value={text}
             onChange={(e) => setText(e.target.value)}

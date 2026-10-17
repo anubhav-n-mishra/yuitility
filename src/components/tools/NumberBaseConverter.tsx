@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { integerInBase } from '@/src/lib/numeric';
 import { Binary, Copy, Check } from 'lucide-react';
 
 interface NumberBaseConverterProps {
@@ -13,8 +14,7 @@ export default function NumberBaseConverter({ onCopy }: NumberBaseConverterProps
   const parseNumber = () => {
     try {
       if (!value.trim()) return null;
-      const parsed = parseInt(value.trim(), fromBase);
-      return isNaN(parsed) ? null : parsed;
+      return integerInBase(value, fromBase);
     } catch {
       return null;
     }
@@ -47,20 +47,20 @@ export default function NumberBaseConverter({ onCopy }: NumberBaseConverterProps
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Input Value</label>
-            <input
+            <input aria-label="Input Value"
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">From Base</label>
-            <select
+            <select aria-label="From Base"
               value={fromBase}
               onChange={(e) => setFromBase(parseInt(e.target.value))}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500"
             >
               <option value={10}>Decimal (10)</option>
               <option value={2}>Binary (2)</option>

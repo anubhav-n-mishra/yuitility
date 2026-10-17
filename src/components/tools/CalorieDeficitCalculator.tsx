@@ -11,9 +11,9 @@ export default function CalorieDeficitCalculator({ onCopy }: CalorieDeficitCalcu
   const [copied, setCopied] = useState(false);
 
   const goalDefs = {
-    'lose_0.5': { label: 'Weight Loss (-0.5 kg / week)', deficit: -500, color: 'text-emerald-600 dark:text-emerald-400' },
-    'lose_1.0': { label: 'Aggressive Loss (-1.0 kg / week)', deficit: -1000, color: 'text-amber-400' },
-    'gain_0.5': { label: 'Lean Bulking (+0.5 kg / week)', deficit: 500, color: 'text-indigo-600 dark:text-indigo-400' },
+    'lose_0.5': { label: 'Daily deficit scenario (-500 kcal)', deficit: -500, color: 'text-emerald-600 dark:text-emerald-400' },
+    'lose_1.0': { label: 'Daily deficit scenario (-1000 kcal)', deficit: -1000, color: 'text-amber-400' },
+    'gain_0.5': { label: 'Daily surplus scenario (+500 kcal)', deficit: 500, color: 'text-indigo-600 dark:text-indigo-400' },
   };
 
   const currentGoal = goalDefs[goal];
@@ -41,7 +41,7 @@ export default function CalorieDeficitCalculator({ onCopy }: CalorieDeficitCalcu
               <span>Maintenance TDEE (kcal)</span>
               <span className="font-mono font-bold">{tdee} kcal</span>
             </div>
-            <input
+            <input aria-label="Tdee (slider)"
               type="range"
               min={1200}
               max={4000}
@@ -54,10 +54,10 @@ export default function CalorieDeficitCalculator({ onCopy }: CalorieDeficitCalcu
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400 block mb-1">Target Fitness Goal</label>
-            <select
+            <select aria-label="Target Fitness Goal"
               value={goal}
               onChange={(e) => setGoal(e.target.value as any)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500"
             >
               <option value="lose_0.5">Lose 0.5 kg / week (-500 kcal)</option>
               <option value="lose_1.0">Lose 1.0 kg / week (-1000 kcal)</option>

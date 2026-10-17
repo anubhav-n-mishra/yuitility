@@ -1,4 +1,5 @@
 "use client";
+import Modal from "@/src/components/Modal";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
@@ -22,18 +23,10 @@ import { ToolPreset } from "@/src/lib/toolPresets";
 import { getCategoryName, toolPath } from "@/src/lib/site";
 import type { DeepContent } from "@/src/lib/toolDeepContent";
 import ToolDeepDive from "@/src/components/ToolDeepDive";
+import { ToolRenderer } from "@/src/components/ToolPageClient";
 import PwaInstallButton from "@/src/components/PwaInstallButton";
 import HoverFooter from "@/src/components/ui/hover-footer";
 
-import CgpaToPercentage from "@/src/components/tools/CgpaToPercentage";
-import HomeLoanEmiCalculator from "@/src/components/tools/HomeLoanEmiCalculator";
-import SipCalculator from "@/src/components/tools/SipCalculator";
-import SalaryCalculator from "@/src/components/tools/SalaryCalculator";
-import MortgageCalculator from "@/src/components/tools/MortgageCalculator";
-import RetirementCalculator from "@/src/components/tools/RetirementCalculator";
-import CompoundInterestCalculator from "@/src/components/tools/CompoundInterestCalculator";
-import CarLoanEmiCalculator from "@/src/components/tools/CarLoanEmiCalculator";
-import MarkdownViewer, { TEMPLATES } from "@/src/components/tools/MarkdownViewer";
 
 interface PresetToolClientProps {
   tool: Tool;
@@ -48,20 +41,13 @@ export default function PresetToolClient({
   deep,
   siblingPresets,
 }: PresetToolClientProps) {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') return true;
-      if (savedTheme === 'light') return false;
-      return document.documentElement.classList.contains('dark');
-    }
-    return false;
-  });
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  useEffect(() => { setDarkMode(document.documentElement.classList.contains('dark')); }, []);
   const [message, setMessage] = useState<string>("");
   const [showEmbedModal, setShowEmbedModal] = useState<boolean>(false);
   const [userRating, setUserRating] = useState<number | null>(null);
 
-  const embedSnippet = `<iframe src="https://www.yuitility.app/embed/${tool.id}" width="100%" height="700" frameborder="0" style="border:1px solid #e4e4e7; border-radius:16px; overflow:hidden;" title="${preset.h1}"></iframe>\n<p style="font-size:12px;text-align:right;margin-top:4px;font-family:sans-serif;"><a href="https://www.yuitility.app/tools/${tool.id}/${preset.presetSlug}" target="_blank" rel="noopener" style="color:#2563eb;text-decoration:none;">⚡ Free ${preset.h1} by Yuitility</a></p>`;
+  const embedSnippet = `<iframe src="https://www.yuitility.app/embed/${tool.id}/${preset.presetSlug}" width="100%" height="700" frameborder="0" style="border:1px solid #e4e4e7; border-radius:16px; overflow:hidden;" title="${preset.h1}"></iframe>\n<p style="font-size:12px;text-align:right;margin-top:4px;font-family:sans-serif;"><a href="https://www.yuitility.app/tools/${tool.id}/${preset.presetSlug}" target="_blank" rel="noopener" style="color:#2563eb;text-decoration:none;">⚡ Free ${preset.h1} by Yuitility</a></p>`;
 
   useEffect(() => {
     const savedRating = localStorage.getItem(`rating_${tool.id}_${preset.presetSlug}`);
@@ -129,7 +115,7 @@ export default function PresetToolClient({
             </Link>
             <button
               type="button"
-              onClick={() => setDarkMode((current) => !current)}
+              onClick={() => { const next = !darkMode; setDarkMode(next); document.documentElement.classList.toggle('dark', next); localStorage.setItem('theme', next ? 'dark' : 'light'); window.dispatchEvent(new CustomEvent('theme-change', {detail: next})); }}
               className="rounded-lg p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
               aria-label="Toggle color theme"
             >
@@ -231,114 +217,7 @@ export default function PresetToolClient({
           aria-label={`${preset.h1} workspace`}
           className="mb-8 rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-950 sm:p-8"
         >
-          {tool.id === "cgpa-to-percentage-calculator" && (
-            <CgpaToPercentage
-              initialUniversity={preset.presetParams.initialUniversity}
-              initialCgpa={preset.presetParams.initialCgpa}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "home-loan-emi-calculator" && (
-            <HomeLoanEmiCalculator
-              initialInterestRate={preset.presetParams.initialInterestRate}
-              initialPropertyPrice={preset.presetParams.initialPropertyPrice}
-              initialCurrency={preset.presetParams.initialCurrency}
-              lenderName={preset.presetParams.lenderName}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "sip-calculator" && (
-            <SipCalculator
-              initialMonthlyInvestment={preset.presetParams.initialMonthlyInvestment}
-              initialDuration={preset.presetParams.initialDuration}
-              initialExpectedReturn={preset.presetParams.initialExpectedReturn}
-              initialCurrency={preset.presetParams.initialCurrency}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "salary-calculator" && (
-            <SalaryCalculator
-              initialCtc={preset.presetParams.initialCtc}
-              initialCurrency={preset.presetParams.initialCurrency}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "mortgage-calculator" && (
-            <MortgageCalculator
-              initialHomePrice={preset.presetParams.initialHomePrice}
-              initialDownPaymentPercent={preset.presetParams.initialDownPaymentPercent}
-              initialInterestRate={preset.presetParams.initialInterestRate}
-              initialLoanTermYears={preset.presetParams.initialLoanTermYears}
-              initialPropertyTaxAnnual={preset.presetParams.initialPropertyTaxAnnual}
-              initialHomeInsuranceAnnual={preset.presetParams.initialHomeInsuranceAnnual}
-              initialHoaFeesMonthly={preset.presetParams.initialHoaFeesMonthly}
-              initialCurrency={preset.presetParams.initialCurrency}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "retirement-calculator" && (
-            <RetirementCalculator
-              initialCurrentAge={preset.presetParams.initialCurrentAge}
-              initialRetirementAge={preset.presetParams.initialRetirementAge}
-              initialLifeExpectancy={preset.presetParams.initialLifeExpectancy}
-              initialCurrentSavings={preset.presetParams.initialCurrentSavings}
-              initialMonthlyExpenses={preset.presetParams.initialMonthlyExpenses}
-              initialExpectedReturn={preset.presetParams.initialExpectedReturn}
-              initialInflationRate={preset.presetParams.initialInflationRate}
-              initialCurrency={preset.presetParams.initialCurrency}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "compound-interest-calculator" && (
-            <CompoundInterestCalculator
-              initialPrincipal={preset.presetParams.initialPrincipal}
-              initialMonthlyContribution={preset.presetParams.initialMonthlyContribution}
-              initialAnnualRate={preset.presetParams.initialAnnualRate}
-              initialYears={preset.presetParams.initialYears}
-              initialCompoundFreq={preset.presetParams.initialCompoundFreq}
-              initialCurrency={preset.presetParams.initialCurrency}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "car-loan-emi-calculator" && (
-            <CarLoanEmiCalculator
-              initialCarPrice={preset.presetParams.initialCarPrice}
-              initialDownPayment={preset.presetParams.initialDownPayment}
-              initialTradeInValue={preset.presetParams.initialTradeInValue}
-              initialInterestRate={preset.presetParams.initialInterestRate}
-              initialTenureYears={preset.presetParams.initialTenureYears}
-              initialCurrency={preset.presetParams.initialCurrency}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
-
-          {tool.id === "markdown-viewer" && (
-            <MarkdownViewer
-              initialMarkdown={
-                preset.presetParams.templateKey && TEMPLATES[preset.presetParams.templateKey]
-                  ? TEMPLATES[preset.presetParams.templateKey].content
-                  : undefined
-              }
-              initialFileName={preset.presetParams.initialFileName}
-              onCopy={copy}
-              onShare={share}
-            />
-          )}
+          <ToolRenderer tool={tool} onCopy={copy} onShare={share} presetParams={preset.presetParams} />
         </section>
 
         {/* Embed Calculator Section for Bloggers & Webmasters */}
@@ -358,7 +237,7 @@ export default function PresetToolClient({
                   </span>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5 max-w-2xl">
-                  Embed this verified, 100% private calculator widget into your articles, guides, or portal. Zero server tracking, instant in-browser execution.
+                  Embed this browser-based calculator widget into your articles, guides, or portal. The widget preserves the selected preset. Check its assumptions before sharing results.
                 </p>
               </div>
             </div>
@@ -374,7 +253,7 @@ export default function PresetToolClient({
                 <Copy className="w-3.5 h-3.5" /> Copy Embed Code
               </button>
               <a
-                href={`/embed/${tool.id}`}
+                href={`/embed/${tool.id}/${preset.presetSlug}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 px-3 py-2 text-xs font-semibold rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-all"
@@ -385,7 +264,7 @@ export default function PresetToolClient({
           </div>
 
           <div className="relative">
-            <textarea
+            <textarea aria-label="Embed Snippet"
               readOnly
               rows={2}
               value={embedSnippet}
@@ -412,12 +291,10 @@ export default function PresetToolClient({
                   </span>
                 </div>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 font-mono">
-                  Official Citation: {preset.officialReference.citation}
+                  Source: {preset.officialReference.citation}
                 </p>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 pt-1">
-                  This calculator automatically applies the exact formula and rounding rules
-                  mandated by the authority above. Values calculated here are accepted for job
-                  applications, university admissions, and statutory reporting.
+                  This source provides background for the scenario. Check its scope and effective date against the assumptions shown above. This estimate is not a certified result or an eligibility decision.
                 </p>
                 {preset.officialReference.url && (
                   <div className="pt-2">
@@ -427,7 +304,7 @@ export default function PresetToolClient({
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
                     >
-                      Visit Official Portal <ExternalLink className="w-3 h-3" />
+                      Read source document <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
                 )}
@@ -446,7 +323,7 @@ export default function PresetToolClient({
                   Explore Other {tool.title} Presets
                 </h2>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                  Switch instantly to other supported institutions, benchmarks, and targets
+                  Compare other pre-filled calculation scenarios.
                 </p>
               </div>
               <Link
@@ -512,10 +389,10 @@ export default function PresetToolClient({
         <section className="mt-8 rounded-2xl border border-zinc-200/80 bg-white dark:bg-zinc-900/60 dark:border-zinc-800 p-5 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
           <div>
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-              Was this {preset.badge} calculation accurate for your needs?
+              Was this scenario useful for your needs?
             </h3>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-              1-click feedback to help us maintain verified compliance across all academic and financial formulas.
+              Your rating stays in this browser and is not sent to us. Use Contact to report a problem.
             </p>
           </div>
           <div className="mt-3 sm:mt-0 flex items-center justify-center sm:justify-end gap-1.5">
@@ -550,7 +427,7 @@ export default function PresetToolClient({
 
         {/* Embed Widget Modal */}
         {showEmbedModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <Modal label="Embed this tool" onClose={() => setShowEmbedModal(false)} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
             <div className="relative w-full max-w-xl rounded-3xl border border-zinc-200 bg-white p-6 shadow-2xl dark:border-zinc-800 dark:bg-zinc-900 sm:p-7">
               <button
                 type="button"
@@ -570,7 +447,7 @@ export default function PresetToolClient({
                 </h3>
               </div>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-4">
-                Add this verified calculation engine to your site or educational resources. Zero server tracking, instant in-browser execution.
+                Add this configured tool to your site. The preset and its assumptions are preserved in the widget.
               </p>
 
               <div className="space-y-2">
@@ -578,7 +455,7 @@ export default function PresetToolClient({
                   <label className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">HTML Embed Snippet</label>
                   <span className="text-[10px] text-zinc-400 font-mono">iframe responsive</span>
                 </div>
-                <textarea
+                <textarea aria-label="HTML Embed Snippet"
                   readOnly
                   rows={4}
                   value={embedSnippet}
@@ -599,7 +476,7 @@ export default function PresetToolClient({
                   Copy Embed Code
                 </button>
                 <a
-                  href={`/embed/${tool.id}`}
+                  href={`/embed/${tool.id}/${preset.presetSlug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 transition"
@@ -608,7 +485,7 @@ export default function PresetToolClient({
                 </a>
               </div>
             </div>
-          </div>
+          </Modal>
         )}
       </main>
 

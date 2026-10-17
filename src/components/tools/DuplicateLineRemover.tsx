@@ -106,12 +106,12 @@ export default function DuplicateLineRemover({ onCopy }: DuplicateLineRemoverPro
               <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">Original Lines ({rawLines.length})</h4>
               <button onClick={() => setInput('')} className="text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:text-zinc-200">Clear</button>
             </div>
-            <textarea
+            <textarea aria-label="Input text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               rows={10}
               placeholder="Paste lines of text here..."
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
             />
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function DuplicateLineRemover({ onCopy }: DuplicateLineRemoverPro
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />} Copy Output
               </button>
             </div>
-            <textarea
+            <textarea aria-label="Result text"
               readOnly
               value={resultText}
               rows={10}

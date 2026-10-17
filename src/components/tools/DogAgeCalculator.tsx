@@ -104,7 +104,7 @@ export default function DogAgeCalculator({ onCopy }: DogAgeCalculatorProps) {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Age (Years)</label>
-              <input
+              <input aria-label="Age (Years)"
                 type="number"
                 min="0"
                 max="25"
@@ -115,7 +115,7 @@ export default function DogAgeCalculator({ onCopy }: DogAgeCalculatorProps) {
             </div>
             <div>
               <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">Age (Months)</label>
-              <input
+              <input aria-label="Age (Months)"
                 type="number"
                 min="0"
                 max="11"

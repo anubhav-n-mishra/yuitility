@@ -74,14 +74,14 @@ export default function CookiePolicy() {
           <section id="no-tracking" className="space-y-6">
             <h2 className="text-2xl font-display font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">3. Zero Advertising or Tracking Cookies</h2>
             <p className="leading-relaxed">
-              We do not integrate advertising networks, third-party analytics trackers, or commercial profiling scripts. Your activity on Yuitility is not tracked across websites or shared with third parties.
+              We do not integrate advertising networks, third-party analytics trackers, or commercial profiling scripts. Optional AI and contact messages are transmitted to servers and configured providers as explained in the Privacy Policy.
             </p>
           </section>
 
           <section id="managing-cookies" className="space-y-6">
             <h2 className="text-2xl font-display font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">4. Managing Your Storage & Cookies</h2>
             <p className="leading-relaxed">
-              You can clear your browser storage or block cookies at any time via your browser settings. Clearing your browser data will simply reset your theme and currency preferences to default.
+              You can clear your browser storage or block cookies at any time via your browser settings. Clearing site data resets theme, favorites, recent tools, local ratings, assistant settings and cached assets. Downloads are managed separately by your browser.
             </p>
           </section>
 

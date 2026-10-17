@@ -51,7 +51,7 @@ export default function GoldLoanEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Gold Loan Amount ({symbol})</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(loanAmount, currency)}</span>
             </div>
-            <input
+            <input aria-label="Gold Loan Amount ( ) (slider)"
               type="range"
               min="1000"
               max="500000"
@@ -67,7 +67,7 @@ export default function GoldLoanEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Annual Interest Rate (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{interestRate}%</span>
             </div>
-            <input
+            <input aria-label="Annual Interest Rate (%) (slider)"
               type="range"
               min="5"
               max="24"
@@ -83,7 +83,7 @@ export default function GoldLoanEmiCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Tenure (Months)</label>
               <span className="text-blue-600 dark:text-cyan-300">{tenureMonths} Months</span>
             </div>
-            <input
+            <input aria-label="Tenure (Months) (slider)"
               type="range"
               min="3"
               max="36"

@@ -35,12 +35,7 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
     const r = 0.08;
     const investedVal = yearlyCost * ((Math.pow(1 + r, numYears) - 1) / r);
 
-    // Health metrics
     const totalCigs = Math.round(cpd * 365.25 * numYears);
-    // CDC estimate: ~11 mins of life lost per cigarette
-    const minsLost = totalCigs * 11;
-    const daysLost = (minsLost / (60 * 24)).toFixed(1);
-
     return {
       dailyCost: dailyCost.toFixed(2),
       monthlyCost: Math.round(monthlyCost).toLocaleString(),
@@ -48,13 +43,12 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
       totalSpent: Math.round(totalSpent).toLocaleString(),
       investedVal: Math.round(investedVal).toLocaleString(),
       totalCigs: totalCigs.toLocaleString(),
-      daysLost,
     };
   })();
 
   const handleCopy = () => {
     if (!results) return;
-    const text = `Smoking Cost over ${years} years: ${currency}${results.totalSpent} (Investment Value at 8%: ${currency}${results.investedVal}, Days of life lost: ~${results.daysLost} days)`;
+    const text = `Smoking Cost over ${years} years: ${currency}${results.totalSpent} (Investment Value at 8%: ${currency}${results.investedVal})`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     if (onCopy) onCopy(text);
@@ -68,10 +62,10 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
         <div className="lg:col-span-1 bg-white dark:bg-zinc-900/60 shadow-sm p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">Smoking Habits</h3>
-            <select
+            <select aria-label="Currency"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-1 text-xs text-white"
+              className="bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg px-2 py-1 text-xs text-zinc-900 dark:text-white"
             >
               <option value="$">$ (USD)</option>
               <option value="₹">₹ (INR)</option>
@@ -82,44 +76,44 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cigarettes per Day</label>
-            <input
+            <input aria-label="Cigarettes per Day"
               type="number"
               value={cigsPerDay}
               onChange={(e) => setCigsPerDay(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
             />
           </div>
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cost per Pack ({currency})</label>
-            <input
+            <input aria-label="Cost per Pack ( )"
               type="number"
               step="0.5"
               value={packPrice}
               onChange={(e) => setPackPrice(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Cigs per Pack</label>
-              <input
+              <input aria-label="Cigs per Pack"
                 type="number"
                 value={cigsPerPack}
                 onChange={(e) => setCigsPerPack(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Timeline (Years)</label>
-              <input
+              <input aria-label="Timeline (Years)"
                 type="number"
                 min="1"
                 max="60"
                 value={years}
                 onChange={(e) => setYears(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -144,7 +138,7 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
               <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
                 <span className="text-zinc-500 dark:text-zinc-500 block mb-1 flex items-center gap-1">
-                  <TrendingUp className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> S&P 500 If Invested
+                  <TrendingUp className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> Hypothetical Investment
                 </span>
                 <span className="text-xl font-bold text-emerald-600 dark:text-emerald-400">{currency}{results.investedVal}</span>
                 <span className="text-[10px] text-zinc-500 dark:text-zinc-500 block mt-0.5">8% compound growth</span>
@@ -158,10 +152,10 @@ export default function SmokingCostCalculator({ onCopy }: SmokingCostCalculatorP
 
               <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-4 rounded-xl border border-zinc-200 dark:border-zinc-800">
                 <span className="text-zinc-500 dark:text-zinc-500 block mb-1 flex items-center gap-1">
-                  <HeartCrack className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" /> Life Expectancy Lost
+                  <HeartCrack className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" /> Health effects
                 </span>
-                <span className="text-xl font-bold text-rose-600 dark:text-rose-400">~{results.daysLost} days</span>
-                <span className="text-[10px] text-zinc-500 dark:text-zinc-500 block mt-0.5">~11 mins per cig (CDC)</span>
+                <span className="text-xl font-bold text-rose-600 dark:text-rose-400">Not predicted</span>
+                <span className="text-[10px] text-zinc-500 dark:text-zinc-500 block mt-0.5">Cost totals do not predict individual lifespan.</span>
               </div>
             </div>
           )}

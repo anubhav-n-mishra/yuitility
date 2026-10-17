@@ -108,11 +108,11 @@ export default function TextCleaner({ onCopy }: TextCleanerProps) {
         <div className="bg-white dark:bg-zinc-900/60 shadow-sm p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
           <div>
             <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-3">Dirty Raw Text ({text.length} chars)</h4>
-            <textarea
+            <textarea aria-label="Text"
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={8}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500 resize-none"
             />
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function TextCleaner({ onCopy }: TextCleanerProps) {
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />} Copy Output
               </button>
             </div>
-            <textarea
+            <textarea aria-label="Cleaned text"
               readOnly
               value={cleaned}
               rows={8}

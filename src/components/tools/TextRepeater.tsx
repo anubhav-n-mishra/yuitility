@@ -21,7 +21,7 @@ export default function TextRepeater({ onCopy }: TextRepeaterProps) {
     }
   };
 
-  const validCount = Math.min(5000, Math.max(1, count || 1));
+  const validCount = Math.min(5000, Math.max(1, Math.floor(count || 1)));
   const resultText = Array(validCount).fill(text).join(getSeparatorChar());
 
   const handleCopy = () => {
@@ -42,32 +42,32 @@ export default function TextRepeater({ onCopy }: TextRepeaterProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Text to Repeat</label>
-            <input
+            <input aria-label="Text to Repeat"
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Repetitions Count (Max 5,000)</label>
-            <input
+            <input aria-label="Repetitions Count (Max 5,000)"
               type="number"
               min={1}
               max={5000}
               value={count}
               onChange={(e) => setCount(parseInt(e.target.value) || 1)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
 
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Separator</label>
-            <select
+            <select aria-label="Separator"
               value={separator}
               onChange={(e) => setSeparator(e.target.value as any)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500"
             >
               <option value="space">Space (" ")</option>
               <option value="newline">New Line (\n)</option>
@@ -80,11 +80,11 @@ export default function TextRepeater({ onCopy }: TextRepeaterProps) {
         {separator === 'custom' && (
           <div className="space-y-1">
             <label className="text-xs text-zinc-500 dark:text-zinc-400">Custom Separator String</label>
-            <input
+            <input aria-label="Custom Separator String"
               type="text"
               value={customSep}
               onChange={(e) => setCustomSep(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         )}
@@ -101,7 +101,7 @@ export default function TextRepeater({ onCopy }: TextRepeaterProps) {
               {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />} Copy Output
             </button>
           </div>
-          <textarea
+          <textarea aria-label="Result text"
             readOnly
             value={resultText}
             rows={8}

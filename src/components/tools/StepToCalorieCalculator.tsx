@@ -112,11 +112,11 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
                 ))}
               </div>
             </div>
-            <input
+            <input aria-label="Total Steps Walked"
               type="number"
               value={steps}
               onChange={(e) => setSteps(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-white focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-2xl font-bold font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-indigo-500"
             />
           </div>
 
@@ -125,32 +125,32 @@ export default function StepToCalorieCalculator({ onCopy }: StepToCalorieCalcula
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Weight ({unit === 'metric' ? 'kg' : 'lbs'})
               </label>
-              <input
+              <input aria-label="Weight ( )"
                 type="number"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">
                 Height ({unit === 'metric' ? 'cm' : 'in'})
               </label>
-              <input
+              <input aria-label="Height ( )"
                 type="number"
                 value={height}
                 onChange={(e) => setHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Walking Pace / Speed</label>
-            <select
+            <select aria-label="Walking Pace / Speed"
               value={intensity}
               onChange={(e) => setIntensity(parseFloat(e.target.value))}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-xs"
             >
               <option value="2.5">Casual Stroll (~2.5 mph / 4.0 km/h)</option>
               <option value="3.0">Moderate Pace (~3.0 mph / 4.8 km/h)</option>

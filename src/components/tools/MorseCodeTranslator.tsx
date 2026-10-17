@@ -197,7 +197,7 @@ export default function MorseCodeTranslator({ onCopy, onShare }: MorseProps) {
             <span className="font-semibold uppercase tracking-wider">{mode === 'text-to-morse' ? 'English Text' : 'Morse Code (Dots & Dashes)'}</span>
             <span>{input.length} chars</span>
           </div>
-          <textarea
+          <textarea aria-label="Input text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={mode === 'text-to-morse' ? 'Enter plain text...' : 'Enter morse (e.g. ... --- ...)'}
@@ -217,7 +217,7 @@ export default function MorseCodeTranslator({ onCopy, onShare }: MorseProps) {
           </div>
 
           <div className="relative h-64">
-            <textarea
+            <textarea aria-label="Output text"
               readOnly
               value={output}
               placeholder="Translation will appear here instantly..."

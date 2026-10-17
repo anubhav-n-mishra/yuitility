@@ -1,3 +1,4 @@
+import { numericDataset } from '@/src/lib/numeric';
 import React, { useState, useMemo } from 'react';
 import { Binary, RefreshCw, Copy, Check, Hash } from 'lucide-react';
 
@@ -10,10 +11,7 @@ export default function MedianCalculator({ onCopy }: MedianCalculatorProps) {
   const [inputText, setInputText] = useState<string>('12, 5, 22, 30, 7, 18, 14, 42');
 
   const stats = useMemo(() => {
-    const rawNumbers = inputText
-      .split(/[\s,;\n]+/)
-      .map((v) => parseFloat(v.trim()))
-      .filter((v) => !isNaN(v));
+    const rawNumbers = numericDataset(inputText);
 
     if (rawNumbers.length === 0) return null;
 
@@ -80,7 +78,7 @@ export default function MedianCalculator({ onCopy }: MedianCalculatorProps) {
             <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-zinc-300">
               Numbers (Separated by commas, spaces, or newlines)
             </label>
-            <textarea
+            <textarea aria-label="Numbers (Separated by commas, spaces, or newlines)"
               rows={5}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}

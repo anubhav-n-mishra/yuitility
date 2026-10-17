@@ -1,434 +1,47 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { Building, DollarSign, Percent, ShieldCheck, Download, Share2, ChevronDown, ChevronUp, FileSpreadsheet, Check } from 'lucide-react';
+"use client";
+import { useState } from 'react';
 import CurrencySelector from '@/src/components/CurrencySelector';
-import { formatCurrency as formatCurr, getCurrency } from '@/src/lib/currency';
-
-interface MortgageCalculatorProps {
-  onCopy?: (text: string) => void;
-  onShare?: (title: string, path: string) => void;
-  initialHomePrice?: number;
-  initialDownPaymentPercent?: number;
-  initialInterestRate?: number;
-  initialLoanTermYears?: number;
-  initialPropertyTaxAnnual?: number;
-  initialHomeInsuranceAnnual?: number;
-  initialHoaFeesMonthly?: number;
-  initialCurrency?: string;
-}
-
-export default function MortgageCalculator({
-  onCopy,
-  onShare,
-  initialHomePrice,
-  initialDownPaymentPercent,
-  initialInterestRate,
-  initialLoanTermYears,
-  initialPropertyTaxAnnual,
-  initialHomeInsuranceAnnual,
-  initialHoaFeesMonthly,
-  initialCurrency,
-}: MortgageCalculatorProps) {
-  const [currency, setCurrency] = useState<string>(initialCurrency || 'USD');
-  const [homePrice, setHomePrice] = useState<number>(initialHomePrice ?? 400000);
-  const [downPaymentPercent, setDownPaymentPercent] = useState<number>(initialDownPaymentPercent ?? 20);
-  const [interestRate, setInterestRate] = useState<number>(initialInterestRate ?? 6.5);
-  const [loanTermYears, setLoanTermYears] = useState<number>(initialLoanTermYears ?? 30);
-  const [propertyTaxAnnual, setPropertyTaxAnnual] = useState<number>(initialPropertyTaxAnnual ?? 4800);
-  const [homeInsuranceAnnual, setHomeInsuranceAnnual] = useState<number>(initialHomeInsuranceAnnual ?? 1400);
-  const [hoaFeesMonthly, setHoaFeesMonthly] = useState<number>(initialHoaFeesMonthly ?? 150);
-  const [showSchedule, setShowSchedule] = useState<boolean>(false);
-  const [copiedLink, setCopiedLink] = useState<boolean>(false);
-
-  // Client-side URL query parameter hydration for stateful deep links
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    try {
-      const sp = new URLSearchParams(window.location.search);
-      const p = sp.get('price');
-      if (p && !isNaN(Number(p))) setHomePrice(Number(p));
-      const d = sp.get('down');
-      if (d && !isNaN(Number(d))) setDownPaymentPercent(Number(d));
-      const r = sp.get('rate');
-      if (r && !isNaN(Number(r))) setInterestRate(Number(r));
-      const y = sp.get('term') || sp.get('years');
-      if (y && !isNaN(Number(y))) setLoanTermYears(Number(y));
-      const tax = sp.get('tax');
-      if (tax && !isNaN(Number(tax))) setPropertyTaxAnnual(Number(tax));
-      const ins = sp.get('ins');
-      if (ins && !isNaN(Number(ins))) setHomeInsuranceAnnual(Number(ins));
-      const hoa = sp.get('hoa');
-      if (hoa && !isNaN(Number(hoa))) setHoaFeesMonthly(Number(hoa));
-      const c = sp.get('curr') || sp.get('currency');
-      if (c) setCurrency(c);
-    } catch {
-      // Ignore query parsing error on older engines
-    }
-  }, []);
-
-  const currObj = getCurrency(currency);
-  const fmt = (val: number) => formatCurr(val, currency);
-
-  const calc = useMemo(() => {
-    const downPayment = (homePrice * downPaymentPercent) / 100;
-    const loanAmount = Math.max(0, homePrice - downPayment);
-
-    const r = interestRate / 12 / 100;
-    const n = loanTermYears * 12;
-
-    if (loanAmount <= 0 || interestRate <= 0 || loanTermYears <= 0) return null;
-
-    const piMonthly = (loanAmount * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-    const taxMonthly = propertyTaxAnnual / 12;
-    const insuranceMonthly = homeInsuranceAnnual / 12;
-    const pmiMonthly = downPaymentPercent < 20 ? (loanAmount * 0.0075) / 12 : 0;
-    const totalMonthlyPayment = piMonthly + taxMonthly + insuranceMonthly + pmiMonthly + hoaFeesMonthly;
-    const totalInterestPaid = piMonthly * n - loanAmount;
-    const totalLoanCost = piMonthly * n;
-
-    // Build Amortization Schedule (Year-by-Year & Month-by-Month summary)
-    let balance = loanAmount;
-    const yearlySchedule: Array<{
-      year: number;
-      principalPaid: number;
-      interestPaid: number;
-      totalPaid: number;
-      endingBalance: number;
-    }> = [];
-
-    const monthlySchedule: Array<{
-      month: number;
-      year: number;
-      beginningBalance: number;
-      principal: number;
-      interest: number;
-      total: number;
-      endingBalance: number;
-    }> = [];
-
-    for (let yr = 1; yr <= loanTermYears; yr++) {
-      let yearlyPrinc = 0;
-      let yearlyInt = 0;
-
-      for (let m = 1; m <= 12; m++) {
-        if (balance <= 0) break;
-        const currentMonthIdx = (yr - 1) * 12 + m;
-        const beginningBalance = balance;
-        const monthlyInterest = balance * r;
-        const monthlyPrincipal = Math.min(balance, piMonthly - monthlyInterest);
-        balance = Math.max(0, balance - monthlyPrincipal);
-
-        yearlyInt += monthlyInterest;
-        yearlyPrinc += monthlyPrincipal;
-
-        monthlySchedule.push({
-          month: currentMonthIdx,
-          year: yr,
-          beginningBalance,
-          principal: monthlyPrincipal,
-          interest: monthlyInterest,
-          total: monthlyPrincipal + monthlyInterest,
-          endingBalance: balance,
-        });
-      }
-
-      yearlySchedule.push({
-        year: yr,
-        principalPaid: yearlyPrinc,
-        interestPaid: yearlyInt,
-        totalPaid: yearlyPrinc + yearlyInt,
-        endingBalance: balance,
-      });
-    }
-
-    return {
-      loanAmount,
-      loanAmountFormatted: fmt(loanAmount),
-      downPaymentFormatted: fmt(downPayment),
-      piMonthlyFormatted: fmt(piMonthly),
-      taxMonthlyFormatted: fmt(taxMonthly),
-      insuranceMonthlyFormatted: fmt(insuranceMonthly),
-      pmiMonthlyFormatted: fmt(pmiMonthly),
-      hoaMonthlyFormatted: fmt(hoaFeesMonthly),
-      totalMonthlyPaymentFormatted: fmt(totalMonthlyPayment),
-      totalInterestPaidFormatted: fmt(totalInterestPaid),
-      totalLoanCostFormatted: fmt(totalLoanCost),
-      yearlySchedule,
-      monthlySchedule,
-    };
-  }, [homePrice, downPaymentPercent, interestRate, loanTermYears, propertyTaxAnnual, homeInsuranceAnnual, hoaFeesMonthly, currency]);
-
-  const handleExportCSV = () => {
-    if (!calc) return;
-    const headers = 'Month,Year,Beginning Balance,Principal Paid,Interest Paid,Total Monthly P&I,Ending Balance\n';
-    const rows = calc.monthlySchedule
-      .map(
-        (m) =>
-          `${m.month},${m.year},${m.beginningBalance.toFixed(2)},${m.principal.toFixed(2)},${m.interest.toFixed(2)},${m.total.toFixed(2)},${m.endingBalance.toFixed(2)}`
-      )
-      .join('\n');
-
-    const blob = new Blob([headers + rows], { type: 'text/csv;charset=utf-8;' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Mortgage_Amortization_Schedule_${homePrice}_${loanTermYears}yr_${Date.now()}.csv`;
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
-
-  const handleShareCustomLink = () => {
-    const sp = new URLSearchParams({
-      price: homePrice.toString(),
-      down: downPaymentPercent.toString(),
-      rate: interestRate.toString(),
-      term: loanTermYears.toString(),
-      tax: propertyTaxAnnual.toString(),
-      ins: homeInsuranceAnnual.toString(),
-      hoa: hoaFeesMonthly.toString(),
-      curr: currency,
-    });
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://www.yuitility.app';
-    const pathname = typeof window !== 'undefined' ? window.location.pathname : '/tools/mortgage-calculator';
-    const fullUrl = `${origin}${pathname}?${sp.toString()}`;
-
-    if (onCopy) {
-      onCopy(fullUrl);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2200);
-    } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(fullUrl);
-      setCopiedLink(true);
-      setTimeout(() => setCopiedLink(false), 2200);
-    }
-  };
-
-  return (
-    <div className="space-y-6">
-      <div className="grid gap-6 md:grid-cols-2">
-        <div className="space-y-4 rounded-2xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50">
-          <CurrencySelector value={currency} onChange={setCurrency} />
-
-          <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-zinc-900 dark:text-white">
-            <Building className="h-5 w-5 text-blue-600 dark:text-cyan-400" />
-            Mortgage Parameters
-          </h3>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Home Price ({currObj?.symbol || '$'})</label>
-              <input
-                type="number"
-                value={homePrice}
-                step="10000"
-                onChange={(e) => setHomePrice(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Down Payment (%)</label>
-              <input
-                type="number"
-                value={downPaymentPercent}
-                min="0"
-                max="80"
-                onChange={(e) => setDownPaymentPercent(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (%)</label>
-              <input
-                type="number"
-                value={interestRate}
-                step="0.125"
-                onChange={(e) => setInterestRate(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-700 dark:text-zinc-300">Loan Term (Years)</label>
-              <input
-                type="number"
-                value={loanTermYears}
-                onChange={(e) => setLoanTermYears(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2">
-            <div>
-              <label className="mb-1 block text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Annual Tax ({currObj?.symbol || '$'})</label>
-              <input
-                type="number"
-                value={propertyTaxAnnual}
-                onChange={(e) => setPropertyTaxAnnual(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-2 py-1.5 text-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-[11px] font-medium text-zinc-700 dark:text-zinc-300">Home Ins. ({currObj?.symbol || '$'})</label>
-              <input
-                type="number"
-                value={homeInsuranceAnnual}
-                onChange={(e) => setHomeInsuranceAnnual(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-2 py-1.5 text-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-[11px] font-medium text-zinc-700 dark:text-zinc-300">HOA / Mo ({currObj?.symbol || '$'})</label>
-              <input
-                type="number"
-                value={hoaFeesMonthly}
-                onChange={(e) => setHoaFeesMonthly(Number(e.target.value))}
-                className="w-full rounded-xl border border-zinc-300 bg-white px-2 py-1.5 text-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white font-mono"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Results */}
-        <div className="flex flex-col justify-between rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/50 via-white to-cyan-50/50 p-6 dark:border-zinc-800 dark:from-zinc-900 dark:via-zinc-900/80 dark:to-cyan-950/20">
-          {calc ? (
-            <div className="space-y-4">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-cyan-400">Total Monthly Payment</span>
-                <div className="mt-1 font-display text-4xl font-extrabold text-zinc-900 dark:text-white sm:text-5xl">
-                  {calc.totalMonthlyPaymentFormatted}
-                </div>
-                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">Loan: {calc.loanAmountFormatted} | Down: {calc.downPaymentFormatted}</p>
-              </div>
-
-              <div className="space-y-1.5 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-sm text-xs dark:border-zinc-800 dark:bg-zinc-800/80">
-                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
-                  <span>Principal & Interest (P&I)</span>
-                  <span className="font-bold">{calc.piMonthlyFormatted}</span>
-                </div>
-                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
-                  <span>Property Tax</span>
-                  <span>{calc.taxMonthlyFormatted}</span>
-                </div>
-                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
-                  <span>Home Insurance</span>
-                  <span>{calc.insuranceMonthlyFormatted}</span>
-                </div>
-                {downPaymentPercent < 20 && (
-                  <div className="flex justify-between text-amber-600 dark:text-amber-400 font-medium">
-                    <span>PMI (&lt;20% Down)</span>
-                    <span>{calc.pmiMonthlyFormatted}</span>
-                  </div>
-                )}
-                <div className="flex justify-between text-zinc-700 dark:text-zinc-300">
-                  <span>HOA Fees</span>
-                  <span>{calc.hoaMonthlyFormatted}</span>
-                </div>
-                <div className="pt-1.5 border-t border-zinc-200/60 dark:border-zinc-700/60 flex justify-between text-zinc-500 dark:text-zinc-400">
-                  <span>Total Interest Over {loanTermYears} Yrs</span>
-                  <span className="font-semibold text-zinc-800 dark:text-zinc-200">{calc.totalInterestPaidFormatted}</span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                <button
-                  type="button"
-                  onClick={handleExportCSV}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-blue-200 bg-white px-3 py-2 text-xs font-semibold text-blue-700 shadow-sm hover:bg-blue-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-cyan-300 dark:hover:bg-zinc-700 transition"
-                  title="Download complete month-by-month amortization schedule"
-                >
-                  <Download className="w-3.5 h-3.5" /> Export Schedule (CSV)
-                </button>
-                <button
-                  type="button"
-                  onClick={handleShareCustomLink}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs font-semibold text-zinc-700 shadow-sm hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 transition"
-                  title="Copy shareable link with your exact loan parameters pre-filled"
-                >
-                  {copiedLink ? (
-                    <>
-                      <Check className="w-3.5 h-3.5 text-emerald-500" /> Copied Pre-filled Link!
-                    </>
-                  ) : (
-                    <>
-                      <Share2 className="w-3.5 h-3.5" /> Share Pre-filled Link
-                    </>
-                  )}
-                </button>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => onCopy && onCopy(`Mortgage Monthly Payment: ${calc.totalMonthlyPaymentFormatted} (P&I: ${calc.piMonthlyFormatted}, Total Interest: ${calc.totalInterestPaidFormatted})`)}
-                className="w-full rounded-xl bg-blue-600 py-2.5 text-xs font-semibold text-white shadow-md transition hover:bg-blue-700 dark:bg-cyan-500 dark:text-zinc-950 dark:hover:bg-cyan-400"
-              >
-                Copy Mortgage Breakdown
-              </button>
-            </div>
-          ) : (
-            <div className="flex h-full items-center justify-center text-sm text-zinc-500">Enter valid mortgage details.</div>
-          )}
-        </div>
-      </div>
-
-      {/* Amortization Schedule Accordion */}
-      {calc && (
-        <div className="rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60 overflow-hidden">
-          <button
-            type="button"
-            onClick={() => setShowSchedule(!showSchedule)}
-            className="w-full p-4 flex items-center justify-between text-left hover:bg-zinc-50/80 dark:hover:bg-zinc-800/40 transition"
-          >
-            <div className="flex items-center gap-2">
-              <FileSpreadsheet className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
-              <span className="font-display font-bold text-sm text-zinc-900 dark:text-zinc-100">
-                Annual Amortization Breakdown ({loanTermYears} Years)
-              </span>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-cyan-400">
-              <span>{showSchedule ? 'Hide Table' : 'Show Table'}</span>
-              {showSchedule ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-            </div>
-          </button>
-
-          {showSchedule && (
-            <div className="p-4 border-t border-zinc-200 dark:border-zinc-800 overflow-x-auto">
-              <table className="w-full text-left text-xs font-mono">
-                <thead>
-                  <tr className="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 font-sans uppercase tracking-wider text-[10px]">
-                    <th className="py-2 px-3">Year</th>
-                    <th className="py-2 px-3">Principal Paid</th>
-                    <th className="py-2 px-3">Interest Paid</th>
-                    <th className="py-2 px-3">Total Annual P&I</th>
-                    <th className="py-2 px-3">Ending Balance</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-zinc-100 dark:divide-zinc-850">
-                  {calc.yearlySchedule.map((row) => (
-                    <tr key={row.year} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
-                      <td className="py-2 px-3 font-sans font-bold text-zinc-900 dark:text-zinc-100">Year {row.year}</td>
-                      <td className="py-2 px-3 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">{fmt(row.principalPaid)}</td>
-                      <td className="py-2 px-3 text-amber-600 dark:text-amber-400">{fmt(row.interestPaid)}</td>
-                      <td className="py-2 px-3 font-semibold text-zinc-800 dark:text-zinc-200">{fmt(row.totalPaid)}</td>
-                      <td className="py-2 px-3 text-zinc-600 dark:text-zinc-400">{fmt(row.endingBalance)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <div className="mt-3 flex justify-end">
-                <button
-                  type="button"
-                  onClick={handleExportCSV}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 dark:text-cyan-400"
-                >
-                  <Download className="w-3.5 h-3.5" /> Download Full Month-by-Month CSV
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
+import { formatCurrency } from '@/src/lib/currency';
+import { payment, vaFundingRate } from '@/src/lib/calculations';
+import { NumberField, ResultRow, ErrorNotice, inputPanel, resultPanel } from './CalculatorFields';
+interface Props { onCopy?: (s: string) => void; onShare?: (t: string,p: string) => void; initialHomePrice?: number; initialDownPaymentPercent?: number; initialInterestRate?: number; initialLoanTermYears?: number; initialPropertyTaxAnnual?: number; initialHomeInsuranceAnnual?: number; initialHoaFeesMonthly?: number; initialCurrency?: string; initialProgram?: string; }
+export default function MortgageCalculator(p: Props) {
+  const [currency, setCurrency] = useState(p.initialCurrency ?? 'USD');
+  const [price,setPrice] = useState(p.initialHomePrice ?? 400000);
+  const [down,setDown] = useState(p.initialDownPaymentPercent ?? 20);
+  const [rate,setRate] = useState(p.initialInterestRate ?? 6.5);
+  const [years,setYears] = useState(p.initialLoanTermYears ?? 30);
+  const [tax,setTax] = useState(p.initialPropertyTaxAnnual ?? 4800);
+  const [insurance,setInsurance] = useState(p.initialHomeInsuranceAnnual ?? 1400);
+  const [hoa,setHoa] = useState(p.initialHoaFeesMonthly ?? 0);
+  const [program,setProgram] = useState(p.initialProgram ?? 'conventional');
+  const [upfront,setUpfront] = useState(0);
+  const [monthlyInsurance,setMonthlyInsurance] = useState(0);
+  const [financeFee,setFinanceFee] = useState(true);
+  const [subsequent,setSubsequent] = useState(false);
+  const [exempt,setExempt] = useState(false);
+  const fmt = (n:number)=>formatCurrency(n,currency);
+  const valid = [price,down,rate,years,tax,insurance,hoa,upfront,monthlyInsurance].every(Number.isFinite) && price>0 && down>=0 && down<=100 && rate>=0 && rate<=50 && years>=1 && years<=50 && Number.isInteger(years*12) && Math.min(tax,insurance,hoa,upfront,monthlyInsurance)>=0;
+  const base = price*(1-down/100);
+  const fee = program==='va' ? base*vaFundingRate(down,subsequent,exempt) : upfront;
+  const loan = base+(financeFee ? fee : 0);
+  const monthlyRate = program==='canada' ? Math.pow(1+rate/200,1/6)-1 : rate/1200;
+  const pi = valid ? payment(loan,monthlyRate,years*12) : 0;
+  const mortgageInsurance = program==='va' || program==='uk' || program==='canada' ? 0 : monthlyInsurance;
+  const total = pi+tax/12+insurance/12+hoa+mortgageInsurance;
+  const rows: {year:number;principal:number;interest:number;balance:number}[] = [];
+  if(valid) {let balance=loan; for(let y=1;y<=Math.ceil(years);y++){let principal=0,interest=0;for(let m=0;m<12 && (y-1)*12+m<years*12;m++){const i=balance*monthlyRate;const paid=Math.min(balance,pi-i);interest+=i;principal+=paid;balance=Math.max(0,balance-paid);}rows.push({year:y,principal,interest,balance});}}
+  const scheduleCsv = ['Year,Principal,Interest,Balance',...rows.map(r=>[r.year,r.principal.toFixed(2),r.interest.toFixed(2),r.balance.toFixed(2)].join(','))].join('\n');
+  const download=()=>{const url=URL.createObjectURL(new Blob([scheduleCsv],{type:'text/csv'}));const a=document.createElement('a');a.href=url;a.download='mortgage-schedule.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  return <div className="space-y-6"><div><h2 className="text-xl font-bold">Mortgage payment estimate</h2><p className="text-sm text-zinc-600 dark:text-zinc-400">Fixed-rate repayment scenario. Rates are editable assumptions, not live lender quotes.</p></div><div className="grid gap-6 lg:grid-cols-2"><div className={inputPanel}>
+  <label className="block text-sm font-medium">Loan model<select value={program} onChange={e=>{setProgram(e.target.value);setUpfront(0);setMonthlyInsurance(0);}} className="block w-full min-h-11 mt-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 px-3"><option value="conventional">Conventional / custom</option><option value="va">US VA purchase loan</option><option value="fha">FHA scenario — enter quoted premiums</option><option value="canada">Canada fixed-rate — enter quoted premium</option><option value="uk">UK repayment</option></select></label>
+  <CurrencySelector value={currency} onChange={setCurrency}/><p className="text-xs text-zinc-600 dark:text-zinc-400">Currency changes the display only; it does not select a loan model.</p>
+  <NumberField label="Home price" value={price} onChange={setPrice}/><div className="grid grid-cols-2 gap-4"><NumberField label="Down payment (%)" value={down} onChange={setDown} max={100}/><NumberField label="Annual interest rate (%)" value={rate} onChange={setRate} max={50}/></div><NumberField label="Repayment period (years)" value={years} onChange={setYears} min={1} max={50} step={1}/>
+  {program==='va' ? <fieldset className="space-y-3 text-sm"><legend className="font-semibold mb-3">VA funding fee</legend><label className="flex items-center gap-3"><input type="checkbox" className="h-5 w-5" checked={subsequent} onChange={e=>setSubsequent(e.target.checked)}/>Subsequent use of VA benefit</label><label className="flex items-center gap-3"><input type="checkbox" className="h-5 w-5" checked={exempt} onChange={e=>setExempt(e.target.checked)}/>Eligible for funding-fee exemption</label><p>No monthly PMI or MIP. Funding-fee eligibility must be confirmed with your lender.</p><a href="https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/" className="underline text-blue-700 dark:text-blue-300">VA purchase-loan fee schedule</a></fieldset> : <NumberField label="Upfront loan insurance or fee (quoted amount)" value={upfront} onChange={setUpfront} hint="Enter your lender quote; this model does not determine FHA/CMHC eligibility or premium tiers."/>}
+  <label className="flex gap-3 items-center text-sm"><input type="checkbox" className="h-5 w-5" checked={financeFee} onChange={e=>setFinanceFee(e.target.checked)}/>Add upfront fee to the loan balance</label>
+  {(program==='conventional'||program==='fha') && <NumberField label="Monthly mortgage insurance (lender quote)" value={monthlyInsurance} onChange={setMonthlyInsurance} hint="Enter the quoted PMI/MIP amount. It is not inferred from down payment."/>}
+  <details><summary className="cursor-pointer py-2 font-semibold text-sm">Taxes, property insurance and other costs</summary><div className="space-y-4 mt-3"><NumberField label="Annual property tax / council tax" value={tax} onChange={setTax}/><NumberField label="Annual property insurance" value={insurance} onChange={setInsurance}/><NumberField label="Monthly HOA / service charges" value={hoa} onChange={setHoa}/></div></details>
+  </div><div className={resultPanel}>{!valid ? <ErrorNotice>Enter a positive home price, 0–100% down, 0–50% interest and a repayment period of 1–50 years. Costs cannot be negative.</ErrorNotice> : <>{((program==='fha'&&(upfront===0||monthlyInsurance===0))||(program==='canada'&&down<20&&upfront===0)||(program==='conventional'&&down<20&&monthlyInsurance===0))&&<p className="rounded-xl border border-amber-400 bg-amber-50 p-3 text-sm text-amber-950 dark:bg-amber-950 dark:text-amber-100">Insurance premiums have not been entered. This estimate excludes any unquoted premiums and may understate your costs.</p>}<p className="text-sm font-semibold">Estimated initial monthly total</p><p className="text-3xl font-bold break-words">{fmt(total)}</p><dl><ResultRow label="Principal and interest" value={fmt(pi)}/><ResultRow label="Property tax / council tax" value={fmt(tax/12)}/><ResultRow label="Property insurance" value={fmt(insurance/12)}/><ResultRow label={program==='va'?'VA mortgage insurance (none)':'Monthly mortgage insurance'} value={fmt(mortgageInsurance)}/><ResultRow label="HOA / service charges" value={fmt(hoa)}/><ResultRow label="Down payment" value={fmt(price*down/100)}/><ResultRow label="Upfront fee" value={fmt(fee)}/><ResultRow label="Financed balance" value={fmt(loan)}/><ResultRow label="Total interest at unchanged rate" value={fmt(pi*years*12-loan)}/></dl><button className="min-h-11 px-4 rounded-xl bg-blue-700 text-white" onClick={download}>Download repayment schedule</button></>}</div></div>
+  <p className="text-sm text-zinc-600 dark:text-zinc-400">{program==='canada'?'Canadian fixed-rate calculation uses nominal interest compounded semi-annually. The repayment period is amortization, not a guaranteed rate term; renewal rates, stress tests and provincial premium tax are excluded.':'Monthly compounding with a fixed rate for the full repayment period.'} This is not an approval or eligibility check. Closing costs and changing insurance premiums are excluded. Quoted PMI/MIP is shown in the initial monthly total only; the schedule contains principal and interest.</p>
+  {valid && <details><summary className="cursor-pointer font-semibold py-2">Annual repayment schedule</summary><div className="overflow-x-auto"><table className="w-full text-sm text-right"><thead><tr><th className="p-2 text-left">Year</th><th className="p-2">Principal</th><th className="p-2">Interest</th><th className="p-2">Balance</th></tr></thead><tbody>{rows.map(r=><tr key={r.year} className="border-t border-zinc-200 dark:border-zinc-800"><th className="p-2 text-left">{r.year}</th><td className="p-2">{fmt(r.principal)}</td><td className="p-2">{fmt(r.interest)}</td><td className="p-2">{fmt(r.balance)}</td></tr>)}</tbody></table></div></details>}</div>;
 }

@@ -193,11 +193,11 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
           {shape === 'circle' && (
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Radius (r)</label>
-              <input
+              <input aria-label="Radius (r)"
                 type="number"
                 value={radius}
                 onChange={(e) => setRadius(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
               />
             </div>
           )}
@@ -206,20 +206,20 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Length (l)</label>
-                <input
+                <input aria-label="Length (l)"
                   type="number"
                   value={rectL}
                   onChange={(e) => setRectL(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Width (w)</label>
-                <input
+                <input aria-label="Width (w)"
                   type="number"
                   value={rectW}
                   onChange={(e) => setRectW(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base"
                 />
               </div>
             </div>
@@ -252,20 +252,20 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Base (b)</label>
-                    <input
+                    <input aria-label="Base (b)"
                       type="number"
                       value={triBase}
                       onChange={(e) => setTriBase(e.target.value)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono"
                     />
                   </div>
                   <div>
                     <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Height (h)</label>
-                    <input
+                    <input aria-label="Height (h)"
                       type="number"
                       value={triHeight}
                       onChange={(e) => setTriHeight(e.target.value)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono"
                     />
                   </div>
                 </div>
@@ -273,29 +273,29 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
                 <div className="grid grid-cols-3 gap-2">
                   <div>
                     <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side a</label>
-                    <input
+                    <input aria-label="Side a"
                       type="number"
                       value={triA}
                       onChange={(e) => setTriA(e.target.value)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-zinc-900 dark:text-white font-mono text-xs"
                     />
                   </div>
                   <div>
                     <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side b</label>
-                    <input
+                    <input aria-label="Side b"
                       type="number"
                       value={triB}
                       onChange={(e) => setTriB(e.target.value)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-zinc-900 dark:text-white font-mono text-xs"
                     />
                   </div>
                   <div>
                     <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side c</label>
-                    <input
+                    <input aria-label="Side c"
                       type="number"
                       value={triC}
                       onChange={(e) => setTriC(e.target.value)}
-                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-xs"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-zinc-900 dark:text-white font-mono text-xs"
                     />
                   </div>
                 </div>
@@ -307,29 +307,29 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
             <div className="grid grid-cols-3 gap-2">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Base a</label>
-                <input
+                <input aria-label="Base a"
                   type="number"
                   value={trapA}
                   onChange={(e) => setTrapA(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Base b</label>
-                <input
+                <input aria-label="Base b"
                   type="number"
                   value={trapB}
                   onChange={(e) => setTrapB(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Height h</label>
-                <input
+                <input aria-label="Height h"
                   type="number"
                   value={trapH}
                   onChange={(e) => setTrapH(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-white font-mono text-sm"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-2.5 py-2 text-zinc-900 dark:text-white font-mono text-sm"
                 />
               </div>
             </div>
@@ -339,20 +339,20 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Semi-Major Axis (a)</label>
-                <input
+                <input aria-label="Semi-Major Axis (a)"
                   type="number"
                   value={ellipseA}
                   onChange={(e) => setEllipseA(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Semi-Minor Axis (b)</label>
-                <input
+                <input aria-label="Semi-Minor Axis (b)"
                   type="number"
                   value={ellipseB}
                   onChange={(e) => setEllipseB(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono"
                 />
               </div>
             </div>
@@ -362,21 +362,21 @@ export default function GeometryAreaCalculator({ onCopy }: GeometryAreaCalculato
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Number of Sides (n ≥ 3)</label>
-                <input
+                <input aria-label="Number of Sides (n ≥ 3)"
                   type="number"
                   min="3"
                   value={polySides}
                   onChange={(e) => setPolySides(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono"
                 />
               </div>
               <div>
                 <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Side Length (s)</label>
-                <input
+                <input aria-label="Side Length (s)"
                   type="number"
                   value={polyLength}
                   onChange={(e) => setPolyLength(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono"
+                  className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono"
                 />
               </div>
             </div>

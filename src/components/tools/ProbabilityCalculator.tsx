@@ -78,22 +78,22 @@ export default function ProbabilityCalculator({ onCopy }: ProbabilityCalculatorP
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Favorable Outcomes (A)</label>
-            <input
+            <input aria-label="Favorable Outcomes (A)"
               type="number"
               min="0"
               value={favorable}
               onChange={(e) => setFavorable(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Total Possible Outcomes (S)</label>
-            <input
+            <input aria-label="Total Possible Outcomes (S)"
               type="number"
               min="1"
               value={total}
               onChange={(e) => setTotal(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>
@@ -135,26 +135,26 @@ export default function ProbabilityCalculator({ onCopy }: ProbabilityCalculatorP
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Probability of Event A: P(A)</label>
-            <input
+            <input aria-label="Probability of Event A: P(A)"
               type="number"
               step="0.01"
               min="0"
               max="1"
               value={probA}
               onChange={(e) => setProbA(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Probability of Event B: P(B)</label>
-            <input
+            <input aria-label="Probability of Event B: P(B)"
               type="number"
               step="0.01"
               min="0"
               max="1"
               value={probB}
               onChange={(e) => setProbB(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

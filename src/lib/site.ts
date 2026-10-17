@@ -66,7 +66,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Investing and returns",
         blurb:
           "Projection tools for future wealth accumulation and return verification for past investments. Compare SIP vs lump-sum allocations, measure true CAGR across volatile markets, or compute IRR for periodic cash flows.",
-        toolIds: [
+        toolIds: ["sip-step-up-calculator", "crypto-profit-calculator",
           "sip-calculator",
           "mutual-fund-return-calculator",
           "swp-calculator",
@@ -84,7 +84,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Deposits, provident funds and retirement",
         blurb:
           "Fixed-return instruments and long-horizon retirement planning. We account for statutory compounding rules including quarterly bank compounding, 15-year PPF lock-in schedules, and NPS annuity allocations.",
-        toolIds: [
+        toolIds: ["ssy-calculator",
           "fd-calculator",
           "rd-calculator",
           "ppf-calculator",
@@ -109,7 +109,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Business and pricing",
         blurb:
           "Unit economics and commercial calculations: determine break-even sales volume, compare gross profit margins against markups, and calculate tiered sales commissions.",
-        toolIds: [
+        toolIds: ["meeting-cost-calculator",
           "break-even-calculator",
           "profit-margin-calculator",
           "discount-calculator",
@@ -158,13 +158,13 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Compression and conversion",
         blurb:
           "Optimize bitmap images, reduce file sizes with fine quality control, resize dimensions with locked aspect ratios, and convert between WebP, PNG, JPEG, and GIF formats.",
-        toolIds: ["image-compressor", "format-converter", "image-resizer"],
+        toolIds: ["image-flipper", "svg-to-png-converter", "exif-data-viewer", "image-compressor", "format-converter", "image-resizer"],
       },
       {
         name: "Creative and social utilities",
         blurb:
           "Erase backgrounds with in-browser AI segmentation, crop social media graphics for Instagram and LinkedIn, generate 1200x630 OG cards, and compile multi-photo collages.",
-        toolIds: [
+        toolIds: ["image-color-picker",
           "background-remover",
           "social-media-resizer",
           "og-image-generator",
@@ -187,7 +187,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Data and formatting",
         blurb:
           "Format and validate minified JSON payloads with line-numbered syntax alerts, synthesize mock datasets for local databases, compute word counts, and decompress ZIP archives.",
-        toolIds: [
+        toolIds: ["case-converter", "character-counter", "duplicate-line-remover", "text-reverser", "text-repeater", "slug-generator", "text-to-ascii-art", "text-cleaner", "css-minifier-beautifier", "js-minifier-beautifier", "html-formatter", "json-to-csv-converter", "color-format-converter",
           "json-formatter",
           "fake-data-generator",
           "word-counter",
@@ -202,7 +202,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Security, encoding and regex",
         blurb:
           "Generate cryptographically secure passwords and UUIDs, encode Base64 and URLs, hash strings with Web Crypto, test regular expressions, and convert color codes.",
-        toolIds: [
+        toolIds: ["jwt-decoder", "password-strength-checker", "text-encryptor", "file-hash-verifier",
           "password-generator",
           "uuid-v4-generator",
           "hash-generator-md5-sha",
@@ -229,7 +229,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Age and milestones",
         blurb:
           "Calculate chronological age in years, months, and days, convert human years to canine life stages by breed weight, and verify school age intake cut-offs.",
-        toolIds: [
+        toolIds: ["age-in-seconds-calculator",
           "age-calculator",
           "age-calculator-in-months",
           "school-age-eligibility-calculator",
@@ -240,7 +240,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Dates and astrology",
         blurb:
           "Track pregnancy milestones and trimester timelines, or compute Western zodiac signs and astrological positions based on exact birth dates.",
-        toolIds: [
+        toolIds: ["world-clock", "countdown-timer", "pomodoro-timer", "read-time-estimator",
           "pregnancy-due-date-calculator",
           "zodiac-age-calculator",
           "zodiac-sun-moon-calculator",
@@ -250,7 +250,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Construction and home estimation",
         blurb:
           "Calculate flooring boxes, tile counts, wall paint gallons, brick quantities, concrete slabs, mortar mixtures, room square footage, and AC BTU tonnage.",
-        toolIds: [
+        toolIds: ["power-consumption-calculator",
           "room-square-footage-calculator",
           "flooring-calculator",
           "tile-count-calculator",
@@ -275,7 +275,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Everyday and academic calculators",
         blurb:
           "Perform standard and scientific arithmetic, calculate percentages and fractions, compute college GPA, and convert university CGPA to percentages.",
-        toolIds: [
+        toolIds: ["number-base-converter", "ohms-law-calculator", "speed-distance-time-calculator",
           "standard-calculator",
           "scientific-calculator",
           "percentage-calculator",
@@ -338,7 +338,7 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
         name: "Nutrition and energy expenditure",
         blurb:
           "Calculate basal metabolic rate (BMR), total daily energy expenditure (TDEE), daily calorie deficits, macronutrient splits, protein targets, and hydration goals.",
-        toolIds: [
+        toolIds: ["calorie-deficit-calculator",
           "bmr-calculator",
           "tdee-calculator",
           "daily-calorie-calculator",
@@ -401,7 +401,7 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   "emi-calculator": "EMI Calculator with Full Amortization Schedule",
   "loan-calculator": "Loan Calculator: Interest vs Principal Breakdown",
   "home-loan-emi-calculator": "Home Loan EMI Calculator with Yearly Schedule",
-  "mortgage-calculator": "Mortgage Calculator with Tax, Insurance and HOA",
+  "mortgage-calculator": "Mortgage Payment Calculator with Cost Breakdown",
   "car-loan-emi-calculator": "Car Loan EMI Calculator: Auto Loan Monthly Payment",
   "bike-loan-emi-calculator": "Bike Loan EMI Calculator: Two-Wheeler Loan Payment",
   "personal-loan-emi-calculator": "Personal Loan EMI Calculator with Fees",
@@ -429,12 +429,12 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   "ppf-calculator": "PPF Calculator: 15-Year Maturity Projection",
   "epf-calculator": "EPF Calculator: PF Balance, Interest & Maturity",
   "nps-calculator": "NPS Calculator: Lump Sum and Annuity Split",
-  "retirement-calculator": "Retirement Calculator: 401(k), Corpus & Inflation",
+  "retirement-calculator": "Retirement Calculator: Targets & Contribution Scenarios",
   "gratuity-calculator": "Gratuity Calculator (Payment of Gratuity Act)",
 
   // --- Salary & tax ----------------------------------------------------
-  "salary-calculator": "Salary Calculator: CTC to In-Hand Breakdown",
-  "income-tax-calculator": "Income Tax Calculator with Slab-by-Slab Working",
+  "salary-calculator": "India Salary Calculator: FY 2025–26 New Regime",
+  "income-tax-calculator": "India Income Tax Calculator: FY 2025–26 Salary",
   "hra-calculator": "HRA Calculator: House Rent Allowance Tax Exemption",
   "gst-calculator": "GST Calculator: Inclusive & Exclusive GST Rates",
 
@@ -450,7 +450,7 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   // --- PDF -------------------------------------------------------------
   "pdf-merger": "Merge PDF Files Without Uploading Them",
   "pdf-splitter": "PDF Splitter: Extract Specific Pages from PDF",
-  "pdf-compressor": "Compress a PDF in Your Browser",
+  "pdf-compressor": "Optimize PDF Structure in Your Browser",
   "pdf-watermark": "Add a Watermark to a PDF Privately",
   "pdf-metadata": "Edit PDF Metadata: Title, Author, Keywords",
   "pdf-rotator": "Rotate PDF Pages 90, 180 or 270 Degrees",
@@ -461,7 +461,7 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   // --- Images ----------------------------------------------------------
   "image-compressor": "Compress Images Without Uploading Them",
   "image-resizer": "Image Resizer: Resize Image Without Losing Quality",
-  "format-converter": "Convert Images: WebP, PNG, JPEG, GIF",
+  "format-converter": "Convert Images to WebP, PNG or JPEG",
   "background-remover": "Remove an Image Background in Your Browser",
   "social-media-resizer": "Social Media Image Sizes: Crop and Export",
   "photo-collage-maker": "Photo Collage Maker (No Upload, No Watermark)",
@@ -494,9 +494,7 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   "bmi-calculator": "BMI Calculator with Category and Its Limits",
   "bmr-calculator": "BMR Calculator (Mifflin-St Jeor) and TDEE",
   "body-fat-calculator": "Body Fat Calculator (US Navy Method)",
-  "death-calculator": "Death Calculator: Life Expectancy & Longevity Quiz",
-
-  // --- Maths -----------------------------------------------------------
+  "death-calculator": "Life Horizon Calculator: Hypothetical Planning Ages",
   "mean-calculator": "Mean Calculator with Step-by-Step Working",
   "median-calculator": "Median Calculator for Odd and Even Data Sets",
   "mod-calculator": "Modulo Calculator (A mod B) with Negatives",
@@ -517,7 +515,7 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   // --- Math additions --------------------------------------------------
   "percentage-calculator": "Percentage Calculator: 4 Common Modes & Steps",
   "cgpa-calculator": "CGPA Calculator with Semester Credits & Target",
-  "cgpa-to-percentage-calculator": "CGPA to Percentage Converter (CBSE & Engineering)",
+  "cgpa-to-percentage-calculator": "CGPA to Percentage: Formula Scenarios & Custom Rules",
   "gpa-calculator": "GPA Calculator: 4.0 College Grade Scale",
   "date-difference-calculator": "Date Difference Calculator: Days Between Two Dates",
   "mode-frequency-calculator": "Mode & Frequency Calculator with Sorted Table",
@@ -593,10 +591,10 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   "image-color-picker": "Image Color Picker: Eyedropper & Palette Extractor",
   "image-flipper": "Image Flipper: Flip Image Horizontally or Vertically",
   "svg-to-png-converter": "SVG to PNG Converter: Convert Vector SVG to High-Res PNG",
-  "password-strength-checker": "Password Strength Checker & Entropy Calculator",
-  "text-encryptor": "Text Encryptor & Decryptor: AES-GCM Browser Encryption",
-  "file-hash-verifier": "File Hash Verifier: Calculate MD5, SHA-256 & SHA-512",
-  "exif-data-viewer": "EXIF Data Viewer: View & Strip Photo Metadata",
+  "password-strength-checker": "Password Pattern Checker: Local Heuristic Score",
+  "text-encryptor": "Text Encryptor: AES-256-GCM in Your Browser",
+  "file-hash-verifier": "File SHA-256 Checker: Compare a Publisher Checksum",
+  "exif-data-viewer": "JPEG EXIF Inspector: Camera and GPS Tags",
 };
 
 const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
@@ -606,8 +604,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "See what a loan actually costs: monthly payment, total interest, and the split between principal and interest for every year of the term.",
   "home-loan-emi-calculator":
     "Calculate your home loan EMI and see the year-by-year schedule, including how little principal you repay in the early years of a long tenure.",
-  "mortgage-calculator":
-    "Full PITI monthly payment: principal, interest, property tax, insurance and HOA - not just the loan repayment portion most calculators show.",
+  "mortgage-calculator": "Estimate fixed-rate principal, interest and housing costs with editable assumptions. Includes VA funding-fee options and quoted insurance inputs.",
   "car-loan-emi-calculator":
     "Enter on-road price, down payment, rate and tenure to get your monthly car loan EMI plus the total interest a longer tenure actually costs you.",
   "bike-loan-emi-calculator":
@@ -656,15 +653,12 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Project your EPF corpus to retirement from basic salary, contribution rate and expected interest, with the annual accrual shown.",
   "nps-calculator":
     "Project an NPS corpus at 60 and see the mandated split: the lump sum you can withdraw and the portion that must buy an annuity.",
-  "retirement-calculator":
-    "Work out the corpus you need in future rupees, not today's - the inflation adjustment is what makes most retirement targets look far too small.",
+  "retirement-calculator": "Compare retirement targets, FIRE spending multiples and 401(k) or Roth contribution growth using explicit returns, inflation and contribution assumptions.",
   "gratuity-calculator":
     "Calculate gratuity under the Payment of Gratuity Act formula, including how partial years past the five-year threshold are rounded.",
 
-  "salary-calculator":
-    "Break an annual CTC into basic, HRA, allowances, EPF, professional tax and income tax, to get the number that actually reaches your bank account.",
-  "income-tax-calculator":
-    "Estimate income tax with the working shown slab by slab, plus your effective rate - which is always lower than the slab you say you are 'in'.",
+  "salary-calculator": "Estimate India take-home pay using FY 2025–26 new-regime tax, capped EPF and editable professional tax. Bonus and tax assumptions are shown explicitly.",
+  "income-tax-calculator": "Calculate India new-regime salary tax for FY 2025–26 with slab working, standard deduction, resident rebate, marginal relief and 4% cess.",
   "hra-calculator":
     "Apply all three Section 10(13A) limbs and see which one caps your exemption - the binding constraint is rarely the one people assume.",
   "gst-calculator":
@@ -689,8 +683,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Combine PDFs into one document and reorder pages first. Files are processed in browser memory and never uploaded, so contracts stay secure on your machine.",
   "pdf-splitter":
     "Pull specific pages or a page range out of a PDF into a new file. Runs entirely in your tab, so the original document is never uploaded anywhere.",
-  "pdf-compressor":
-    "Reduce PDF file size in your browser. Nothing is uploaded, so there is no size cap set by someone else's server and no copy left behind.",
+  "pdf-compressor": "Optimize PDF object streams and remove metadata locally. No quality presets or image recompression; savings vary and image-heavy PDFs may not shrink.",
   "pdf-watermark":
     "Stamp text or an image watermark onto a PDF with control over opacity, rotation and position - processed locally, so the document never leaves your device.",
   "pdf-metadata":
@@ -708,8 +701,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Cut image file size with a live before-and-after comparison, so you can find the quality setting where the saving stops being worth it.",
   "image-resizer":
     "Resize by exact pixel dimensions or by percentage, with optional aspect-ratio lock, processed on your own device.",
-  "format-converter":
-    "Convert between WebP, PNG, JPEG, and GIF in your browser. Fast local conversion with zero file uploads - your media never leaves your device.",
+  "format-converter": "Convert supported images into WebP, PNG or JPEG in your browser. Choose an output format and inspect the downloaded image; GIF and AVIF export are not supported.",
   "background-remover":
     "Remove an image background and export a transparent PNG. The segmentation model runs locally in your browser - the photo is never uploaded.",
   "social-media-resizer":
@@ -765,9 +757,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Basal metabolic rate via Mifflin-St Jeor, plus TDEE at each activity multiplier, with the equation shown so you can see what drives the number.",
   "body-fat-calculator":
     "Estimate body fat percentage using the US Navy circumference method, with lean and fat mass, and the measurement error the method carries.",
-  "death-calculator":
-    "A statistical life expectancy estimate from age, sex and lifestyle factors. An actuarial estimate for planning, not a medical prediction.",
-
+  "death-calculator": "Visualize the years between your current age and a planning age you choose. An arithmetic illustration, not a death prediction or actuarial model.",
   "mean-calculator":
     "Arithmetic mean with the sum and count shown, so the result can be checked rather than copied.",
   "median-calculator":
@@ -804,8 +794,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Calculate percentage increase, decrease, fractional proportions, and sales tax adjustments across four intuitive modes with complete step-by-step arithmetic shown.",
   "cgpa-calculator":
     "Compute semester-wise and cumulative CGPA from credits and grade points. Plan future semester requirements with the built-in target CGPA goal simulator.",
-  "cgpa-to-percentage-calculator":
-    "Convert 10-point CGPA to equivalent percentage using CBSE (x9.5), Mumbai University, or linear formulas, complete with honors division classifications.",
+  "cgpa-to-percentage-calculator": "Apply a selected CGPA conversion formula or enter a custom multiplier and offset. Check your course regulation; results do not certify marks or division.",
   "gpa-calculator":
     "Calculate college GPA on a standard 4.0 weighted scale. Add course credits and letter grades to view cumulative grade points, honors standing, and transcript summary.",
   "date-difference-calculator":
@@ -948,14 +937,10 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Flip images horizontally (mirror effect) or vertically online without quality loss. Supports PNG, JPG, and WebP exports. 100% private.",
   "svg-to-png-converter":
     "Convert SVG vector files to raster PNG or JPEG images. Customize output width, height, scale multiplier, and transparent backgrounds.",
-  "password-strength-checker":
-    "Check password strength and calculate crack time entropy in bits. Test passwords against breach heuristics 100% offline.",
-  "text-encryptor":
-    "Encrypt and decrypt sensitive text messages using military-grade AES-256-GCM encryption with secret passphrases locally.",
-  "file-hash-verifier":
-    "Compute and verify file integrity hashes (MD5, SHA-1, SHA-256, SHA-512) locally. Compare checksums against official software releases.",
-  "exif-data-viewer":
-    "View hidden image EXIF metadata (camera model, GPS coordinates, shutter speed, ISO, date). Strip EXIF data before sharing photos.",
+  "password-strength-checker": "Compare password length and character-pattern heuristics locally. This score is not a breach check, measured entropy or a guaranteed cracking-time estimate.",
+  "text-encryptor": "Encrypt text locally with AES-256-GCM and PBKDF2-SHA256. Save the full versioned envelope and passphrase; incorrect keys or modified ciphertext are rejected.",
+  "file-hash-verifier": "Calculate a file’s SHA-256 checksum locally and compare it with a trusted publisher value. Files are read into memory; a matching hash alone does not prove safety.",
+  "exif-data-viewer": "Inspect supported JPEG EXIF fields locally, including camera and GPS tags when present. No metadata is invented; inspection does not strip or certify privacy.",
 };
 
 export function getToolSeoTitle(tool: Tool): string {

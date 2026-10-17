@@ -64,20 +64,20 @@ export default function BrickCountCalculator({ onCopy }: BrickCountCalculatorPro
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Wall Length (ft)</label>
-              <input
+              <input aria-label="Wall Length (ft)"
                 type="number"
                 value={wallLength}
                 onChange={(e) => setWallLength(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Wall Height (ft)</label>
-              <input
+              <input aria-label="Wall Height (ft)"
                 type="number"
                 value={wallHeight}
                 onChange={(e) => setWallHeight(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -115,20 +115,20 @@ export default function BrickCountCalculator({ onCopy }: BrickCountCalculatorPro
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Openings (Doors/Windows sq ft)</label>
-              <input
+              <input aria-label="Openings (Doors/Windows sq ft)"
                 type="number"
                 min="0"
                 value={openingsArea}
                 onChange={(e) => setOpeningsArea(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Waste Factor (%)</label>
-              <select
+              <select aria-label="Waste Factor (%)"
                 value={wastePct}
                 onChange={(e) => setWastePct(parseInt(e.target.value, 10))}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-xs"
               >
                 <option value="5">5% (Normal)</option>
                 <option value="10">10% (Cuts & breakage)</option>

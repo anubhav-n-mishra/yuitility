@@ -42,7 +42,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
   const totalPct = carbsPct + proteinPct + fatPct;
 
   const results = (() => {
-    if (isNaN(totalCalories) || totalCalories <= 500) return null;
+    if (!Number.isFinite(totalCalories) || totalCalories <= 500 || Math.abs(totalPct-100)>1e-8 || ![carbsPct,proteinPct,fatPct].every(p=>Number.isFinite(p)&&p>=0&&p<=100) || !Number.isInteger(mealsCount) || mealsCount<1) return null;
 
     const carbCals = (carbsPct / 100) * totalCalories;
     const proteinCals = (proteinPct / 100) * totalCalories;
@@ -104,11 +104,11 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
 
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Target Calories (kcal/day)</label>
-            <input
+            <input aria-label="Target Calories (kcal/day)"
               type="number"
               value={calories}
               onChange={(e) => setCalories(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
 
@@ -118,7 +118,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
                 <span>Protein ({proteinPct}%)</span>
                 <span className="font-mono text-indigo-600 dark:text-indigo-400">4 kcal / g</span>
               </div>
-              <input
+              <input aria-label="Protein percentage (slider)"
                 type="range"
                 min="0"
                 max="100"
@@ -136,7 +136,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
                 <span>Carbohydrates ({carbsPct}%)</span>
                 <span className="font-mono text-cyan-400">4 kcal / g</span>
               </div>
-              <input
+              <input aria-label="Carbohydrate percentage (slider)"
                 type="range"
                 min="0"
                 max="100"
@@ -154,7 +154,7 @@ export default function MacroRatioCalculator({ onCopy }: MacroRatioCalculatorPro
                 <span>Fats ({fatPct}%)</span>
                 <span className="font-mono text-amber-400">9 kcal / g</span>
               </div>
-              <input
+              <input aria-label="Fat percentage (slider)"
                 type="range"
                 min="0"
                 max="100"

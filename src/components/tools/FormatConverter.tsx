@@ -27,13 +27,17 @@ export default function FormatConverter({ onCopy, onShare }: FormatConverterProp
     e.preventDefault();
     setIsDragging(false);
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      setFile(e.dataTransfer.files[0]);
+      const next=e.dataTransfer.files[0];
+      if(!next.type.startsWith('image/')) {alert('Please select an image file.');return;}
+      setFile(next);
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
+      const next=e.target.files[0];
+      if(!next.type.startsWith('image/')) {alert('Please select an image file.');return;}
+      setFile(next);
     }
   };
 
@@ -137,7 +141,7 @@ export default function FormatConverter({ onCopy, onShare }: FormatConverterProp
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Click to upload or drag and drop</p>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Any image format supported by your browser.</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -158,7 +162,7 @@ export default function FormatConverter({ onCopy, onShare }: FormatConverterProp
                     <p className="text-xs text-zinc-500 dark:text-zinc-400">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                   </div>
                 </div>
-                <button
+                <button aria-label="Remove selected file"
                   onClick={handleReset}
                   className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-md transition-colors"
                 >
@@ -187,7 +191,7 @@ export default function FormatConverter({ onCopy, onShare }: FormatConverterProp
 
             <div className="space-y-2">
               <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase">Target Format</label>
-              <select
+              <select aria-label="Target Format"
                 value={targetFormat}
                 onChange={(e) => setTargetFormat(e.target.value)}
                 className="w-full bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-3 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-medium"

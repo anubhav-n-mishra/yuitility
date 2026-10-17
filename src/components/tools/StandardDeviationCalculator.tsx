@@ -1,3 +1,4 @@
+import { numericDataset } from '@/src/lib/numeric';
 import React, { useState } from 'react';
 import { Sigma, Copy, Check, Sparkles, HelpCircle } from 'lucide-react';
 
@@ -12,12 +13,7 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
   const [inputData, setInputData] = useState<string>(SAMPLE_VALUES);
   const [copied, setCopied] = useState<boolean>(false);
 
-  const numbers = inputData
-    .split(/[\s,;\n\t]+/)
-    .map((t) => t.trim())
-    .filter(Boolean)
-    .map(Number)
-    .filter((n) => !isNaN(n));
+  const numbers = numericDataset(inputData);
 
   const n = numbers.length;
 
@@ -40,8 +36,8 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
     const popStdDev = Math.sqrt(popVariance);
 
     // Sample stats (div by n - 1)
-    const sampleVariance = n > 1 ? sumDevSq / (n - 1) : 0;
-    const sampleStdDev = n > 1 ? Math.sqrt(sampleVariance) : 0;
+    const sampleVariance = n > 1 ? sumDevSq / (n - 1) : NaN;
+    const sampleStdDev = n > 1 ? Math.sqrt(sampleVariance) : NaN;
 
     // Standard Error of Mean
     const standardError = n > 0 ? sampleStdDev / Math.sqrt(n) : 0;
@@ -61,7 +57,7 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
 
   const handleCopy = () => {
     if (!stats) return;
-    const text = `Sample Std Dev (s): ${stats.sampleStdDev.toFixed(4)}\nPopulation Std Dev (σ): ${stats.popStdDev.toFixed(4)}\nMean (μ): ${stats.mean.toFixed(4)}\nSample Variance (s²): ${stats.sampleVariance.toFixed(4)}`;
+    const text = `Sample Std Dev (s): ${(Number.isFinite(stats.sampleStdDev) ? stats.sampleStdDev.toFixed(4) : 'Undefined (need 2 values)')}\nPopulation Std Dev (σ): ${stats.popStdDev.toFixed(4)}\nMean (μ): ${stats.mean.toFixed(4)}\nSample Variance (s²): ${(Number.isFinite(stats.sampleVariance) ? stats.sampleVariance.toFixed(4) : 'Undefined (need 2 values)')}`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     if (onCopy) onCopy(text);
@@ -85,12 +81,12 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
           </button>
         </div>
 
-        <textarea
+        <textarea aria-label="Enter Numbers (comma, space, or line separated)"
           rows={3}
           value={inputData}
           onChange={(e) => setInputData(e.target.value)}
           placeholder="e.g. 10, 12, 23, 23, 16, 23, 21, 16"
-          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+          className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
         />
       </div>
 
@@ -108,7 +104,7 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
               </div>
 
               <div className="text-4xl font-extrabold font-mono text-white my-2">
-                {stats.sampleStdDev.toFixed(4)}
+                {(Number.isFinite(stats.sampleStdDev) ? stats.sampleStdDev.toFixed(4) : 'Undefined (need 2 values)')}
               </div>
 
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
@@ -118,11 +114,11 @@ export default function StandardDeviationCalculator({ onCopy }: StandardDeviatio
               <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/80 space-y-1.5 text-xs text-zinc-500 dark:text-zinc-400 font-mono">
                 <div className="flex justify-between">
                   <span>Sample Variance (s²):</span>
-                  <span className="text-zinc-800 dark:text-zinc-200">{stats.sampleVariance.toFixed(4)}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{(Number.isFinite(stats.sampleVariance) ? stats.sampleVariance.toFixed(4) : 'Undefined (need 2 values)')}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Std Error of Mean (SE):</span>
-                  <span className="text-zinc-800 dark:text-zinc-200">{stats.standardError.toFixed(4)}</span>
+                  <span className="text-zinc-800 dark:text-zinc-200">{(Number.isFinite(stats.standardError) ? stats.standardError.toFixed(4) : 'Undefined (need 2 values)')}</span>
                 </div>
               </div>
             </div>

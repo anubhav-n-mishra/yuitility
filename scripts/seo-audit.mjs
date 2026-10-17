@@ -251,7 +251,7 @@ for (const [, target] of relatedBlock.matchAll(/"([a-z0-9-]+)"(?=[,\]])/g)) {
     err("broken-internal-link", `RELATED_TOOLS points at "${target}", which is not a live tool`);
   }
 }
-for (const [, toolId] of blogsSrc.matchAll(/toolId: "([a-z0-9-]+)"/g)) {
+for (const [, toolId] of blogsSrc.matchAll(/"?toolId"?: "([a-z0-9-]+)"/g)) {
   if (!declaredIds.includes(toolId)) {
     err("broken-internal-link", `blog post references toolId "${toolId}", which does not exist`);
   }
@@ -272,7 +272,7 @@ const planned = declaredIds.filter((id) => !registryIds.includes(id)).length;
 
 console.log("SEO audit\n=========");
 console.log(`Tools declared: ${declaredIds.length}  live: ${live}  planned (noindexed): ${planned}`);
-console.log(`Categories: ${categoryIds.length}   Blog posts: ${[...blogsSrc.matchAll(/^\s{4}slug: "/gm)].length}`);
+console.log(`Categories: ${categoryIds.length}   Blog posts: ${[...blogsSrc.matchAll(/^\s+"?slug"?: "/gm)].length}`);
 console.log("");
 
 if (warnings.length) {

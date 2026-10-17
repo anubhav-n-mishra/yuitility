@@ -160,7 +160,7 @@ export default function ImageToPdf({ onCopy, onShare }: ImageToPdfProps) {
             </div>
             <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Click to upload or drag and drop</p>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Supports JPG and PNG. Processed entirely locally.</p>
-            <input
+            <input aria-label="Choose files"
               type="file"
               ref={fileInputRef}
               onChange={handleFileChange}
@@ -186,22 +186,22 @@ export default function ImageToPdf({ onCopy, onShare }: ImageToPdfProps) {
                         <p className="text-xs text-zinc-500 dark:text-zinc-400">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button
+                    <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus:opacity-100 transition-opacity">
+                      <button aria-label="Move file up"
                         onClick={() => moveFile(index, 'up')}
                         disabled={index === 0}
                         className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-30 transition-colors"
                       >
                         <ArrowUp className="w-4 h-4" />
                       </button>
-                      <button
+                      <button aria-label="Move file down"
                         onClick={() => moveFile(index, 'down')}
                         disabled={index === files.length - 1}
                         className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 disabled:opacity-30 transition-colors"
                       >
                         <ArrowDown className="w-4 h-4" />
                       </button>
-                      <button
+                      <button aria-label="Remove selected file"
                         onClick={() => removeFile(index)}
                         className="p-1.5 text-red-500 hover:text-red-600 transition-colors"
                       >

@@ -45,7 +45,7 @@ export default function DividendCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Stock Share Price</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(sharePrice, currency)}</span>
             </div>
-            <input
+            <input aria-label="Stock Share Price (slider)"
               type="range"
               min="1"
               max="2000"
@@ -61,7 +61,7 @@ export default function DividendCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Number of Shares Owned</label>
               <span className="text-blue-600 dark:text-cyan-300">{numberOfShares} Shares</span>
             </div>
-            <input
+            <input aria-label="Number of Shares Owned (slider)"
               type="range"
               min="1"
               max="10000"
@@ -77,7 +77,7 @@ export default function DividendCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Annual Dividend Per Share</label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(annualDividendPerShare, currency)}</span>
             </div>
-            <input
+            <input aria-label="Annual Dividend Per Share (slider)"
               type="range"
               min="0.1"
               max="100"

@@ -67,20 +67,20 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Surface Length (ft)</label>
-              <input
+              <input aria-label="Surface Length (ft)"
                 type="number"
                 value={areaLength}
                 onChange={(e) => setAreaLength(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Surface Width (ft)</label>
-              <input
+              <input aria-label="Surface Width (ft)"
                 type="number"
                 value={areaWidth}
                 onChange={(e) => setAreaWidth(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -88,20 +88,20 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Tile Length (inches)</label>
-              <input
+              <input aria-label="Tile Length (inches)"
                 type="number"
                 value={tileLengthIn}
                 onChange={(e) => setTileLengthIn(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Tile Width (inches)</label>
-              <input
+              <input aria-label="Tile Width (inches)"
                 type="number"
                 value={tileWidthIn}
                 onChange={(e) => setTileWidthIn(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>
@@ -134,10 +134,10 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Waste Factor (%)</label>
-              <select
+              <select aria-label="Waste Factor (%)"
                 value={wastePct}
                 onChange={(e) => setWastePct(parseInt(e.target.value, 10))}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-xs"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-xs"
               >
                 <option value="5">5% (Simple rectangular)</option>
                 <option value="10">10% (Standard cuts)</option>
@@ -147,12 +147,12 @@ export default function TileCountCalculator({ onCopy }: TileCountCalculatorProps
             </div>
             <div>
               <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Tiles per Box</label>
-              <input
+              <input aria-label="Tiles per Box"
                 type="number"
                 min="1"
                 value={tilesPerBox}
                 onChange={(e) => setTilesPerBox(e.target.value)}
-                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm"
               />
             </div>
           </div>

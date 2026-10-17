@@ -51,7 +51,7 @@ export default function StockAverageCalculator() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Shares Count</label>
-                <input
+                <input aria-label="Shares Count"
                   type="number"
                   value={firstShares}
                   onChange={(e) => setFirstShares(Number(e.target.value))}
@@ -60,7 +60,7 @@ export default function StockAverageCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Buy Price</label>
-                <input
+                <input aria-label="Buy Price"
                   type="number"
                   value={firstPrice}
                   onChange={(e) => setFirstPrice(Number(e.target.value))}
@@ -75,7 +75,7 @@ export default function StockAverageCalculator() {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Shares Count</label>
-                <input
+                <input aria-label="Shares Count"
                   type="number"
                   value={secondShares}
                   onChange={(e) => setSecondShares(Number(e.target.value))}
@@ -84,7 +84,7 @@ export default function StockAverageCalculator() {
               </div>
               <div>
                 <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1">Buy Price</label>
-                <input
+                <input aria-label="Buy Price"
                   type="number"
                   value={secondPrice}
                   onChange={(e) => setSecondPrice(Number(e.target.value))}

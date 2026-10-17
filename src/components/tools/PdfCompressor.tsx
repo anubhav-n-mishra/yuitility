@@ -131,7 +131,7 @@ export default function PdfCompressor({ onCopy, onShare }: PdfCompressorProps) {
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Click to upload or drag and drop</p>
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">Only PDF files are supported.</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -152,7 +152,7 @@ export default function PdfCompressor({ onCopy, onShare }: PdfCompressorProps) {
                     <p className="text-xs text-zinc-500 dark:text-zinc-400">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
                   </div>
                 </div>
-                <button
+                <button aria-label="Remove selected file"
                   onClick={handleReset}
                   className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-md transition-colors"
                 >

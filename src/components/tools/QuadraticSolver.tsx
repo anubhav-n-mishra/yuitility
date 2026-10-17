@@ -29,7 +29,7 @@ export default function QuadraticSolver({ onCopy }: QuadraticSolverProps) {
     let root1 = '';
     let root2 = '';
 
-    if (Math.abs(disc) < 1e-12) {
+    if (disc === 0) {
       rootType = 'one-real';
       const r = -b / (2 * a);
       root1 = r.toFixed(4);
@@ -37,12 +37,13 @@ export default function QuadraticSolver({ onCopy }: QuadraticSolverProps) {
     } else if (disc > 0) {
       rootType = 'two-real';
       const sqrtD = Math.sqrt(disc);
-      root1 = ((-b + sqrtD) / (2 * a)).toFixed(4);
-      root2 = ((-b - sqrtD) / (2 * a)).toFixed(4);
+      const q = -0.5 * (b + (b >= 0 ? sqrtD : -sqrtD));
+      root1 = (q / a).toPrecision(12);
+      root2 = (c / q).toPrecision(12);
     } else {
       rootType = 'complex';
       const realPart = (-b / (2 * a)).toFixed(4);
-      const imagPart = (Math.sqrt(-disc) / (2 * a)).toFixed(4);
+      const imagPart = (Math.sqrt(-disc) / (2 * Math.abs(a))).toFixed(4);
       root1 = `${realPart} + ${imagPart}i`;
       root2 = `${realPart} - ${imagPart}i`;
     }
@@ -76,29 +77,29 @@ export default function QuadraticSolver({ onCopy }: QuadraticSolverProps) {
         <div className="grid grid-cols-3 gap-4">
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coefficient a</label>
-            <input
+            <input aria-label="Coefficient a"
               type="number"
               value={aStr}
               onChange={(e) => setAStr(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Coefficient b</label>
-            <input
+            <input aria-label="Coefficient b"
               type="number"
               value={bStr}
               onChange={(e) => setBStr(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
           <div>
             <label className="text-xs text-zinc-700 dark:text-zinc-300 block mb-1">Constant c</label>
-            <input
+            <input aria-label="Constant c"
               type="number"
               value={cStr}
               onChange={(e) => setCStr(e.target.value)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-900 dark:text-white font-mono text-base focus:outline-none focus:border-indigo-500"
             />
           </div>
         </div>

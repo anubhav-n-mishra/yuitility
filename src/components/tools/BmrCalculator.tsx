@@ -73,7 +73,7 @@ export default function BmrCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Age (Years)</label>
               <span className="text-blue-600 dark:text-cyan-300">{age} Years</span>
             </div>
-            <input
+            <input aria-label="Age (Years) (slider)"
               type="range"
               min="15"
               max="90"
@@ -89,7 +89,7 @@ export default function BmrCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Weight (kg)</label>
               <span className="text-blue-600 dark:text-cyan-300">{weightKg} kg</span>
             </div>
-            <input
+            <input aria-label="Weight (kg) (slider)"
               type="range"
               min="30"
               max="200"
@@ -105,7 +105,7 @@ export default function BmrCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Height (cm)</label>
               <span className="text-blue-600 dark:text-cyan-300">{heightCm} cm</span>
             </div>
-            <input
+            <input aria-label="Height (cm) (slider)"
               type="range"
               min="120"
               max="220"

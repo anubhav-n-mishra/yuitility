@@ -1,3 +1,4 @@
+import { payment } from '@/src/lib/calculations';
 import React, { useState, useMemo, useEffect } from 'react';
 import { Download, RefreshCw, Share2, Info, ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -43,7 +44,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
     const r = (interestRate / 12) / 100;
     const n = tenureUnit === 'years' ? tenure * 12 : tenure;
 
-    if (P <= 0 || interestRate <= 0 || n <= 0) {
+    if (P <= 0 || interestRate < 0 || n <= 0) {
       return {
         emi: 0,
         totalInterest: 0,
@@ -57,7 +58,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
       };
     }
 
-    const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    const emi = payment(P, r, n);
     const totalPayment = emi * n;
     const totalInterest = totalPayment - P;
 
@@ -135,16 +136,16 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
       }
     }
 
-    const interestSaved = enablePrepayment ? Math.max(0, totalInterest - prepayTotalInterest) : 0;
-    const monthsSaved = enablePrepayment ? Math.max(0, n - prepayMonths) : 0;
+    const interestSaved = prepayMonths > 0 ? Math.max(0, totalInterest - prepayTotalInterest) : 0;
+    const monthsSaved = prepayMonths > 0 ? Math.max(0, n - prepayMonths) : 0;
 
     return {
       emi: isNaN(emi) ? 0 : emi,
       totalInterest: isNaN(totalInterest) ? 0 : totalInterest,
       totalPayment: isNaN(totalPayment) ? 0 : totalPayment,
       schedule,
-      prepaidTotalInterest: isNaN(prepayTotalInterest) ? 0 : prepayTotalInterest,
-      prepaidTotalPayment: isNaN(prepayTotalPaid) ? 0 : prepayTotalPaid,
+      prepaidTotalInterest: prepayMonths > 0 ? prepayTotalInterest : totalInterest,
+      prepaidTotalPayment: prepayMonths > 0 ? prepayTotalPaid : totalPayment,
       interestSaved,
       monthsSaved,
       prepaidSchedule: prepaidSchedule.length > 0 ? prepaidSchedule : schedule,
@@ -249,7 +250,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Loan Amount</label>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-zinc-400 font-bold">{getCurrency(currency).symbol}</span>
-                <input
+                <input aria-label="Loan Amount"
                   type="number"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(Math.max(0, parseFloat(e.target.value) || 0))}
@@ -257,7 +258,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
                 />
               </div>
             </div>
-            <input
+            <input aria-label="Loan Amount (slider)"
               type="range"
               min="10000"
               max="10000000"
@@ -277,7 +278,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Interest Rate (% p.a.)</label>
               <div className="flex items-center gap-2">
-                <input
+                <input aria-label="Interest Rate (% p.a.)"
                   type="number"
                   step="0.05"
                   value={interestRate}
@@ -286,7 +287,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
                 />
               </div>
             </div>
-            <input
+            <input aria-label="Interest Rate (% p.a.) (slider)"
               type="range"
               min="1"
               max="20"
@@ -332,7 +333,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Loan Tenure</label>
               <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 rounded bg-zinc-50 dark:bg-zinc-900 p-0.5">
-                <input
+                <input aria-label="Loan Tenure"
                   type="number"
                   value={tenure}
                   onChange={(e) => setTenure(Math.max(1, parseInt(e.target.value) || 1))}
@@ -354,7 +355,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
                 </button>
               </div>
             </div>
-            <input
+            <input aria-label="Loan Tenure (slider)"
               type="range"
               min="1"
               max={tenureUnit === 'years' ? 30 : 360}
@@ -397,7 +398,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
                   <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                     Monthly Prepayment ({getCurrency(currency).symbol})
                   </label>
-                  <input
+                  <input aria-label="Monthly Prepayment ( )"
                     type="number"
                     value={monthlyPrepayment}
                     min="0"
@@ -411,7 +412,7 @@ export default function EmiCalculator({ onCopy, onShare }: EmiCalculatorProps) {
                   <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
                     Annual Lump Sum ({getCurrency(currency).symbol})
                   </label>
-                  <input
+                  <input aria-label="Annual Lump Sum ( )"
                     type="number"
                     value={annualPrepayment}
                     min="0"

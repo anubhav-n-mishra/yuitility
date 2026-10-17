@@ -195,8 +195,6 @@ export default async function ToolPresetPage({ params }: ToolPresetPageProps) {
     description: presetItem.seoDescription,
     url: canonicalUrl,
     inLanguage: "en-US",
-    datePublished: "2024-01-01T00:00:00Z",
-    dateModified: "2026-09-01T00:00:00Z",
     breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
     isPartOf: {
       "@type": "WebSite",

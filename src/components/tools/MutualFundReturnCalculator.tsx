@@ -89,7 +89,7 @@ export default function MutualFundReturnCalculator() {
               </label>
               <span className="text-blue-600 dark:text-cyan-300">{formatCurrency(amount, currency)}</span>
             </div>
-            <input
+            <input aria-label="Amount (slider)"
               type="range"
               min="500"
               max="500000"
@@ -105,7 +105,7 @@ export default function MutualFundReturnCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Expected Annual Return Rate (%)</label>
               <span className="text-blue-600 dark:text-cyan-300">{expectedReturn}%</span>
             </div>
-            <input
+            <input aria-label="Expected Annual Return Rate (%) (slider)"
               type="range"
               min="1"
               max="25"
@@ -121,7 +121,7 @@ export default function MutualFundReturnCalculator() {
               <label className="text-zinc-700 dark:text-zinc-300">Investment Horizon (Years)</label>
               <span className="text-blue-600 dark:text-cyan-300">{tenureYears} Years</span>
             </div>
-            <input
+            <input aria-label="Investment Horizon (Years) (slider)"
               type="range"
               min="1"
               max="30"

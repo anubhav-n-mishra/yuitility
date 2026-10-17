@@ -1,0 +1,6636 @@
+{
+  "generatedAt": "2026-10-17T04:30:47.295Z",
+  "method": "Production logic with controlled React hooks; independent numeric fixtures and identities. No browser/DOM proof or external certification implied.",
+  "summary": {
+    "implementations": 167,
+    "cases": 452,
+    "passed": 452,
+    "failed": 0,
+    "smokeFailures": 0
+  },
+  "inventory": [
+    {
+      "component": "AcBtuCalculator",
+      "source": "src/components/tools/AcBtuCalculator.tsx",
+      "sha256": "6c8c37f161b6f01f29014c24b0059dd50ef01aba30ea0643fdd20df420017fa0",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "AgeCalculator",
+      "source": "src/components/tools/AgeCalculator.tsx",
+      "sha256": "cb74a8cdfe5811ee55ed7a1863210bba53184d32e0a193fea5d76ff9616bdddc",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "AgeCalculatorInMonths",
+      "source": "src/components/tools/AgeCalculatorInMonths.tsx",
+      "sha256": "051b0575554aedf62a7a7a2f87e5b659fdf283df85a0125e4cba7767d3cae2ec",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "AgeInSecondsCalculator",
+      "source": "src/components/tools/AgeInSecondsCalculator.tsx",
+      "sha256": "4b7a9a92f5645602fecc0e4ca9fbee58a56fb395eca370a03b7f87af99f98ca5",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BackgroundRemover",
+      "source": "src/components/tools/BackgroundRemover.tsx",
+      "sha256": "6e83ae9f39d37e48bf3bd71d8c1edcbf38c5c7cca8c40767a38f6984f6c57cc3",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "Base64EncoderDecoder",
+      "source": "src/components/tools/Base64EncoderDecoder.tsx",
+      "sha256": "0e8de3f5471c858ffcf28d04b929559be3fe44cbfd260d661c002375117148aa",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BikeLoanEmiCalculator",
+      "source": "src/components/tools/BikeLoanEmiCalculator.tsx",
+      "sha256": "05d6e29d9817463c226d658674a2219c371e657cae6ccac161a71810501d0ece",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BmiCalculator",
+      "source": "src/components/tools/BmiCalculator.tsx",
+      "sha256": "d8b70af0c050c7ec221778879eb71f35e75a785b20e8e779c7559f78dc937bdd",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BmrCalculator",
+      "source": "src/components/tools/BmrCalculator.tsx",
+      "sha256": "ff5720855c8da23907bf62f446491ef4f33a38f47f9e65561877d6660abc20f3",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BodyFatCalculator",
+      "source": "src/components/tools/BodyFatCalculator.tsx",
+      "sha256": "1d6ced0215ea3cc1beb4da094177989038a26c3f22033b3eac877791af97aec4",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BreakEvenCalculator",
+      "source": "src/components/tools/BreakEvenCalculator.tsx",
+      "sha256": "6e4648877e35232dc5ef659637ec11580603a094545b1ae4db113ad3df1abbe3",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BrickCountCalculator",
+      "source": "src/components/tools/BrickCountCalculator.tsx",
+      "sha256": "c38fc1435f8955bbc82ea94636565cc7641d3045cb5ab08e7931fca5cde73f90",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "BusinessLoanEmiCalculator",
+      "source": "src/components/tools/BusinessLoanEmiCalculator.tsx",
+      "sha256": "e6651694ba3db38b2ca5182a0b213a64644b90caef15e0ed438ff9e2aff8e93e",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CagrCalculator",
+      "source": "src/components/tools/CagrCalculator.tsx",
+      "sha256": "2e0f3a4aa3868f2d3000c9dfe04ac66f2d333ce3fdb21daf082919ed072edbd4",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CalorieDeficitCalculator",
+      "source": "src/components/tools/CalorieDeficitCalculator.tsx",
+      "sha256": "98c2920f3ebded06a04e62b0a23bec5b157a633bf574bb6ba8ddf995bf4b7312",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CarLoanEmiCalculator",
+      "source": "src/components/tools/CarLoanEmiCalculator.tsx",
+      "sha256": "2b859605ac5be8e510bb09417621e49b20b657cc993b949a8fac1885912d6067",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CaseConverter",
+      "source": "src/components/tools/CaseConverter.tsx",
+      "sha256": "d69a2549f2aa59e19af7df525a65ac6f6833108c80e1556b992cce95e64d9429",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CementMortarCalculator",
+      "source": "src/components/tools/CementMortarCalculator.tsx",
+      "sha256": "e590dab8b4ca6ad5ba5eae3dbc12dca3c10bd18ebabf85e9d8f78d01be3b8947",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CgpaCalculator",
+      "source": "src/components/tools/CgpaCalculator.tsx",
+      "sha256": "fc952702378772310446c4fcb3f26bf19ec74474a66d3baaac1b5962eb2bc687",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CgpaToPercentage",
+      "source": "src/components/tools/CgpaToPercentage.tsx",
+      "sha256": "70b58251414e25056ef32718de08e39c77f6ed04375e0e6c57366db3c6cb22d0",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CharacterCounter",
+      "source": "src/components/tools/CharacterCounter.tsx",
+      "sha256": "a13c8397229b02b7c1d352528812739548e2db0901f74dccc57e7fbe8aff99e2",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ColorFormatConverter",
+      "source": "src/components/tools/ColorFormatConverter.tsx",
+      "sha256": "4e9f79956ad4cf9770f9e644f09defeb5a900be55ba5a2d0b83b80ec4428641f",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ColorPalette",
+      "source": "src/components/tools/ColorPalette.tsx",
+      "sha256": "74993ac3825d92d6b4c255121ea039f978545a999b3a36a62d76bd2242f9df59",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CommissionCalculator",
+      "source": "src/components/tools/CommissionCalculator.tsx",
+      "sha256": "77586556e40fd12b866d61dfb715f2f4c18fc5e0c9986f3079c2b31f4bb010b9",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CompoundInterestCalculator",
+      "source": "src/components/tools/CompoundInterestCalculator.tsx",
+      "sha256": "bf4de6ee35b2b7c8088f75cfcec022ea634f2438390c6bc46f8083be01bead42",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ConcreteVolumeCalculator",
+      "source": "src/components/tools/ConcreteVolumeCalculator.tsx",
+      "sha256": "3e02a683806882de5b68fb8c8b38dc2720dae06b9f0eb9f2a8f2848f3d14f5aa",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CountdownTimer",
+      "source": "src/components/tools/CountdownTimer.tsx",
+      "sha256": "51e19ec459f8d871df40dfae010983d7bceacbdebec57c35b98b708161156909",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CreditCardEmiCalculator",
+      "source": "src/components/tools/CreditCardEmiCalculator.tsx",
+      "sha256": "4ab29c8b7919c67d690958bd78bcec38169eb6dd2b8c95ed8b0b0e51673d71f6",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CryptoProfitCalculator",
+      "source": "src/components/tools/CryptoProfitCalculator.tsx",
+      "sha256": "19387dd02f1c1954a113df5291102a5a05cdb8ec8684fc9a067b596f80cdf01e",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CssMinifierBeautifier",
+      "source": "src/components/tools/CssMinifierBeautifier.tsx",
+      "sha256": "5bf02bbaf779c77fdb2ab629cb9f1f7d00cce548154b7f5dd5798e2108c10e05",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "CurrencyConverterTool",
+      "source": "src/components/tools/CurrencyConverterTool.tsx",
+      "sha256": "16d14b77d44babe3522a926f2f066416086a98161aaaec2c18c9f68b1cfc22fe",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DailyCalorieCalculator",
+      "source": "src/components/tools/DailyCalorieCalculator.tsx",
+      "sha256": "2e4d60481d05700e05c61eaa643b2036a51515609b3ec1911ca1d401f89575a5",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "source": "src/components/tools/DateDifferenceCalculator.tsx",
+      "sha256": "c7a500fd01cc47fd10eda803a53d2456565160247cf69affc98537b06ea41cd7",
+      "smoke": "pass",
+      "checks": 6,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DeathCalculator",
+      "source": "src/components/tools/DeathCalculator.tsx",
+      "sha256": "bda9c9289757b749d796059cb1c6fbddf7411cc9792f93dd739f1688bbc003c8",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DiffChecker",
+      "source": "src/components/tools/DiffChecker.tsx",
+      "sha256": "1efe8cf340111b03aaea2b035a9ccd950e18df65bfb5a657cbae04b9f4cd1ae5",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DiscountCalculator",
+      "source": "src/components/tools/DiscountCalculator.tsx",
+      "sha256": "4e5cb5166a6c38ac409166b693741a963c9b28a286e3dff7931a2e7a6be2e37c",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DividendCalculator",
+      "source": "src/components/tools/DividendCalculator.tsx",
+      "sha256": "e8b7807c0d4789eeb91c14314fff543b1f6ddbc83d7f74b1658e728dc4063cec",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DogAgeCalculator",
+      "source": "src/components/tools/DogAgeCalculator.tsx",
+      "sha256": "37e7b943bf5c1c654f17ff7599c28e8b088233fae0002c39eae223e887fea6b0",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "DuplicateLineRemover",
+      "source": "src/components/tools/DuplicateLineRemover.tsx",
+      "sha256": "2d0eb577ec510a7238eae91a3aa1d78d9c3a83a85bf4c53b02577f4136f96ab2",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "EducationLoanEmiCalculator",
+      "source": "src/components/tools/EducationLoanEmiCalculator.tsx",
+      "sha256": "bd5d78fa97cea12a6a4b33d8571022ff7c976aac804de1f4866a856293898917",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "EmergencyFundCalculator",
+      "source": "src/components/tools/EmergencyFundCalculator.tsx",
+      "sha256": "1bd52f9387cc2d768b70a70ba129207f9a2e915c7d85828aec0a3339e8fa84ec",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "EmiCalculator",
+      "source": "src/components/tools/EmiCalculator.tsx",
+      "sha256": "94227f6ba17594fa0c25fe45d595f890b70bb5181359d6f0f22617828ede5095",
+      "smoke": "pass",
+      "checks": 17,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "EpfCalculator",
+      "source": "src/components/tools/EpfCalculator.tsx",
+      "sha256": "09f25c4c4f5afd0ba94d57d347bed8dfa0d5108f8e05a8ba48a69f9da9110d3e",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ExifDataViewer",
+      "source": "src/components/tools/ExifDataViewer.tsx",
+      "sha256": "8ab882f5b469b607040c7f06a2a905179031fd86b650b0cb8b8c31efa8cb4d99",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "FactorialCalculator",
+      "source": "src/components/tools/FactorialCalculator.tsx",
+      "sha256": "c7d51002c2ff983a32b9ff7e445074e8262ca7c5f7d9c77cd1b1ed2454574be2",
+      "smoke": "pass",
+      "checks": 43,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "FakeDataGenerator",
+      "source": "src/components/tools/FakeDataGenerator.tsx",
+      "sha256": "c69dc7a533cdf384fdeee1c737be5704ce9ae3545b0fc3576eab9678fc3bdd97",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "FaviconGenerator",
+      "source": "src/components/tools/FaviconGenerator.tsx",
+      "sha256": "ec9a76e2c395687dca46172dd3e5c512537bce2182b4a89d654ca6ebe404958c",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "FdCalculator",
+      "source": "src/components/tools/FdCalculator.tsx",
+      "sha256": "070ff0c5c228a376f7cc9fde5695ddd3fd7cab7267cbf7249f54698f9af2362c",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "FileHashVerifier",
+      "source": "src/components/tools/FileHashVerifier.tsx",
+      "sha256": "baf9dce09f3dba305843c6723078965a6e3ffae674ce30fc020cb3cc67d10432",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "FlooringCalculator",
+      "source": "src/components/tools/FlooringCalculator.tsx",
+      "sha256": "d7e1acb354928468a1fbc1fda53309ddbfbe3c801c211f055c232f78eccf2861",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "FormatConverter",
+      "source": "src/components/tools/FormatConverter.tsx",
+      "sha256": "957bb5c3be6c46d2b4e4ee0872cc9c35d66942f63c9e8291889f45be2d56d2ec",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "FractionToDecimal",
+      "source": "src/components/tools/FractionToDecimal.tsx",
+      "sha256": "bb64527f56a83de1e0b662d33ed2401bd498f37b0cac8ec5eb5a802b8cca1db9",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "source": "src/components/tools/GeometryAreaCalculator.tsx",
+      "sha256": "bebac090cb549320654ecc0e3c83b7eabf6c7a02b870e1f4b8c1f76c051df827",
+      "smoke": "pass",
+      "checks": 6,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "GoldLoanEmiCalculator",
+      "source": "src/components/tools/GoldLoanEmiCalculator.tsx",
+      "sha256": "716fb7cd79aa28abde6e564f08283e0fa76fb6e08954fa501560733bad6422b4",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "GpaCalculator",
+      "source": "src/components/tools/GpaCalculator.tsx",
+      "sha256": "9e9361e5bbe0f673c74af12f69dd8a4ab049dd8412faa41822ac01c0444935e2",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "GratuityCalculator",
+      "source": "src/components/tools/GratuityCalculator.tsx",
+      "sha256": "ab067fc1a0e5bffdd37b14fde2aa78fa3c5543969918c956e3fafdea2e9be16d",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "GstCalculator",
+      "source": "src/components/tools/GstCalculator.tsx",
+      "sha256": "22a60eccb3d375264b4284d69ba4094b4030a86904f9f3947363005d740c8a49",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "HashGenerator",
+      "source": "src/components/tools/HashGenerator.tsx",
+      "sha256": "38af28ea7eea5ccff7ff4c741326bb895f831166e93d1eba16a891333098b325",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "HexColorConverter",
+      "source": "src/components/tools/HexColorConverter.tsx",
+      "sha256": "ac629e60f9179d4dcdaab22e50dbcd8bcbae39b261b6814908a72413f5127082",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "HomeLoanEmiCalculator",
+      "source": "src/components/tools/HomeLoanEmiCalculator.tsx",
+      "sha256": "e0889dac6612189b4c6e8e9cef679605d62e8127bbb18a69febe90449df76cec",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "HraCalculator",
+      "source": "src/components/tools/HraCalculator.tsx",
+      "sha256": "7074112a49583217bf95e91aeb2c46fce2b5e13d14fb84dad2ca284e23af8f9c",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "HtmlFormatter",
+      "source": "src/components/tools/HtmlFormatter.tsx",
+      "sha256": "6ea27acfc56224bbafea6a6db7c000d75a95c64ea96cc6087a07fa8eead26b68",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "IdealBodyWeightCalculator",
+      "source": "src/components/tools/IdealBodyWeightCalculator.tsx",
+      "sha256": "a84d4444be0755e4baea9619d1af359e3bfe3aadb19b29816cd0f679932c508b",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ImageColorPicker",
+      "source": "src/components/tools/ImageColorPicker.tsx",
+      "sha256": "b8277798e93ad768a7180df197a567c4871742c8137042df4b9c85ef4626acb8",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "ImageCompressor",
+      "source": "src/components/tools/ImageCompressor.tsx",
+      "sha256": "eba14b2aef9729beab070f9676ed5b08535e56a8e8b74779641893d93fdd0238",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "ImageFlipper",
+      "source": "src/components/tools/ImageFlipper.tsx",
+      "sha256": "91e0b04fb94c5ed11215e61dd0150c3c9b4616ae4fa6be9dfe9383085be6ec8b",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "ImageResizer",
+      "source": "src/components/tools/ImageResizer.tsx",
+      "sha256": "6091c61a5829d8b0cd3b11447cfc6c40859ff16fdf5a0297a985549cf5f73234",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "ImageToPdf",
+      "source": "src/components/tools/ImageToPdf.tsx",
+      "sha256": "8925a4b9dd61daa61080acc33078e2ee9f6f5490ec18f86e4759c89615c29dd0",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "IncomeTaxCalculator",
+      "source": "src/components/tools/IncomeTaxCalculator.tsx",
+      "sha256": "6d34006330a1cefc3a8f8bc488349fb41683b854eb250da6195ac19848086421",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "InterestCalculator",
+      "source": "src/components/tools/InterestCalculator.tsx",
+      "sha256": "41b5791d5d6e5903c04d49a5e5268ff6eddb1a34eedc160e9e7d5ce3fc728013",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "IrrCalculator",
+      "source": "src/components/tools/IrrCalculator.tsx",
+      "sha256": "2cf758b9a860118996b98976ad9b5e9edc5088d9def8e0373e0ad5016be997ee",
+      "smoke": "pass",
+      "checks": 4,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "JsMinifierBeautifier",
+      "source": "src/components/tools/JsMinifierBeautifier.tsx",
+      "sha256": "70b2e365eefb6d7ef4c2310eff58544da5e3756221774a5ae17301a8b4a9b232",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "JsonFormatter",
+      "source": "src/components/tools/JsonFormatter.tsx",
+      "sha256": "1c7f4bf3e87105cc067dd88730a87750f0de7584169d69f65f8aea4ef6d9e787",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "JsonToCsvConverter",
+      "source": "src/components/tools/JsonToCsvConverter.tsx",
+      "sha256": "e6fbf94e359158c6b0f6367f8c12ebae9092a6585aa33a58be4c415389420648",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "JwtDecoder",
+      "source": "src/components/tools/JwtDecoder.tsx",
+      "sha256": "fc7fee519201af1bfb643fb44633fb8d34f7878b2045ab7327e48663fabeec91",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "LeanBodyMassCalculator",
+      "source": "src/components/tools/LeanBodyMassCalculator.tsx",
+      "sha256": "34c58f124dfa829755f37c9c9d985beb50304c023313248553ebf43cf6266e67",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "LoanCalculator",
+      "source": "src/components/tools/LoanCalculator.tsx",
+      "sha256": "cdb2dbe235027ab1f3fadb216b4c220ff5e42cc386fea24e99ae67d3f2aa78e4",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "LoremIpsumGenerator",
+      "source": "src/components/tools/LoremIpsumGenerator.tsx",
+      "sha256": "2cdcfbdb6d87b45557e468dd8916861ff1192c8946563ac9807f5a50e7a883c6",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MacroRatioCalculator",
+      "source": "src/components/tools/MacroRatioCalculator.tsx",
+      "sha256": "d4a73af42d2a190ae8b7a4ea572232d189a9a2427a22d7644ef7437a812dc610",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MarkdownToHtml",
+      "source": "src/components/tools/MarkdownToHtml.tsx",
+      "sha256": "dbcd4842288e2700e35414d133bd1c3a3db00ae086fad5c88946332bd535acdc",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MarkdownViewer",
+      "source": "src/components/tools/MarkdownViewer.tsx",
+      "sha256": "5c71fb1ab550a3f626631cad24b755d204b49bb099f3a685790215590738cc44",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MatrixCalculator",
+      "source": "src/components/tools/MatrixCalculator.tsx",
+      "sha256": "7d49ad05f770a3ad48b8c491b1911ea18ecb422f57e3c3d7ee01da455fb3c194",
+      "smoke": "pass",
+      "checks": 41,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MeanCalculator",
+      "source": "src/components/tools/MeanCalculator.tsx",
+      "sha256": "fac41608c409dc6134c55a1df825c1966fb6d1257f01d0407bbf63876cd297ec",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MedianCalculator",
+      "source": "src/components/tools/MedianCalculator.tsx",
+      "sha256": "7f98aaf066f828d144800a5910c6760c88af235c859fdddfae3675e784903185",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MeetingCostCalculator",
+      "source": "src/components/tools/MeetingCostCalculator.tsx",
+      "sha256": "266f728e90074a7ca34c6e5c0bdcee6ffbac3a6f608659520fddb7b2df1b3727",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MemeMaker",
+      "source": "src/components/tools/MemeMaker.tsx",
+      "sha256": "58e908763953c51b8223315048756f7b4bd5d4e264573db275c680f44ebfedaf",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "ModCalculator",
+      "source": "src/components/tools/ModCalculator.tsx",
+      "sha256": "edd32391c78e0ba973ff65005fe27302e63c8ba36774d192dd0c593dbab67f9b",
+      "smoke": "pass",
+      "checks": 46,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ModeFrequencyCalculator",
+      "source": "src/components/tools/ModeFrequencyCalculator.tsx",
+      "sha256": "0b90e3e115856715b0fdcc4beeb3a10ac376d9af52fd6a598711de360dd0a118",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MorseCodeTranslator",
+      "source": "src/components/tools/MorseCodeTranslator.tsx",
+      "sha256": "5b0b1057aaed0541bdc9731484056ee0fd37dd6d305d3c8a3b800d5d3be18e8b",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MortgageCalculator",
+      "source": "src/components/tools/MortgageCalculator.tsx",
+      "sha256": "c08a87f21817c880db1970d251a136268ff0afad4fd0620b93759a972f44e6a0",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "MutualFundReturnCalculator",
+      "source": "src/components/tools/MutualFundReturnCalculator.tsx",
+      "sha256": "2c6e15577c0b61687eb75a55d64a042ef23aa9edf0dc735e918fab65a01efed5",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "NetWorthCalculator",
+      "source": "src/components/tools/NetWorthCalculator.tsx",
+      "sha256": "069f3ca1cd2ab52c4adc342a5bcbb1bd7a15698908817c2fb3b33ca8cc59c430",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "NpsCalculator",
+      "source": "src/components/tools/NpsCalculator.tsx",
+      "sha256": "3497ddd61e173f167d6f275a465f1d3c30f3a6586265836cb6b3ed987b68a0a1",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "NumberBaseConverter",
+      "source": "src/components/tools/NumberBaseConverter.tsx",
+      "sha256": "632c91d3389abf7524c3f521dfb4cbecb06b036ae666ba4de3dd02106ed54665",
+      "smoke": "pass",
+      "checks": 5,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "OgImageGenerator",
+      "source": "src/components/tools/OgImageGenerator.tsx",
+      "sha256": "cd90a78e4ae5e8277d0421a9667da9f47ba0e98b554cad3fbaa8eb40bce58bbc",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "OhmsLawCalculator",
+      "source": "src/components/tools/OhmsLawCalculator.tsx",
+      "sha256": "565a566fdb1578b0f14461b3ae3e17e4a07dfa868c516b0460f7b610ac384307",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "OneRepMaxCalculator",
+      "source": "src/components/tools/OneRepMaxCalculator.tsx",
+      "sha256": "17b1a69c8355d851a14dc3018071dc14704a86f9cf24090f47c2fea41acf6da4",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "OvulationCalculator",
+      "source": "src/components/tools/OvulationCalculator.tsx",
+      "sha256": "655fe990d3747d6c244d55cdd5d405a2bd833211f43b8500ace2074d76a01c9d",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PaintVolumeCalculator",
+      "source": "src/components/tools/PaintVolumeCalculator.tsx",
+      "sha256": "a1dbc6a286078db64b630704fda9999080d9129210a53529e72418c450f24ac6",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PasswordGenerator",
+      "source": "src/components/tools/PasswordGenerator.tsx",
+      "sha256": "78c4613090128c38b42982ddbbce40756d95bf7734fa66a61e4faae6648ab0de",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PasswordStrengthChecker",
+      "source": "src/components/tools/PasswordStrengthChecker.tsx",
+      "sha256": "243a7e190c794c32f1d647cfd048e1aa6edebad2f902340184800d8342216bc8",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfCompressor",
+      "source": "src/components/tools/PdfCompressor.tsx",
+      "sha256": "55bceb86444acdcc47c49903c354f8a2c9de7f851f1477ce8fa816f4b175aefd",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfMerger",
+      "source": "src/components/tools/PdfMerger.tsx",
+      "sha256": "2389f45a5623e7d0743acb6cbd312471ebee9d38156c6af791de56c0bcee3fe4",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfMetadata",
+      "source": "src/components/tools/PdfMetadata.tsx",
+      "sha256": "2aa26feab97ff33b5c2f6ec21ff1fe02ad6310e7119b1b6182aa79e998e54f32",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfPageNumberer",
+      "source": "src/components/tools/PdfPageNumberer.tsx",
+      "sha256": "cb27fdf1f137b2c82657ad9592523523b9f9fb33cc128cd0449f8558a91b1366",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfPageRemover",
+      "source": "src/components/tools/PdfPageRemover.tsx",
+      "sha256": "563951c11fbbfba159c1ddd4b7548d18e70257e162ec315d14a03559e4a5864b",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfRotator",
+      "source": "src/components/tools/PdfRotator.tsx",
+      "sha256": "5fea9946d1e9fa2bc5f749223f65eee7bcb24ef98216868143ebba3b1cdf4f9c",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfSplitter",
+      "source": "src/components/tools/PdfSplitter.tsx",
+      "sha256": "69e0274dffb879174832d68c0e452f9fd3ebb51b74de2e7c3d443dd89c7dd445",
+      "smoke": "pass",
+      "checks": 3,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PdfWatermarker",
+      "source": "src/components/tools/PdfWatermarker.tsx",
+      "sha256": "3dc90add98e646800370dd148c3a8a3b09ddcf82074ec06f77d503028765711a",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PercentageCalculator",
+      "source": "src/components/tools/PercentageCalculator.tsx",
+      "sha256": "9ba67e613d0a4b75922b0d13815e725ca15ffe087d7f747081bdaba122cd39b2",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PermutationCombinationCalculator",
+      "source": "src/components/tools/PermutationCombinationCalculator.tsx",
+      "sha256": "a527bca0abdb19a4795c5735751ace98a2a2b7cb4363342242eb98b97f5fb8a7",
+      "smoke": "pass",
+      "checks": 2,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PersonalLoanEmiCalculator",
+      "source": "src/components/tools/PersonalLoanEmiCalculator.tsx",
+      "sha256": "fa0020164c86ac6aaa49de22a4f030087fb46746d379e88afc3b2d8ab4c4ffa3",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PhotoCollageMaker",
+      "source": "src/components/tools/PhotoCollageMaker.tsx",
+      "sha256": "278aabab7075dc652557a60c0d66e9652a9bb31178db996bdecfc8bc66132839",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "PomodoroTimer",
+      "source": "src/components/tools/PomodoroTimer.tsx",
+      "sha256": "ff44780c80a954b37e990f3b120137e174e98ef5c82f01d5dc470127dd221638",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PowerConsumptionCalculator",
+      "source": "src/components/tools/PowerConsumptionCalculator.tsx",
+      "sha256": "795d41bc4100c91b7c5006ec3f0a48bfcb0576f01b47ece7f35e426515d7da55",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PpfCalculator",
+      "source": "src/components/tools/PpfCalculator.tsx",
+      "sha256": "e5b28caf86acf82c05690fcc551b47b6d9b2813e7b0de53cb2c389b99d37a2bb",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "PregnancyDueDateCalculator",
+      "source": "src/components/tools/PregnancyDueDateCalculator.tsx",
+      "sha256": "6adda2887b9423b29ffe434ed524aa991d2b252645c8435b256f320b2475cf21",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ProbabilityCalculator",
+      "source": "src/components/tools/ProbabilityCalculator.tsx",
+      "sha256": "20d9a273342b2e9f2ca1454af0b21a48f0a06f8edcf5e9eb379227be92d92360",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ProfitMarginCalculator",
+      "source": "src/components/tools/ProfitMarginCalculator.tsx",
+      "sha256": "ba1560d58b786a255b954cfa79218f6b68fa78d3106e494fc56c5d9f3b0b365a",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ProteinIntakeCalculator",
+      "source": "src/components/tools/ProteinIntakeCalculator.tsx",
+      "sha256": "18ada82d3588965d87e1fdde820b2ea8f1a77f0733774540f35bbd013cc9d1be",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "QrCodeGenerator",
+      "source": "src/components/tools/QrCodeGenerator.tsx",
+      "sha256": "ced8ef7163523fbf6a036217523929d731cf720ed605512c8e285e3264bfc5d5",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "QuadraticSolver",
+      "source": "src/components/tools/QuadraticSolver.tsx",
+      "sha256": "10e64cf102f1f2ec33b4fd84836fe74166a66c49c6a4c763e3d26bc0bbbaeb23",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RatioProportionCalculator",
+      "source": "src/components/tools/RatioProportionCalculator.tsx",
+      "sha256": "84e1c5bfa207a2a6f9e96ca29cf997bcfd6ce26378c361700012995d073c2d1e",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RdCalculator",
+      "source": "src/components/tools/RdCalculator.tsx",
+      "sha256": "035f6c24f4198e6da1e1d2bfad63974f63234b450e810bb8a7209ef373c1b9b7",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ReadTimeEstimator",
+      "source": "src/components/tools/ReadTimeEstimator.tsx",
+      "sha256": "b022a56f3667ae38246cd644ca26a0affdb30f29aee7f73a6196bf6849abfd0a",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RegexTester",
+      "source": "src/components/tools/RegexTester.tsx",
+      "sha256": "f08230b388ed05c03b1cf4e6ade1237c6db7c0bbff37b5441fc8164cdf4e235a",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RetirementCalculator",
+      "source": "src/components/tools/RetirementCalculator.tsx",
+      "sha256": "05981c67dddb74b87135a86803c02166ec9ee85c1e2c028836a0f223d3a25eef",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RoiCalculator",
+      "source": "src/components/tools/RoiCalculator.tsx",
+      "sha256": "3f3a0a98a13c6b2a071855c8a69e4023244490996fa40c69ee3b1b54f65e41c3",
+      "smoke": "pass",
+      "checks": 41,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RoomSquareFootageCalculator",
+      "source": "src/components/tools/RoomSquareFootageCalculator.tsx",
+      "sha256": "43bfa126d750f9abb0b19dda5a36534d0ed190f303bca38cf65d8f0cae3c88db",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "RunningPaceCalculator",
+      "source": "src/components/tools/RunningPaceCalculator.tsx",
+      "sha256": "2935d2509facd98a7d22739e312c20c74e91ce6f70ff297657fda77d891e9812",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SalaryCalculator",
+      "source": "src/components/tools/SalaryCalculator.tsx",
+      "sha256": "d898efba3f221987f45d499d49038ab24d014534d2e1364ae9a4c527c0d747ab",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SchoolAgeEligibilityCalculator",
+      "source": "src/components/tools/SchoolAgeEligibilityCalculator.tsx",
+      "sha256": "62864c46e3c9ae6cd8fcbc02ff2bc3738e292f1005f10ce11980eb7811d17806",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ScientificCalculator",
+      "source": "src/components/tools/ScientificCalculator.tsx",
+      "sha256": "fa03170dbee213f98868b826f09e5386786f51babb787e0965d8ac382a96290f",
+      "smoke": "pass",
+      "checks": 22,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SimpleInterestCalculator",
+      "source": "src/components/tools/SimpleInterestCalculator.tsx",
+      "sha256": "70ce4ab51ca3f343f184a1f78310e3d6b1bc9f907b1f8fb538e245444dabde30",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SipCalculator",
+      "source": "src/components/tools/SipCalculator.tsx",
+      "sha256": "3e6160505759ce65050e6ba09f5e53876473d874bd916c96c562f83c8045deab",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SipStepUpCalculator",
+      "source": "src/components/tools/SipStepUpCalculator.tsx",
+      "sha256": "b0ba79c330c58c65a1e5bc82684dfeabbe9c978ff57c4465c3b0ae1178d58491",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SleepCycleCalculator",
+      "source": "src/components/tools/SleepCycleCalculator.tsx",
+      "sha256": "8b4546bdd67789ea4934d926b2876e1361a387925558adda68ea490cd76209dc",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SlugGenerator",
+      "source": "src/components/tools/SlugGenerator.tsx",
+      "sha256": "8f23945c0e6c45846ddb5cbdf4751d7578d983690bff723f2c7c8cdf8db4c819",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SmokingCostCalculator",
+      "source": "src/components/tools/SmokingCostCalculator.tsx",
+      "sha256": "a5fe516196d232dff561d84ba522bc8eea8dcc1c357206f338edeb88c2015a5a",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SocialMediaResizer",
+      "source": "src/components/tools/SocialMediaResizer.tsx",
+      "sha256": "7759af309be5a723e68747a7a16b8283561e23de21d685e0a1d1dd26e64bf7ed",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "SpeedDistanceTimeCalculator",
+      "source": "src/components/tools/SpeedDistanceTimeCalculator.tsx",
+      "sha256": "163a57d847bea3ae3237b9aeea2c0ea61703612b26987d7f6f995f8a75ae8b22",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SsyCalculator",
+      "source": "src/components/tools/SsyCalculator.tsx",
+      "sha256": "bcfeeac7614affd512f5c79235ec3c73e8eee3b695813a420db66a9b16490018",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "StandardCalculator",
+      "source": "src/components/tools/StandardCalculator.tsx",
+      "sha256": "b58a817e4951c346c5a951a6c11538b3e09a8629ae8f5da6f888b3806b81573c",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "source": "src/components/tools/StandardDeviationCalculator.tsx",
+      "sha256": "deb6139e87b2a0e78e3561bb9c346ace7cec2bc08faff81c21024a9bb57a28b5",
+      "smoke": "pass",
+      "checks": 42,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "StepToCalorieCalculator",
+      "source": "src/components/tools/StepToCalorieCalculator.tsx",
+      "sha256": "2eb185a7a224ffea4303c2f6eeb662e09249ba3fb5cfefa86e7b6a408fcc9542",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "StockAverageCalculator",
+      "source": "src/components/tools/StockAverageCalculator.tsx",
+      "sha256": "a5ad613afa5be1ce79b639ff349865e16156ecf3b1086cf87e4921e00d7c091e",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "SvgToPngConverter",
+      "source": "src/components/tools/SvgToPngConverter.tsx",
+      "sha256": "0df55b53bc6ccaee0866061654723abea438325fdc02e77f88fb2a2200f3a399",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Partial: configuration, geometry or input validation; pixel/model correctness not established"
+    },
+    {
+      "component": "SwpCalculator",
+      "source": "src/components/tools/SwpCalculator.tsx",
+      "sha256": "ef054c8056964b407913c3f4c647ac445bdba69d7efd99fb324940d294182c85",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TargetHeartRateCalculator",
+      "source": "src/components/tools/TargetHeartRateCalculator.tsx",
+      "sha256": "47fd8e2becdc01eb7bf3f67c1542f24e5a95aa2e591fe24f723fb0a647a2752d",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TdeeCalculator",
+      "source": "src/components/tools/TdeeCalculator.tsx",
+      "sha256": "55cf3ce1ac725ece68b58c2badc1e5f9fc19ca5d7cb19900b2e029b3d12744ba",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TextCleaner",
+      "source": "src/components/tools/TextCleaner.tsx",
+      "sha256": "7ff44e863aec0a67ca92d77940ca682b11596d52e5b614133810a3c46998bee1",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TextEncryptor",
+      "source": "src/components/tools/TextEncryptor.tsx",
+      "sha256": "2d8937ec68c2669ba3c936a51e37b30f1d051c6394f58cd904f39659e07f3af5",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TextRepeater",
+      "source": "src/components/tools/TextRepeater.tsx",
+      "sha256": "9452ff36384557fff3bcba4ad6fb0a58898881517afd44996642222a94eaca42",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TextReverser",
+      "source": "src/components/tools/TextReverser.tsx",
+      "sha256": "e9f7dff7eefd045f1744fb4059f2442a53e1f3286c13c720bd34931b6a8972eb",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TextToAsciiArt",
+      "source": "src/components/tools/TextToAsciiArt.tsx",
+      "sha256": "5a46131a8fa068f9ff4073a840ba7075da3e054187d07e4a8865ce398eaa44c3",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TileCountCalculator",
+      "source": "src/components/tools/TileCountCalculator.tsx",
+      "sha256": "799672d9ff0c9a91a8d881ed31df742c8063bbe671807bdfedd32433a03903c8",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "source": "src/components/tools/TimeZoneConverter.tsx",
+      "sha256": "7faa40d97cd8787ff0c26570eb2f466b685d25889a5e54dba473f6ac472be72d",
+      "smoke": "pass",
+      "checks": 7,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "UnitConverter",
+      "source": "src/components/tools/UnitConverter.tsx",
+      "sha256": "6b07667fc9b2459387ff042b816b32c46208413133b8e83fdb179532b0580304",
+      "smoke": "pass",
+      "checks": 9,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "UrlEncoderDecoder",
+      "source": "src/components/tools/UrlEncoderDecoder.tsx",
+      "sha256": "e495a69f475743d4c56fd6a6d4dbb179cfd48963c0799841668edb04be6ba893",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "UuidV4Generator",
+      "source": "src/components/tools/UuidV4Generator.tsx",
+      "sha256": "19275e73ee79f0388d6c9f586629330dba9ccc771b18350d01e22ccebdd4fb81",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "WaistHipRatioCalculator",
+      "source": "src/components/tools/WaistHipRatioCalculator.tsx",
+      "sha256": "a526329a398ba88052b3ae9a9b48c78a4f3d761a8b3dede86b1c23827a7f8359",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "WaterIntakeCalculator",
+      "source": "src/components/tools/WaterIntakeCalculator.tsx",
+      "sha256": "fb67b542c0a745042d3927170eb43166e18d565409351eeb48dec0ad1a43e6b2",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "WordCounter",
+      "source": "src/components/tools/WordCounter.tsx",
+      "sha256": "35373fdd01ed39a8cdc55ee62d2aad1787c6a08fceeb450d62c461b43fad8aa9",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "WorldClock",
+      "source": "src/components/tools/WorldClock.tsx",
+      "sha256": "546422007538a697be68df700795c205fbab22147fbafa091e24d56aaea016d1",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ZipExtractor",
+      "source": "src/components/tools/ZipExtractor.tsx",
+      "sha256": "afce92b63785b87d6d6a7bf1c1e288c88765d976403c01bd500a9b418e8a16fb",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ZodiacAgeCalculator",
+      "source": "src/components/tools/ZodiacAgeCalculator.tsx",
+      "sha256": "4322bef8d40e91520de90ae1ee05d48318c173f57e70ad12c1fb2092442ad0aa",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    },
+    {
+      "component": "ZodiacSunMoonCalculator",
+      "source": "src/components/tools/ZodiacSunMoonCalculator.tsx",
+      "sha256": "72edfdbf64b73863df6b7ffca9e8ff23a430023a7618a51ad1b4fa2b88c45dbf",
+      "smoke": "pass",
+      "checks": 1,
+      "failures": 0,
+      "coverage": "Bounded numerical or functional cases; not exhaustive proof"
+    }
+  ],
+  "results": [
+    {
+      "component": "LoanCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "amount": 120000,
+        "rate": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PersonalLoanEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BikeLoanEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "exShowroomPrice": 120000,
+        "downPayment": 0,
+        "rtoInsurance": 0,
+        "interestRate": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CarLoanEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "carPrice": 120000,
+        "downPayment": 0,
+        "tradeInValue": 0,
+        "interestRate": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EducationLoanEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "repaymentTenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BusinessLoanEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GoldLoanEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenureMonths": 12
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CreditCardEmiCalculator",
+      "name": "zero-interest principal divided by months",
+      "inputs": {
+        "purchaseAmount": 120000,
+        "annualInterestRate": 0,
+        "tenureMonths": 12
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0%/1mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenure": 1,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0%/12mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenure": 12,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0%/37mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenure": 37,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0%/360mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0,
+        "tenure": 360,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0.01%/1mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0.01,
+        "tenure": 1,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0.01%/12mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0.01,
+        "tenure": 12,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0.01%/37mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0.01,
+        "tenure": 37,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 0.01%/360mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 0.01,
+        "tenure": 360,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 8.5%/1mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 8.5,
+        "tenure": 1,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 8.5%/12mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 8.5,
+        "tenure": 12,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 8.5%/37mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 8.5,
+        "tenure": 37,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 8.5%/360mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 8.5,
+        "tenure": 360,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 24%/1mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 24,
+        "tenure": 1,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 24%/12mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 24,
+        "tenure": 12,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 24%/37mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 24,
+        "tenure": 37,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "PV and repayment identity: 24%/360mo",
+      "inputs": {
+        "loanAmount": 120000,
+        "interestRate": 24,
+        "tenure": 360,
+        "tenureUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EmiCalculator",
+      "name": "zero-extra prepayment leaves totals unchanged",
+      "inputs": {
+        "enablePrepayment": true,
+        "monthlyPrepayment": 0,
+        "annualPrepayment": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "HomeLoanEmiCalculator",
+      "name": "zero-extra prepayment leaves totals unchanged",
+      "inputs": {
+        "enablePrepayment": true,
+        "monthlyPrepayment": 0,
+        "annualPrepayment": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "HomeLoanEmiCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "propertyPrice": 150000,
+        "downPaymentPercent": 20,
+        "interestRate": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SalaryCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "ctc": 1000000
+      },
+      "status": "pass"
+    },
+    {
+      "component": "IncomeTaxCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "gross": 1500000
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MortgageCalculator",
+      "name": "VA fee is added once to principal",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "FdCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "depositAmount": 10000,
+        "interestRate": 0,
+        "tenureYears": 3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RdCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "monthlyDeposit": 1000,
+        "interestRate": 0,
+        "tenureMonths": 12
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PpfCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "annualDeposit": 1000,
+        "interestRate": 0,
+        "tenureYears": 15
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SimpleInterestCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "principal": 1000,
+        "rate": 10,
+        "timeValue": 2,
+        "timeUnit": "years"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "InterestCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "principal": 1000,
+        "rate": 10,
+        "timeYears": 2,
+        "compounding": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CompoundInterestCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "initialPrincipal": 1000,
+        "monthlyContribution": 100,
+        "annualRate": 0,
+        "years": 2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SipCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "monthlyInvestment": 100,
+        "expectedReturn": 0,
+        "duration": 2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SipStepUpCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "monthlySip": 100,
+        "annualStepUp": 10,
+        "returnRate": 0,
+        "tenureYears": 2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SwpCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "initialInvestment": 100,
+        "monthlyWithdrawal": 80,
+        "expectedReturn": 0,
+        "tenureYears": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "EpfCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "currentAge": 30,
+        "retirementAge": 31,
+        "monthlyBasicSalary": 40000,
+        "currentEpfBalance": 0,
+        "expectedSalaryIncrease": 0,
+        "interestRate": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NpsCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "currentAge": 60
+      },
+      "status": "pass"
+    },
+    {
+      "component": "HraCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "basicSalaryAnnual": 600000,
+        "hraReceivedAnnual": 240000,
+        "rentPaidAnnual": 210000,
+        "isMetroCity": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GratuityCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "lastDrawnBasic": 26000,
+        "tenureYears": 10,
+        "coveredByAct": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MutualFundReturnCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "amount": 1000,
+        "expectedReturn": 10,
+        "tenureYears": 2,
+        "investmentType": "lumpsum"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DividendCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "sharePrice": 100,
+        "numberOfShares": 20,
+        "annualDividendPerShare": 4
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StockAverageCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "firstShares": 10,
+        "firstPrice": 100,
+        "secondShares": 30,
+        "secondPrice": 200
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NetWorthCalculator",
+      "name": "reference fixture",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "EmergencyFundCalculator",
+      "name": "reference fixture",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "initialInvestment": 100,
+        "finalValue": 80
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CagrCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "initialValue": 100,
+        "finalValue": 121,
+        "years": 2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BreakEvenCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "fixedCosts": 1000,
+        "variableCostPerUnit": 6,
+        "pricePerUnit": 10
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ProfitMarginCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "costPrice": 80,
+        "sellingPrice": 100
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DiscountCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "originalPrice": 120,
+        "discountPercent": 25
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CommissionCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "salesAmount": 1000,
+        "commissionRate": 7.5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CryptoProfitCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "buyPrice": 100,
+        "sellPrice": 200,
+        "investment": 1000,
+        "feePct": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CurrencyConverterTool",
+      "name": "reference fixture",
+      "inputs": {
+        "fromCurrency": "INR",
+        "toCurrency": "USD",
+        "amount": 835
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GstCalculator",
+      "name": "inclusive/exclusive roundtrip",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "IrrCalculator",
+      "name": "conventional flow root or explicit unsupported result",
+      "inputs": {
+        "initialOutflow": 100,
+        "year1Cash": 110,
+        "year2Cash": 0,
+        "year3Cash": 0,
+        "year4Cash": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "IrrCalculator",
+      "name": "conventional flow root or explicit unsupported result",
+      "inputs": {
+        "initialOutflow": 100,
+        "year1Cash": 0,
+        "year2Cash": 0,
+        "year3Cash": 0,
+        "year4Cash": 146.41
+      },
+      "status": "pass"
+    },
+    {
+      "component": "IrrCalculator",
+      "name": "conventional flow root or explicit unsupported result",
+      "inputs": {
+        "initialOutflow": 100,
+        "year1Cash": 0,
+        "year2Cash": 0,
+        "year3Cash": 0,
+        "year4Cash": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "IrrCalculator",
+      "name": "conventional flow root or explicit unsupported result",
+      "inputs": {
+        "initialOutflow": 100,
+        "year1Cash": 100,
+        "year2Cash": -10,
+        "year3Cash": 100,
+        "year4Cash": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PercentageCalculator",
+      "name": "reference fixture",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "CgpaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "semesters": [
+          {
+            "id": "1",
+            "sgpa": "8",
+            "credits": "10"
+          },
+          {
+            "id": "2",
+            "sgpa": "10",
+            "credits": "30"
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GpaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "courses": [
+          {
+            "id": "1",
+            "grade": "A",
+            "credits": "3"
+          },
+          {
+            "id": "2",
+            "grade": "B",
+            "credits": "1"
+          }
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CgpaToPercentage",
+      "name": "custom scale scope",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "MeanCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "inputText": "1,2,3,4"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MedianCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "inputText": "1,4,2,3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MeanCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "inputText": "1, 2oops, 3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MedianCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "inputText": "1, 2oops, 3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "Euclidean identity -27 / -5",
+      "inputs": {
+        "dividend": -27,
+        "divisor": -5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "Euclidean identity -27 / 5",
+      "inputs": {
+        "dividend": -27,
+        "divisor": 5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "Euclidean identity 0 / -5",
+      "inputs": {
+        "dividend": 0,
+        "divisor": -5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "Euclidean identity 0 / 5",
+      "inputs": {
+        "dividend": 0,
+        "divisor": 5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "Euclidean identity 27 / -5",
+      "inputs": {
+        "dividend": 27,
+        "divisor": -5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "Euclidean identity 27 / 5",
+      "inputs": {
+        "dividend": 27,
+        "divisor": 5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModeFrequencyCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "inputData": "1 1.0 2 2 3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "inputData": "2 4 4 4 5 5 7 9"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "singleton sample variance undefined",
+      "inputs": {
+        "inputData": "2"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ProbabilityCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "favorable": "1",
+        "total": "6",
+        "probA": "0.5",
+        "probB": "0.25"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PermutationCombinationCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "8",
+        "rVal": "3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PermutationCombinationCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "8.5",
+        "rVal": "3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "20"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "2.9"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "reference fixture",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "QuadraticSolver",
+      "name": "stable roots preserve product for ill-conditioned polynomial",
+      "inputs": {
+        "aStr": "1",
+        "bStr": "100000000",
+        "cStr": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FractionToDecimal",
+      "name": "reference fixture",
+      "inputs": {
+        "numerator": "3",
+        "denominator": "8",
+        "decimalInput": "0.625"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RatioProportionCalculator",
+      "name": "reference fixture",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "circle",
+        "radius": "2"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "rectangle",
+        "rectL": "3",
+        "rectW": "4"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "triangle",
+        "triMode": "threeSides",
+        "triA": "3",
+        "triB": "4",
+        "triC": "5"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "trapezoid",
+        "trapA": "2",
+        "trapB": "4",
+        "trapH": "3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "ellipse",
+        "ellipseA": "2",
+        "ellipseB": "3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "GeometryAreaCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "polygon",
+        "polySides": "4",
+        "polyLength": "3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NumberBaseConverter",
+      "name": "exact integer parsing 9007199254740993",
+      "inputs": {
+        "value": "9007199254740993",
+        "fromBase": 10
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NumberBaseConverter",
+      "name": "exact integer parsing ff",
+      "inputs": {
+        "value": "ff",
+        "fromBase": 16
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NumberBaseConverter",
+      "name": "exact integer parsing 102",
+      "inputs": {
+        "value": "102",
+        "fromBase": 2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NumberBaseConverter",
+      "name": "exact integer parsing 12x",
+      "inputs": {
+        "value": "12x",
+        "fromBase": 10
+      },
+      "status": "pass"
+    },
+    {
+      "component": "NumberBaseConverter",
+      "name": "exact integer parsing -101",
+      "inputs": {
+        "value": "-101",
+        "fromBase": 2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "reference fixture",
+      "inputs": {
+        "category": "Temperature",
+        "fromUnit": "Celsius",
+        "toUnit": "Fahrenheit",
+        "inputValue": "100"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "reference fixture",
+      "inputs": {
+        "category": "Length",
+        "fromUnit": "Foot",
+        "toUnit": "Meter",
+        "inputValue": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SpeedDistanceTimeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "distance": "180",
+        "time": "3",
+        "solveFor": "speed"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PowerConsumptionCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "wattage": 1000,
+        "hoursPerDay": 2,
+        "costPerKwh": 3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MeetingCostCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "attendees": 4,
+        "hourlyRate": 60,
+        "durationMins": 30
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BmiCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "weightKg": 80,
+        "heightCm": 200
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BmrCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "gender": "male",
+        "age": 30,
+        "weightKg": 70,
+        "heightCm": 175
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BodyFatCalculator",
+      "name": "inch regression vector entered as centimetres",
+      "inputs": {
+        "gender": "male",
+        "weightKg": 80,
+        "heightCm": 177.8,
+        "waistCm": 86.36,
+        "neckCm": 40.64
+      },
+      "status": "pass"
+    },
+    {
+      "component": "LeanBodyMassCalculator",
+      "name": "three published regression vectors",
+      "inputs": {
+        "gender": "male",
+        "weight": "75",
+        "height": "178"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "IdealBodyWeightCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "gender": "male",
+        "unit": "imperial",
+        "heightFt": "5",
+        "heightIn": "0"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DailyCalorieCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "gender": "male",
+        "age": "30",
+        "weight": "70",
+        "height": "175",
+        "activity": 1.2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "WaterIntakeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "weight": "70",
+        "exerciseMins": "30",
+        "climate": "hot"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MacroRatioCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "calories": "2000",
+        "carbsPct": 40,
+        "proteinPct": 30,
+        "fatPct": 30
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MacroRatioCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "carbsPct": 70,
+        "proteinPct": 30,
+        "fatPct": 30
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ProteinIntakeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "weight": "75",
+        "goal": "hypertrophy"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TdeeCalculator",
+      "name": "Mifflin and illustrative breakdown reconcile",
+      "inputs": {
+        "gender": "male",
+        "age": "30",
+        "weight": "70",
+        "height": "175",
+        "activity": 1.2
+      },
+      "status": "pass"
+    },
+    {
+      "component": "OneRepMaxCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "liftWeight": "100",
+        "reps": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TargetHeartRateCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "age": "30",
+        "restingHr": "65"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "WaistHipRatioCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "waist": "80",
+        "hip": "100"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SmokingCostCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "cigsPerDay": "20",
+        "packPrice": "10",
+        "cigsPerPack": "20",
+        "years": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RunningPaceCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "distance": "10",
+        "hours": "0",
+        "minutes": "50",
+        "seconds": "0"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StepToCalorieCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "steps": "10000",
+        "weight": "70",
+        "height": "175",
+        "intensity": 3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CalorieDeficitCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "tdee": 2200,
+        "goal": "lose_0.5"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "BrickCountCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "wallLength": "10",
+        "wallHeight": "10",
+        "openingsArea": "0",
+        "wastePct": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FlooringCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "length": "10",
+        "width": "10",
+        "wastePct": 0,
+        "boxCoverage": "20",
+        "pricePerSqFt": "2"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TileCountCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "areaLength": "10",
+        "areaWidth": "10",
+        "tileLengthIn": "12",
+        "tileWidthIn": "12",
+        "wastePct": 0,
+        "tilesPerBox": "10"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ConcreteVolumeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "shape": "slab",
+        "lengthFt": "3",
+        "widthFt": "3",
+        "thicknessIn": "12",
+        "wastePct": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CementMortarCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "areaSqFt": "120",
+        "thicknessIn": "1",
+        "ratio": "1:4"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PaintVolumeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "length": "10",
+        "width": "10",
+        "height": "10",
+        "doors": "0",
+        "windows": "0",
+        "coats": 1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoomSquareFootageCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "rooms": [
+          {
+            "id": "1",
+            "length": "3",
+            "width": "4"
+          }
+        ],
+        "unit": "m",
+        "pricePerUnit": "10"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "AcBtuCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "areaSqFt": "100",
+        "ceilingHeight": "8",
+        "sunlight": "average",
+        "occupants": "2"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DogAgeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "dogYears": 2,
+        "dogMonths": 0
+      },
+      "status": "pass"
+    },
+    {
+      "component": "AgeCalculatorInMonths",
+      "name": "reference fixture",
+      "inputs": {
+        "dob": "2024-01-31",
+        "targetDate": "2024-03-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "startDate": "2024-01-31",
+        "endDate": "2024-03-01",
+        "baseDate": "2024-01-31",
+        "addAmount": "1",
+        "addUnit": "months"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PregnancyDueDateCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "method": "lmp",
+        "inputDate": "2026-01-01",
+        "cycleLength": 28
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SchoolAgeEligibilityCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "dob": "2020-09-02",
+        "academicYear": 2026,
+        "cutoffMonthDay": "09-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "selected UTC is independent of device zone",
+      "inputs": {
+        "selectedDate": "2026-01-01",
+        "selectedTime": "12:00",
+        "baseTz": "UTC"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "New York spring DST gap is rejected",
+      "inputs": {
+        "selectedDate": "2026-03-08",
+        "selectedTime": "02:30",
+        "baseTz": "America/New_York"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "New York autumn DST ambiguity is rejected",
+      "inputs": {
+        "selectedDate": "2026-11-01",
+        "selectedTime": "01:30",
+        "baseTz": "America/New_York"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "2+3*4",
+      "inputs": {
+        "display": "2+3*4",
+        "isRad": false
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "sin(30)",
+      "inputs": {
+        "display": "sin(30)",
+        "isRad": false
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "exp(1)",
+      "inputs": {
+        "display": "exp(1)",
+        "isRad": false
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "1e3+2",
+      "inputs": {
+        "display": "1e3+2",
+        "isRad": false
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "sqrt(81)",
+      "inputs": {
+        "display": "sqrt(81)",
+        "isRad": false
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardCalculator",
+      "name": "repeated equals leaves result intact",
+      "inputs": {
+        "display": "3",
+        "expression": "2 + "
+      },
+      "status": "pass"
+    },
+    {
+      "component": "Base64EncoderDecoder",
+      "name": "Unicode roundtrip",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "CaseConverter",
+      "name": "reference fixture",
+      "inputs": {
+        "text": "HELLO world"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CaseConverter",
+      "name": "ASCII transformations",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "DuplicateLineRemover",
+      "name": "reference fixture",
+      "inputs": {
+        "input": " apple\nAPPLE\nbanana"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TextCleaner",
+      "name": "reference fixture",
+      "inputs": {
+        "text": "  <b>Hello</b>   world  "
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TextReverser",
+      "name": "graphemes survive reverse",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "TextRepeater",
+      "name": "reference fixture",
+      "inputs": {
+        "text": "a",
+        "count": 3,
+        "separator": "comma"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SlugGenerator",
+      "name": "reference fixture",
+      "inputs": {
+        "title": "Hello World!",
+        "separator": "-"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CharacterCounter",
+      "name": "reference fixture",
+      "inputs": {
+        "text": "one two"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ReadTimeEstimator",
+      "name": "200 words at 200 WPM",
+      "inputs": {
+        "text": "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word",
+        "wpm": 200
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ColorFormatConverter",
+      "name": "red and black conversion",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "HexColorConverter",
+      "name": "shorthand and invalid hex",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "UuidV4Generator",
+      "name": "RFC version/variant and unique sample",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "PasswordGenerator",
+      "name": "length and selected categories",
+      "inputs": {
+        "length": 24,
+        "batchCount": 20
+      },
+      "status": "pass"
+    },
+    {
+      "component": "HashGenerator",
+      "name": "published abc digests",
+      "inputs": {
+        "input": "abc"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RegexTester",
+      "name": "matching preserves literal HTML safely",
+      "inputs": {
+        "pattern": "hello",
+        "testString": "<img src=x onerror=alert(1)> hello"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DiffChecker",
+      "name": "identity and one-line replacement",
+      "inputs": {
+        "original": "a\nb",
+        "modified": "a\nc"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MarkdownToHtml",
+      "name": "HTML input is escaped",
+      "inputs": {
+        "markdown": "<script>alert(1)</script>\n\n**bold**"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "JsonToCsvConverter",
+      "name": "invalid object rejected",
+      "inputs": {
+        "jsonInput": "{\"a\":1}"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "AgeCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "dobString": "2000-01-01",
+        "dobTime": "00:00",
+        "currentTime": "2000-12-31T18:30:00.000Z"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "AgeInSecondsCalculator",
+      "name": "seconds/minutes/days identity",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "ColorPalette",
+      "name": "reference fixture",
+      "inputs": {
+        "textColor": "#000000",
+        "contrastBgColor": "#ffffff"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CountdownTimer",
+      "name": "past countdown is zero",
+      "inputs": {
+        "targetDate": "2000-01-01T00:00"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PomodoroTimer",
+      "name": "mode resets duration and stops timer",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "DeathCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "age": 30,
+        "horizon": 80
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RetirementCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "mode": "fire",
+        "expenses": 4000,
+        "withdrawal": 4
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SsyCalculator",
+      "name": "15 opening-year deposits followed by 6 growth years",
+      "inputs": {
+        "yearlyDeposit": 1000
+      },
+      "status": "pass"
+    },
+    {
+      "component": "OvulationCalculator",
+      "name": "calendar interval and next-period arithmetic",
+      "inputs": {
+        "lmpDate": "2026-01-01",
+        "cycleDays": "28"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SleepCycleCalculator",
+      "name": "90-minute spacing and total sleep length",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "PasswordStrengthChecker",
+      "name": "reference fixture",
+      "inputs": {
+        "password": ""
+      },
+      "status": "pass"
+    },
+    {
+      "component": "JsonFormatter",
+      "name": "prettify preserves parsed JSON",
+      "inputs": {
+        "inputJson": "{\"a\":[1,true,null],\"s\":\"hi\"}"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "JwtDecoder",
+      "name": "base64url payload and malformed input",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "WordCounter",
+      "name": "reference fixture",
+      "inputs": {
+        "text": "one two. Three four!"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MorseCodeTranslator",
+      "name": "international SOS vector",
+      "inputs": {
+        "input": "SOS",
+        "mode": "text-to-morse"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UrlEncoderDecoder",
+      "name": "Unicode component encoding",
+      "inputs": {
+        "input": "hello नमस्ते & x",
+        "mode": "encode",
+        "method": "component"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "LoremIpsumGenerator",
+      "name": "requested word count",
+      "inputs": {
+        "type": "words",
+        "count": 20
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FakeDataGenerator",
+      "name": "requested rows and selected fields",
+      "inputs": {
+        "rowCount": 3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TextToAsciiArt",
+      "name": "five-line output with supported glyph",
+      "inputs": {
+        "text": "A"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MarkdownViewer",
+      "name": "preview escapes executable HTML",
+      "inputs": {
+        "markdown": "<script>alert(1)</script>\n\n**bold**"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "WorldClock",
+      "name": "UTC epoch rendered in Tokyo",
+      "inputs": {
+        "time": "2026-01-01T00:00:00.000Z"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ZodiacAgeCalculator",
+      "name": "fixed calendar sun-sign convention",
+      "inputs": {
+        "dob": "2000-12-25"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ZodiacSunMoonCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "dobDate": "2000-12-25"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "OhmsLawCalculator",
+      "name": "V=IR and P=VI after voltage edit",
+      "inputs": {
+        "resistance": "6"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "JsMinifierBeautifier",
+      "name": "quoted data and significant whitespace survive transformation",
+      "inputs": {
+        "js": "const url=\"https://example.com/a//b\"; const regex=/a b/; globalThis.answer=[url,regex.test(\"a b\")];",
+        "mode": "minify"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "CssMinifierBeautifier",
+      "name": "quoted data and significant whitespace survive transformation",
+      "inputs": {
+        "css": "a { content: \"a ; b /* literal */\"; width: calc(100% - 2px); }",
+        "mode": "minify"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "HtmlFormatter",
+      "name": "quoted data and significant whitespace survive transformation",
+      "inputs": {
+        "html": "<pre>a  b\n c</pre><span>a</span> <span>b</span>",
+        "mode": "minify"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TextEncryptor",
+      "name": "authenticated encryption handler roundtrip",
+      "inputs": {
+        "pass": "test-only passphrase 123"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ExifDataViewer",
+      "name": "JPEG without metadata produces no camera tags",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "FileHashVerifier",
+      "name": "known SHA256 abc vector",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "QrCodeGenerator",
+      "name": "Wi-Fi payload escapes reserved delimiters",
+      "inputs": {
+        "activeType": "wifi",
+        "wifiSsid": "a;b",
+        "wifiPass": "c:d"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfMerger",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "files": [
+          {},
+          {}
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfSplitter",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {},
+        "pageCount": 3,
+        "pageRange": "1,3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfPageRemover",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {},
+        "pageCount": 3,
+        "selectedPages": {}
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfRotator",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {},
+        "pageCount": 3,
+        "rotationAngle": 90,
+        "pageScope": "odd"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfMetadata",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {},
+        "title": "Changed title",
+        "author": "Changed author"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfCompressor",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {}
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfPageNumberer",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {},
+        "pageCount": 3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfWatermarker",
+      "name": "synthetic export preserves expected document structure",
+      "inputs": {
+        "file": {},
+        "pageCount": 3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfSplitter",
+      "name": "strict page selection set",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "ImageToPdf",
+      "name": "two PNGs produce two PDF pages",
+      "inputs": {
+        "files": [
+          {},
+          {}
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ImageResizer",
+      "name": "locked aspect ratio derived from original dimensions",
+      "inputs": {
+        "originalWidth": 1200,
+        "originalHeight": 800
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ImageFlipper",
+      "name": "rotation and axis reflections",
+      "inputs": {
+        "rotation": 90,
+        "flipH": true,
+        "flipV": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ImageCompressor",
+      "name": "file size formatting and saving percentage",
+      "inputs": {
+        "metadata": {
+          "originalSize": 1000,
+          "compressedSize": 500,
+          "type": "image/png",
+          "name": "test.png"
+        }
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PhotoCollageMaker",
+      "name": "grid selection uses intended column structure",
+      "inputs": {
+        "layout": "grid"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "SocialMediaResizer",
+      "name": "square preset geometry",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "FaviconGenerator",
+      "name": "target icon dimensions",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "BackgroundRemover",
+      "name": "reject unsupported non-image file",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "FormatConverter",
+      "name": "reject unsupported non-image file",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "MemeMaker",
+      "name": "reject unsupported non-image file",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "SvgToPngConverter",
+      "name": "default export scale",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "ImageColorPicker",
+      "name": "default RGB bytes form valid colour",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "OgImageGenerator",
+      "name": "preview dimensions",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "ZipExtractor",
+      "name": "ZIP entry roundtrip",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 0",
+      "inputs": {
+        "dividend": 1304,
+        "divisor": 434
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 0",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            18,
+            0,
+            3
+          ],
+          [
+            4,
+            12,
+            3
+          ],
+          [
+            2,
+            1,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 0",
+      "inputs": {
+        "inputData": "1096,1059,1096,1065,1014,1095,1024"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 0",
+      "inputs": {
+        "initialInvestment": 27901,
+        "finalValue": 22320.800000000003
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 1",
+      "inputs": {
+        "dividend": 1698,
+        "divisor": -57
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 1",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            18,
+            4
+          ],
+          [
+            1,
+            11
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 1",
+      "inputs": {
+        "inputData": "1006,1044,1046,1004,1078,1044,1062"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 1",
+      "inputs": {
+        "initialInvestment": 97581,
+        "finalValue": 79040.61
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 2",
+      "inputs": {
+        "dividend": -934,
+        "divisor": 234
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 2",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            18,
+            4,
+            2
+          ],
+          [
+            2,
+            17,
+            3
+          ],
+          [
+            3,
+            1,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 2",
+      "inputs": {
+        "inputData": "1038,1025,1026,1072,1064,1012,1076"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 2",
+      "inputs": {
+        "initialInvestment": 83760,
+        "finalValue": 68683.20000000001
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 3",
+      "inputs": {
+        "dividend": 4160,
+        "divisor": -436
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 3",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            18,
+            1
+          ],
+          [
+            0,
+            14
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 3",
+      "inputs": {
+        "inputData": "1050,1061,1030,1009,1034,1097,1069"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 3",
+      "inputs": {
+        "initialInvestment": 40826,
+        "finalValue": 33885.58
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 4",
+      "inputs": {
+        "dividend": 68,
+        "divisor": 330
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 4",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            10,
+            3,
+            4
+          ],
+          [
+            1,
+            10,
+            1
+          ],
+          [
+            3,
+            2,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 4",
+      "inputs": {
+        "inputData": "1080,1097,1021,1090,1063,1050,1059"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 4",
+      "inputs": {
+        "initialInvestment": 71933,
+        "finalValue": 60423.72
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 5",
+      "inputs": {
+        "dividend": 4862,
+        "divisor": 103
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 5",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            17,
+            4
+          ],
+          [
+            0,
+            15
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 5",
+      "inputs": {
+        "inputData": "1037,1030,1064,1034,1010,1046,1064"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 5",
+      "inputs": {
+        "initialInvestment": 49430,
+        "finalValue": 42015.5
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 6",
+      "inputs": {
+        "dividend": -4973,
+        "divisor": -354
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 6",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            19,
+            2,
+            2
+          ],
+          [
+            4,
+            11,
+            1
+          ],
+          [
+            2,
+            1,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 6",
+      "inputs": {
+        "inputData": "1030,1069,1021,1074,1021,1057,1065"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 6",
+      "inputs": {
+        "initialInvestment": 1119,
+        "finalValue": 962.34
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 7",
+      "inputs": {
+        "dividend": 4096,
+        "divisor": 84
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 7",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            17,
+            4
+          ],
+          [
+            4,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 7",
+      "inputs": {
+        "inputData": "1048,1016,1020,1000,1002,1083,1025"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 7",
+      "inputs": {
+        "initialInvestment": 6880,
+        "finalValue": 5985.6
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 8",
+      "inputs": {
+        "dividend": -4641,
+        "divisor": 332
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 8",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            14,
+            3,
+            4
+          ],
+          [
+            0,
+            19,
+            4
+          ],
+          [
+            4,
+            4,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 8",
+      "inputs": {
+        "inputData": "1059,1009,1042,1081,1003,1085,1076"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 8",
+      "inputs": {
+        "initialInvestment": 4128,
+        "finalValue": 3632.64
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 9",
+      "inputs": {
+        "dividend": 1930,
+        "divisor": 86
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 9",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            12,
+            2
+          ],
+          [
+            1,
+            11
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 9",
+      "inputs": {
+        "inputData": "1014,1060,1009,1022,1071,1055,1036"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 9",
+      "inputs": {
+        "initialInvestment": 74990,
+        "finalValue": 66741.1
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 10",
+      "inputs": {
+        "dividend": 1814,
+        "divisor": 44
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 10",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            16,
+            2,
+            1
+          ],
+          [
+            1,
+            19,
+            2
+          ],
+          [
+            4,
+            3,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 10",
+      "inputs": {
+        "inputData": "1018,1067,1039,1087,1076,1012,1071"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 10",
+      "inputs": {
+        "initialInvestment": 82916,
+        "finalValue": 74624.40000000001
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 11",
+      "inputs": {
+        "dividend": 4130,
+        "divisor": 279
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 11",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            11,
+            4
+          ],
+          [
+            1,
+            18
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 11",
+      "inputs": {
+        "inputData": "1019,1013,1096,1004,1034,1086,1066"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 11",
+      "inputs": {
+        "initialInvestment": 31016,
+        "finalValue": 28224.56
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 12",
+      "inputs": {
+        "dividend": 4455,
+        "divisor": 34
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 12",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            19,
+            4,
+            3
+          ],
+          [
+            4,
+            13,
+            1
+          ],
+          [
+            1,
+            2,
+            11
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 12",
+      "inputs": {
+        "inputData": "1049,1028,1065,1019,1024,1009,1063"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 12",
+      "inputs": {
+        "initialInvestment": 71565,
+        "finalValue": 65839.8
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 13",
+      "inputs": {
+        "dividend": 3595,
+        "divisor": -237
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 13",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            15,
+            4
+          ],
+          [
+            1,
+            15
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 13",
+      "inputs": {
+        "inputData": "1032,1023,1058,1080,1018,1046,1075"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 13",
+      "inputs": {
+        "initialInvestment": 31227,
+        "finalValue": 29041.109999999997
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 14",
+      "inputs": {
+        "dividend": -3854,
+        "divisor": -53
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 14",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            19,
+            1,
+            4
+          ],
+          [
+            3,
+            11,
+            1
+          ],
+          [
+            1,
+            4,
+            19
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 14",
+      "inputs": {
+        "inputData": "1000,1055,1023,1055,1081,1064,1060"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 14",
+      "inputs": {
+        "initialInvestment": 34694,
+        "finalValue": 32612.359999999997
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 15",
+      "inputs": {
+        "dividend": 4881,
+        "divisor": -378
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 15",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            19,
+            1
+          ],
+          [
+            1,
+            12
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 15",
+      "inputs": {
+        "inputData": "1009,1012,1030,1058,1019,1031,1074"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 15",
+      "inputs": {
+        "initialInvestment": 12171,
+        "finalValue": 11562.449999999999
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 16",
+      "inputs": {
+        "dividend": -1682,
+        "divisor": -95
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 16",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            14,
+            2,
+            0
+          ],
+          [
+            1,
+            17,
+            1
+          ],
+          [
+            0,
+            4,
+            12
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 16",
+      "inputs": {
+        "inputData": "1039,1033,1072,1094,1027,1075,1059"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 16",
+      "inputs": {
+        "initialInvestment": 14579,
+        "finalValue": 13995.84
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 17",
+      "inputs": {
+        "dividend": 4953,
+        "divisor": 165
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 17",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            15,
+            3
+          ],
+          [
+            3,
+            16
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 17",
+      "inputs": {
+        "inputData": "1044,1041,1095,1020,1055,1079,1017"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 17",
+      "inputs": {
+        "initialInvestment": 29667,
+        "finalValue": 28776.989999999998
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 18",
+      "inputs": {
+        "dividend": 1315,
+        "divisor": -433
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 18",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            14,
+            4,
+            2
+          ],
+          [
+            3,
+            16,
+            3
+          ],
+          [
+            3,
+            0,
+            16
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 18",
+      "inputs": {
+        "inputData": "1027,1070,1000,1084,1095,1048,1027"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 18",
+      "inputs": {
+        "initialInvestment": 60932,
+        "finalValue": 59713.36
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 19",
+      "inputs": {
+        "dividend": 1678,
+        "divisor": -317
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 19",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            15,
+            1
+          ],
+          [
+            1,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 19",
+      "inputs": {
+        "inputData": "1091,1084,1018,1030,1046,1077,1064"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 19",
+      "inputs": {
+        "initialInvestment": 50063,
+        "finalValue": 49562.37
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 20",
+      "inputs": {
+        "dividend": 3387,
+        "divisor": -115
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 20",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            10,
+            1,
+            3
+          ],
+          [
+            2,
+            17,
+            1
+          ],
+          [
+            1,
+            2,
+            11
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 20",
+      "inputs": {
+        "inputData": "1072,1099,1055,1052,1040,1061,1054"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 20",
+      "inputs": {
+        "initialInvestment": 16056,
+        "finalValue": 16056
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 21",
+      "inputs": {
+        "dividend": -1474,
+        "divisor": -473
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 21",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            16,
+            0
+          ],
+          [
+            3,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 21",
+      "inputs": {
+        "inputData": "1042,1013,1067,1021,1033,1025,1040"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 21",
+      "inputs": {
+        "initialInvestment": 8393,
+        "finalValue": 8476.93
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 22",
+      "inputs": {
+        "dividend": -2707,
+        "divisor": -84
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 22",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            17,
+            3,
+            4
+          ],
+          [
+            2,
+            16,
+            3
+          ],
+          [
+            2,
+            1,
+            12
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 22",
+      "inputs": {
+        "inputData": "1033,1049,1038,1025,1012,1052,1021"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 22",
+      "inputs": {
+        "initialInvestment": 92866,
+        "finalValue": 94723.32
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 23",
+      "inputs": {
+        "dividend": 631,
+        "divisor": 408
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 23",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            14,
+            2
+          ],
+          [
+            1,
+            15
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 23",
+      "inputs": {
+        "inputData": "1040,1001,1096,1014,1059,1026,1084"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 23",
+      "inputs": {
+        "initialInvestment": 3037,
+        "finalValue": 3128.11
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 24",
+      "inputs": {
+        "dividend": -4801,
+        "divisor": -443
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 24",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            17,
+            1,
+            4
+          ],
+          [
+            0,
+            13,
+            1
+          ],
+          [
+            3,
+            0,
+            19
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 24",
+      "inputs": {
+        "inputData": "1067,1005,1045,1043,1041,1072,1053"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 24",
+      "inputs": {
+        "initialInvestment": 46372,
+        "finalValue": 48226.880000000005
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 25",
+      "inputs": {
+        "dividend": 286,
+        "divisor": -484
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 25",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            12,
+            2
+          ],
+          [
+            2,
+            16
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 25",
+      "inputs": {
+        "inputData": "1096,1006,1036,1069,1050,1088,1097"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 25",
+      "inputs": {
+        "initialInvestment": 96834,
+        "finalValue": 101675.7
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 26",
+      "inputs": {
+        "dividend": 3269,
+        "divisor": 409
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 26",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            17,
+            1,
+            2
+          ],
+          [
+            1,
+            16,
+            1
+          ],
+          [
+            0,
+            0,
+            19
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 26",
+      "inputs": {
+        "inputData": "1058,1093,1089,1020,1042,1056,1099"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 26",
+      "inputs": {
+        "initialInvestment": 46506,
+        "finalValue": 49296.36
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 27",
+      "inputs": {
+        "dividend": -3302,
+        "divisor": -447
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 27",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            14,
+            3
+          ],
+          [
+            4,
+            14
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 27",
+      "inputs": {
+        "inputData": "1035,1008,1017,1007,1064,1037,1015"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 27",
+      "inputs": {
+        "initialInvestment": 62571,
+        "finalValue": 66950.97
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 28",
+      "inputs": {
+        "dividend": -2965,
+        "divisor": 209
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 28",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            19,
+            0,
+            2
+          ],
+          [
+            1,
+            13,
+            3
+          ],
+          [
+            3,
+            0,
+            16
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 28",
+      "inputs": {
+        "inputData": "1015,1057,1005,1086,1017,1038,1001"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 28",
+      "inputs": {
+        "initialInvestment": 55828,
+        "finalValue": 60294.240000000005
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 29",
+      "inputs": {
+        "dividend": 2984,
+        "divisor": 151
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 29",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            16,
+            2
+          ],
+          [
+            2,
+            10
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 29",
+      "inputs": {
+        "inputData": "1026,1022,1041,1027,1070,1029,1074"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 29",
+      "inputs": {
+        "initialInvestment": 56756,
+        "finalValue": 61864.04000000001
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 30",
+      "inputs": {
+        "dividend": 2921,
+        "divisor": -205
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 30",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            11,
+            4,
+            4
+          ],
+          [
+            4,
+            13,
+            4
+          ],
+          [
+            3,
+            2,
+            10
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 30",
+      "inputs": {
+        "inputData": "1022,1024,1043,1028,1079,1088,1087"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 30",
+      "inputs": {
+        "initialInvestment": 36693,
+        "finalValue": 40362.3
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 31",
+      "inputs": {
+        "dividend": -3273,
+        "divisor": 313
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 31",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            19,
+            3
+          ],
+          [
+            4,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 31",
+      "inputs": {
+        "inputData": "1062,1051,1064,1057,1093,1023,1090"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 31",
+      "inputs": {
+        "initialInvestment": 17851,
+        "finalValue": 19814.61
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 32",
+      "inputs": {
+        "dividend": 3392,
+        "divisor": 217
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 32",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            18,
+            4,
+            3
+          ],
+          [
+            4,
+            13,
+            2
+          ],
+          [
+            4,
+            1,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 32",
+      "inputs": {
+        "inputData": "1019,1034,1058,1035,1014,1087,1068"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 32",
+      "inputs": {
+        "initialInvestment": 20868,
+        "finalValue": 23372.160000000003
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 33",
+      "inputs": {
+        "dividend": -3206,
+        "divisor": -104
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 33",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            16,
+            1
+          ],
+          [
+            1,
+            17
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 33",
+      "inputs": {
+        "inputData": "1086,1031,1071,1045,1092,1005,1039"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 33",
+      "inputs": {
+        "initialInvestment": 11484,
+        "finalValue": 12976.919999999998
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 34",
+      "inputs": {
+        "dividend": 4933,
+        "divisor": -385
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 34",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            11,
+            1,
+            2
+          ],
+          [
+            1,
+            16,
+            1
+          ],
+          [
+            2,
+            4,
+            14
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 34",
+      "inputs": {
+        "inputData": "1062,1052,1015,1026,1042,1068,1016"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 34",
+      "inputs": {
+        "initialInvestment": 42682,
+        "finalValue": 48657.48
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 35",
+      "inputs": {
+        "dividend": -4057,
+        "divisor": -130
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 35",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            14,
+            2
+          ],
+          [
+            2,
+            14
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 35",
+      "inputs": {
+        "inputData": "1055,1002,1006,1038,1084,1036,1075"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 35",
+      "inputs": {
+        "initialInvestment": 18285,
+        "finalValue": 21027.75
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 36",
+      "inputs": {
+        "dividend": -2125,
+        "divisor": 435
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 36",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            15,
+            1,
+            2
+          ],
+          [
+            3,
+            15,
+            2
+          ],
+          [
+            0,
+            3,
+            11
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 36",
+      "inputs": {
+        "inputData": "1032,1021,1012,1043,1033,1063,1085"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 36",
+      "inputs": {
+        "initialInvestment": 67982,
+        "finalValue": 78859.12
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 37",
+      "inputs": {
+        "dividend": -4724,
+        "divisor": 244
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 37",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            19,
+            1
+          ],
+          [
+            4,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 37",
+      "inputs": {
+        "inputData": "1051,1077,1098,1002,1039,1048,1049"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 37",
+      "inputs": {
+        "initialInvestment": 36021,
+        "finalValue": 42144.57
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 38",
+      "inputs": {
+        "dividend": -4901,
+        "divisor": -125
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 38",
+      "inputs": {
+        "size": 3,
+        "matA": [
+          [
+            11,
+            3,
+            4
+          ],
+          [
+            1,
+            12,
+            1
+          ],
+          [
+            4,
+            3,
+            19
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 38",
+      "inputs": {
+        "inputData": "1052,1097,1091,1059,1044,1042,1011"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 38",
+      "inputs": {
+        "initialInvestment": 12990,
+        "finalValue": 15328.199999999999
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ModCalculator",
+      "name": "seeded Euclidean division 39",
+      "inputs": {
+        "dividend": 1350,
+        "divisor": -452
+      },
+      "status": "pass"
+    },
+    {
+      "component": "MatrixCalculator",
+      "name": "matrix identity 39",
+      "inputs": {
+        "size": 2,
+        "matA": [
+          [
+            13,
+            0
+          ],
+          [
+            1,
+            13
+          ]
+        ],
+        "matB": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      },
+      "status": "pass"
+    },
+    {
+      "component": "StandardDeviationCalculator",
+      "name": "translation invariance 39",
+      "inputs": {
+        "inputData": "1047,1083,1030,1018,1007,1016,1049"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "RoiCalculator",
+      "name": "gain/loss identity 39",
+      "inputs": {
+        "initialInvestment": 92699,
+        "finalValue": 110311.81
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "0"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "2"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "3"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "4"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "5"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "6"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "7"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "8"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "9"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "10"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "11"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "12"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "13"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "14"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "15"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "16"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "17"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "18"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "19"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "20"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "21"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "22"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "23"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "24"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "25"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "26"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "27"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "28"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "29"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "30"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "31"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "32"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "33"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "34"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "35"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "36"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "37"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "38"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "39"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "FactorialCalculator",
+      "name": "reference fixture",
+      "inputs": {
+        "nVal": "40"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar -2^2",
+      "inputs": {
+        "display": "-2^2",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar 2^3^2",
+      "inputs": {
+        "display": "2^3^2",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar 2π",
+      "inputs": {
+        "display": "2π",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar (3+2)!",
+      "inputs": {
+        "display": "(3+2)!",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar 20%",
+      "inputs": {
+        "display": "20%",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar 1e-20",
+      "inputs": {
+        "display": "1e-20",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar sin(π/2)",
+      "inputs": {
+        "display": "sin(π/2)",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar pow(2,10)",
+      "inputs": {
+        "display": "pow(2,10)",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar 0!",
+      "inputs": {
+        "display": "0!",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar cos(0)",
+      "inputs": {
+        "display": "cos(0)",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "expression grammar ln(e)",
+      "inputs": {
+        "display": "ln(e)",
+        "isRad": true
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "undefined expression 1/0",
+      "inputs": {
+        "display": "1/0"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "undefined expression sqrt(-1)",
+      "inputs": {
+        "display": "sqrt(-1)"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "undefined expression 5.5!",
+      "inputs": {
+        "display": "5.5!"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "undefined expression (1+2",
+      "inputs": {
+        "display": "(1+2"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "undefined expression constructor(1)",
+      "inputs": {
+        "display": "constructor(1)"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "ScientificCalculator",
+      "name": "undefined expression 171!",
+      "inputs": {
+        "display": "171!"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Kilobyte/Byte",
+      "inputs": {
+        "category": "Data",
+        "fromUnit": "Kilobyte",
+        "toUnit": "Byte",
+        "inputValue": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Kibibyte/Byte",
+      "inputs": {
+        "category": "Data",
+        "fromUnit": "Kibibyte",
+        "toUnit": "Byte",
+        "inputValue": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Mebibyte/Kibibyte",
+      "inputs": {
+        "category": "Data",
+        "fromUnit": "Mebibyte",
+        "toUnit": "Kibibyte",
+        "inputValue": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Pound/Gram",
+      "inputs": {
+        "category": "Weight",
+        "fromUnit": "Pound",
+        "toUnit": "Gram",
+        "inputValue": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Mile/Meter",
+      "inputs": {
+        "category": "Length",
+        "fromUnit": "Mile",
+        "toUnit": "Meter",
+        "inputValue": "1"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Kelvin/Celsius",
+      "inputs": {
+        "category": "Temperature",
+        "fromUnit": "Kelvin",
+        "toUnit": "Celsius",
+        "inputValue": "273.15"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "UnitConverter",
+      "name": "exact unit vector Fahrenheit/Celsius",
+      "inputs": {
+        "category": "Temperature",
+        "fromUnit": "Fahrenheit",
+        "toUnit": "Celsius",
+        "inputValue": "-40"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "name": "Gregorian leap/boundary 2024-02-28",
+      "inputs": {
+        "startDate": "2024-02-28",
+        "endDate": "2024-03-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "name": "Gregorian leap/boundary 2023-02-28",
+      "inputs": {
+        "startDate": "2023-02-28",
+        "endDate": "2023-03-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "name": "Gregorian leap/boundary 2024-12-31",
+      "inputs": {
+        "startDate": "2024-12-31",
+        "endDate": "2025-01-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "name": "Gregorian leap/boundary 2000-02-28",
+      "inputs": {
+        "startDate": "2000-02-28",
+        "endDate": "2000-03-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "DateDifferenceCalculator",
+      "name": "Gregorian leap/boundary 1900-02-28",
+      "inputs": {
+        "startDate": "1900-02-28",
+        "endDate": "1900-03-01"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "zone offset vector Asia/Kolkata/2026-01-01",
+      "inputs": {
+        "selectedDate": "2026-01-01",
+        "selectedTime": "12:00",
+        "baseTz": "Asia/Kolkata"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "zone offset vector America/New_York/2026-07-01",
+      "inputs": {
+        "selectedDate": "2026-07-01",
+        "selectedTime": "12:00",
+        "baseTz": "America/New_York"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "zone offset vector America/New_York/2026-01-01",
+      "inputs": {
+        "selectedDate": "2026-01-01",
+        "selectedTime": "12:00",
+        "baseTz": "America/New_York"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "TimeZoneConverter",
+      "name": "zone offset vector Australia/Sydney/2026-01-01",
+      "inputs": {
+        "selectedDate": "2026-01-01",
+        "selectedTime": "12:00",
+        "baseTz": "Australia/Sydney"
+      },
+      "status": "pass"
+    },
+    {
+      "component": "PdfSplitter",
+      "name": "huge and partial ranges reject promptly",
+      "inputs": {},
+      "status": "pass"
+    },
+    {
+      "component": "OhmsLawCalculator",
+      "name": "zero current has no finite inferred resistance",
+      "inputs": {
+        "voltage": "12"
+      },
+      "status": "pass"
+    }
+  ]
+}

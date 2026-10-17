@@ -42,21 +42,21 @@ export default function SlugGenerator({ onCopy }: SlugGeneratorProps) {
 
         <div className="space-y-2">
           <label className="text-xs text-zinc-500 dark:text-zinc-400">Input Article Title / Headline</label>
-          <input
+          <input aria-label="Input Article Title / Headline"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white font-mono text-sm focus:outline-none focus:border-indigo-500"
           />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
           <div>
             <label className="text-zinc-500 dark:text-zinc-400 block mb-1">Separator</label>
-            <select
+            <select aria-label="Separator"
               value={separator}
               onChange={(e) => setSeparator(e.target.value as any)}
-              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-indigo-500"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl px-3 py-2 text-zinc-900 dark:text-white text-sm focus:outline-none focus:border-indigo-500"
             >
               <option value="-">Hyphen (-)</option>
               <option value="_">Underscore (_)</option>

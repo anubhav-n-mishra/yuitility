@@ -194,7 +194,7 @@ export default function ImageResizer({ onCopy, onShare }: ImageResizerProps) {
                 <UploadCloud className="w-8 h-8" />
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Click to upload or drag and drop</p>
-              <input
+              <input aria-label="Choose files"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -240,7 +240,7 @@ export default function ImageResizer({ onCopy, onShare }: ImageResizerProps) {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-zinc-600 dark:text-zinc-400">Width (px)</label>
-                  <input
+                  <input aria-label="Width (px)"
                     type="number"
                     value={width}
                     onChange={(e) => handleWidthChange(e.target.value)}
@@ -251,7 +251,7 @@ export default function ImageResizer({ onCopy, onShare }: ImageResizerProps) {
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-zinc-600 dark:text-zinc-400">Height (px)</label>
-                  <input
+                  <input aria-label="Height (px)"
                     type="number"
                     value={height}
                     onChange={(e) => handleHeightChange(e.target.value)}

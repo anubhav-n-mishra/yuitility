@@ -1,3 +1,4 @@
+import { calendarDate, calendarDifference } from '@/src/lib/calendar';
 import React, { useState, useEffect, useMemo } from 'react';
 import { RefreshCw, Share2, Calendar, Star, Clock, Heart } from 'lucide-react';
 
@@ -29,13 +30,13 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
   const dobDate = useMemo(() => {
     const dateStr = `${dobString}T${dobTime || '00:00'}`;
     const d = new Date(dateStr);
-    return isNaN(d.getTime()) ? new Date('1998-05-15T08:30:00') : d;
+    return d;
   }, [dobString, dobTime]);
 
   // Exact calculations
   const ageCalculations = useMemo(() => {
     const diffMs = currentTime.getTime() - dobDate.getTime();
-    if (diffMs < 0) {
+    if (!Number.isFinite(diffMs) || diffMs < 0) {
       return {
         years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0,
         totalDays: 0, totalHours: 0, totalMinutes: 0, totalSeconds: 0,
@@ -58,20 +59,12 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
     const currMonth = currentTime.getMonth();
     const currDay = currentTime.getDate();
 
-    let years = currYear - birthYear;
-    let months = currMonth - birthMonth;
-    let days = currDay - birthDay;
-
-    if (days < 0) {
-      months--;
-      // Get days in previous month
-      const prevMonth = new Date(currYear, currMonth, 0).getDate();
-      days += prevMonth;
-    }
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
+    const localDay = (date: Date) => calendarDate([date.getFullYear(),String(date.getMonth()+1).padStart(2,'0'),String(date.getDate()).padStart(2,'0')].join('-'));
+    const endDay=localDay(currentTime);
+    const birthSeconds=dobDate.getHours()*3600+dobDate.getMinutes()*60+dobDate.getSeconds();
+    const currentSeconds=currentTime.getHours()*3600+currentTime.getMinutes()*60+currentTime.getSeconds();
+    if(currentSeconds<birthSeconds)endDay.setUTCDate(endDay.getUTCDate()-1);
+    const {years,months,days} = calendarDifference(localDay(dobDate),endDay);
 
     const hours = currentTime.getHours() - dobDate.getHours();
     const minutes = currentTime.getMinutes() - dobDate.getMinutes();
@@ -226,7 +219,7 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
             <div className="space-y-4">
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Date of Birth</label>
-                <input
+                <input aria-label="Date of Birth"
                   type="date"
                   value={dobString}
                   onChange={(e) => setDobString(e.target.value)}
@@ -236,7 +229,7 @@ export default function AgeCalculator({ onCopy, onShare }: AgeCalculatorProps) {
 
               <div className="space-y-1">
                 <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Time of Birth (Optional)</label>
-                <input
+                <input aria-label="Time of Birth (Optional)"
                   type="time"
                   value={dobTime}
                   onChange={(e) => setDobTime(e.target.value)}
