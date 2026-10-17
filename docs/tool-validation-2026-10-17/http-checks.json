@@ -12,17 +12,17 @@
   "scripts": 26,
   "brokenScripts": [],
   "initialScriptGzipBytes": {
-    "/": 263168,
-    "/tools/standard-calculator": 323354,
-    "/tools/salary-calculator": 323354,
-    "/tools/mortgage-calculator/va-loan": 328437
+    "/": 263139,
+    "/tools/standard-calculator": 323336,
+    "/tools/salary-calculator": 323336,
+    "/tools/mortgage-calculator/va-loan": 328419
   },
   "rssItems": 23,
   "embeds": [
     {
       "path": "/embed/standard-calculator",
       "status": 200,
-      "bytes": 7045,
+      "bytes": 7048,
       "headers": {
         "Content-Security-Policy": "frame-ancestors *",
         "X-Robots-Tag": "noindex, follow",
@@ -37,10 +37,10 @@
         "x-nextjs-stale-time": "300",
         "X-Powered-By": "Next.js",
         "Cache-Control": "s-maxage=31536000",
-        "ETag": "\"109jxpcus53ptt\"",
+        "ETag": "\"13tc2nwu26nptt\"",
         "Content-Type": "text/html; charset=utf-8",
         "Content-Encoding": "gzip",
-        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Date": "Sat, 17 Oct 2026 04:34:12 GMT",
         "Connection": "close",
         "Transfer-Encoding": "chunked"
       }
@@ -48,7 +48,7 @@
     {
       "path": "/embed/mortgage-calculator/va-loan",
       "status": 200,
-      "bytes": 9467,
+      "bytes": 9469,
       "headers": {
         "Content-Security-Policy": "frame-ancestors *",
         "X-Robots-Tag": "noindex, follow",
@@ -63,10 +63,10 @@
         "x-nextjs-stale-time": "300",
         "X-Powered-By": "Next.js",
         "Cache-Control": "s-maxage=31536000",
-        "ETag": "\"70hj9yi1oowhi\"",
+        "ETag": "\"55smg5kevkwhi\"",
         "Content-Type": "text/html; charset=utf-8",
         "Content-Encoding": "gzip",
-        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Date": "Sat, 17 Oct 2026 04:34:12 GMT",
         "Connection": "close",
         "Transfer-Encoding": "chunked"
       }
@@ -87,11 +87,11 @@
         "Cross-Origin-Opener-Policy": "same-origin",
         "Cache-Control": "public, max-age=31536000, immutable",
         "Accept-Ranges": "bytes",
-        "Last-Modified": "Sat, 17 Oct 2026 04:20:27 GMT",
-        "ETag": "W/\"7a34-1a14816f870\"",
+        "Last-Modified": "Sat, 17 Oct 2026 04:32:36 GMT",
+        "ETag": "W/\"7a34-1a1482217ba\"",
         "Content-Type": "font/woff",
         "Content-Length": "31284",
-        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Date": "Sat, 17 Oct 2026 04:34:12 GMT",
         "Connection": "close"
       }
     },
@@ -109,11 +109,11 @@
         "Cross-Origin-Opener-Policy": "same-origin",
         "Cache-Control": "public, max-age=31536000, immutable",
         "Accept-Ranges": "bytes",
-        "Last-Modified": "Sat, 17 Oct 2026 04:20:27 GMT",
-        "ETag": "W/\"4020-1a14816f811\"",
+        "Last-Modified": "Sat, 17 Oct 2026 04:32:36 GMT",
+        "ETag": "W/\"4020-1a14822178e\"",
         "Content-Type": "font/woff",
         "Content-Length": "16416",
-        "Date": "Sat, 17 Oct 2026 04:21:37 GMT",
+        "Date": "Sat, 17 Oct 2026 04:34:12 GMT",
         "Connection": "close"
       }
     }

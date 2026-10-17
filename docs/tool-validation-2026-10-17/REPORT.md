@@ -57,7 +57,7 @@ Primary references consulted for scope include [EPFO contribution rates](https:/
 
 The browser's native date/time automation did not reliably commit edits to the timezone form, so a browser DST-warning result is **not claimed**. The pure production timezone resolver passes explicit gap/repeat and offset fixtures. Selected browser checks showed no console errors; no claim is made that every tool was interactively exercised in every browser.
 
-Initial Standard Calculator script gzip bytes in the current Turbopack build are 323,354 versus the original audit's 952,795 (66.1% lower). Different bundlers and dependency versions affect this comparison. It is not a Lighthouse or Core Web Vitals score.
+Initial Standard Calculator script gzip bytes in the current Turbopack build are 323,336 versus the original audit's 952,795 (66.1% lower). Different bundlers and dependency versions affect this comparison. It is not a Lighthouse or Core Web Vitals score.
 
 ## What remains outside this validation
 
