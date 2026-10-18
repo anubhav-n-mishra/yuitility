@@ -45,7 +45,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "word-counter":
     "Paste or type your text and the tool instantly shows word count, character count (with and without spaces), estimated reading time, and keyword density.",
   "image-compressor":
-    "Upload a JPG, PNG, or WebP image and the tool reduces file size while preserving visual quality, processed entirely in your browser.",
+    "Choose a JPEG, PNG or WebP image, then adjust quality or set a maximum size such as 20, 50 or 100 KB. Compare measured bytes and dimensions before downloading JPEG or WebP. Compression runs locally; lossy output can lose detail.",
   "background-remover":
     "Upload an image and the tool automatically detects and removes the background, producing a transparent PNG output you can use on any background.",
   "image-resizer":
@@ -157,7 +157,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "age-calculator":
     "Enter your birth date to calculate exact age in years, months, and days down to the live second, plus zodiac details and next birthday countdown.",
   "markdown-viewer":
-    "Drag-and-drop or upload any .md or .txt file to open it instantly, or paste Markdown text from your clipboard. The engine parses CommonMark and GitHub Flavored Markdown (GFM) directly in your browser memory, rendering real-time tables, task checklists, and code blocks with 1-click export to PDF, Word, or HTML.",
+    "Open a .md, .markdown or .txt file up to 5 MiB, or paste text for local preview and split-view editing. Preview basic Markdown, pipe tables and code fences. Remote images start blocked. Download Markdown, HTML or Word-compatible .doc, or use browser printing for PDF.",
   "case-converter":
     "Paste text and select target casing (UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, kebab-case). The converter parses words using regex tokenization and outputs transformed text 100% locally.",
   "character-counter":
@@ -725,15 +725,15 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
     },
     {
       question: "Can I convert Markdown to Microsoft Word (.doc)?",
-      answer: "Yes. Click the 'MD to Word' button to generate an immediate .doc file containing all parsed headings, tables, and formatted lists. You can open and edit this file directly in Microsoft Word, Google Docs, or LibreOffice.",
+      answer: "The 'MD to Word' button downloads HTML wrapped in a Word-compatible .doc file, not a native .docx document. Preview the result in your word processor; formatting and import support can vary.",
     },
     {
       question: "Which markdown formats and GitHub extensions are supported?",
-      answer: "The viewer supports full GitHub Flavored Markdown (GFM) including headings (H1-H6), bold, italic, strikethrough, blockquotes, GitHub callout alerts (> [!NOTE], > [!TIP], > [!WARNING]), aligned data tables, interactive task checklists (- [x]), and syntax-highlighted code fences.",
+      answer: "This is a lightweight parser, not full CommonMark or GFM compatibility. It previews headings, emphasis, strikethrough, blockquotes, selected GitHub alerts, pipe tables, read-only task checklists and code fences. It does not render raw HTML, math, Mermaid or syntax highlighting. Check final README rendering on GitHub.",
     },
     {
       question: "Is my markdown file uploaded to any remote server?",
-      answer: "No. The entire parsing and rendering process executes 100% locally in your web browser RAM using the HTML5 FileReader API. Your document content, filenames, and text never leave your computer or touch any external server.",
+      answer: "This tool does not upload file text or filenames to Yuitility. Remote images are blocked by default. If you enable them, the preview and exported documents contact their image hosts. Clicking links contacts their destinations. Avoid putting private text in a page URL.",
     },
   ],
   "dog-age-calculator": [
@@ -1120,8 +1120,16 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
 
   "image-compressor": [
     {
+      question: "Can I compress an image to 20, 50 or 100 KB?",
+      answer: "Choose 'Fit a maximum file size', set a preset or custom limit and select your image. The tool measures the encoded bytes and reduces quality, then dimensions if you allow it. A result is downloadable only when it fits the limit. 1 KB means 1,000 bytes; output does not need to equal the limit exactly.",
+    },
+    {
+      question: "Will it keep my image dimensions and transparent background?",
+      answer: "Turn off dimension reduction to keep the original pixel dimensions; the tool may then be unable to meet a small byte limit. JPEG replaces transparency with white. WebP can preserve transparency. Check any minimum dimensions and accepted formats required by the destination. Animation and metadata are not retained.",
+    },
+    {
       question: "Does compression reduce image quality?",
-      answer: "Some compression is \"lossy\" (small quality tradeoff for major size reduction) while some is \"lossless\" (no quality loss, smaller size reduction) — most everyday use cases benefit from lossy compression since the difference is barely visible.",
+      answer: "This tool re-encodes JPEG or WebP with lossy quality settings. Detail can be lost, and an already optimized image may become larger. Compare the byte count and preview text, faces, gradients and edges before using the download.",
     },
     {
       question: "Why does image compression matter for websites?",

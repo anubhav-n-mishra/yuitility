@@ -56,6 +56,7 @@ function inspectTool(component, overrides = {}, props = {}, environment = {}) {
     const compiled = ts.transpileModule(source, {fileName:filename, compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true},transformers:{before:[transform]}}).outputText;
     const requireLocal = id => {
       if (id === 'react') return hooks;
+      if (id === 'dompurify' && environment.window?.document) return require('dompurify')(environment.window);
       if (id === 'react/jsx-runtime') return {jsx:(type,props)=>({type,props}),jsxs:(type,props)=>({type,props}),Fragment:'fragment'};
       if (/lucide|motion|next\//.test(id) || id.includes('/components/') && !id.endsWith('CalculatorFields')) return nothing;
       if (id.startsWith('.') || id.startsWith('@/')) {

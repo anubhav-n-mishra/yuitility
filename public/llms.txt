@@ -19,7 +19,7 @@
 - [SIP Investment Calculator](https://www.yuitility.app/tools/sip-calculator): Forecast your mutual fund SIP wealth growth with expected annual returns over time.
 - [Password Generator](https://www.yuitility.app/tools/password-generator): Generate highly secure random passwords with customizable parameters and strength analysis.
 - [QR Code Generator](https://www.yuitility.app/tools/qr-code-generator): Create custom QR codes for texts, URLs, WiFi networks, phone numbers, and emails.
-- [Image Compressor](https://www.yuitility.app/tools/image-compressor): Reduce image file size instantly in your browser while preserving optimal visual quality.
+- [Image Compressor](https://www.yuitility.app/tools/image-compressor): Fit an image to a 20, 50, 100 or custom KB limit, or adjust quality locally. Measure the output before downloading.
 - [PDF Merger](https://www.yuitility.app/tools/pdf-merger): Combine multiple PDF files into a single document seamlessly.
 - [PDF Splitter](https://www.yuitility.app/tools/pdf-splitter): Extract specific pages from a PDF or split it into individual files.
 - [Rotate PDF Pages](https://www.yuitility.app/tools/pdf-rotator): Rotate all or specific pages in a PDF document clockwise or counter-clockwise.
@@ -67,7 +67,7 @@
 - [Concrete Volume & Slab Estimator](https://www.yuitility.app/tools/concrete-volume-calculator): Calculate cubic yards/meters of concrete for slabs and footings.
 - [Room Square Footage Calculator](https://www.yuitility.app/tools/room-square-footage-calculator): Calculate room area in sq ft, sq meters, and perimeter.
 - [Lorem Ipsum Text Generator](https://www.yuitility.app/tools/lorem-ipsum-generator): Generate placeholder text, paragraphs, and words for design mockups.
-- [Open MD File & Markdown Viewer](https://www.yuitility.app/tools/markdown-viewer): Open and view MD files online with live split-screen Markdown preview, GitHub tables, checklists, and 1-click export to PDF, Word, and HTML.
+- [Open MD File & Markdown Viewer](https://www.yuitility.app/tools/markdown-viewer): Open .md files with local text processing, split-view editing and remote images blocked by default. Export Markdown, HTML or Word-compatible .doc.
 - [UUID v4 & GUID Generator](https://www.yuitility.app/tools/uuid-v4-generator): Generate cryptographically secure random UUID v4 strings in batch.
 - [Text Case Converter](https://www.yuitility.app/tools/case-converter): Convert text between UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case.
 - [URL Slug Generator](https://www.yuitility.app/tools/slug-generator): Convert titles and headlines into SEO-friendly clean URL slugs.
