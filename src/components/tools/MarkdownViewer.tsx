@@ -38,14 +38,14 @@ interface MarkdownViewerProps {
 
 export const TEMPLATES: Record<string, { label: string; fileName: string; content: string }> = {
   sample: {
-    label: 'GFM Feature Demo',
+    label: 'Markdown Feature Demo',
     fileName: 'sample.md',
-    content: `# 📝 GitHub Flavored Markdown (GFM) Live Viewer
+    content: `# 📝 Markdown Preview Demo
 
-Welcome to **Yuitility's Free In-Browser Markdown File Viewer & Editor**! This tool runs **100% locally in your web browser**. Your files, pastes, and notes never touch any remote server.
+Welcome to **Yuitility's Markdown File Viewer & Editor**. File parsing runs in your browser. Remote images are blocked by default; enabling them contacts their hosts.
 
 > [!NOTE]
-> Supports GitHub alerts, GFM tables, interactive task checklists, code syntax blocks, and 1-click export to PDF, Word, or HTML.
+> Preview headings, pipe tables, read-only task checklists, code fences and selected GitHub alerts. Export Markdown, HTML or Word-compatible .doc; use browser printing to save a PDF. Full GFM, math and Mermaid are not supported.
 
 > [!TIP]
 > Drag and drop any \`.md\`, \`.markdown\`, or \`.txt\` file directly into the editor to open it instantly!
@@ -56,8 +56,8 @@ Welcome to **Yuitility's Free In-Browser Markdown File Viewer & Editor**! This t
 
 | Feature | In-Browser Execution | Server Upload Needed | Privacy Level |
 | :--- | :---: | :---: | :--- |
-| **Markdown Preview** | ✅ Yes | ❌ None | **100% Private (RAM only)** |
-| **Open Local .md** | ✅ FileReader API | ❌ None | **Zero Data Leakage** |
+| **Markdown Preview** | ✅ Yes | ❌ None | **Remote images blocked by default** |
+| **Open Local .md** | ✅ FileReader API | ❌ None | **Local text processing** |
 | **Export to PDF** | ✅ Window Print CSS | ❌ None | **Local Print Engine** |
 | **Export to Word** | ✅ Instant .doc Blob | ❌ None | **Client-side Generation** |
 
@@ -94,7 +94,7 @@ function computeStats(markdown: string): DocumentMetrics {
 
 Here is some inline code: \`const privacy = true;\` and strikethrough: ~~old unrendered markdown~~.
 
-Visit [Yuitility Free Tools](https://www.yuitility.app) for over 130+ privacy-first browser utilities.
+Explore more [Yuitility browser tools](https://www.yuitility.app).
 `
   },
   readme: {
@@ -171,7 +171,9 @@ Distributed under the MIT License. See \`LICENSE\` for more information.
   changelog: {
     label: 'Keep a Changelog',
     fileName: 'CHANGELOG.md',
-    content: `# 📋 Changelog
+    content: `# 📋 Example Changelog
+
+This is an editable example template, not Yuitility's release history.
 
 All notable changes to this project will be documented in this file.
 
@@ -218,7 +220,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This document details the system design, algorithmic data flow, and runtime security model of the client-side Markdown engine.
 
 > [!IMPORTANT]
-> All document transformations execute strictly inside the browser thread using web standards (HTML5 FileReader, Web Crypto, and DOM APIs). No user data is ever transmitted across the network.
+> Document parsing runs locally with FileReader and JavaScript. Remote images are off by default. Enabling them contacts image hosts; following links contacts their destinations.
 
 ---
 
@@ -246,7 +248,7 @@ This document details the system design, algorithmic data flow, and runtime secu
 
 ## 🔒 Security & Privacy Guarantees
 - **No Cookies / Local Storage of Document Content**: Uploaded files exist only in volatile browser RAM.
-- **Zero Third-Party Telemetry**: Document text is never inspected, tokenized, or logged.
+- **Local Parsing**: The viewer parses document text in this browser, without uploading it to Yuitility.
 `
   }
 };
@@ -259,7 +261,7 @@ const escapeHtml = (str: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 
-function parseMarkdownToHtml(md: string): string {
+export function parseMarkdownToHtml(md: string, allowRemoteImages = false): string {
   if (!md) return '';
 
   const lines = md.split(/\r?\n/);
@@ -280,10 +282,22 @@ function parseMarkdownToHtml(md: string): string {
 
   const formatInline = (text: string) => {
     let s = escapeHtml(text);
-    // Images: ![alt](url)
-    s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="max-w-full h-auto rounded-xl my-3 shadow-sm border border-zinc-200 dark:border-zinc-800" />');
-    // Links: [text](url)
-    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-cyan-400 hover:underline font-medium">$1</a>');
+    // Protect code and generated HTML from subsequent emphasis replacements.
+    let marker = '\uE000';
+    while (s.includes(marker)) marker += '\uE000';
+    const tokens: string[] = [];
+    const protect = (html: string) => `${marker}${tokens.push(html) - 1}${marker}`;
+    s = s.replace(/`([^`]+)`/g, (_, code: string) => protect(`<code class="bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded font-mono">${code}</code>`));
+    s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt: string, url: string) => {
+      if (allowRemoteImages && /^https?:\/\//i.test(url.trim())) {
+        return protect(`<img src="${url.trim()}" alt="${alt}" loading="lazy" referrerpolicy="no-referrer" class="max-w-full h-auto rounded-xl my-3" />`);
+      }
+      return protect(`<span class="inline-block rounded border border-zinc-300 px-2 py-1 text-sm">Image: ${alt || 'untitled'} (not loaded)</span>`);
+    });
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label: string, url: string) => {
+      const safe = /^(?:https?:\/\/|mailto:|#|\/(?!\/)|\.{1,2}\/)/i.test(url.trim());
+      return protect(safe ? `<a href="${url.trim()}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-cyan-400 hover:underline font-medium">${label}</a>` : label);
+    });
     // Bold & italic
     s = s.replace(/\*\*\*([^*]+)\*\*\*/g, '<strong><em>$1</em></strong>');
     s = s.replace(/\*\*([^*]+)\*\*/g, '<strong class="font-bold text-zinc-950 dark:text-zinc-100">$1</strong>');
@@ -291,10 +305,9 @@ function parseMarkdownToHtml(md: string): string {
     s = s.replace(/___([^_]+)___/g, '<strong><em>$1</em></strong>');
     s = s.replace(/__([^_]+)__/g, '<strong class="font-bold text-zinc-950 dark:text-zinc-100">$1</strong>');
     s = s.replace(/_([^_]+)_/g, '<em class="italic">$1</em>');
-    // Inline code
-    s = s.replace(/`([^`]+)`/g, '<code class="bg-zinc-100 dark:bg-zinc-800 text-blue-700 dark:text-cyan-300 px-1.5 py-0.5 rounded text-[13px] font-mono border border-zinc-200 dark:border-zinc-700">$1</code>');
     // Strikethrough
     s = s.replace(/~~([^~]+)~~/g, '<del class="line-through text-zinc-400">$1</del>');
+    for (let i = tokens.length - 1; i >= 0; i--) s = s.split(`${marker}${i}${marker}`).join(tokens[i]);
     return s;
   };
 
@@ -335,7 +348,7 @@ function parseMarkdownToHtml(md: string): string {
         const langClass = codeBlockLang ? ` language-${escapeHtml(codeBlockLang)}` : '';
         const codeText = escapeHtml(codeBlockContent.join('\n'));
         out.push(
-          `<div class="relative group my-4 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 text-zinc-100"><div class="flex items-center justify-between px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-xs text-zinc-400 font-mono"><span>${codeBlockLang || 'code'}</span></div><pre class="p-4 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed"><code class="${langClass}">${codeText}</code></pre></div>`
+          `<div class="relative group my-4 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 text-zinc-100"><div class="flex items-center justify-between px-3 py-1.5 bg-zinc-900 border-b border-zinc-800 text-xs text-zinc-400 font-mono"><span>${escapeHtml(codeBlockLang || 'code')}</span></div><pre class="p-4 overflow-x-auto text-xs sm:text-sm font-mono leading-relaxed"><code class="${langClass}">${codeText}</code></pre></div>`
         );
         inCodeBlock = false;
         codeBlockLang = '';
@@ -537,15 +550,25 @@ export default function MarkdownViewer({
   initialMarkdown,
   initialFileName,
 }: MarkdownViewerProps) {
-  const [markdown, setMarkdown] = useState<string>(initialMarkdown || TEMPLATES.sample.content);
+  const [markdown, setMarkdown] = useState<string>(initialMarkdown ?? TEMPLATES.sample.content);
   const [viewMode, setViewMode] = useState<'split' | 'preview' | 'editor'>('split');
   const [copied, setCopied] = useState<boolean>(false);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(initialFileName || 'document.md');
   const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [allowRemoteImages, setAllowRemoteImages] = useState(false);
+  const [fileError, setFileError] = useState('');
+  const fileReadVersion = useRef(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const inputId = useId();
+
+  const replaceDocument = (text: string, name?: string) => {
+    fileReadVersion.current++;
+    setMarkdown(text);
+    if (name) setFileName(name);
+    setFileError('');
+  };
 
   // Client-side URL query parameter hydration for pre-filled templates or shared snippets
   useEffect(() => {
@@ -554,13 +577,7 @@ export default function MarkdownViewer({
       const sp = new URLSearchParams(window.location.search);
       const templateKey = sp.get('template');
       if (templateKey && TEMPLATES[templateKey]) {
-        setMarkdown(TEMPLATES[templateKey].content);
-        setFileName(TEMPLATES[templateKey].fileName);
-      }
-      const rawText = sp.get('text');
-      if (rawText) {
-        setMarkdown(decodeURIComponent(rawText));
-        setFileName('shared.md');
+        replaceDocument(TEMPLATES[templateKey].content, TEMPLATES[templateKey].fileName);
       }
     } catch {
       // Ignore query parsing error
@@ -580,19 +597,30 @@ export default function MarkdownViewer({
     return { words, chars, charsNoSpaces, lines, readingMinutes, kb };
   }, [markdown]);
 
-  const htmlOutput = useMemo(() => parseMarkdownToHtml(markdown), [markdown]);
+  const htmlOutput = useMemo(() => parseMarkdownToHtml(markdown, allowRemoteImages), [markdown, allowRemoteImages]);
 
   // Handle local file upload
   const handleFileUpload = (file: File) => {
     if (!file) return;
-    setFileName(file.name);
+    if (!/\.(md|markdown|txt)$/i.test(file.name)) {
+      setFileError('Choose a .md, .markdown or .txt file.');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setFileError('Choose a text file no larger than 5 MiB.');
+      return;
+    }
+    const version = ++fileReadVersion.current;
+    setFileError('');
     const reader = new FileReader();
     reader.onload = (e) => {
       const content = e.target?.result as string;
-      if (typeof content === 'string') {
+      if (typeof content === 'string' && version === fileReadVersion.current) {
         setMarkdown(content);
+        setFileName(file.name);
       }
     };
+    reader.onerror = () => { if (version === fileReadVersion.current) setFileError('This file could not be read. Choose it again or paste its text.'); };
     reader.readAsText(file);
   };
 
@@ -606,11 +634,11 @@ export default function MarkdownViewer({
 
   // Clipboard paste support
   const handlePasteFromClipboard = async () => {
+    const version = ++fileReadVersion.current;
     try {
       const text = await navigator.clipboard.readText();
-      if (text) {
-        setMarkdown(text);
-        setFileName('clipboard.md');
+      if (text && version === fileReadVersion.current) {
+        replaceDocument(text, 'clipboard.md');
       }
     } catch {
       alert('Clipboard access denied or unavailable in this browser.');
@@ -697,7 +725,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
     const selectedText = el.value.substring(start, end) || defaultPlaceholder;
     const replacement = `${prefix}${selectedText}${suffix}`;
     const newMarkdown = el.value.substring(0, start) + replacement + el.value.substring(end);
-    setMarkdown(newMarkdown);
+    replaceDocument(newMarkdown);
 
     // Reset cursor position inside inserted text
     setTimeout(() => {
@@ -728,8 +756,8 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
               <FileCode className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100 font-mono">
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
+                <span className="break-all text-sm font-bold text-zinc-900 dark:text-zinc-100 font-mono">
                   {fileName}
                 </span>
                 <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 bg-zinc-200/70 dark:bg-zinc-800 px-1.5 py-0.5 rounded">
@@ -737,7 +765,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
                 </span>
               </div>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
-                Drop your <code className="font-mono text-[11px]">.md</code> or <code className="font-mono text-[11px]">.txt</code> file here, or select a template below. 100% computed in browser memory.
+                Drop a .md, .markdown or .txt file up to 5 MiB, or paste text. Preview and editing run in your browser.
               </p>
             </div>
           </div>
@@ -751,6 +779,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
                 if (e.target.files && e.target.files[0]) {
                   handleFileUpload(e.target.files[0]);
                 }
+                e.target.value = '';
               }}
               className="hidden"
             />
@@ -777,8 +806,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
                   key={key}
                   type="button"
                   onClick={() => {
-                    setMarkdown(t.content);
-                    setFileName(t.fileName);
+                    replaceDocument(t.content, t.fileName);
                   }}
                   className={`px-2 py-1.5 text-[11px] font-medium rounded-lg transition ${
                     fileName === t.fileName
@@ -795,8 +823,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
             <button
               type="button"
               onClick={() => {
-                setMarkdown('');
-                setFileName('untitled.md');
+                replaceDocument('', 'untitled.md');
               }}
               className="inline-flex items-center gap-1 px-2.5 py-2 text-xs font-semibold rounded-xl border border-rose-200 dark:border-rose-900/40 text-rose-600 dark:text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition"
               title="Clear editor"
@@ -805,6 +832,12 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
             </button>
           </div>
         </div>
+      </div>
+
+      {fileError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-950 dark:text-red-200">{fileError}</p>}
+      <div className="rounded-xl border border-zinc-200 p-3 text-sm dark:border-zinc-800">
+        <label className="flex items-start gap-2"><input type="checkbox" checked={allowRemoteImages} onChange={e => setAllowRemoteImages(e.target.checked)} className="mt-1 accent-blue-600" /><span>Load remote images in the preview and exports</span></label>
+        <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">Off by default. Loading images contacts the hosts named in your document. Relative image paths, raw HTML, math and Mermaid diagrams are not rendered. Task checklists are read-only; this is a lightweight Markdown parser, not full GitHub compatibility.</p>
       </div>
 
       {/* Metrics Bar & View Mode Toggles */}
@@ -987,7 +1020,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
               id={inputId}
               ref={textareaRef}
               value={markdown}
-              onChange={(e) => setMarkdown(e.target.value)}
+              onChange={(e) => replaceDocument(e.target.value)}
               placeholder="Paste or type Markdown content here..."
               rows={24}
               className="w-full h-full min-h-[500px] p-4 bg-transparent text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 font-mono text-xs sm:text-sm resize-none focus:outline-none leading-relaxed"
@@ -1113,9 +1146,9 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
         <ShieldCheck className="w-5 h-5 text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
         <div>
           <strong className="text-zinc-900 dark:text-zinc-200 font-semibold block mb-0.5">
-            100% In-Browser Privacy &amp; Zero Server Uploads
+            Local file processing; remote images are optional
           </strong>
-          When you open, drop, or edit .md files, everything is processed inside your local device memory using HTML5 FileReader and client-side JavaScript. No file text, document names, or metrics are ever transmitted over the network.
+          File text and filenames are processed in this browser and are not uploaded by this tool. Remote images are blocked unless you enable them; enabling them contacts their hosts, including when you open an exported document. Links contact their destinations when you click them. Do not put private document text into a page URL.
         </div>
       </div>
     </div>

@@ -796,13 +796,13 @@ export const TOOL_DEEP_CONTENT: Record<string, DeepContent> = {
       },
       {
         "title": "Resizing beats quality reduction",
-        "body": "If an image is displayed at 800px wide, shipping a 4000px file and lowering JPEG quality is the wrong trade. Resizing to the display size first reduces file size far more, with no visible loss at all."
+        "body": "If an image is displayed at 800px wide, a 4000px source may be unnecessary. In maximum-size mode, optional dimension reduction can help meet a byte limit. Check destination dimensions and inspect fine detail: downscaling changes pixels and can reduce readability."
       }
     ],
     "edgeCases": [
       {
         "title": "PNG with transparency",
-        "body": "Converting a transparent PNG to JPEG for a smaller file replaces transparency with a solid background — usually black or white. Use WebP if you need both transparency and a small file."
+        "body": "This compressor places a white background behind transparent pixels when exporting JPEG. Select WebP to retain transparency, and check that the site receiving the file accepts WebP."
       }
     ]
   },
@@ -1016,28 +1016,28 @@ export const TOOL_DEEP_CONTENT: Record<string, DeepContent> = {
   },
   "markdown-viewer": {
     "formula": {
-      "expression": "AST = Tokenize(Lines) ➔ ParseBlocks(Headings, Tables, Fences) ➔ ParseInline(GFM) ➔ Render(HTML5)",
+      "expression": "Preview = render supported blocks + format supported inline syntax",
       "where": [
         "Lines: Stream of plain-text Markdown characters split across Windows (\\r\\n) or Unix (\\n) line breaks",
-        "ParseBlocks: CommonMark block structure identifying H1-H6, GFM pipe tables (| col |), lists (- / 1.), and fences (```)",
-        "ParseInline: AST leaf evaluation formatting bold (**), italic (*), code (`), links ([text](url)), and alerts (> [!NOTE])",
-        "Render: Deterministic compilation into clean, sanitized HTML5 elements with local CSS variables and print media styles"
+        "Blocks: a lightweight parser recognizes headings, pipe tables, lists, code fences and selected alerts; it is not a complete CommonMark/GFM implementation",
+        "Inline syntax: emphasis, code, links and image placeholders; raw HTML is escaped and unsupported URL protocols are not linked",
+        "Images: remote HTTP(S) images are blocked unless enabled; exported HTML follows the selected image setting"
       ]
     },
     "workedExample": {
-      "scenario": "Opening a 2,500-word software specification (.md file) and converting it to PDF & Word",
+      "scenario": "Previewing a local README before exporting it",
       "steps": [
         {
           "label": "File Ingestion (FileReader API)",
           "value": "The FileReader API loads the selected Markdown text into browser memory."
         },
         {
-          "label": "GFM Block Parsing",
-          "value": "Identifies 14 section headers, 3 pipe tables, 5 syntax code blocks, and 12 checklist items"
+          "label": "Supported block parsing",
+          "value": "Preview headings, pipe tables, code fences and read-only checklists. Check unsupported syntax against the final destination."
         },
         {
           "label": "DOM Injection & Live Metrics",
-          "value": "Generates semantic DOM tree: 2,514 words, 16,840 characters, ~13 min estimated reading time"
+          "value": "Displays word, character and line counts for the current source text, plus an approximate reading time."
         },
         {
           "label": "1-Click PDF Compilation",
@@ -1054,7 +1054,7 @@ export const TOOL_DEEP_CONTENT: Record<string, DeepContent> = {
     "pitfalls": [
       {
         "title": "Missing Empty Lines Around Markdown Tables",
-        "body": "CommonMark parsers require a blank line before and after table delimiters. If text immediately precedes a table header row (| col |), parsers treat it as plain text."
+        "body": "Tables are a Markdown extension rather than part of core CommonMark. This viewer expects pipe-delimited rows; other renderers have different rules. Check header/separator alignment and the final destination's rendering."
       },
       {
         "title": "Unclosed Code Fences Corrupting Document Layout",

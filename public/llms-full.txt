@@ -53,7 +53,7 @@
 ## Image Compressor
 - URL: https://www.yuitility.app/tools/image-compressor
 - Category: media
-- Description: Reduce image file size instantly in your browser while preserving optimal visual quality.
+- Description: Fit an image to a 20, 50, 100 or custom KB limit, or adjust quality locally. Measure the output before downloading.
 
 ## India Salary Calculator
 - URL: https://www.yuitility.app/tools/salary-calculator
@@ -653,7 +653,7 @@
 ## Open MD File & Markdown Viewer
 - URL: https://www.yuitility.app/tools/markdown-viewer
 - Category: developer
-- Description: Open and view MD files online with live split-screen Markdown preview, GitHub tables, checklists, and 1-click export to PDF, Word, and HTML.
+- Description: Open .md files with local text processing, split-view editing and remote images blocked by default. Export Markdown, HTML or Word-compatible .doc.
 
 ## UUID v4 & GUID Generator
 - URL: https://www.yuitility.app/tools/uuid-v4-generator

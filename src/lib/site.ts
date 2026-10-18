@@ -459,7 +459,7 @@ const TOOL_SEO_TITLES: Record<string, string> = {
   "image-to-pdf": "Convert Images to PDF Without Uploading",
 
   // --- Images ----------------------------------------------------------
-  "image-compressor": "Compress Images Without Uploading Them",
+  "image-compressor": "Image Compressor: Fit 20, 50 or 100 KB Without Uploads",
   "image-resizer": "Image Resizer: Resize Image Without Losing Quality",
   "format-converter": "Convert Images to WebP, PNG or JPEG",
   "background-remover": "Remove an Image Background in Your Browser",
@@ -698,7 +698,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
     "Turn JPG, PNG or WebP images into a single PDF, one image per page, entirely in your browser with no upload step.",
 
   "image-compressor":
-    "Cut image file size with a live before-and-after comparison, so you can find the quality setting where the saving stops being worth it.",
+    "Compress images to a 20, 50, 100 or custom KB limit in your browser. Choose JPEG or WebP, measure bytes and inspect any dimension or quality changes.",
   "image-resizer":
     "Resize by exact pixel dimensions or by percentage, with optional aspect-ratio lock, processed on your own device.",
   "format-converter": "Convert supported images into WebP, PNG or JPEG in your browser. Choose an output format and inspect the downloaded image; GIF and AVIF export are not supported.",
@@ -785,7 +785,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
   "markdown-to-html":
     "Convert Markdown to clean semantic HTML in real-time with split-pane live preview. Supports headings, tables, code fences, and checklists with instant copy.",
   "markdown-viewer":
-    "Open and view MD files online with live Markdown preview and editor. Supports GitHub Flavored Markdown, split-screen editing, and instant export to PDF, Word, or HTML. 100% private.",
+    "Open .md files in your browser with split-view editing, local text processing and remote images off by default. Export Markdown, HTML or Word-compatible files.",
   "diff-checker":
     "Compare two text files or code snippets side-by-side or inline to spot line additions and deletions with character-level accuracy. 100% private in-browser diff.",
 

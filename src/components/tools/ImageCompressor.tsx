@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect, useTransition } from 'react';
+import React, { useState, useRef, useEffect, useId } from 'react';
 import { Download, RefreshCw, Share2, UploadCloud, FileImage, Percent } from 'lucide-react';
+import { compressToByteLimit } from '@/src/lib/imageCompression';
 
 interface ImageCompressorProps {
   onCopy: (text: string) => void;
@@ -15,13 +16,23 @@ interface ImageMetadata {
   compressedUrl: string;
   width: number;
   height: number;
+  originalWidth: number;
+  originalHeight: number;
+  maxBytes: number | null;
+  targetMet: boolean;
 }
 
 export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [quality, setQuality] = useState<number>(75);
   const [metadata, setMetadata] = useState<ImageMetadata | null>(null);
-  const [isCompressing, startCompressing] = useTransition();
+  const [isCompressing, setIsCompressing] = useState(false);
+  const [mode, setMode] = useState<'quality' | 'target'>('quality');
+  const [targetKB, setTargetKB] = useState('50');
+  const [allowResize, setAllowResize] = useState(true);
+  const [outputType, setOutputType] = useState('image/jpeg');
+  const [error, setError] = useState('');
+  const id = useId();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,67 +42,84 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
   };
 
   const processFile = (file: File) => {
-    if (!file.type.startsWith('image/')) {
-      alert('Please upload a valid image file (JPG, PNG, or WEBP)');
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      setError('Choose a JPEG, PNG or WebP file. Other image formats are not supported.');
       return;
     }
+    if (file.size > 20 * 1024 * 1024) {
+      setError('Choose an image no larger than 20 MiB.');
+      return;
+    }
+    setError('');
+    setMetadata(null);
     setSelectedFile(file);
   };
 
-  const compressImage = () => {
-    if (!selectedFile) return;
-
-    startCompressing(async () => {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          if (!ctx) return;
-
-          // Maintain aspect ratio
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx.drawImage(img, 0, 0, img.width, img.height);
-
-          // Compress to JPEG or WebP
-          const outputType = selectedFile.type === 'image/png' ? 'image/jpeg' : selectedFile.type;
-          
-          canvas.toBlob(
-            (blob) => {
-              if (blob) {
-                const compressedUrl = URL.createObjectURL(blob);
-                const originalUrl = URL.createObjectURL(selectedFile);
-
-                setMetadata({
-                  name: selectedFile.name,
-                  type: outputType,
-                  originalSize: selectedFile.size,
-                  compressedSize: blob.size,
-                  originalUrl,
-                  compressedUrl,
-                  width: img.width,
-                  height: img.height
-                });
-              }
-            },
-            outputType,
-            quality / 100
-          );
-        };
-        img.src = event.target?.result as string;
-      };
-      reader.readAsDataURL(selectedFile);
-    });
-  };
-
-  // Re-compress when quality changes
   useEffect(() => {
-    if (selectedFile) {
-      compressImage();
+    if (!selectedFile) return;
+    const maxBytes = mode === 'target' ? Math.floor(Number(targetKB) * 1000) : null;
+    setMetadata(null);
+    if (maxBytes !== null && (!Number.isFinite(maxBytes) || maxBytes < 1000 || maxBytes > 20000000)) {
+      setError('Enter a maximum file size from 1 to 20,000 KB.');
+      setIsCompressing(false);
+      return;
     }
-  }, [selectedFile, quality]);
+    const controller = new AbortController();
+    const originalUrl = URL.createObjectURL(selectedFile);
+    let compressedUrl = '';
+    const img = new Image();
+    setError('');
+    setIsCompressing(true);
+    const timer = setTimeout(async () => {
+      try {
+        await new Promise<void>((resolve, reject) => {
+          img.onload = () => resolve();
+          img.onerror = () => reject(new Error('This image could not be decoded. Try another JPEG, PNG or WebP.'));
+          img.src = originalUrl;
+        });
+        if (controller.signal.aborted) return;
+        if (!img.naturalWidth || !img.naturalHeight || img.naturalWidth * img.naturalHeight > 40000000) throw new Error('Choose an image with valid dimensions, up to 40 megapixels.');
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('Canvas image processing is unavailable in this browser.');
+        const encode = (width: number, height: number, value: number) => new Promise<Blob>((resolve, reject) => {
+          if (controller.signal.aborted) { reject(new Error('Compression cancelled.')); return; }
+          canvas.width = width;
+          canvas.height = height;
+          if (outputType === 'image/jpeg') {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, width, height);
+          }
+          ctx.drawImage(img, 0, 0, width, height);
+          canvas.toBlob(blob => {
+            if (!blob || !blob.size) reject(new Error('The browser could not encode this image.'));
+            else if (blob.type !== outputType) reject(new Error('This browser does not support the selected format. Try JPEG.'));
+            else resolve(blob);
+          }, outputType, value);
+        });
+        const result = maxBytes === null
+          ? { blob: await encode(img.naturalWidth, img.naturalHeight, quality / 100), width: img.naturalWidth, height: img.naturalHeight, targetMet: true }
+          : await compressToByteLimit(encode, { width: img.naturalWidth, height: img.naturalHeight, maxBytes, allowResize, signal: controller.signal });
+        if (controller.signal.aborted) return;
+        compressedUrl = URL.createObjectURL(result.blob);
+        setMetadata({ name: selectedFile.name, type: result.blob.type, originalSize: selectedFile.size,
+          compressedSize: result.blob.size, originalUrl, compressedUrl, width: result.width, height: result.height,
+          originalWidth: img.naturalWidth, originalHeight: img.naturalHeight, maxBytes, targetMet: result.targetMet });
+      } catch (cause) {
+        if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : 'Compression failed. Try another image.');
+      } finally {
+        if (!controller.signal.aborted) setIsCompressing(false);
+      }
+    }, 180);
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+      img.onload = null;
+      img.onerror = null;
+      URL.revokeObjectURL(originalUrl);
+      if (compressedUrl) URL.revokeObjectURL(compressedUrl);
+    };
+  }, [selectedFile, quality, mode, targetKB, allowResize, outputType]);
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -105,20 +133,16 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
   };
 
   const formatSize = (bytes: number) => {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    return `${(bytes / 1000).toFixed(2)} KB (${bytes.toLocaleString()} bytes)`;
   };
 
   const handleDownload = () => {
-    if (!metadata) return;
+    if (!metadata || isCompressing || !metadata.targetMet) return;
     const a = document.createElement('a');
     a.href = metadata.compressedUrl;
     // Replace extension with .compressed.jpg / webp
-    const ext = metadata.type.split('/')[1];
-    const newName = metadata.name.substring(0, metadata.name.lastIndexOf('.')) + `_compressed.${ext}`;
+    const ext = metadata.type === 'image/jpeg' ? 'jpg' : 'webp';
+    const newName = (metadata.name.replace(/\.[^/.]+$/, '') || 'image') + `_compressed.${ext}`;
     a.download = newName;
     a.click();
   };
@@ -127,11 +151,13 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
     setSelectedFile(null);
     setMetadata(null);
     setQuality(75);
+    setError('');
+    setIsCompressing(false);
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const savingsPercentage = metadata
-    ? Math.max(0, Math.round(((metadata.originalSize - metadata.compressedSize) / metadata.originalSize) * 100))
+    ? Math.round(((metadata.originalSize - metadata.compressedSize) / metadata.originalSize) * 100)
     : 0;
 
   return (
@@ -140,7 +166,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-100 dark:border-zinc-800 pb-5">
         <div>
           <h2 className="text-2xl font-display font-semibold text-zinc-900 dark:text-zinc-50 tracking-tight">Image Compressor</h2>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Shrink JPEG, WEBP, or PNG images safely and locally with instant size calculations.</p>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">Choose image quality or a maximum file size. Your image stays in this browser.</p>
         </div>
         <div className="flex items-center gap-2">
           <button
@@ -160,6 +186,33 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
         </div>
       </div>
 
+      <div className="grid gap-4 rounded-xl border border-zinc-200 p-4 dark:border-zinc-800 sm:grid-cols-2">
+        <div>
+          <label htmlFor={`${id}-mode`} className="mb-2 block text-sm font-medium">Compression method</label>
+          <select id={`${id}-mode`} value={mode} onChange={e => setMode(e.target.value as 'quality' | 'target')} className="w-full rounded-lg border border-zinc-300 bg-white p-2 text-sm dark:border-zinc-700 dark:bg-zinc-950">
+            <option value="quality">Choose image quality</option>
+            <option value="target">Fit a maximum file size</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor={`${id}-format`} className="mb-2 block text-sm font-medium">Output format</label>
+          <select id={`${id}-format`} value={outputType} onChange={e => setOutputType(e.target.value)} className="w-full rounded-lg border border-zinc-300 bg-white p-2 text-sm dark:border-zinc-700 dark:bg-zinc-950">
+            <option value="image/jpeg">JPEG — white background</option>
+            <option value="image/webp">WebP — supports transparency</option>
+          </select>
+        </div>
+        {mode === 'target' && <div className="space-y-3 sm:col-span-2">
+          <label htmlFor={`${id}-target`} className="block text-sm font-medium">Maximum file size (KB)</label>
+          <input id={`${id}-target`} type="number" inputMode="decimal" min="1" max="20000" step="any" value={targetKB} onChange={e => setTargetKB(e.target.value)} aria-describedby={`${id}-target-help`} className="w-full rounded-lg border border-zinc-300 bg-white p-2 text-sm dark:border-zinc-700 dark:bg-zinc-950" />
+          <div className="flex flex-wrap gap-2">{[20, 50, 100, 200].map(size => <button key={size} type="button" aria-pressed={Number(targetKB) === size} onClick={() => setTargetKB(String(size))} className={`rounded-lg border px-3 py-2 text-sm ${Number(targetKB) === size ? 'border-blue-600 bg-blue-50 text-blue-800 dark:bg-blue-950 dark:text-blue-200' : 'border-zinc-300 dark:border-zinc-700'}`}>{size} KB</button>)}</div>
+          <p id={`${id}-target-help`} className="text-xs text-zinc-500">1 KB = 1,000 bytes. The measured output must fit this limit; it need not equal the limit exactly.</p>
+          <label className="flex items-start gap-2 text-sm"><input type="checkbox" checked={allowResize} onChange={e => setAllowResize(e.target.checked)} className="mt-1 accent-blue-600" /><span>Allow smaller dimensions if quality reduction is not enough. Check any minimum pixel dimensions required by your form.</span></label>
+        </div>}
+        <p className="text-xs text-zinc-500 sm:col-span-2">JPEG replaces transparency with white. Choose WebP to keep transparency; check which formats your destination accepts. Animation and metadata are not retained.</p>
+      </div>
+      {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-950 dark:text-red-200">{error}</p>}
+      <p role="status" aria-live="polite" className="text-sm text-zinc-600 dark:text-zinc-400">{isCompressing ? 'Measuring and compressing your image…' : ''}</p>
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Inputs Pane */}
         <div className="lg:col-span-7 space-y-6">
@@ -171,7 +224,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
               onClick={() => fileInputRef.current?.click()}
               className="flex flex-col items-center justify-center p-10 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-xl cursor-pointer bg-zinc-50/20 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/10 transition-colors relative group"
             >
-              <input aria-label="Choose files"
+              <input aria-label="Choose image"
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileChange}
@@ -180,7 +233,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
               />
               <UploadCloud className="w-10 h-10 text-zinc-400 dark:text-zinc-500 mb-4 group-hover:text-zinc-600 transition-colors" />
               <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">Drag & Drop image here</p>
-              <p className="text-xs text-zinc-400 mt-1">Supports JPEG, PNG, or WEBP up to 20MB</p>
+              <p className="text-xs text-zinc-500 mt-1">JPEG, PNG or WebP · up to 20 MiB and 40 megapixels</p>
               <button
                 type="button"
                 className="mt-4 px-4 py-1.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 text-xs font-semibold rounded-lg shadow-sm"
@@ -211,12 +264,12 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
               <div className="h-[1px] bg-zinc-200/50 dark:bg-zinc-800" />
 
               {/* Quality control slider */}
-              <div className="space-y-2">
+              {mode === 'quality' && <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <label className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Compression Level (Quality)</label>
+                  <label htmlFor={`${id}-quality`} className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Image quality</label>
                   <span className="font-mono text-sm font-bold text-zinc-900 dark:text-zinc-50">{quality}%</span>
                 </div>
-                <input aria-label="Compression Level (Quality) (slider)"
+                <input id={`${id}-quality`}
                   type="range"
                   min="10"
                   max="100"
@@ -229,7 +282,7 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
                   <span>High Compression (Low Quality)</span>
                   <span>Low Compression (High Quality)</span>
                 </div>
-              </div>
+              </div>}
             </div>
           )}
 
@@ -280,12 +333,15 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
                   <div className="flex items-center gap-2">
                     <Percent className="w-5 h-5 text-emerald-500" />
                     <div>
-                      <p className="text-xs text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-bold">Space Savings</p>
-                      <p className="text-sm text-zinc-500">Reduction in bytes</p>
+                      <p className="text-xs text-emerald-600 dark:text-emerald-600 dark:text-emerald-400 font-bold">File size change</p>
+                      <p className="text-sm text-zinc-500">{savingsPercentage > 0 ? 'Smaller output' : savingsPercentage < 0 ? 'Larger output' : 'No size reduction'}</p>
                     </div>
                   </div>
-                  <p className="text-3xl font-display font-black text-emerald-600 dark:text-emerald-600 dark:text-emerald-400">-{savingsPercentage}%</p>
+                  <p className="text-3xl font-display font-black text-zinc-900 dark:text-zinc-100">{savingsPercentage > 0 ? '−' : savingsPercentage < 0 ? '+' : ''}{Math.abs(savingsPercentage)}%</p>
                 </div>
+                {metadata.compressedSize >= metadata.originalSize && <p className="text-sm text-amber-700 dark:text-amber-300">This output does not reduce file size. Keeping the original or lowering quality may be better.</p>}
+                {metadata.maxBytes !== null && <p role="status" className={`rounded-lg p-3 text-sm ${metadata.targetMet ? 'bg-emerald-50 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-200' : 'bg-amber-50 text-amber-900 dark:bg-amber-950 dark:text-amber-200'}`}>{metadata.targetMet ? `Meets the ${metadata.maxBytes.toLocaleString()}-byte limit.` : 'Cannot meet this limit with the current settings. Allow smaller dimensions, choose WebP or increase the limit. Download is disabled for this result.'}</p>}
+                {(metadata.width !== metadata.originalWidth || metadata.height !== metadata.originalHeight) && <p className="text-sm text-amber-700 dark:text-amber-300">Dimensions reduced from {metadata.originalWidth} × {metadata.originalHeight} to {metadata.width} × {metadata.height} px. Inspect text and faces before using the image.</p>}
 
                 <div className="h-[1px] bg-zinc-200/50 dark:bg-zinc-800" />
 
@@ -316,7 +372,8 @@ export default function ImageCompressor({ onCopy, onShare }: ImageCompressorProp
 
               <button
                 onClick={handleDownload}
-                className="w-full flex items-center justify-center gap-2 py-3 bg-zinc-950 text-white dark:bg-zinc-100 dark:text-zinc-950 text-xs font-semibold rounded-lg hover:opacity-90 transition-opacity mt-6"
+                disabled={isCompressing || !metadata.targetMet}
+                className="w-full flex items-center justify-center gap-2 py-3 bg-zinc-950 text-white dark:bg-zinc-100 dark:text-zinc-950 text-xs font-semibold rounded-lg hover:opacity-90 transition-opacity mt-6 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Download className="w-3.5 h-3.5" />
                 Download Optimized Image
