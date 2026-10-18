@@ -1,4 +1,5 @@
 import React, { useState, useRef, useId, useMemo, useEffect } from 'react';
+import DOMPurify, { type Config } from 'dompurify';
 import {
   Upload,
   Clipboard,
@@ -35,6 +36,13 @@ interface MarkdownViewerProps {
   initialMarkdown?: string;
   initialFileName?: string;
 }
+
+export const MARKDOWN_SANITIZE_CONFIG: Config = {
+  USE_PROFILES: { html: true },
+  FORBID_TAGS: ['style', 'form'],
+  FORBID_ATTR: ['style'],
+  ADD_ATTR: ['target', 'referrerpolicy', 'loading'],
+};
 
 export const TEMPLATES: Record<string, { label: string; fileName: string; content: string }> = {
   sample: {
@@ -558,10 +566,13 @@ export default function MarkdownViewer({
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [allowRemoteImages, setAllowRemoteImages] = useState(false);
   const [fileError, setFileError] = useState('');
+  const [hasDOM, setHasDOM] = useState(false);
   const fileReadVersion = useRef(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const inputId = useId();
+
+  useEffect(() => { setHasDOM(true); }, []);
 
   const replaceDocument = (text: string, name?: string) => {
     fileReadVersion.current++;
@@ -597,7 +608,11 @@ export default function MarkdownViewer({
     return { words, chars, charsNoSpaces, lines, readingMinutes, kb };
   }, [markdown]);
 
-  const htmlOutput = useMemo(() => parseMarkdownToHtml(markdown, allowRemoteImages), [markdown, allowRemoteImages]);
+  // Keep the SSR/first client render identical; sanitize with the browser DOM
+  // before HTML reaches the preview, clipboard or document exports.
+  const htmlOutput = useMemo(() => hasDOM && DOMPurify.isSupported
+    ? DOMPurify.sanitize(parseMarkdownToHtml(markdown, allowRemoteImages), MARKDOWN_SANITIZE_CONFIG)
+    : '', [hasDOM, markdown, allowRemoteImages]);
 
   // Handle local file upload
   const handleFileUpload = (file: File) => {
@@ -835,6 +850,7 @@ blockquote { border-left: 4px solid #3b82f6; margin: 12px 0; padding: 8px 16px; 
       </div>
 
       {fileError && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-800 dark:bg-red-950 dark:text-red-200">{fileError}</p>}
+      {hasDOM && !DOMPurify.isSupported && <p role="alert" className="rounded-lg bg-amber-50 p-3 text-sm text-amber-900 dark:bg-amber-950 dark:text-amber-200">Secure HTML preview is unavailable in this browser. You can still edit and download the Markdown source.</p>}
       <div className="rounded-xl border border-zinc-200 p-3 text-sm dark:border-zinc-800">
         <label className="flex items-start gap-2"><input type="checkbox" checked={allowRemoteImages} onChange={e => setAllowRemoteImages(e.target.checked)} className="mt-1 accent-blue-600" /><span>Load remote images in the preview and exports</span></label>
         <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">Off by default. Loading images contacts the hosts named in your document. Relative image paths, raw HTML, math and Mermaid diagrams are not rendered. Task checklists are read-only; this is a lightweight Markdown parser, not full GitHub compatibility.</p>

@@ -25,7 +25,10 @@ module.exports=async({check,fixture,close,equal,inspectTool})=>{
   await check('LoremIpsumGenerator','requested word count',{type:'words',count:20},(v,t)=>{v.generate();equal(t.render().values.text.trim().split(/\s+/).length,20);});
   await check('FakeDataGenerator','requested rows and selected fields',{rowCount:3},v=>{const rows=v.generateData();equal(rows.length,3);assert.ok(rows.every(r=>typeof r.name==='string'&&typeof r.email==='string'));});
   await check('TextToAsciiArt','five-line output with supported glyph',{text:'A'},v=>{equal(v.artOutput.split('\n').length,5);assert.ok(v.artOutput.includes('/'));});
-  await check('MarkdownViewer','preview escapes executable HTML',{markdown:'<script>alert(1)</script>\n\n**bold**'},v=>{const html=v.htmlOutput;assert.equal(typeof html,'string');assert.ok(!html.includes('<script>'));assert.match(html,/<strong[^>]*>bold<\/strong>/);});
+  const markdownDOM = new (require('jsdom').JSDOM)('<!doctype html><html><body></body></html>');
+  try {
+    await check('MarkdownViewer','preview escapes executable HTML',{markdown:'<script>alert(1)</script>\n\n**bold**',hasDOM:true},v=>{const html=v.htmlOutput;assert.equal(typeof html,'string');assert.ok(!html.includes('<script>'));assert.match(html,/<strong[^>]*>bold<\/strong>/);},{window:markdownDOM.window});
+  } finally { markdownDOM.window.close(); }
   await check('WorldClock','UTC epoch rendered in Tokyo',{time:new Date('2026-01-01T00:00:00Z')},v=>assert.match(v.formatCityTime('Asia/Tokyo'),/09:00|9:00/));
   await check('ZodiacAgeCalculator','fixed calendar sun-sign convention',{dob:'2000-12-25'},v=>assert.match(v.info.westernSign,/Capricorn/));
   await fixture('ZodiacSunMoonCalculator',{dobDate:'2000-12-25'},{'astrol.moonSign':'Not calculated','astrol.risingSign':'Not calculated'});

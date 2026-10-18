@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { compressToByteLimit } from '../src/lib/imageCompression';
-import { parseMarkdownToHtml } from '../src/components/tools/MarkdownViewer';
+import createDOMPurify from 'dompurify';
+import { JSDOM } from 'jsdom';
+import { parseMarkdownToHtml, MARKDOWN_SANITIZE_CONFIG } from '../src/components/tools/MarkdownViewer';
 
 const { inspectTool } = createRequire(import.meta.url)('./tool-validation-harness.cjs');
 const blob = (size: number, type = 'image/jpeg') => new Blob([new Uint8Array(size)], { type });
@@ -179,4 +181,25 @@ test('Markdown file reads cannot replace a newer file, edit or cleared document'
   assert.equal(tool.states.fileName, 'untitled.md');
   tool.values.handleFileUpload(new File(['{}'], 'unsupported.json'));
   assert.match(tool.states.fileError, /Choose a .md/);
+});
+
+test('the preview/export sanitizer removes hostile HTML at the rendering boundary', () => {
+  const dom = new JSDOM('<!doctype html><html><body></body></html>');
+  const purify = createDOMPurify(dom.window as any);
+  try {
+    const dirty = '<img src="x" onerror="alert(1)"><a href="javascript:alert(1)">bad link</a><form><input></form><style>body{display:none}</style><strong>safe text</strong>';
+    const clean = purify.sanitize(dirty, MARKDOWN_SANITIZE_CONFIG);
+    const container = dom.window.document.createElement('div');
+    container.innerHTML = clean;
+    assert.equal(container.querySelector('[onerror],script,style,form'), null);
+    assert.equal(container.querySelector('a')?.hasAttribute('href'), false);
+    assert.equal(container.querySelector('strong')?.textContent, 'safe text');
+    const blocked = purify.sanitize(parseMarkdownToHtml('![private](https://example.com/pixel.png)'), MARKDOWN_SANITIZE_CONFIG);
+    assert.doesNotMatch(blocked, /<img\b/);
+    const link = purify.sanitize(parseMarkdownToHtml('[docs](https://example.com/a_b_c)'), MARKDOWN_SANITIZE_CONFIG);
+    assert.match(link, /href="https:\/\/example.com\/a_b_c"/);
+    assert.match(link, /rel="noopener noreferrer"/);
+  } finally {
+    dom.window.close();
+  }
 });
