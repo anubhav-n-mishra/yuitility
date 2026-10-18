@@ -100,8 +100,12 @@ export const metadata: Metadata = {
     "color-scheme": "light dark",
   },
   verification: {
+    google: "FsZpLCPvwKodUaYa2msuNKn3yRVixzVHOhKttciF_6E",
     other: {
-      "msvalidate.01": "0637265E8689996B664AD2392FF31E7D",
+      "msvalidate.01": [
+        "0637265E8689996B664AD2392FF31E7D",
+        "077716ADF916331EAA56EACE36CB08E2",
+      ],
     },
   },
 };
