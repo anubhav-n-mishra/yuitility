@@ -191,7 +191,7 @@ const CUSTOM_HOW_IT_WORKS: Record<string, string> = {
   "world-clock":
     "Select global cities to compare current times. The clock queries browser time zone databases via Intl.DateTimeFormat to display live local times and business hour overlaps.",
   "number-base-converter":
-    "Input a number in Binary, Octal, Decimal, or Hexadecimal. The converter evaluates positional radix formulas to display values across all bases simultaneously.",
+    "Enter an integer or finite fraction in binary, octal, decimal or hexadecimal. Integer arithmetic preserves the input exactly. Parentheses identify repeating output digits; an ellipsis labels truncation after 32 fractional digits.",
   "jwt-decoder":
     "Paste a JSON Web Token. The decoder splits header, payload, and signature segments, decodes Base64Url strings, and displays formatted JSON claims privately.",
   "meeting-cost-calculator":
@@ -471,7 +471,15 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
     },
     {
       question: "How large of a number can be converted?",
-      answer: "Supports large 64-bit integer values without precision loss."
+      answer: "Inputs may contain up to 4,096 characters. Integer conversion uses arbitrary-precision BigInt arithmetic rather than floating-point Number values, so integers beyond 64 bits retain their precision."
+    },
+    {
+      question: "What is 85.65 decimal in octal?",
+      answer: "85.65 in base 10 equals 125.5(1463) in base 8. The digits 1463 repeat forever. The integer part is 1×64 + 2×8 + 5 = 85; repeated multiplication of the fractional part by 8 produces the repeating digits."
+    },
+    {
+      question: "Can I convert fractions and repeating values?",
+      answer: "Enter finite fractions using a dot, such as 0.5 or -A.8 in hexadecimal. Repeating output is written in parentheses when a cycle is found within 32 fractional digits. Longer output is truncated with an ellipsis, not rounded. Parentheses, exponents and base prefixes are not accepted as input."
     },
     {
       question: "Why are base conversions useful in computer science?",
@@ -717,7 +725,7 @@ const TOOL_FAQS_DB: Record<string, FAQItem[]> = {
   "markdown-viewer": [
     {
       question: "How do I open an MD file without installing special software?",
-      answer: "You can open any .md file directly in your web browser by dragging and dropping it onto this page or clicking 'Open .md File'. Our in-browser file reader parses and renders the Markdown text into formatted HTML with styled headings, tables, and code blocks instantly without needing VS Code, Obsidian, or desktop apps.",
+      answer: "Click 'Open .md File' and choose a local .md, .markdown or .txt file up to 5 MiB, or drop the file onto the editor. The page previews supported headings, tables and code fences without installing software. Your file text stays in the browser; remote images remain blocked unless you enable them. You can edit the text beside the preview and download it again.",
     },
     {
       question: "How do I convert or export Markdown (.md) to PDF?",

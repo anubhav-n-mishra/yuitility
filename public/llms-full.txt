@@ -753,7 +753,7 @@
 ## Binary / Hex / Decimal Base Converter
 - URL: https://www.yuitility.app/tools/number-base-converter
 - Category: math
-- Description: Convert numbers between Binary (2), Octal (8), Decimal (10), and Hex (16).
+- Description: Convert integers and fractions between binary, octal, decimal and hex, with repeating digits identified.
 
 ## JWT Token Decoder
 - URL: https://www.yuitility.app/tools/jwt-decoder

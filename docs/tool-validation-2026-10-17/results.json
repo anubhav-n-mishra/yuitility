@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T04:30:47.295Z",
+  "generatedAt": "2026-10-28T17:28:00.875Z",
   "method": "Production logic with controlled React hooks; independent numeric fixtures and identities. No browser/DOM proof or external certification implied.",
   "summary": {
     "implementations": 167,
@@ -588,7 +588,7 @@
     {
       "component": "ImageCompressor",
       "source": "src/components/tools/ImageCompressor.tsx",
-      "sha256": "eba14b2aef9729beab070f9676ed5b08535e56a8e8b74779641893d93fdd0238",
+      "sha256": "f289551a0b49a86c60c56cff3c71b06d7fd05fd0525b5262268c12694d8300fe",
       "smoke": "pass",
       "checks": 1,
       "failures": 0,
@@ -732,7 +732,7 @@
     {
       "component": "MarkdownViewer",
       "source": "src/components/tools/MarkdownViewer.tsx",
-      "sha256": "5c71fb1ab550a3f626631cad24b755d204b49bb099f3a685790215590738cc44",
+      "sha256": "1d82e61fd9417a0d90e8c54bb4730867bba920e06d901ee480f3b959a819e4d6",
       "smoke": "pass",
       "checks": 1,
       "failures": 0,
@@ -849,7 +849,7 @@
     {
       "component": "NumberBaseConverter",
       "source": "src/components/tools/NumberBaseConverter.tsx",
-      "sha256": "632c91d3389abf7524c3f521dfb4cbecb06b036ae666ba4de3dd02106ed54665",
+      "sha256": "aa13828a3506af024adeeece277af376b75c83aa87a316aee4362af3f3859ab7",
       "smoke": "pass",
       "checks": 5,
       "failures": 0,
@@ -3259,7 +3259,8 @@
       "component": "MarkdownViewer",
       "name": "preview escapes executable HTML",
       "inputs": {
-        "markdown": "<script>alert(1)</script>\n\n**bold**"
+        "markdown": "<script>alert(1)</script>\n\n**bold**",
+        "hasDOM": true
       },
       "status": "pass"
     },

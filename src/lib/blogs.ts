@@ -19,6 +19,38 @@ export function readingTime(content: string): string {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    "slug": "checking-wcag-color-contrast-accessibility",
+    "title": "WCAG Color Contrast: Check AA and AAA Without Rounding",
+    "description": "Check text and background colors against WCAG AA and AAA thresholds. Reproduce black, white and gray examples, then test your real interface states.",
+    "date": "2026-10-28",
+    "category": "Developer & Design",
+    "readTime": "3 min read",
+    "author": "Team Yuitility",
+    "toolId": "color-palette",
+    "keywords": ["color contrast checker", "WCAG contrast ratio", "color palette checker", "accessible text colors"],
+    "content": `Use the [Color Palette and Contrast Checker](/tools/color-palette) to compare a text color with its actual background. Enter the foreground HEX value and background HEX value in the contrast section, then read the separate normal-text and large-text results. Generating a harmonious palette does not guarantee that its colors form readable text pairs.
+
+## Choose the threshold before changing the colors
+For WCAG Level AA, normal text needs a contrast ratio of at least 4.5:1. Large text needs at least 3:1. The Level AAA thresholds are 7:1 for normal text and 4.5:1 for large text. These thresholds concern text contrast; they are not a score for the accessibility of an entire page.
+
+The [W3C contrast-minimum guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) defines large text as at least 18 point, or at least 14 point when bold. In CSS terms those are approximately 24 pixels and 18.67 pixels. A medium-size label does not automatically qualify as large text just because it is a heading.
+
+## Reproduce three useful checks
+Start with black text, #000000, on white, #FFFFFF. The ratio is 21:1 and passes both text sizes at AA and AAA. White on white is 1:1 and fails the text thresholds.
+
+Next enter #777777 on #FFFFFF. Its ratio is approximately 4.478:1, displayed as 4.48:1. It fails AA for normal text, even though it passes the 3:1 large-text threshold. Do not round 4.478 up to 4.5 to declare a pass. The checker compares the underlying ratio with the threshold before formatting it for display.
+
+The ratio is (lighter relative luminance + 0.05) divided by (darker relative luminance + 0.05). It is symmetric: swapping a pair gives the same ratio. However, a layout can still behave differently when a dark background becomes a light background, so inspect the actual rendered result as well as the number.
+
+## Test the states people encounter
+Check body text, link text, hover and focus states, error messages and placeholder text against their respective backgrounds. Repeat for light and dark themes. A color that works on a white card can fail on a tinted panel. With a gradient or background image, test the least favorable area behind the text; one sampled pixel does not establish a pass across the whole region.
+
+This checker accepts solid HEX colors. For transparent or layered colors, first determine the final composited foreground and background. Do not enter only the uncomposited color and assume the resulting ratio describes the interface. Use the [Image Color Picker](/tools/image-color-picker) to inspect pixels when needed, then verify against the original design colors.
+
+## Record the pair, not just a pass badge
+Save the two HEX values, ratio, text size and weight, theme and component state. Those details make a later review reproducible. Use text or icons alongside color to communicate status, and check keyboard navigation, focus visibility, labels and zoom behavior separately. For the stricter text target, consult [W3C contrast-enhanced guidance](https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html). A passing contrast pair is one accessibility check, not a claim of WCAG conformance for the whole product.`,
+  },
+  {
     "slug": "how-to-use-scientific-calculator-online",
     "title": "Scientific Calculator: Angles, Powers and Precision",
     "description": "Before entering a long expression in the Scientific Calculator, verify a few known values. In degree mode, sin(30) should be approximately 0.5. In radian mode, sin(π/6) should give the ",
