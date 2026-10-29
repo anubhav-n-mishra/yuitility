@@ -9,11 +9,53 @@ import { BLOG_POSTS, readingTime } from '../src/lib/blogs';
 import { LIVE_TOOLS, RELATED_TOOLS } from '../src/lib/toolRegistry';
 import { getAllToolPresets } from '../src/lib/toolPresets';
 import { CATEGORY_META } from '../src/lib/site';
+import { convertNumberBase } from '../src/lib/numberBase';
 import sitemap from '../src/app/sitemap';
 import { POST as aiPost } from '../src/app/api/ai/route';
 import { POST as contactPost } from '../src/app/api/contact/route';
 
 const close = (actual:number, expected:number, tolerance=.001) => assert.ok(Math.abs(actual-expected)<tolerance, `${actual} != ${expected}`);
+
+test('Radix fractions preserve exact finite and repeating values', () => {
+  assert.deepEqual(convertNumberBase('85.65', 10, 8), {value:'125.5(1463)',exact:true,repeating:true});
+  assert.deepEqual(convertNumberBase('-10.5', 10, 16), {value:'-A.8',exact:true,repeating:false});
+  assert.equal(convertNumberBase('0.F', 16, 10)?.value, '0.9375');
+  assert.equal(convertNumberBase('.1', 2, 10)?.value, '0.5');
+  assert.equal(convertNumberBase('0.125', 10, 8)?.value, '0.1');
+  assert.equal(convertNumberBase('-0.0', 10, 2)?.value, '0');
+  assert.equal(convertNumberBase('0.1', 3, 10)?.value, '0.(3)');
+});
+
+test('Radix integer results retain precision above Number and 64-bit limits', () => {
+  assert.equal(convertNumberBase('9007199254740993', 10, 16)?.value, '20000000000001');
+  assert.equal(convertNumberBase('18446744073709551616', 10, 16)?.value, '10000000000000000');
+  for (const base of [2, 8, 10, 16, 36]) {
+    const original = '-123456789012345678901234567890';
+    const encoded = convertNumberBase(original, 10, base)!;
+    assert.equal(convertNumberBase(encoded.value, base, 10)?.value, original);
+  }
+});
+
+test('Radix conversion rejects malformed input and distinguishes truncation', () => {
+  for (const text of ['', '+', '-', '.', '1.', '1..2', '1,5', '1e3', '0xFF', '1(3)', '2', '0'.repeat(4097)]) {
+    assert.equal(convertNumberBase(text, 2, 10), null, text);
+  }
+  assert.equal(convertNumberBase('12abc', 10, 2), null);
+  assert.equal(convertNumberBase('1', NaN, 10), null);
+  assert.equal(convertNumberBase('1', 10, 37), null);
+  assert.equal(convertNumberBase('1', 10, 2, 0), null);
+  assert.deepEqual(convertNumberBase('0.1', 10, 2, 3), {value:'0.000…',exact:false,repeating:false});
+  assert.deepEqual(convertNumberBase('0.125', 10, 2, 3), {value:'0.001',exact:true,repeating:false});
+  assert.deepEqual(convertNumberBase('0.1', 3, 10, 1), {value:'0.(3)',exact:true,repeating:true});
+});
+
+test('The recovered WCAG article keeps its known URL and links to the actual checker', () => {
+  const article = BLOG_POSTS.find(post => post.slug === 'checking-wcag-color-contrast-accessibility');
+  assert.ok(article);
+  assert.equal(article.toolId, 'color-palette');
+  assert.ok(article.content.includes('(/tools/color-palette)'));
+  assert.ok(sitemap().some(entry => entry.url.endsWith('/blog/' + article.slug)));
+});
 
 test('Contact rejects malformed submissions and reports unavailable delivery without sending', async () => {
   for(const body of [null,{type:'feedback',email:'a@example.com',message:42},{type:'feedback',email:'a@example.com,other@example.com',message:'synthetic'},{type:'unknown',email:'a@example.com',message:'synthetic'}]){
@@ -147,12 +189,12 @@ test('CSV quotes headers and values, preserves nested JSON, and neutralizes spre
   for(const input of ['[]','[null]','[1]','[[1]]','{}'])assert.throws(()=>jsonToCsv(input));
 });
 
-test('All 240 indexed URLs, 36 presets and contextual links derive from actual registries', () => {
+test('All 241 sitemap URLs, 36 presets and contextual links derive from actual registries', () => {
   assert.equal(LIVE_TOOLS.length,167);
-  assert.equal(BLOG_POSTS.length,23);
+  assert.equal(BLOG_POSTS.length,24);
   assert.equal(getAllToolPresets().length,36);
   const urls=sitemap().map(p=>p.url);
-  assert.equal(urls.length,240);assert.equal(new Set(urls).size,240);
+  assert.equal(urls.length,241);assert.equal(new Set(urls).size,241);
   assert.ok(urls.every(url=>!url.includes('/embed/')));
   const ids=new Set(LIVE_TOOLS.map(t=>t.id));
   for(const tool of LIVE_TOOLS){

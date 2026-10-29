@@ -79,7 +79,7 @@
 - [Pomodoro Focus Timer](https://www.yuitility.app/tools/pomodoro-timer): Boost productivity with 25-minute focus cycles and break alarms.
 - [Event Countdown Timer](https://www.yuitility.app/tools/countdown-timer): Track days, hours, minutes, and seconds until your target event.
 - [World Clock & Time Zone Tracker](https://www.yuitility.app/tools/world-clock): Track live current times across global cities and time zones.
-- [Binary / Hex / Decimal Base Converter](https://www.yuitility.app/tools/number-base-converter): Convert numbers between Binary (2), Octal (8), Decimal (10), and Hex (16).
+- [Binary / Hex / Decimal Base Converter](https://www.yuitility.app/tools/number-base-converter): Convert integers and fractions between binary, octal, decimal and hex, with repeating digits identified.
 - [JWT Token Decoder](https://www.yuitility.app/tools/jwt-decoder): Decode JSON Web Tokens (JWT) to inspect header and payload claims securely.
 - [SIP Step-Up Calculator](https://www.yuitility.app/tools/sip-step-up-calculator): Calculate mutual fund wealth accumulation with annual step-up increments.
 - [Sukanya Samriddhi Yojana (SSY) Calculator](https://www.yuitility.app/tools/ssy-calculator): Calculate SSY scheme interest returns and maturity corpus.

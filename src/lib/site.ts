@@ -908,7 +908,7 @@ const TOOL_SEO_DESCRIPTIONS: Record<string, string> = {
   "world-clock":
     "Check current time across world cities and time zones (UTC, EST, PST, GMT, IST, CET). Compare business hours and plan international calls.",
   "number-base-converter":
-    "Convert numbers between Binary (Base 2), Octal (Base 8), Decimal (Base 10), and Hexadecimal (Base 16) with step-by-step bit breakdowns.",
+    "Convert integers and fractions between binary, octal, decimal and hex. Preserve large integers exactly, identify repeating digits, and label truncated fractions.",
   "jwt-decoder":
     "Decode JWT headers, payload claims, and signature algorithm details. 100% private in-browser decoding — zero token transmission.",
   "meeting-cost-calculator":
@@ -960,11 +960,19 @@ export function getToolSeoDescription(tool: Tool): string {
 }
 
 export function getToolSteps(tool: Tool) {
+  if (tool.id === "number-base-converter") {
+    return [
+      "Select the input base, then enter an integer or finite fraction using a dot.",
+      "Read the binary, octal, decimal and hexadecimal results together.",
+      "Parentheses mark repeating digits; an ellipsis marks a fraction truncated after 32 digits.",
+    ];
+  }
+
   if (tool.category === "finance" || tool.category === "math") {
     return [
       "Enter the values for your own situation rather than the defaults.",
-      `Adjust one input at a time and watch which one moves the ${tool.title.toLowerCase()} result most.`,
-      "Check the working shown below the result before you rely on the number.",
+      "Change the available inputs or options to see how the result responds.",
+      "Read the tool's assumptions and check important results independently.",
     ];
   }
 

@@ -94,7 +94,7 @@ async function main(){
   await fixture('FractionToDecimal',{numerator:'3',denominator:'8',decimalInput:'0.625'},{'fracResult.decimal':'0.375','decResult.improperFrac':'5 / 8'});
   await fixture('RatioProportionCalculator',{}, {'solvedProportion.answer':25,'simplified.simplified':'2 : 3'});
   for(const [shape,inputs,area]of [['circle',{radius:'2'},Math.PI*4],['rectangle',{rectL:'3',rectW:'4'},12],['triangle',{triMode:'threeSides',triA:'3',triB:'4',triC:'5'},6],['trapezoid',{trapA:'2',trapB:'4',trapH:'3'},9],['ellipse',{ellipseA:'2',ellipseB:'3'},Math.PI*6],['polygon',{polySides:'4',polyLength:'3'},9]])await fixture('GeometryAreaCalculator',{shape,...inputs},{'results.area':area});
-  for(const [value,base,expected]of [['9007199254740993',10,'9007199254740993'],['ff',16,'255'],['102',2,null],['12x',10,null],['-101',2,'-5']])await check('NumberBaseConverter','exact integer parsing '+value,{value,fromBase:base},v=>equal(v.num===null?null:String(v.num),expected));
+  for(const [value,base,expected]of [['9007199254740993',10,'9007199254740993'],['ff',16,'255'],['102',2,null],['12x',10,null],['-101',2,'-5']])await check('NumberBaseConverter','exact integer parsing '+value,{value,fromBase:base},v=>equal(v.conversions.find(c=>c.key==='dec').result?.value??null,expected));
   await fixture('UnitConverter',{category:'Temperature',fromUnit:'Celsius',toUnit:'Fahrenheit',inputValue:'100'},{result:'212'});
   await fixture('UnitConverter',{category:'Length',fromUnit:'Foot',toUnit:'Meter',inputValue:'1'},{result:'0.3048'});
   await fixture('SpeedDistanceTimeCalculator',{distance:'180',time:'3',solveFor:'speed'},{result:'60.00'});
